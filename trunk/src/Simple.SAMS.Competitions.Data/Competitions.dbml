@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SimpleITASAMS" Class="CompetitionsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQL2012;Initial Catalog=SimpleITASAMS;Integrated Security=True" SettingsObjectName="Simple.SAMS.Competitions.Data.Properties.Settings" SettingsPropertyName="SimpleITASAMSConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.CompetitionPlayer" Member="CompetitionPlayers">
+    <Type Name="CompetitionPlayer">
+      <Column Name="CompetitionId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PlayerId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Rank" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Player_CompetitionPlayer" Member="Player" ThisKey="PlayerId" OtherKey="Id" Type="Player" IsForeignKey="true" />
+      <Association Name="Competition_CompetitionPlayer" Member="Competition" ThisKey="CompetitionId" OtherKey="Id" Type="Competition" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CompetitionType" Member="CompetitionTypes">
+    <Type Name="CompetitionType">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="RowStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Created" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Updated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="CompetitionType_Competition" Member="Competitions" ThisKey="Id" OtherKey="TypeId" Type="Competition" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Player" Member="Players">
+    <Type Name="Player">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IdNumber" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Rank" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RowStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Created" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Updated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Player_CompetitionPlayer" Member="CompetitionPlayers" ThisKey="Id" OtherKey="PlayerId" Type="CompetitionPlayer" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Competition" Member="Competitions">
+    <Type Name="Competition">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TypeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RowStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Created" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Updated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ReferenceId" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="Competition_CompetitionPlayer" Member="CompetitionPlayers" ThisKey="Id" OtherKey="CompetitionId" Type="CompetitionPlayer" />
+      <Association Name="CompetitionType_Competition" Member="CompetitionType" ThisKey="TypeId" OtherKey="Id" Type="CompetitionType" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
