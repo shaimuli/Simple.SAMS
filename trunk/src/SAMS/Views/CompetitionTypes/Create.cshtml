@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Create Competition Type</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Create Competition Type</legend>
+        <ol>
+            <li>
+                @Html.Label("Name")
+                @Html.TextBox("Name")
+            </li>
+        </ol>
+        <input type="submit" value="Create"/>
+    </fieldset>
+    
+
+}    

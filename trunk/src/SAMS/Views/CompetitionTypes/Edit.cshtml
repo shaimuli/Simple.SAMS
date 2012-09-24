@@ -1,0 +1,26 @@
+﻿@model Simple.SAMS.Contracts.Competitions.CompetitionType
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Edit Competition Type</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Edit Competition Type</legend>
+        @Html.HiddenFor(m => m.Id)
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.Name)
+                @Html.TextBoxFor(m => m.Name)
+            </li>
+        </ol>
+        <input type="submit" value="Update"/>
+    </fieldset>
+    
+
+}    

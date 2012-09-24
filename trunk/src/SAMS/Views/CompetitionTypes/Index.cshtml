@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Simple.SAMS.Contracts.Competitions.CompetitionType>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Competition Types</h2>
+<nav>
+    <ul>
+        <li>@Html.ActionLink("Create", "Create", "CompetitionTypes")</li>
+    </ul>
+</nav>
+<hr/>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@Html.ActionLink("Edit", "Edit", new { id = item.Id })</td>
+                <td><a href="#">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

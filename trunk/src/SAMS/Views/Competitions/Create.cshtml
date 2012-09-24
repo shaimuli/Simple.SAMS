@@ -1,0 +1,39 @@
+﻿@model SAMS.Models.CreateCompetitionModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create New Competition</h2>
+
+@using (Html.BeginForm("Create", "Competitions", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Create New Competition</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.Name)
+                @Html.TextBoxFor(m => m.Name)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Type)
+                @Html.DropDownListFor(m=>m.Type, Model.AvailableTypes.Select(t=>new SelectListItem(){Value = t.Id.ToString(), Text = t.Name, Selected = Model.Type != null && t.Id.Equals(Model.Type.Id) }))
+            </li>
+            <li>
+                @Html.LabelFor(m => m.StartTime)
+                @Html.EditorFor(m => m.StartTime)
+            </li>
+            <li>
+                Players:
+                <input type="file" name="PlayersFile" id="PlayersFile"/>
+            </li>
+        </ol>
+        <input type="submit" value="Create Competition" />
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
