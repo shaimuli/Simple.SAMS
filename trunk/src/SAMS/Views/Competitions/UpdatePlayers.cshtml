@@ -1,0 +1,24 @@
+﻿@model Simple.SAMS.Contracts.Competitions.CompetitionHeaderInfo
+@{
+    ViewBag.Title = "UpdatePlayers";
+}
+
+<h2>Update Competition's Players</h2>
+<h3>Competition: @Model.Name</h3>
+
+@using (Html.BeginForm("UpdatePlayers", "Competitions", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    @Html.Hidden("competitionId", ViewContext.RouteData.Values["id"]);
+    <fieldset>
+        <legend>Update Competition's Players</legend>
+        <ol>
+            <li>
+                Players:
+                <input type="file" name="playersFile" id="playersFile"/>
+            </li>
+        </ol>
+        <input type="submit" value="Update Players" />
+    </fieldset>
+}

@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Import";
+}
+
+<h2>Import Competitions</h2>
+
+@using (Html.BeginForm("Import", "Competitions", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Import Competitions</legend>
+        <ol>
+            <li>
+                Competitions:
+                <input type="file" name="competitionsFile" id="competitionsFile"/>
+            </li>
+        </ol>
+        <input type="submit" value="Start Import" />
+    </fieldset>
+}
