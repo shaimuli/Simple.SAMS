@@ -1,8 +1,6 @@
 ﻿@{
-    ViewBag.Title = "Import";
 }
 
-<h2>Import Competitions</h2>
 
 @using (Html.BeginForm("Import", "Competitions", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -10,13 +8,16 @@
     @Html.ValidationSummary()
 
     <fieldset>
-        <legend>Import Competitions</legend>
-        <ol>
-            <li>
-                Competitions:
+        <legend>@Html.Resource("ImportCompetitions")</legend>
+        <label for="competitionsFile">@Html.Resource("CompetitionsFileLabel")</label>
+        <div>
                 <input type="file" name="competitionsFile" id="competitionsFile"/>
-            </li>
-        </ol>
-        <input type="submit" value="Start Import" />
+        </div>
+        <hr class="space"/>
+        <div class="row-fluid">
+            <div class="span3">
+        <input type="submit" class="btn btn-primary stretch"  value="@Html.ResourceText("StartImportCompetition")" />
+                </div>
+        </div>
     </fieldset>
 }

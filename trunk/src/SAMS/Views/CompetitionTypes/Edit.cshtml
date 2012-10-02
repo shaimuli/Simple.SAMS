@@ -1,6 +1,8 @@
 ﻿@model Simple.SAMS.Contracts.Competitions.CompetitionType
 @{
-    ViewBag.Title = "Update";
+    ViewContext.Controller.ViewBag.GroupTitle = Html.ResourceText("Competitions");
+    ViewContext.Controller.ViewBag.Title = Html.ResourceText("CreateCompetitionTypeHeader");
+    
 }
 
 <h2>Edit Competition Type</h2>

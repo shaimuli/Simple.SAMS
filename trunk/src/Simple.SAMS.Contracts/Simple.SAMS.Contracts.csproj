@@ -43,24 +43,32 @@
   <ItemGroup>
     <Compile Include="Competitions\CompetitionDetails.cs" />
     <Compile Include="Competitions\CompetitionHeaderInfo.cs" />
+    <Compile Include="Competitions\CompetitionMatchesQuery.cs" />
     <Compile Include="Competitions\CompetitionSearchQuery.cs" />
     <Compile Include="Competitions\CompetitionsSearchResult.cs" />
     <Compile Include="Competitions\CompetitionType.cs" />
     <Compile Include="Competitions\CreateCompetitionInfo.cs" />
     <Compile Include="Competitions\Entity.cs" />
     <Compile Include="Competitions\EntityReference.cs" />
+    <Compile Include="Competitions\GameScoreUpdateInfo.cs" />
     <Compile Include="Competitions\ICompetitionRepository.cs" />
     <Compile Include="Competitions\ICompetitionsEngine.cs" />
     <Compile Include="Competitions\ICompetitionsManager.cs" />
     <Compile Include="Competitions\ICompetitionTypeRepository.cs" />
     <Compile Include="Competitions\IPlayersRepository.cs" />
+    <Compile Include="Competitions\MatchInfo.cs" />
+    <Compile Include="Competitions\MatchPlayer.cs" />
+    <Compile Include="Competitions\MatchScoreUpdateInfo.cs" />
     <Compile Include="Competitions\PlayerInCompetition.cs" />
+    <Compile Include="Competitions\SetScoreUpdateInfo.cs" />
     <Compile Include="EntityItemStatus.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="IEntityRepository.cs" />
     <Compile Include="Namespaces.cs" />
     <Compile Include="Players\Player.cs" />
+    <Compile Include="Competitions\IPositioningEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Competitions\IScoringEngine.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

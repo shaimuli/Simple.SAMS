@@ -1,49 +1,74 @@
-﻿<!DOCTYPE html>
+﻿@using SAMS.Models
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
-        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <meta name="viewport" content="width=device-width" />
-        @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
-    </head>
-    <body>
-        <header>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("Simple. SAMS | ITA", "Index", "Home")</p>
-                </div>
-                <div class="float-right">
-                    <section id="login">
-                        @Html.Partial("_LoginPartial")
-                    </section>
-                    <nav>
-                        <ul id="menu">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                            <li>@Html.ActionLink("Competitions", "Index", "Competitions")</li>
-                            <li>@Html.ActionLink("About", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - @Html.ResourceText("SAMS") | ITA</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap-rtl.min.css" type="text/css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body class="rtl">
+    <header>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    @Html.ActionLink("Simple. SAMS | ITA", "Index", "Home", null, new { @class = "brand" })
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            @Html.MenuItem(Html.ResourceText("Home"), "Index", "Home",Html.ResourceText("Home"))
+                            @Html.MenuItem(Html.ResourceText("Competitions"), "Index", "Competitions",Html.ResourceText("Competitions"))
+                            @Html.MenuItem(Html.ResourceText("Help"), "Help", "Home",Html.ResourceText("Help"))
                         </ul>
-                    </nav>
+                        @Html.Partial("_LoginPartial")
+                    </div>
+                    <!--/.nav-collapse -->
                 </div>
             </div>
-        </header>
-        <div id="body">
-            @RenderSection("featured", required: false)
-            <section class="content-wrapper main-content clear-fix">
-                @RenderBody()
-            </section>
         </div>
-        <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
-                </div>
-            </div>
-        </footer>
+    </header>
+    <hr class="space" />
+    <div class="container content">
+        <h1>@ViewContext.Controller.ViewBag.GroupTitle</h1>
+        <div class="row">
+            @if (ViewContext.Controller.ViewBag.MenuItems != null)
+            {
+                <ul class="nav nav-pills">
+                    @foreach (MenuItem menuItem in ViewContext.Controller.ViewBag.MenuItems)
+                    {
+                        @Html.MenuItem(menuItem)
+                    }
+                    @*                @Html.MenuItem(Html.ResourceText("CompetitionsList"), "Index", "Competitions")
+                @Html.MenuItem(Html.ResourceText("CompetitionTypes"), "Index", "CompetitionTypes")
+                @Html.MenuItem(Html.ResourceText("Import"), "Import", "Competitions")
+                @Html.MenuItem(Html.ResourceText("CreateCompetitionLink"), "Create", "Competitions")*@
+                </ul>
+            }
+        </div>
+            @if (ViewContext.Controller.ViewBag.Title != null)
+            {
+                <h2>@ViewContext.Controller.ViewBag.Title</h2>
+            }            
 
-        @Scripts.Render("~/bundles/jquery")
-        @RenderSection("scripts", required: false)
-    </body>
+
+        <p>
+            @RenderBody()
+        </p>
+    </div>
+    <footer>
+        <div class="container">
+                <p>&copy; @DateTime.Now.Year - Simple. SAMS</p>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
 </html>

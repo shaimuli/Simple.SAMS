@@ -1,10 +1,9 @@
 ﻿@model Simple.SAMS.Contracts.Competitions.CompetitionHeaderInfo
 @{
-    ViewBag.Title = "UpdatePlayers";
+    ViewBag.GroupTitle =  @Model.Name;
+    ViewBag.Title = Html.ResourceText("UpdateCompetitionPlayersHeader");
 }
 
-<h2>Update Competition's Players</h2>
-<h3>Competition: @Model.Name</h3>
 
 @using (Html.BeginForm("UpdatePlayers", "Competitions", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -12,13 +11,16 @@
     @Html.ValidationSummary()
     @Html.Hidden("competitionId", ViewContext.RouteData.Values["id"]);
     <fieldset>
-        <legend>Update Competition's Players</legend>
-        <ol>
-            <li>
-                Players:
-                <input type="file" name="playersFile" id="playersFile"/>
-            </li>
-        </ol>
-        <input type="submit" value="Update Players" />
+        <legend>@Html.Resource("LoadCompetitionPlayersHeader")</legend>
+        <label for="playersFile">@Html.Resource("PlayersFileLabel")</label>
+        <div>
+        <input type="file" name="playersFile" id="playersFile"/>    
+        </div>
+        <hr class="space"/>
+        <div class="row-fluid">
+            <div class="span3">
+                <input type="submit" class="btn btn-primary stretch" value="@Html.ResourceText("UpdateCompetitionPlayers")" />
+                </div>
+        </div>
     </fieldset>
 }

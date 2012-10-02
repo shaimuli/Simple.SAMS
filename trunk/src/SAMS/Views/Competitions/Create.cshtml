@@ -1,9 +1,7 @@
 ﻿@model SAMS.Models.CreateCompetitionModel
 @{
-    ViewBag.Title = "Create";
+    
 }
-
-<h2>Create New Competition</h2>
 
 @using (Html.BeginForm("Create", "Competitions", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -11,7 +9,7 @@
     @Html.ValidationSummary()
 
     <fieldset>
-        <legend>Create New Competition</legend>
+        <legend>@Html.Resource("CreateCompetition")</legend>
         <ol>
             <li>
                 @Html.LabelFor(m => m.Name)

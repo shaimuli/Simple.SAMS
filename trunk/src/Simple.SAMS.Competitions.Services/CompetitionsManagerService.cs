@@ -52,5 +52,16 @@ namespace Simple.SAMS.Competitions.Services
             var competitions = competitionsEngine.GetCompetitions(competitionsFileUrl);
             competitionsEngine.ImportCompetitions(competitions);
         }
+
+
+        public MatchInfo[] GetCompetitionMatches(CompetitionMatchesQuery matchesQuery)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateMatchScore(MatchScoreUpdateInfo scoreUpdateInfo)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,20 +1,28 @@
-﻿@model IEnumerable<Simple.SAMS.Contracts.Competitions.CompetitionType>
+﻿@using SAMS.Models
+@model IEnumerable<Simple.SAMS.Contracts.Competitions.CompetitionType>
 @{
-    ViewBag.Title = "Index";
+    ViewContext.Controller.ViewBag.GroupTitle = Html.ResourceText("Competitions");
+    ViewContext.Controller.ViewBag.Title = Html.ResourceText("CompetitionTypes");
+    ViewContext.Controller.ViewBag.MenuItems = new[]
+                            {
+                                new MenuItem{Text = Html.ResourceText("CompetitionsList"), Action = "Index", Controller="Competitions"},
+                                new MenuItem{Text = Html.ResourceText("CompetitionTypes"), Action = "Index", Controller="CompetitionTypes"},
+                                new MenuItem{Text = Html.ResourceText("Import"), Action = "Import", Controller="Competitions"},
+                                new MenuItem{Text = Html.ResourceText("CreateCompetitionLink"), Action = "Create", Controller="Competitions"}
+                            };    
 }
-<h2>Competition Types</h2>
 <nav>
     <ul>
-        <li>@Html.ActionLink("Create", "Create", "CompetitionTypes")</li>
+        <li>@Html.ActionLink(Html.ResourceText("NewCompetitionType"), "Create", "CompetitionTypes")</li>
     </ul>
 </nav>
-<hr/>
+
 <table>
     <thead>
         <tr>
-            <th>Name</th>
-            <th></th>
-            <th></th>
+            <th class="span4">@Html.Resource("CompetitionTypeNameHeader")</th>
+            <th class="span2"></th>
+            <th class="span2"></th>
         </tr>
     </thead>
     <tbody>

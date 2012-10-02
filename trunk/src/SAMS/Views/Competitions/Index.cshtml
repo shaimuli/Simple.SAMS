@@ -1,24 +1,17 @@
-﻿@model IEnumerable<Simple.SAMS.Contracts.Competitions.CompetitionHeaderInfo>
+﻿@using SAMS.Models
+@model IEnumerable<Simple.SAMS.Contracts.Competitions.CompetitionHeaderInfo>
 @{
-    ViewBag.Title = "Index";
+    
+    ViewContext.Controller.ViewBag.Title = Html.ResourceText("CompetitionsList");
 }
 
-<h2>Competitions</h2>
-<nav>
-    <ul>
-        <li>@Html.ActionLink("Types", "Index", "CompetitionTypes")</li>
-        <li>@Html.ActionLink("Import", "Import", "Competitions")</li>
-        <li>@Html.ActionLink("Create", "Create", "Competitions")</li>
-    </ul>
-</nav>
-<hr/>
-<table>
+
+<table >
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Start Time</th>
-
+            <th class="span6">@Html.Resource("CompetitionNameHeader")</th>
+            <th class="span3">@Html.Resource("CompetitionTypeHeader")</th>
+            <th class="span3">@Html.Resource("CompetitionStartTimeHeader")</th>
         </tr>
     </thead>
     <tbody>
@@ -28,7 +21,7 @@
                 <td>@item.Name</td>
                 <td>@item.Type.Text</td>
                 <td>@item.StartTime</td>
-                <td>@Html.ActionLink("Update Players", "UpdatePlayers", new {id = item.Id})</td>
+                <td>@Html.ActionLink(Html.ResourceText("UpdateCompetitionPlayers"), "UpdatePlayers", new {id = item.Id})</td>
             </tr>
         }
     </tbody>

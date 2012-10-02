@@ -1,0 +1,54 @@
+﻿body.rtl {
+    direction: rtl;
+    font-family: arial, sans-serif;
+}
+
+h1 {
+    font-size: 28pt;
+    font-weight: normal;
+    margin-bottom: 12px;
+}
+h2 {
+    font-size: 24pt;
+    font-weight: normal;
+    color: #666;
+}
+hr.space
+{
+	height: 1em;
+	border:none;
+}
+
+thead {
+    border-bottom: solid 1px #DDD;
+}
+.content {
+    margin-bottom: 40px;
+}
+footer {
+    background-color: #444;
+    position: fixed;
+    bottom: 0px;
+    height: 40px;
+    width: 100%;
+    color: white;
+    
+    
+}
+footer p {
+    line-height: 40px;
+    font-size: 24px;
+
+}
+
+.stretch,
+input[type=submit].stretch,
+button.stretch{
+    display: block;
+    width: 100%;
+}
+
+[class*="span"] {
+    zoom: 1;
+    min-height: 1px;
+}

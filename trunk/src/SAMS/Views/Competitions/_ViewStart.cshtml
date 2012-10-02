@@ -1,0 +1,12 @@
+﻿@using SAMS.Models
+@{
+    
+    ViewContext.Controller.ViewBag.GroupTitle = Html.ResourceText("Competitions");
+    ViewContext.Controller.ViewBag.MenuItems = new[]
+                            {
+                                new MenuItem{Text = Html.ResourceText("CompetitionsList"), Action = "Index", Controller="Competitions"},
+                                new MenuItem{Text = Html.ResourceText("CompetitionTypes"), Action = "Index", Controller="CompetitionTypes"},
+                                new MenuItem{Text = Html.ResourceText("Import"), Action = "Import", Controller="Competitions"},
+                                new MenuItem{Text = Html.ResourceText("CreateCompetitionLink"), Action = "Create", Controller="Competitions"}
+                            };
+}

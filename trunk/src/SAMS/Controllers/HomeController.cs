@@ -6,8 +6,10 @@ using System.Web.Mvc;
 
 namespace SAMS.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
+        
         public ActionResult Index()
         {
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
@@ -26,6 +28,11 @@ namespace SAMS.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        public ActionResult Help()
+        {
             return View();
         }
     }
