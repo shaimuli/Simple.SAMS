@@ -12,12 +12,13 @@ namespace Simple.SAMS.Competitions.Data
     public class CompetitionRepository : DataRepositoryBase<CompetitionsDataContext>, ICompetitionRepository
     {
 
-        private void MapCompetitionataToHeader(Competition competition, CompetitionHeaderInfo competitionHeader)
+        private void MapCompetitionDataToHeader(Competition competition, CompetitionHeaderInfo competitionHeader)
         {
             competitionHeader.Id = competition.Id;
             competitionHeader.ReferenceId = competition.ReferenceId;
             competitionHeader.Name = competition.Name;
-            competitionHeader.StartTime = competition.StartDate;
+            competitionHeader.StartTime = competition.StartDate.ToLocalTime();
+            competitionHeader.LastModified = competition.Updated.ToLocalTime();
             competitionHeader.Type = new EntityReference() { Id = competition.TypeId, Text = competition.CompetitionType.Name };
         }
 
@@ -78,7 +79,7 @@ namespace Simple.SAMS.Competitions.Data
                     if (competitionData.IsNotNull())
                     {
                         result = new CompetitionHeaderInfo();
-                        MapCompetitionataToHeader(competitionData, result);
+                        MapCompetitionDataToHeader(competitionData, result);
                     }
                 });
 
@@ -106,7 +107,7 @@ namespace Simple.SAMS.Competitions.Data
                     if (competitionData.IsNotNull())
                     {
                         result = new CompetitionDetails();
-                        MapCompetitionataToHeader(competitionData, result);
+                        MapCompetitionDataToHeader(competitionData, result);
 
                         // load other details...
                     }
@@ -132,7 +133,7 @@ namespace Simple.SAMS.Competitions.Data
                     foreach (var dataItem in pagedResults)
                     {
                         var item = new CompetitionHeaderInfo();
-                        MapCompetitionataToHeader(dataItem, item);
+                        MapCompetitionDataToHeader(dataItem, item);
                         items.Add(item);
                     }
                 });

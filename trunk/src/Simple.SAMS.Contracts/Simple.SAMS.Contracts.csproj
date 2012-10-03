@@ -55,7 +55,9 @@
     <Compile Include="Competitions\ICompetitionsEngine.cs" />
     <Compile Include="Competitions\ICompetitionsManager.cs" />
     <Compile Include="Competitions\ICompetitionTypeRepository.cs" />
+    <Compile Include="Users\UserInfo.cs" />
     <Compile Include="Competitions\IPlayersRepository.cs" />
+    <Compile Include="Users\IUsersRepository.cs" />
     <Compile Include="Competitions\MatchInfo.cs" />
     <Compile Include="Competitions\MatchPlayer.cs" />
     <Compile Include="Competitions\MatchScoreUpdateInfo.cs" />

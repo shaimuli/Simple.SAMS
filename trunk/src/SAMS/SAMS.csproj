@@ -173,6 +173,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\CompetitionsController.cs" />
+    <Compile Include="Controllers\Api\ScoreController.cs" />
     <Compile Include="Controllers\CompetitionsController.cs" />
     <Compile Include="Controllers\CompetitionTypesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -184,6 +186,7 @@
     <Compile Include="HtmlExtensions.cs" />
     <Compile Include="MenuExtensions.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\CompetitionDetailsModel.cs" />
     <Compile Include="Models\CompetitionTypeReference.cs" />
     <Compile Include="Models\CreateCompetitionModel.cs" />
     <Compile Include="Models\CreateCompetitionParameters.cs" />
@@ -321,6 +324,7 @@
     <Content Include="Views\Home\Help.cshtml" />
     <Content Include="Views\Competitions\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_CompetitionsGroupMenu.cshtml" />
+    <Content Include="Views\Account\Users.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

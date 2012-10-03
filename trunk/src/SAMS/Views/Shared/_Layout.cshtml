@@ -26,6 +26,11 @@
                             @Html.MenuItem(Html.ResourceText("Home"), "Index", "Home",Html.ResourceText("Home"))
                             @Html.MenuItem(Html.ResourceText("Competitions"), "Index", "Competitions",Html.ResourceText("Competitions"))
                             @Html.MenuItem(Html.ResourceText("Help"), "Help", "Home",Html.ResourceText("Help"))
+                            
+                            @if (Context.Request.IsAuthenticated && Context.User.IsInRole("admin"))
+                            {
+                                @Html.MenuItem(Html.ResourceText("Admin"), "Users", "Account", Html.ResourceText("Admin"))
+                            }
                         </ul>
                         @Html.Partial("_LoginPartial")
                     </div>

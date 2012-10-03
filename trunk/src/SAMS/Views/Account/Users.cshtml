@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Simple.SAMS.Contracts.Users.UserInfo>
+@using SAMS.Models
+@{
+    ViewContext.Controller.ViewBag.GroupTitle = Html.ResourceText("Admin");
+    ViewContext.Controller.ViewBag.Title = Html.ResourceText("ManageUsers");
+   /* ViewContext.Controller.ViewBag.MenuItems = new[]
+                            {
+                                new MenuItem{Text = Html.ResourceText("CompetitionsList"), Action = "Index", Controller="Competitions"},
+                                new MenuItem{Text = Html.ResourceText("CompetitionTypes"), Action = "Index", Controller="CompetitionTypes"},
+                                new MenuItem{Text = Html.ResourceText("Import"), Action = "Import", Controller="Competitions"},
+                                new MenuItem{Text = Html.ResourceText("CreateCompetitionLink"), Action = "Create", Controller="Competitions"}
+                            };*/
+}
+
+<table>
+    <thead>
+        <tr>
+            <th class="span4">@Html.Resource("UsernameHeader")</th>
+            <th class="span2"></th>
+            <th class="span2"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var index = 0;
+        }        
+        @foreach (var item in Model)
+        {
+            <tr class="item@(index++ % 2 == 0 ? "":" alternate")">
+                <td>@item.Username</td>
+                <td>
+                    @if (item.IsActive)
+                    {
+                        @Html.ActionLink(Html.ResourceText("DeactivateUser"), "DeactivateUser", new { id = item.Username })    
+                    }
+                    else
+                    {
+                        @Html.ActionLink(Html.ResourceText("ActivateUser"), "ActivateUser", new { id = item.Username })    
+                    }    
+                </td>
+                <td>@Html.ActionLink(Html.ResourceText("ResetPassword"), "ResetPassword", new { id = item.Username })</td>
+            </tr>
+        }
+    </tbody>
+</table>

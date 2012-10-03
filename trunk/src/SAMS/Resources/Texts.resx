@@ -198,4 +198,43 @@
   <data name="HelpAndSupport" xml:space="preserve">
     <value>עזרה ותמיכה</value>
   </data>
+  <data name="CompetitionDetails" xml:space="preserve">
+    <value>פרטי תחרות</value>
+  </data>
+  <data name="CompetitionLastModifiedHeader" xml:space="preserve">
+    <value>עודכן לאחרונה</value>
+  </data>
+  <data name="ActivateUser" xml:space="preserve">
+    <value>הפוך פעיל</value>
+  </data>
+  <data name="Admin" xml:space="preserve">
+    <value>ניהול</value>
+  </data>
+  <data name="DeactivateUser" xml:space="preserve">
+    <value>הפוך ללא פעיל</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>כניסה</value>
+  </data>
+  <data name="LoginFormTitle" xml:space="preserve">
+    <value>כניסה למערכת</value>
+  </data>
+  <data name="LogOff" xml:space="preserve">
+    <value>יציאה</value>
+  </data>
+  <data name="ManageUsers" xml:space="preserve">
+    <value>משתמשים</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>סיסמה</value>
+  </data>
+  <data name="ResetPassword" xml:space="preserve">
+    <value>אפס סיסמה</value>
+  </data>
+  <data name="Username" xml:space="preserve">
+    <value>שם משתמש</value>
+  </data>
+  <data name="UsernameHeader" xml:space="preserve">
+    <value>שם משתמש</value>
+  </data>
 </root>

@@ -1,5 +1,10 @@
-﻿@{
-    ViewBag.Title = "Details";
+﻿@model SAMS.Models.CompetitionDetailsModel
+@{
+    
+    ViewContext.Controller.ViewBag.GroupTitle = Html.ResourceText("CompetitionDetails");
+        
 }
 
-<h2>Details</h2>
+
+<h2>@Model.Name</h2>
+<i>@Model.StartTime.ToShortDateString()</i>

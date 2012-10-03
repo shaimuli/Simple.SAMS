@@ -9,6 +9,7 @@ using Simple.ComponentModel;
 using Simple.SAMS.Competitions.Data;
 using Simple.SAMS.Competitions.Services;
 using Simple.SAMS.Contracts.Competitions;
+using Simple.SAMS.Contracts.Users;
 using Simple.Utilities;
 
 namespace SAMS
@@ -56,6 +57,7 @@ namespace SAMS
 
         private void RegisterRepositories()
         {
+            ServiceProvider.Add<IUsersRepository, UsersRepository>();
             ServiceProvider.Add<ICompetitionRepository, CompetitionRepository>();
             ServiceProvider.Add<ICompetitionTypeRepository, CompetitionTypeRepository>();
             ServiceProvider.Add<IPlayersRepository, PlayerRepository>();

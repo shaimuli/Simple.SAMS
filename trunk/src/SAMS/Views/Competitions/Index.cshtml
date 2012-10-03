@@ -9,18 +9,26 @@
 <table >
     <thead>
         <tr>
-            <th class="span6">@Html.Resource("CompetitionNameHeader")</th>
+            <th class="span5">@Html.Resource("CompetitionNameHeader")</th>
             <th class="span3">@Html.Resource("CompetitionTypeHeader")</th>
-            <th class="span3">@Html.Resource("CompetitionStartTimeHeader")</th>
+            <th class="span2">@Html.Resource("CompetitionStartTimeHeader")</th>
+            <th class="span2">@Html.Resource("CompetitionLastModifiedHeader")</th>
         </tr>
     </thead>
     <tbody>
+        
+        @{
+            var index = 0;
+        }
         @foreach(var item in Model)
         {
-            <tr>
-                <td>@item.Name</td>
+            <tr class="item@(index++ % 2 == 0 ? "":" alternate")">
+                <td>
+                    @Html.ActionLink(item.Name, "Details", new { id=item.Id })
+                </td>
                 <td>@item.Type.Text</td>
-                <td>@item.StartTime</td>
+                <td>@item.StartTime.ToShortDateString()</td>
+                <td class="@((DateTime.UtcNow.Subtract(item.LastModified)).TotalHours < 2 ?"modifiedRecently" :"")">@item.LastModified</td>
                 <td>@Html.ActionLink(Html.ResourceText("UpdateCompetitionPlayers"), "UpdatePlayers", new {id = item.Id})</td>
             </tr>
         }

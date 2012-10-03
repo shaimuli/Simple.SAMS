@@ -17,6 +17,18 @@ namespace SAMS.Controllers
         //
         // GET: /Competitions/
 
+        public ActionResult Details(int id)
+        {
+            var model = new CompetitionDetailsModel();
+            var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
+            var competition = competitionsRepository.GetCompetitionDetails(id);
+            model.Id = id;
+            model.Name = competition.Name;
+            model.StartTime = competition.StartTime;
+
+            return View(model);
+        }
+
         public ActionResult Index(int startIndex = 0, int pageSize = 50)
         {
             var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
@@ -115,10 +127,6 @@ namespace SAMS.Controllers
             return View();
         }
         
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
 
 
 

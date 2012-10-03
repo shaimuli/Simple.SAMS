@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using System.Web.Security;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
+using Simple.ComponentModel;
+using Simple.SAMS.Contracts.Users;
 using WebMatrix.WebData;
 using SAMS.Filters;
 using SAMS.Models;
@@ -17,6 +19,15 @@ namespace SAMS.Controllers
     [InitializeSimpleMembership]
     public class AccountController : Controller
     {
+        [Authorize(Roles = "admin")]
+        public ActionResult Users()
+        {
+            var usersRepository = ServiceProvider.Get<IUsersRepository>();
+
+            var users = usersRepository.GetUsers();
+            return View(users);
+        }
+
         //
         // GET: /Account/Login
 

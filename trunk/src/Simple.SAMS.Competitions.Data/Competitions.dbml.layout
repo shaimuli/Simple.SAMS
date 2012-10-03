@@ -20,7 +20,7 @@
         <elementListCompartment Id="18fce3e1-c07d-4e61-aa65-f04a21685d56" absoluteBounds="3.515, 7.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(4.46875 : 7.5); (4.46875 : 1.69314697265625); (6.25 : 1.69314697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(4.46875 : 7.5); (4.46875 : 1.69314697265625); (6.25 : 1.69314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/CompetitionsDataContext/Player/Player_CompetitionPlayer" />
       <nodes>
         <classShapeMoniker Id="1b1ac62a-54c5-47c4-8924-63711412330e" />
@@ -33,19 +33,25 @@
         <elementListCompartment Id="51395d5b-2ce9-48e2-90e4-da59a1c1898f" absoluteBounds="5.515, 3.96, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(6.875 : 3.5); (6.875 : 2.3862939453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(6.875 : 3.5); (6.875 : 2.3862939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/CompetitionsDataContext/Competition/Competition_CompetitionPlayer" />
       <nodes>
         <classShapeMoniker Id="fcb2c07f-8ba9-497d-8377-e8f7c0dec8a3" />
         <classShapeMoniker Id="bef088a7-5e6b-4971-81e3-600a5a7c68fc" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(2.75 : 5.29890055338542); (4.38541666666667 : 5.29890055338542 : JumpStart); (4.55208333333333 : 5.29890055338542 : JumpEnd); (5.5 : 5.29890055338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 5.29890055338542); (5.5 : 5.29890055338542)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/CompetitionsDataContext/CompetitionType/CompetitionType_Competition" />
       <nodes>
         <classShapeMoniker Id="1b146ddb-3c90-476d-a41d-6d8124533abf" />
         <classShapeMoniker Id="fcb2c07f-8ba9-497d-8377-e8f7c0dec8a3" />
       </nodes>
     </associationConnector>
+    <classShape Id="91d299fd-eeb0-42fb-9ba5-7a47a16d56a5" absoluteBounds="1.25, 1, 2, 1.3862939453125">
+      <DataClassMoniker Name="/CompetitionsDataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c73cd902-c7e9-4469-a87a-a5c31a95178f" absoluteBounds="1.2650000000000006, 1.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>
