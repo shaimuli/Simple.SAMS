@@ -13,5 +13,12 @@ namespace Simple.SAMS.Contracts.Competitions
         [DataMember(EmitDefaultValue = false)]
         public string Name { get; set; }
 
+        [DataMember(EmitDefaultValue = false)]
+        public CompetitionMethod Method { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
+        public int PlayersCount { get; set; }
+
+        
     }
 }

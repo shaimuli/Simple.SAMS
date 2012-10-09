@@ -237,4 +237,25 @@
   <data name="UsernameHeader" xml:space="preserve">
     <value>שם משתמש</value>
   </data>
+  <data name="ActivateUserTitle" xml:space="preserve">
+    <value>הפיכת משתמש לפעיל</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>ביטול</value>
+  </data>
+  <data name="DeactivateUserTitle" xml:space="preserve">
+    <value>הפיכת משתמש ללא פעיל</value>
+  </data>
+  <data name="ResetPasswordCompleted" xml:space="preserve">
+    <value>סיסמת המשתמש "{0}" אופסה, הסיסמה החדשה היא: {1}</value>
+  </data>
+  <data name="ResetPasswordTitle" xml:space="preserve">
+    <value>איפוס סיסמת משתמש</value>
+  </data>
+  <data name="UserActivated" xml:space="preserve">
+    <value>המשתמש "{0}" הפך לפעיל, משתמש זה יוכל מעתה להכנס למערכת.</value>
+  </data>
+  <data name="UserDeactivated" xml:space="preserve">
+    <value>המשתמש "{0}" הפך ללא פעיל, משתמש זה לא יוכל מעתה להכנס למערכת.</value>
+  </data>
 </root>

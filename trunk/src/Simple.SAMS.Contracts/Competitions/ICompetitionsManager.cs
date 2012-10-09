@@ -20,7 +20,7 @@ namespace Simple.SAMS.Contracts.Competitions
         void LoadCompetitions(string competitionsFileUrl);
 
         [OperationContract]
-        MatchInfo[] GetCompetitionMatches(CompetitionMatchesQuery matchesQuery);
+        MatchHeaderInfo[] GetCompetitionMatches(CompetitionMatchesQuery matchesQuery);
 
         [OperationContract]
         void UpdateMatchScore(MatchScoreUpdateInfo scoreUpdateInfo);

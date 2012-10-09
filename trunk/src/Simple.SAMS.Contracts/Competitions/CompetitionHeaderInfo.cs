@@ -12,6 +12,9 @@ namespace Simple.SAMS.Contracts.Competitions
     {
 
         [DataMember(EmitDefaultValue = false)]
+        public CompetitionStatus Status { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
         public string ReferenceId { get; set; }
 
         [DataMember(EmitDefaultValue = false)]

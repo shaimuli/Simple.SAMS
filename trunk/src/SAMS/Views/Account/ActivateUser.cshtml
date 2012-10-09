@@ -1,0 +1,11 @@
+﻿@model string
+@{
+    ViewContext.Controller.ViewBag.GroupTitle = Html.ResourceText("Admin");
+    ViewContext.Controller.ViewBag.Title = Html.ResourceText("ActivateUserTitle");
+}
+<h3>
+@string.Format(Html.ResourceText("UserActivated"), Model)
+</h3>
+<hr class="space"/>
+
+@Html.ActionLink(Html.ResourceText("ManageUsers"), "Users")

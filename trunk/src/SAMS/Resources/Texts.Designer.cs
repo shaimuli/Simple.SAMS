@@ -79,11 +79,29 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to הפיכת משתמש לפעיל.
+        /// </summary>
+        internal static string ActivateUserTitle {
+            get {
+                return ResourceManager.GetString("ActivateUserTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ניהול.
         /// </summary>
         internal static string Admin {
             get {
                 return ResourceManager.GetString("Admin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ביטול.
+        /// </summary>
+        internal static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
             }
         }
         
@@ -219,6 +237,15 @@ namespace SAMS.Resources {
         internal static string DeactivateUser {
             get {
                 return ResourceManager.GetString("DeactivateUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to הפיכת משתמש ללא פעיל.
+        /// </summary>
+        internal static string DeactivateUserTitle {
+            get {
+                return ResourceManager.GetString("DeactivateUserTitle", resourceCulture);
             }
         }
         
@@ -367,6 +394,24 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to סיסמת המשתמש &quot;{0}&quot; אופסה, הסיסמה החדשה היא: {1}.
+        /// </summary>
+        internal static string ResetPasswordCompleted {
+            get {
+                return ResourceManager.GetString("ResetPasswordCompleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to איפוס סיסמת משתמש.
+        /// </summary>
+        internal static string ResetPasswordTitle {
+            get {
+                return ResourceManager.GetString("ResetPasswordTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Simple. SAMS.
         /// </summary>
         internal static string SAMS {
@@ -399,6 +444,24 @@ namespace SAMS.Resources {
         internal static string UpdateCompetitionPlayersHeader {
             get {
                 return ResourceManager.GetString("UpdateCompetitionPlayersHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to המשתמש &quot;{0}&quot; הפך לפעיל, משתמש זה יוכל מעתה להכנס למערכת..
+        /// </summary>
+        internal static string UserActivated {
+            get {
+                return ResourceManager.GetString("UserActivated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to המשתמש &quot;{0}&quot; הפך ללא פעיל, משתמש זה לא יוכל מעתה להכנס למערכת..
+        /// </summary>
+        internal static string UserDeactivated {
+            get {
+                return ResourceManager.GetString("UserDeactivated", resourceCulture);
             }
         }
         

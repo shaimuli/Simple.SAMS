@@ -16,6 +16,31 @@ namespace Simple.SAMS.Competitions.Services
     public class CompetitionEngineService : ICompetitionsEngine
     {
 
+        public void CreateCompetitionsMatches(CompetitionHeaderInfo[] competitions)
+        {
+            var matchProvisioningEngineFactory = ServiceProvider.Get<IMatchProvisioningEngineFactory>();
+            var matchesCache = new Dictionary<int, MatchHeaderInfo[]>();
+            var competitionTypeRepository = ServiceProvider.Get<ICompetitionTypeRepository>();
+
+
+            foreach (var competition in competitions)
+            {
+                var competitionTypeId = competition.Type.Id;
+                MatchHeaderInfo[] matches;
+                if (!matchesCache.TryGetValue(competitionTypeId, out matches))
+                {
+                    var competitionType = competitionTypeRepository.Get(competitionTypeId);
+                    var matchProvisioningEngine = matchProvisioningEngineFactory.Create(competitionType);
+                    matches = matchProvisioningEngine.BuildMatches(competitionType);
+                    matchesCache[competitionTypeId] = matches;
+                }
+
+                var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
+                competitionMatchesRepository.AddCompetitionMatches(competition.Id.Value,matches.Select(m=>m.CloneDataContract()).ToArray());
+            }
+            
+        }
+
         public void AddPlayersToCompetition(int competitionId, Contracts.Players.Player[] players)
         {
             

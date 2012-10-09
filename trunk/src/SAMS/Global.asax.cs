@@ -8,6 +8,7 @@ using Simple.Common.Storage;
 using Simple.ComponentModel;
 using Simple.SAMS.Competitions.Data;
 using Simple.SAMS.Competitions.Services;
+using Simple.SAMS.Contracts;
 using Simple.SAMS.Contracts.Competitions;
 using Simple.SAMS.Contracts.Users;
 using Simple.Utilities;
@@ -60,11 +61,15 @@ namespace SAMS
             ServiceProvider.Add<IUsersRepository, UsersRepository>();
             ServiceProvider.Add<ICompetitionRepository, CompetitionRepository>();
             ServiceProvider.Add<ICompetitionTypeRepository, CompetitionTypeRepository>();
+            ServiceProvider.Add<ICompetitionMatchesRepository, CompetitionMatchesRepository>();
             ServiceProvider.Add<IPlayersRepository, PlayerRepository>();
 
+            
             ServiceProvider.Add<ICompetitionsEngine, CompetitionEngineService>();
             ServiceProvider.Add<ICompetitionsManager, CompetitionsManagerService>();
             ServiceProvider.Add<IRemoteStorageProviderFactory, SimpleRemoteStorageProviderFactory>();
+
+            ServiceProvider.Add<IMatchProvisioningEngineFactory, DefaultMatchProvisioningEngineFactory>();
         }
     }
 }

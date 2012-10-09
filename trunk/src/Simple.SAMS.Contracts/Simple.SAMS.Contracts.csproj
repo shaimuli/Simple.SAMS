@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Simple">
+      <HintPath>..\SAMS\bin\Simple.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -44,21 +47,30 @@
     <Compile Include="Competitions\CompetitionDetails.cs" />
     <Compile Include="Competitions\CompetitionHeaderInfo.cs" />
     <Compile Include="Competitions\CompetitionMatchesQuery.cs" />
+    <Compile Include="Competitions\CompetitionMethod.cs" />
     <Compile Include="Competitions\CompetitionSearchQuery.cs" />
     <Compile Include="Competitions\CompetitionsSearchResult.cs" />
+    <Compile Include="Competitions\CompetitionStatus.cs" />
     <Compile Include="Competitions\CompetitionType.cs" />
     <Compile Include="Competitions\CreateCompetitionInfo.cs" />
     <Compile Include="Competitions\Entity.cs" />
     <Compile Include="Competitions\EntityReference.cs" />
     <Compile Include="Competitions\GameScoreUpdateInfo.cs" />
+    <Compile Include="Competitions\ICompetitionMatchesRepository.cs" />
     <Compile Include="Competitions\ICompetitionRepository.cs" />
     <Compile Include="Competitions\ICompetitionsEngine.cs" />
     <Compile Include="Competitions\ICompetitionsManager.cs" />
     <Compile Include="Competitions\ICompetitionTypeRepository.cs" />
+    <Compile Include="Competitions\IMatchProvisioningEngine.cs" />
+    <Compile Include="Competitions\IMatchProvisioningEngineFactory.cs" />
+    <Compile Include="Competitions\MatchDetails.cs" />
+    <Compile Include="Competitions\MatchStatus.cs" />
+    <Compile Include="DefaultMatchProvisioningEngineFactory.cs" />
+    <Compile Include="KnockoutMatchProvisioningEngine.cs" />
     <Compile Include="Users\UserInfo.cs" />
     <Compile Include="Competitions\IPlayersRepository.cs" />
     <Compile Include="Users\IUsersRepository.cs" />
-    <Compile Include="Competitions\MatchInfo.cs" />
+    <Compile Include="Competitions\MatchHeaderInfo.cs" />
     <Compile Include="Competitions\MatchPlayer.cs" />
     <Compile Include="Competitions\MatchScoreUpdateInfo.cs" />
     <Compile Include="Competitions\PlayerInCompetition.cs" />

@@ -31,14 +31,14 @@
                 <td>
                     @if (item.IsActive)
                     {
-                        @Html.ActionLink(Html.ResourceText("DeactivateUser"), "DeactivateUser", new { id = item.Username })    
+                        @Html.ActionLink(Html.ResourceText("DeactivateUser"), "DeactivateUser", new { userName = item.Username })    
                     }
                     else
                     {
-                        @Html.ActionLink(Html.ResourceText("ActivateUser"), "ActivateUser", new { id = item.Username })    
+                        @Html.ActionLink(Html.ResourceText("ActivateUser"), "ActivateUser", new { userName = item.Username })    
                     }    
                 </td>
-                <td>@Html.ActionLink(Html.ResourceText("ResetPassword"), "ResetPassword", new { id = item.Username })</td>
+                <td>@Html.ActionLink(Html.ResourceText("ResetPassword"), "ResetPassword", new { userName = item.Username })</td>
             </tr>
         }
     </tbody>

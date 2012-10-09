@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompetitionMatchesRepository.cs" />
     <Compile Include="CompetitionRepository.cs" />
     <Compile Include="Competitions.designer.cs">
       <AutoGen>True</AutoGen>

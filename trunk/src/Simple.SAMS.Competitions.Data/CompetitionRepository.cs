@@ -20,6 +20,7 @@ namespace Simple.SAMS.Competitions.Data
             competitionHeader.StartTime = competition.StartDate.ToLocalTime();
             competitionHeader.LastModified = competition.Updated.ToLocalTime();
             competitionHeader.Type = new EntityReference() { Id = competition.TypeId, Text = competition.CompetitionType.Name };
+            competitionHeader.Status = (CompetitionStatus) competition.Status;
         }
 
         private void MapCompetitionToData(CompetitionHeaderInfo headerInfo, Competition competition)
@@ -59,7 +60,7 @@ namespace Simple.SAMS.Competitions.Data
             return result;
         }
 
-        private static void SetNewDataEntityCommonParameter(Competition competitionData)
+        private void SetNewDataEntityCommonParameter(Competition competitionData)
         {
             competitionData.Created = competitionData.Updated = DateTime.UtcNow;
             competitionData.RowStatus = 0;
@@ -204,5 +205,47 @@ namespace Simple.SAMS.Competitions.Data
                         dataContext.SubmitChanges();
                     });
         }
+
+        public void UpdateCompetitionStatus(int competitionId, CompetitionStatus newStatus)
+        {
+            UseDataContext(
+                dataContext =>
+                    {
+                        var dataCompetition = dataContext.Competitions.FirstOrDefault(dc => dc.Id == competitionId);
+
+                        if (dataCompetition.IsNull())
+                        {
+                            throw new ArgumentException("Competition '{0}' could not be found.".ParseTemplate(competitionId));
+                        }
+
+                        dataCompetition.Status = (int) newStatus;
+                        dataCompetition.Updated = DateTime.UtcNow;
+
+                        dataContext.SubmitChanges();
+                    });
+        }
+
+        public CompetitionHeaderInfo[] GetCompetitionsByStatus(CompetitionStatus status)
+        {
+            var competitions = new List<CompetitionHeaderInfo>();
+
+            UseDataContext(
+                dataContext =>
+                    {
+                        var competitionsByStatus = dataContext.Competitions.Where(comp => comp.Status == (int) status);
+
+                        competitionsByStatus.ForEach(dataCompetition =>
+                                                         {
+                                                             var competitionHeader =
+                                                                 new CompetitionHeaderInfo();
+                                                             MapCompetitionDataToHeader(dataCompetition, competitionHeader);
+
+                                                             competitions.Add(competitionHeader);
+                                                         });
+                    });
+
+            return competitions.ToArray();
+        }
+
     }
 }

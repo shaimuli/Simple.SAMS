@@ -36,6 +36,8 @@ namespace Simple.SAMS.Competitions.Data
         protected override void MapDataEntityToEntity(CompetitionType dataEntity, Contracts.Competitions.CompetitionType entity)
         {
             entity.Name = dataEntity.Name;
+            entity.Method = (CompetitionMethod) dataEntity.CompetitionMethod;
+            entity.PlayersCount = dataEntity.PlayersCount;
         }
 
         protected override CompetitionType CreateDataEntity(Contracts.Competitions.CompetitionType entity)
@@ -46,6 +48,8 @@ namespace Simple.SAMS.Competitions.Data
         protected override void MapEntityToDataEntity(Contracts.Competitions.CompetitionType entity, CompetitionType dataEntity)
         {
             dataEntity.Name = entity.Name;
+            dataEntity.CompetitionMethod = (int) entity.Method;
+            dataEntity.PlayersCount = entity.PlayersCount;
         }
 
         protected override void InsertEntity(CompetitionsDataContext dataContext, CompetitionType dataEntity)

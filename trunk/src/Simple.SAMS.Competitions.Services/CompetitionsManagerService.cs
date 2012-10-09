@@ -26,7 +26,13 @@ namespace Simple.SAMS.Competitions.Services
             
             competitionsEngine.AddPlayersToCompetition(competitionId, players);
 
+            var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
+            var competitionHeaderInfo = competitionsRepository.GetCompetition(competitionId);
+
+            competitionsEngine.CreateCompetitionsMatches(new[] { competitionHeaderInfo });
+
         }
+
 
         public void UpdateCompetitionPlayers(int competitionId, string playersFileUrl)
         {
@@ -51,10 +57,15 @@ namespace Simple.SAMS.Competitions.Services
             var competitionsEngine = ServiceProvider.Get<ICompetitionsEngine>();
             var competitions = competitionsEngine.GetCompetitions(competitionsFileUrl);
             competitionsEngine.ImportCompetitions(competitions);
+
+            var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
+            var unprovisionedCompetitions = competitionsRepository.GetCompetitionsByStatus(CompetitionStatus.Created);
+            competitionsEngine.CreateCompetitionsMatches(unprovisionedCompetitions);
+
         }
 
 
-        public MatchInfo[] GetCompetitionMatches(CompetitionMatchesQuery matchesQuery)
+        public MatchHeaderInfo[] GetCompetitionMatches(CompetitionMatchesQuery matchesQuery)
         {
             throw new NotImplementedException();
         }

@@ -19,6 +19,34 @@ namespace SAMS.Controllers
     [InitializeSimpleMembership]
     public class AccountController : Controller
     {
+
+        [Authorize(Roles = "admin")]
+        public ActionResult DeactivateUser(string userName)
+        {
+            // deactivate user
+            return View((object)userName);
+        }
+        [Authorize(Roles = "admin")]
+        public ActionResult ActivateUser(string userName)
+        {
+            // activate the user
+            return View((object)userName);
+        }
+        [Authorize(Roles = "admin")]
+        public ActionResult ResetPassword(string userName)
+        {
+            
+            var model = new ResetPasswordViewModel()
+                            {
+                                Username = userName,
+                                NewPassword = "123456" // generate
+                            };
+
+            // reset the password
+            return View(model);
+        }
+
+
         [Authorize(Roles = "admin")]
         public ActionResult Users()
         {

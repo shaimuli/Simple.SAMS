@@ -11,6 +11,12 @@ namespace Simple.SAMS.Contracts.Competitions
     public interface ICompetitionRepository
     {
         [OperationContract]
+        CompetitionHeaderInfo[] GetCompetitionsByStatus(CompetitionStatus status);
+
+        [OperationContract]
+        void UpdateCompetitionStatus(int competitionId, CompetitionStatus newStatus);
+
+        [OperationContract]
         bool DoesCompetitionExists(int competitionId);
 
         [OperationContract]
@@ -28,7 +34,9 @@ namespace Simple.SAMS.Contracts.Competitions
         [OperationContract]
         CompetitionsSearchResult SearchCompetitions(CompetitionSearchQuery searchQuery);
 
+        [OperationContract]
         void UpdateCompetitionsByReferenceId(CompetitionHeaderInfo[] competitions);
+
     } 
 
 }
