@@ -223,6 +223,24 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to צור סוג תחרות.
+        /// </summary>
+        internal static string CreateCompetitionType {
+            get {
+                return ResourceManager.GetString("CreateCompetitionType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to יצירת סוג תחרות.
+        /// </summary>
+        internal static string CreateCompetitionTypeHeader {
+            get {
+                return ResourceManager.GetString("CreateCompetitionTypeHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dashboard.
         /// </summary>
         internal static string Dashboard {
@@ -264,6 +282,24 @@ namespace SAMS.Resources {
         internal static string Edit {
             get {
                 return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to עריכת פרטי סוג תחרות.
+        /// </summary>
+        internal static string EditCompetitionTypeHeader {
+            get {
+                return ResourceManager.GetString("EditCompetitionTypeHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to טורניר.
+        /// </summary>
+        internal static string EliminationTournament {
+            get {
+                return ResourceManager.GetString("EliminationTournament", resourceCulture);
             }
         }
         
@@ -358,6 +394,24 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to שיטה.
+        /// </summary>
+        internal static string Method {
+            get {
+                return ResourceManager.GetString("Method", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to שם.
+        /// </summary>
+        internal static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to הוספת סוג תחרות.
         /// </summary>
         internal static string NewCompetitionType {
@@ -372,6 +426,15 @@ namespace SAMS.Resources {
         internal static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to מספר שחקנים.
+        /// </summary>
+        internal static string PlayersCount {
+            get {
+                return ResourceManager.GetString("PlayersCount", resourceCulture);
             }
         }
         
@@ -426,6 +489,15 @@ namespace SAMS.Resources {
         internal static string StartImportCompetition {
             get {
                 return ResourceManager.GetString("StartImportCompetition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to עדכן.
+        /// </summary>
+        internal static string Update {
+            get {
+                return ResourceManager.GetString("Update", resourceCulture);
             }
         }
         

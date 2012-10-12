@@ -30,7 +30,7 @@ namespace SAMS.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(string name)
+        public ActionResult Create(string name, int playersCount, int method)
         {
             var competitionType = new CompetitionType {Name = name};
             var competitionTypesRepository = ServiceProvider.Get<ICompetitionTypeRepository>();

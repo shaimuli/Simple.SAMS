@@ -258,4 +258,28 @@
   <data name="UserDeactivated" xml:space="preserve">
     <value>המשתמש "{0}" הפך ללא פעיל, משתמש זה לא יוכל מעתה להכנס למערכת.</value>
   </data>
+  <data name="CreateCompetitionType" xml:space="preserve">
+    <value>צור סוג תחרות</value>
+  </data>
+  <data name="CreateCompetitionTypeHeader" xml:space="preserve">
+    <value>יצירת סוג תחרות</value>
+  </data>
+  <data name="EditCompetitionTypeHeader" xml:space="preserve">
+    <value>עריכת פרטי סוג תחרות</value>
+  </data>
+  <data name="EliminationTournament" xml:space="preserve">
+    <value>טורניר</value>
+  </data>
+  <data name="Method" xml:space="preserve">
+    <value>שיטה</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>שם</value>
+  </data>
+  <data name="PlayersCount" xml:space="preserve">
+    <value>מספר שחקנים</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>עדכן</value>
+  </data>
 </root>
