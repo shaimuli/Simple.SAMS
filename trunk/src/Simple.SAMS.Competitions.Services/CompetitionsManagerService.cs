@@ -28,8 +28,7 @@ namespace Simple.SAMS.Competitions.Services
 
             var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
             var competitionHeaderInfo = competitionsRepository.GetCompetition(competitionId);
-
-            competitionsEngine.CreateCompetitionsMatches(new[] { competitionHeaderInfo });
+            competitionsEngine.CreateCompetitionsMatches(new[] {competitionHeaderInfo});
 
         }
 

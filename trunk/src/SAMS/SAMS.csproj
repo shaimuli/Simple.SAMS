@@ -187,9 +187,11 @@
     <Compile Include="MenuExtensions.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\CompetitionDetailsModel.cs" />
+    <Compile Include="Models\CompetitionMatchViewModel.cs" />
     <Compile Include="Models\CompetitionTypeReference.cs" />
     <Compile Include="Models\CreateCompetitionModel.cs" />
     <Compile Include="Models\CreateCompetitionParameters.cs" />
+    <Compile Include="Models\MatchPlayerViewModel.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\PageHeaderModel.cs" />
     <Compile Include="Models\ResetPasswordViewModel.cs" />
@@ -202,6 +204,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-rtl.min.css" />
+    <Content Include="Content\CompetitionDetails.css" />
     <Content Include="Content\default.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />

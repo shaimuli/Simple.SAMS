@@ -1,0 +1,12 @@
+﻿
+.competitonContainer {
+    max-width: 100%;
+    overflow: auto;
+}
+.roundContainer {
+    float: left;
+}
+.rtl .roundContainer {
+    float: right;
+}
+

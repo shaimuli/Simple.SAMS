@@ -20,9 +20,10 @@ namespace SAMS.Controllers.Api
         }
 
         // GET api/competitions/5
-        public string Get(int id)
+        public CompetitionDetails Get(int id)
         {
-            return "value";
+            var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
+            return competitionsRepository.GetCompetitionDetails(id);
         }
 
         // POST api/competitions

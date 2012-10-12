@@ -8,3 +8,27 @@
 
 <h2>@Model.Name</h2>
 <i>@Model.StartTime.ToShortDateString()</i>
+
+
+<div class="competitonContainer">
+    @foreach(var round in Model.Matches.GroupBy(m=>m.Round))
+    {
+        <div class="roundContainer">
+            <h3>Round: @round.Key</h3>
+            @foreach(var match in @round)
+            {
+                <div class="matchContainer">
+                    <div class="matchHeader">
+                        Position: @match.Position
+                    </div>
+                    <div class="matchLeftPlayer">
+                        @match.LeftPlayer1
+                    </div>
+                    <div class="matchRightPlayer">
+                        @match.RightPlayer1
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

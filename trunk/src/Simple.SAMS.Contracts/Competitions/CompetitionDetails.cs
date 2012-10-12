@@ -10,6 +10,7 @@ namespace Simple.SAMS.Contracts.Competitions
     [DataContract(Namespace = Namespaces.Data)]
     public class CompetitionDetails : CompetitionHeaderInfo
     {
-
+        [DataMember(EmitDefaultValue = false)]
+        public MatchHeaderInfo[] Matches { get; set; }
     }
 }

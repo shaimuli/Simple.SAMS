@@ -15,6 +15,15 @@ namespace Simple.SAMS.Competitions.Data
             UseDataContext(
                 dataContext=>
                     {
+                        var competition = dataContext.Competitions.FirstOrDefault(c => c.Id == competitionId);
+                        if (competition.IsNull())
+                        {
+                            throw new ArgumentException(
+                                "Competition '{0}' could not be found.".ParseTemplate(competitionId));
+                        }
+
+                        competition.Status = (int) CompetitionStatus.MatchesCreated;
+
                         matches.ForEach(
                             match=>
                                 {
@@ -27,7 +36,7 @@ namespace Simple.SAMS.Competitions.Data
 
                                     dataContext.Matches.InsertOnSubmit(dataMatch);
                                 });
-
+                        
                         dataContext.SubmitChanges();
                     });
         }

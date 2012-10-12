@@ -21,11 +21,22 @@ namespace SAMS.Controllers
         {
             var model = new CompetitionDetailsModel();
             var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
+            
             var competition = competitionsRepository.GetCompetitionDetails(id);
             model.Id = id;
             model.Name = competition.Name;
             model.StartTime = competition.StartTime;
 
+            model.Matches =
+                competition.Matches.Select(
+                    m => new CompetitionMatchViewModel()
+                             {
+                                 Id = m.Id,
+                                 StartTime = m.StartTime,
+                                 Status = m.Status,
+                                 Round=m.Round,
+                                 Position = m.Position
+                             }).ToArray();
             return View(model);
         }
 

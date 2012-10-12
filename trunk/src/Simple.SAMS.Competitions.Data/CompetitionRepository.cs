@@ -110,7 +110,26 @@ namespace Simple.SAMS.Competitions.Data
                         result = new CompetitionDetails();
                         MapCompetitionDataToHeader(competitionData, result);
 
-                        // load other details...
+                        var matches = dataContext.Matches.Where(m => m.CompetitionId == id && m.RowStatus == 0);
+                        result.Matches =
+                            matches.Select(m => new MatchHeaderInfo()
+                                                    {
+                                                        Id = m.Id,
+                                                        StartTime = m.StartTime,
+                                                        Status = (MatchStatus)m.Status,
+                                                        Round =m.Round,
+                                                        Position = m.Position,
+                                                        Player1 = new Contracts.Competitions.MatchPlayer()
+                                                                      {
+                                                                          PlayerId = 1,
+                                                                          PlayerName = "Not loaded #1"
+                                                                      },
+                                                        Player2 = new Contracts.Competitions.MatchPlayer()
+                                                                      {
+                                                                          PlayerId = 2,
+                                                                          PlayerName = "Not loaded #2"
+                                                                      }
+                                                    }).ToArray();
                     }
                 });
 

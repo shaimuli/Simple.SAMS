@@ -10,5 +10,7 @@ namespace SAMS.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public DateTime StartTime { get; set; }
+
+        public CompetitionMatchViewModel[] Matches { get; set; }
     }
 }
