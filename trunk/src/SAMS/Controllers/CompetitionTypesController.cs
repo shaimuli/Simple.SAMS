@@ -30,9 +30,8 @@ namespace SAMS.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(string name, int playersCount, int method)
+        public ActionResult Create(CompetitionType competitionType)
         {
-            var competitionType = new CompetitionType {Name = name};
             var competitionTypesRepository = ServiceProvider.Get<ICompetitionTypeRepository>();
             competitionTypesRepository.Add(competitionType);
             return RedirectToAction("Index");

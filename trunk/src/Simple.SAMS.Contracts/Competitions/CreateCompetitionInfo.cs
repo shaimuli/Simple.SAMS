@@ -20,6 +20,6 @@ namespace Simple.SAMS.Contracts.Competitions
         public DateTime StartTime { get; set; }    
 
         [DataMember(EmitDefaultValue = false)]
-        public string PlayersFileUrl { get; set; }
+        public DateTime EndTime { get; set; }
     }
 }

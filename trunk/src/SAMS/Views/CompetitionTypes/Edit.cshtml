@@ -17,20 +17,7 @@
     <fieldset>
         <legend>@Html.Resource("EditCompetitionTypeHeader")</legend>
         @Html.HiddenFor(m => m.Id)
-        <ul>
-            <li>
-                @Html.Label("Name", Html.ResourceText("Name"))
-                @Html.TextBox("Name")
-            </li>
-            <li>
-                @Html.Label("PlayersCount", Html.ResourceText("PlayersCount"))
-                @Html.TextBox("PlayersCount")
-            </li>
-            <li>
-                @Html.Label("Method", Html.ResourceText("Method"))
-                @Html.DropDownList("Method", new SelectListItem[]{ new SelectListItem(){Value = "0", Text = Html.ResourceText("EliminationTournament")}, })
-            </li>
-        </ul>
+        @Html.Partial("_CompetitionTypeFormFields")
         <input type="submit" value="@Html.ResourceText("Update")"/>
     </fieldset>
     

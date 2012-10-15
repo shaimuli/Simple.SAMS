@@ -93,7 +93,7 @@ namespace SAMS.Controllers
 
             var url = AcceptCsvFile(playersFile, "CompetitionPlayers");
 
-            createCompetitionInfo.PlayersFileUrl = url.ToString();
+            //createCompetitionInfo.PlayersFileUrl = url.ToString();
             manager.Create(createCompetitionInfo);
 
             return RedirectToAction("Index");

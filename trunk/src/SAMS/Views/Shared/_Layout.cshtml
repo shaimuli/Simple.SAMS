@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <title>@ViewBag.Title - @Html.ResourceText("SAMS") | ITA</title>
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel='icon' href='~/Images/favicon.ico' type='image/x-icon' />
+    <link rel='shortcut icon' href='~/Images/favicon.ico' type='image/xicon' />
     <meta name="viewport" content="width=device-width" />
     <link href="~/Content/bootstrap-rtl.min.css" type="text/css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
@@ -23,10 +24,9 @@
                     @Html.ActionLink("Simple. SAMS | ITA", "Index", "Home", null, new { @class = "brand" })
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            @Html.MenuItem(Html.ResourceText("Home"), "Index", "Home",Html.ResourceText("Home"))
-                            @Html.MenuItem(Html.ResourceText("Competitions"), "Index", "Competitions",Html.ResourceText("Competitions"))
-                            @Html.MenuItem(Html.ResourceText("Help"), "Help", "Home",Html.ResourceText("Help"))
-                            
+                            @Html.MenuItem(Html.ResourceText("Home"), "Index", "Home", Html.ResourceText("Home"))
+                            @Html.MenuItem(Html.ResourceText("Competitions"), "Index", "Competitions", Html.ResourceText("Competitions"))
+
                             @if (Context.Request.IsAuthenticated && Context.User.IsInRole("admin"))
                             {
                                 @Html.MenuItem(Html.ResourceText("Admin"), "Users", "Account", Html.ResourceText("Admin"))
@@ -41,6 +41,7 @@
     </header>
     <hr class="space" />
     <div class="container content">
+        <div class="subheader">
         <h1>@ViewContext.Controller.ViewBag.GroupTitle</h1>
         <div class="row">
             @if (ViewContext.Controller.ViewBag.MenuItems != null)
@@ -57,19 +58,19 @@
                 </ul>
             }
         </div>
-            @if (ViewContext.Controller.ViewBag.Title != null)
-            {
-                <h2>@ViewContext.Controller.ViewBag.Title</h2>
-            }            
+        @if (ViewContext.Controller.ViewBag.Title != null)
+        {
+            <h2>@ViewContext.Controller.ViewBag.Title</h2>
+        }
 
-
+        </div>
         <p>
             @RenderBody()
         </p>
     </div>
     <footer>
         <div class="container">
-                <p>&copy; @DateTime.Now.Year - Simple. SAMS</p>
+            <p>&copy; @DateTime.Now.Year - Simple. SAMS</p>
         </div>
     </footer>
 

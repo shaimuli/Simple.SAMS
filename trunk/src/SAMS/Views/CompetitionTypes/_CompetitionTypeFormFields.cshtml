@@ -1,0 +1,38 @@
+﻿<ul>
+    <li>
+        @Html.Label("Name", Html.ResourceText("Name"))
+        @Html.TextBox("Name")
+    </li>
+    <li>
+        @Html.Label("PlayersCount", Html.ResourceText("PlayersCount"))
+        @Html.TextBox("PlayersCount")
+    </li>
+    <li>
+        @Html.Label("WildcardPlayersCount", Html.ResourceText("WildcardPlayersCount"))
+        @Html.TextBox("WildcardPlayersCount")
+    </li>
+    <li>
+        @Html.Label("QualifyingPlayersCount", Html.ResourceText("QualifyingPlayersCount"))
+        @Html.TextBox("QualifyingPlayersCount")
+    </li>
+    <li>
+        @Html.Label("PairsCount", Html.ResourceText("PairsCount"))
+        @Html.TextBox("PairsCount")
+    </li>
+    <li>
+        @Html.Label("WildcardPairsCount", Html.ResourceText("WildcardPairsCount"))
+        @Html.TextBox("WildcardPairsCount")
+    </li>
+    <li>
+        @Html.Label("QualifyingPairsCount", Html.ResourceText("QualifyingPairsCount"))
+        @Html.TextBox("QualifyingPairsCount")
+    </li>
+    <li>
+        @Html.Label("HasConsolation", Html.ResourceText("HasConsolation"))
+        @Html.CheckBox("HasConsolation")
+    </li>
+    <li>
+        @Html.Label("Method", Html.ResourceText("Method"))
+        @Html.DropDownList("Method", new SelectListItem[] { new SelectListItem() { Value = "0", Text = Html.ResourceText("EliminationTournament") }, })
+    </li>
+</ul>

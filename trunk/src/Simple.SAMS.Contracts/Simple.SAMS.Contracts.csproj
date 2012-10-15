@@ -87,6 +87,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Competitions\IScoringEngine.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Competitions\CSV Samples\Players.csv" />
+    <None Include="Competitions\CSV Samples\Tournaments.csv" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

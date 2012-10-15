@@ -22,13 +22,13 @@ namespace Simple.SAMS.Competitions.Services
             var competitionsEngine = ServiceProvider.Get<ICompetitionsEngine>();
             var competitionId = competitionsEngine.CreateCompetition(competitionCreateInfo);
 
-            var players = competitionsEngine.GetCompetitionPlayers(competitionCreateInfo.PlayersFileUrl);
+            //var players = competitionsEngine.GetCompetitionPlayers(competitionCreateInfo.PlayersFileUrl);
             
-            competitionsEngine.AddPlayersToCompetition(competitionId, players);
+            //competitionsEngine.AddPlayersToCompetition(competitionId, players);
 
-            var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
-            var competitionHeaderInfo = competitionsRepository.GetCompetition(competitionId);
-            competitionsEngine.CreateCompetitionsMatches(new[] {competitionHeaderInfo});
+            //var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
+            //var competitionHeaderInfo = competitionsRepository.GetCompetition(competitionId);
+            //competitionsEngine.CreateCompetitionsMatches(new[] {competitionHeaderInfo});
 
         }
 

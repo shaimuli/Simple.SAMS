@@ -38,6 +38,12 @@ namespace Simple.SAMS.Competitions.Data
             entity.Name = dataEntity.Name;
             entity.Method = (CompetitionMethod) dataEntity.CompetitionMethod;
             entity.PlayersCount = dataEntity.PlayersCount;
+            entity.QualifyingPlayersCount = dataEntity.QualifyingPlayersCount;
+            entity.WildcardPlayersCount = dataEntity.WildcardPlayersCount;
+            entity.PairsCount = dataEntity.PairsCount;
+            entity.QualifyingPairsCount = dataEntity.QualifyingPairsCount;
+            entity.WildcardPairsCount = dataEntity.WildcardPairsCount;
+            entity.HasConsolation = dataEntity.HasConsolation;
         }
 
         protected override CompetitionType CreateDataEntity(Contracts.Competitions.CompetitionType entity)
@@ -50,6 +56,12 @@ namespace Simple.SAMS.Competitions.Data
             dataEntity.Name = entity.Name;
             dataEntity.CompetitionMethod = (int) entity.Method;
             dataEntity.PlayersCount = entity.PlayersCount;
+            dataEntity.QualifyingPlayersCount = entity.QualifyingPlayersCount;
+            dataEntity.WildcardPlayersCount = entity.WildcardPlayersCount;
+            dataEntity.PairsCount = entity.PairsCount;
+            dataEntity.QualifyingPairsCount = entity.QualifyingPairsCount;
+            dataEntity.WildcardPairsCount = entity.WildcardPairsCount;
+            dataEntity.HasConsolation = entity.HasConsolation;
         }
 
         protected override void InsertEntity(CompetitionsDataContext dataContext, CompetitionType dataEntity)
