@@ -18,9 +18,7 @@ namespace Simple.SAMS.Competitions.Data
 
         protected override void MapDataEntityToEntity(Player dataEntity, Contracts.Players.Player entity)
         {
-            entity.Name = dataEntity.Name;
-            entity.IdNumber = dataEntity.IdNumber;
-            entity.Rank = dataEntity.Rank;
+            AutoMapper.Mapper.DynamicMap(dataEntity, entity);
         }
 
         protected override Player CreateDataEntity(Contracts.Players.Player entity)
@@ -30,9 +28,7 @@ namespace Simple.SAMS.Competitions.Data
 
         protected override void MapEntityToDataEntity(Contracts.Players.Player entity, Player dataEntity)
         {
-            dataEntity.Name = entity.Name;
-            dataEntity.IdNumber = entity.IdNumber;
-            dataEntity.Rank = entity.Rank;
+            AutoMapper.Mapper.DynamicMap(entity, dataEntity);
         }
 
         protected override void InsertEntity(CompetitionsDataContext dataContext, Player dataEntity)
@@ -54,8 +50,9 @@ namespace Simple.SAMS.Competitions.Data
                             if (dataPlayer.IsNull())
                             {
                                 dataPlayer = CreateDataEntity(player);
-                                SetNewDataEntityParameters(dataPlayer);
                                 MapEntityToDataEntity(player, dataPlayer);
+                                SetNewDataEntityParameters(dataPlayer);
+                                
                                 dataContext.Players.InsertOnSubmit(dataPlayer);
                             }
                             dataPlayers.Add(dataPlayer);

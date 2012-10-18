@@ -36,24 +36,42 @@ namespace Simple.SAMS.Competitions.Services
                 }
 
                 var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
-                competitionMatchesRepository.AddCompetitionMatches(competition.Id.Value,matches.Select(m=>m.CloneDataContract()).ToArray());
+                competitionMatchesRepository.AddCompetitionMatches(competition.Id.Value, matches.Select(m => m.CloneDataContract()).ToArray());
             }
-            
+
         }
 
         public void AddPlayersToCompetition(int competitionId, Contracts.Players.Player[] players)
         {
-            
+
             var playersRepository = ServiceProvider.Get<IPlayersRepository>();
-            var playersToMatch = players.Select(p => new Player {IdNumber = p.IdNumber, Name = p.Name}).ToArray();
+            var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
+            var competitionTypesRepository = ServiceProvider.Get<ICompetitionTypeRepository>();
+            var competition = competitionsRepository.GetCompetition(competitionId);
+            if (competition.IsNull())
+            {
+                throw new ArgumentException("Competition '{0}' could not be found.".ParseTemplate(competitionId));
+            }
+            var competitionType = competitionTypesRepository.Get(competition.Type.Id);
+            var playersToMatch = players.ToArray();
             var playerIds = playersRepository.MatchPlayerByIdNumber(playersToMatch);
             var competitionPlayers = new List<PlayerInCompetition>();
             for (var i = 0; i < players.Length; i++)
             {
-                var playerInCompetition = new PlayerInCompetition() {PlayerId = playerIds[i], Rank = players[i].Rank};
+                var player = players[i];
+                var rank = player.NationalRank;
+                if (competitionType.Ranking == Ranking.YouthInternational)
+                {
+                    rank = player.YouthInternationalRank;
+                }
+                else if (competitionType.Ranking == Ranking.EuropeInternational)
+                {
+                    rank = player.EuropeInternationalRank;
+                }
+                var playerInCompetition = new PlayerInCompetition() { PlayerId = playerIds[i], Rank = rank };
                 competitionPlayers.Add(playerInCompetition);
             }
-            var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
+            
             competitionsRepository.AddPlayersToCompetition(competitionId, competitionPlayers.ToArray());
         }
 
@@ -62,7 +80,22 @@ namespace Simple.SAMS.Competitions.Services
             var fileName = DownloadFile(playersFileUrl);
             var players = LoadPlayersFromFile(fileName);
 
-            return players.Select(p => new Player { IdNumber = p.IdNumber, Name = p.Name, Rank = p.Rank }).ToArray();
+            return players.Select(p => new Player
+                                           {
+                                               IdNumber = p.IdNumber,
+                                               LocalFirstName = p.LocalFirstName,
+                                               LocalLastName = p.LocalLastName,
+                                               EnglishFirstName = p.EnglishFirstName,
+                                               EnglishLastName = p.EnglishLastName,
+                                               BirthDate = p.BirthDate,
+                                               IsFemale = p.IsFemale,
+                                               Phone = p.Phone,
+                                               IPIN = p.IPIN,
+                                               Country = p.Country,
+                                               NationalRank = p.NationalRank,
+                                               EuropeInternationalRank = p.EuropeInternationalRank,
+                                               YouthInternationalRank = p.YouthInternationalRank,
+                                           }).ToArray();
         }
 
         private string DownloadFile(string fileUrl)
@@ -76,13 +109,8 @@ namespace Simple.SAMS.Competitions.Services
         public int CreateCompetition(CreateCompetitionInfo competitionCreateInfo)
         {
             var repository = ServiceProvider.Get<ICompetitionRepository>();
-            var competitionHeaderInfo = new CompetitionHeaderInfo();
-            competitionHeaderInfo.ReferenceId = Guid.NewGuid().ToString();
-            competitionHeaderInfo.Name = competitionCreateInfo.Name;
-            competitionHeaderInfo.Type = new EntityReference() { Id = competitionCreateInfo.TypeId };
-            competitionHeaderInfo.StartTime = competitionCreateInfo.StartTime;
-
-            var result = repository.Create(competitionHeaderInfo);
+            competitionCreateInfo.ReferenceId = Guid.NewGuid().ToString();
+            var result = repository.Create(competitionCreateInfo);
 
             return result;
         }
@@ -100,10 +128,10 @@ namespace Simple.SAMS.Competitions.Services
         private IEnumerable<CompetitionRecord> LoadCompetitionsFromFile(string fileName)
         {
             var engine = FluentFile.For<CompetitionRecord>();
-            
+
             using (var file = engine.From(fileName))
             {
-                
+
                 foreach (var player in file.Cast<CompetitionRecord>())
                 {
                     yield return player;
@@ -117,26 +145,54 @@ namespace Simple.SAMS.Competitions.Services
             public string ReferenceId;
             public string Name;
             public int TypeId;
-
-            [FieldConverter(ConverterKind.Date, "yyyy-MM-dd")] public DateTime StartTime;
+            [FieldConverter(ConverterKind.Date, "yyyy-MM-dd")]
+            public DateTime StartTime;
+            [FieldConverter(ConverterKind.Date, "yyyy-MM-dd")]
+            public DateTime? EndTime;
+            public string Site;
+            public string SitePhone;
+            public string MainReferee;
+            public string MainRefereePhone;
         }
 
         [DelimitedRecord(","), IgnoreFirst]
         private class PlayerRecord
         {
-            public string IdNumber { get; set; }
-            public string Name { get; set; }
-            public int Rank { get; set; }
+            public string IdNumber;
+            public string LocalFirstName;
+            public string LocalLastName;
+            public string EnglishFirstName;
+            public string EnglishLastName;
+            public string Phone;
+            [FieldConverter(ConverterKind.Date, "yyyy-MM-dd")]
+            public DateTime? BirthDate;
+            public bool IsFemale;
+            public int? NationalRank;
+            public int? EuropeInternationalRank;
+            public int? YouthInternationalRank;
+            public string IPIN;
+            public string Country;
         }
 
 
 
-        public CompetitionHeaderInfo[] GetCompetitions(string competitionsFileUrl)
+        public CreateCompetitionInfo[] GetCompetitions(string competitionsFileUrl)
         {
             Requires.ArgumentNotNullOrEmptyString(competitionsFileUrl, "competitionsFileUrl");
             var fileName = DownloadFile(competitionsFileUrl);
             var competitionRecords = LoadCompetitionsFromFile(fileName);
-            return competitionRecords.Select(cr=> new CompetitionHeaderInfo(){Name = cr.Name, StartTime = cr.StartTime, Type = new EntityReference(){ Id= MapCompetitionTypeId(cr.TypeId) }, ReferenceId = cr.ReferenceId}).ToArray();
+            return competitionRecords.Select(cr => new CreateCompetitionInfo()
+            {
+                Name = cr.Name,
+                StartTime = cr.StartTime,
+                TypeId = MapCompetitionTypeId(cr.TypeId),
+                ReferenceId = cr.ReferenceId,
+                EndTime = cr.EndTime,
+                Site = cr.Site,
+                SitePhone = cr.SitePhone,
+                MainReferee = cr.MainReferee,
+                MainRefereePhone = cr.MainRefereePhone
+            }).ToArray();
         }
 
         private int MapCompetitionTypeId(int competitionRecordTypeId)
@@ -145,7 +201,7 @@ namespace Simple.SAMS.Competitions.Services
         }
 
 
-        public void ImportCompetitions(CompetitionHeaderInfo[] competitions)
+        public void ImportCompetitions(CreateCompetitionInfo[] competitions)
         {
             var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
             competitionsRepository.UpdateCompetitionsByReferenceId(competitions);

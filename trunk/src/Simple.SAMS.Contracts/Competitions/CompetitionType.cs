@@ -11,6 +11,9 @@ namespace Simple.SAMS.Contracts.Competitions
     public class CompetitionType : Entity
     {
         [DataMember(EmitDefaultValue = false)]
+        public Ranking Ranking { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
         public string Name { get; set; }
 
         [DataMember(EmitDefaultValue = false)]

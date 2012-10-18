@@ -23,7 +23,7 @@ namespace Simple.SAMS.Contracts.Competitions
         void AddPlayersToCompetition(int competitionId, PlayerInCompetition[] players);
 
         [OperationContract]
-        int Create(CompetitionHeaderInfo headerInfo);
+        int Create(CreateCompetitionInfo headerInfo);
 
         [OperationContract]
         CompetitionHeaderInfo GetCompetition(int id);
@@ -35,7 +35,7 @@ namespace Simple.SAMS.Contracts.Competitions
         CompetitionsSearchResult SearchCompetitions(CompetitionSearchQuery searchQuery);
 
         [OperationContract]
-        void UpdateCompetitionsByReferenceId(CompetitionHeaderInfo[] competitions);
+        void UpdateCompetitionsByReferenceId(CreateCompetitionInfo[] competitions);
 
     } 
 

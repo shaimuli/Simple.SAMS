@@ -43,9 +43,11 @@ namespace Simple.SAMS.Competitions.Data
 
         private void MapMatchToDataMatch(MatchHeaderInfo match, Match dataMatch)
         {
+            dataMatch.SectionId = (int) match.Section;
             dataMatch.Position = match.Position;
             dataMatch.Round = match.Round;
             dataMatch.Status = (int) match.Status;
+            dataMatch.StartTimeType = (int) match.StartTimeType;
         }
     }
 }

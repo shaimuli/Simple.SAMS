@@ -11,7 +11,7 @@ namespace Simple.SAMS.Contracts.Competitions
     public interface ICompetitionMatchesRepository
     {
         [OperationContract]
-        void AddCompetitionMatches(int competitionId, MatchHeaderInfo[] matches);
+        void AddCompetitionMatches(int competitionId,  MatchHeaderInfo[] matches);
 
     }
 }

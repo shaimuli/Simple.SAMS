@@ -9,6 +9,7 @@ namespace SAMS.Models
     {
         public string Name { get; set; }
         public DateTime StartTime { get; set; }
+        
         public CompetitionTypeReference Type { get; set; }
 
         public IEnumerable<CompetitionTypeReference> AvailableTypes { get; set; }

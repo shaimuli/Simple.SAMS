@@ -73,9 +73,8 @@ namespace Simple.SAMS.Competitions.Data
                 dataContext =>
                     {
                         var dataEntity = CreateDataEntity(entity);
-                        SetNewDataEntityParameters(dataEntity);
-
                         MapEntityToDataEntity(entity, dataEntity);
+                        SetNewDataEntityParameters(dataEntity);
                         InsertEntity(dataContext, dataEntity);
 
                         dataContext.SubmitChanges();

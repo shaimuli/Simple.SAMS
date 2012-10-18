@@ -2,33 +2,99 @@
 @{
     
     ViewContext.Controller.ViewBag.GroupTitle = Html.ResourceText("CompetitionDetails");
+    ViewContext.Controller.ViewBag.Title = Model.Name;  
         
 }
 
 
-<h2>@Model.Name</h2>
-<i>@Model.StartTime.ToShortDateString()</i>
 
+<i>@Model.StartTime @Model.EndTime</i>
+<div class="row-fluid">
+    <div class="span4">
+        <dl>
+            <dt>@Html.Resource("CompetitionType")</dt>
+            <dd>@Model.Type.Text</dd>
+            <dt>@Html.Resource("CompetitionLastModified")</dt>
+            <dd>@Model.LastModified</dd>
+        </dl>
+    </div>
+    <div class="span4">
+        <dl>
+            <dt>@Html.Resource("CompetitionStatus")</dt>
+            <dd>@(Html.Resource("CompetitionStatus." + Model.Status))</dd>
+            <dt>@Html.Resource("CompetitionReferenceId")</dt>
+            <dd>@Model.ReferenceId</dd>
+        </dl>
+    </div>
+<div class="span4">
+        @Html.ActionLink(Html.ResourceText("UpdateCompetitionPlayers"), "UpdatePlayers", new {id = Model.Id})
+</div>
+</div>
 
-<div class="competitonContainer">
-    @foreach(var round in Model.Matches.GroupBy(m=>m.Round))
-    {
-        <div class="roundContainer">
-            <h3>Round: @round.Key</h3>
-            @foreach(var match in @round)
+<ul id="tabs" class="nav nav-tabs">
+    <li class="active">
+        <a href="#matches" data-toggle="tab">@Html.Resource("CompetitionMatchesTab")</a>
+    </li>
+    <li><a href="#updateResults" data-toggle="tab">
+        @Html.Resource("CompetitionUpdateResultsTab")
+    </a></li>
+    <li><a href="#players" data-toggle="tab">
+        @Html.Resource("CompetitionPlayersTab")
+    </a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="matches">
+        <div class="competitonContainer">
+            @foreach (var section in Model.Matches.GroupBy(m => m.Section))
             {
-                <div class="matchContainer">
-                    <div class="matchHeader">
-                        Position: @match.Position
+                <div class="competitionSectionContainer" data-section="@(section.Key)">
+                    <h3>@(section.Key)</h3>
+                    <div class="row-fluid">
+                        @foreach (var round in section.GroupBy(m => m.Round))
+                        {
+                            <div class="roundContainer">
+                                <h3>Round: @round.Key</h3>
+                                @foreach (var match in @round)
+                                {
+                                    <div class="matchContainer">
+                                        <div class="matchHeader">
+                                            Position: @match.Position
+                                        </div>
+                                        <div class="matchLeftPlayer">
+                                            @match.LeftPlayer1
+                                        </div>
+                                        <div class="matchRightPlayer">
+                                            @match.RightPlayer1
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+                        }
+
                     </div>
-                    <div class="matchLeftPlayer">
-                        @match.LeftPlayer1
-                    </div>
-                    <div class="matchRightPlayer">
-                        @match.RightPlayer1
-                    </div>
+                    <hr class="space" />
+                    <hr class="space" />
+                    <hr class="space" />
+                    <hr class="space" />
+                    <hr class="space" />
                 </div>
             }
+
         </div>
-    }
+    </div>
+    <div class="tab-pane" id="updateResults">
+
+        <div class="competitionUpdateResultsContainer">
+        </div>
+
+    </div>
+    <div class="tab-pane" id="players">
+
+        <div class="competitionPlayersContainer">
+            @Html.Partial("_CompetitionPlayers", Model.Players)
+        </div>
+    </div>
 </div>
+

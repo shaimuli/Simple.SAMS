@@ -52,6 +52,7 @@
     <Compile Include="Competitions\CompetitionMatchesQuery.cs" />
     <Compile Include="Competitions\CompetitionMethod.cs" />
     <Compile Include="Competitions\CompetitionSearchQuery.cs" />
+    <Compile Include="Competitions\CompetitionSection.cs" />
     <Compile Include="Competitions\CompetitionsSearchResult.cs" />
     <Compile Include="Competitions\CompetitionStatus.cs" />
     <Compile Include="Competitions\CompetitionType.cs" />
@@ -68,6 +69,8 @@
     <Compile Include="Competitions\IMatchProvisioningEngineFactory.cs" />
     <Compile Include="Competitions\MatchDetails.cs" />
     <Compile Include="Competitions\MatchStatus.cs" />
+    <Compile Include="Competitions\Ranking.cs" />
+    <Compile Include="Competitions\StartTimeType.cs" />
     <Compile Include="DefaultMatchProvisioningEngineFactory.cs" />
     <Compile Include="KnockoutMatchProvisioningEngine.cs" />
     <Compile Include="Users\UserInfo.cs" />
@@ -89,7 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Competitions\CSV Samples\Players.csv" />
-    <None Include="Competitions\CSV Samples\Tournaments.csv" />
+    <None Include="Competitions\CSV Samples\Competitions.csv" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

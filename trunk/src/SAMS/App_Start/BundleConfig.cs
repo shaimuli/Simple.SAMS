@@ -16,12 +16,15 @@ namespace SAMS
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.unobtrusive*",
-                        "~/Scripts/jquery.validate*"));
-
+                        "~/Scripts/jquery.validate*"));            
+            
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
+
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                            "~/Scripts/bootstrap/bootstrap.min.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/bootstrap-rtl.min.css").Include("~/Content/default.css").Include("~/Content/CompetitionDetails.css"));
 

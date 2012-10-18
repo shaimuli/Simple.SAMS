@@ -16,8 +16,14 @@ namespace Simple.SAMS.Competitions.Data
             UseDataContext(
                 dataContext =>
                 {
-                    var competitionTypes = dataContext.CompetitionTypes.Take(MaxResults);
-                    result.AddRange(competitionTypes.Select(type => new Contracts.Competitions.CompetitionType() { Id = type.Id, Name = type.Name }));
+                    var competitionTypes = dataContext.CompetitionTypes.Take(MaxResults).ToArray();
+                    result.AddRange(competitionTypes.Select(type =>
+                                                                {
+                                                                    var item =
+                                                                        new Contracts.Competitions.CompetitionType();
+                                                                    MapDataEntityToEntity(type, item);
+                                                                    return item;
+                                                                }));
                 });
 
             return result.ToArray();
@@ -35,15 +41,9 @@ namespace Simple.SAMS.Competitions.Data
 
         protected override void MapDataEntityToEntity(CompetitionType dataEntity, Contracts.Competitions.CompetitionType entity)
         {
-            entity.Name = dataEntity.Name;
-            entity.Method = (CompetitionMethod) dataEntity.CompetitionMethod;
-            entity.PlayersCount = dataEntity.PlayersCount;
-            entity.QualifyingPlayersCount = dataEntity.QualifyingPlayersCount;
-            entity.WildcardPlayersCount = dataEntity.WildcardPlayersCount;
-            entity.PairsCount = dataEntity.PairsCount;
-            entity.QualifyingPairsCount = dataEntity.QualifyingPairsCount;
-            entity.WildcardPairsCount = dataEntity.WildcardPairsCount;
-            entity.HasConsolation = dataEntity.HasConsolation;
+            AutoMapper.Mapper.DynamicMap(dataEntity,entity);
+            //entity.Method = (CompetitionMethod) dataEntity.CompetitionMethod;
+            //entity.Ranking = (Ranking) dataEntity.Ranking;
         }
 
         protected override CompetitionType CreateDataEntity(Contracts.Competitions.CompetitionType entity)
@@ -53,15 +53,9 @@ namespace Simple.SAMS.Competitions.Data
 
         protected override void MapEntityToDataEntity(Contracts.Competitions.CompetitionType entity, CompetitionType dataEntity)
         {
-            dataEntity.Name = entity.Name;
-            dataEntity.CompetitionMethod = (int) entity.Method;
-            dataEntity.PlayersCount = entity.PlayersCount;
-            dataEntity.QualifyingPlayersCount = entity.QualifyingPlayersCount;
-            dataEntity.WildcardPlayersCount = entity.WildcardPlayersCount;
-            dataEntity.PairsCount = entity.PairsCount;
-            dataEntity.QualifyingPairsCount = entity.QualifyingPairsCount;
-            dataEntity.WildcardPairsCount = entity.WildcardPairsCount;
-            dataEntity.HasConsolation = entity.HasConsolation;
+            AutoMapper.Mapper.DynamicMap(entity, dataEntity);
+            //dataEntity.CompetitionMethod = (int)entity.Method;
+            //dataEntity.Ranking = (int)entity.Ranking;
         }
 
         protected override void InsertEntity(CompetitionsDataContext dataContext, CompetitionType dataEntity)

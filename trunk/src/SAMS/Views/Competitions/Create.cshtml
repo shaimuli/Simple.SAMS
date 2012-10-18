@@ -3,35 +3,82 @@
     
 }
 
-@using (Html.BeginForm("Create", "Competitions", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "Competitions", FormMethod.Post, new { id="mainForm", enctype = "multipart/form-data", @class = "form-horizontal" }))
 {
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary()
+    
 
     <fieldset>
         <legend>@Html.Resource("CreateCompetition")</legend>
-        <ol>
-            <li>
-                @Html.LabelFor(m => m.Name)
-                @Html.TextBoxFor(m => m.Name)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Type)
+        <div>
+            @Html.ValidationSummary()
+        </div>
+            <div class="control-group">
+                @Html.LabelFor(m => m.Name, Html.ResourceText("CompetitionName"), new{@class="control-label"})
+                <div class="controls">
+                @Html.TextBox("Name", string.Empty,new Dictionary<string,object>{{"data-val",  "true"}, {"data-val-required",Html.ResourceText("NameIsRequired")} })
+                </div>
+            </div>
+            <div class="control-group">
+                @Html.LabelFor(m => m.Type, Html.ResourceText("CompetitionType"), new{@class="control-label"})
+                <div class="controls">
                 @Html.DropDownListFor(m=>m.Type, Model.AvailableTypes.Select(t=>new SelectListItem(){Value = t.Id.ToString(), Text = t.Name, Selected = Model.Type != null && t.Id.Equals(Model.Type.Id) }))
-            </li>
-            <li>
-                @Html.LabelFor(m => m.StartTime)
-                @Html.EditorFor(m => m.StartTime)
-            </li>
-            <li>
-                Players:
+                    </div>
+            </div>
+            <div class="control-group">
+                @Html.LabelFor(m => m.StartTime, Html.ResourceText("CompetitionStartTime"), new{@class="control-label"})
+                <div class="controls">
+<div class="input-append date" data-date="@DateTime.Now.ToShortDateString()" data-date-format="dd/mm/yyyy">
+        <input class="span2" size="16" type="text" name="StartTime" value="@DateTime.Now.ToShortDateString()">
+        <span class="add-on"><i class="icon-th"></i></span>
+</div>                    
+                    
+                </div>
+            </div>
+            <div class="control-group">
+                @Html.Label("EndTime", Html.ResourceText("CompetitionEndTime"), new{@class="control-label"})
+                <div class="controls">
+<div class="input-append date" data-date-format="dd/mm/yyyy">
+        <input class="span2" size="16" type="text" name="EndTime" >
+        <span class="add-on"><i class="icon-th"></i></span>
+</div>                    
+                   </div>
+            </div>
+            <div class="control-group">
+                @Html.Label("MainReferee", Html.ResourceText("CompetitionMainReferee"), new{@class="control-label"})
+                <div class="controls">
+                @Html.TextBox("MainReferee")
+                    </div>
+            </div>
+            <div class="control-group">
+                @Html.Label("MainRefereePhone", Html.ResourceText("CompetitionMainRefereePhone"), new{@class="control-label"})
+                <div class="controls">
+                @Html.TextBox("MainRefereePhone")
+                    </div>
+            </div>
+            <div class="control-group">
+                @Html.Label("Site", Html.ResourceText("CompetitionSite"), new{@class="control-label"})
+                <div class="controls">
+                @Html.TextBox("Site")
+                    </div>
+            </div>
+            <div class="control-group">
+                @Html.Label("SitePhone", Html.ResourceText("CompetitionSitePhone"), new{@class="control-label"})
+                <div class="controls">
+                @Html.TextBox("SitePhone")
+                    </div>
+            </div>
+        <div class="control-group">
+            <label for="PlayersFile" class="control-label">
+                @Html.Resource("CompetitionPlayers")
+            </label>
+            <div class="controls">
                 <input type="file" name="PlayersFile" id="PlayersFile"/>
-            </li>
-        </ol>
-        <input type="submit" value="Create Competition" />
+            </div>
+        </div>
+        <div class="form-actions">
+        <input class="btn btn-primary" type="submit" value="@Html.ResourceText("CreateCompetition")" />
+            </div>
     </fieldset>
 }
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

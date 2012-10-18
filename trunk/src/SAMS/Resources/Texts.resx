@@ -282,4 +282,106 @@
   <data name="Update" xml:space="preserve">
     <value>עדכן</value>
   </data>
+  <data name="FemaleAbbr" xml:space="preserve">
+    <value>נקבה</value>
+  </data>
+  <data name="MaleAbbr" xml:space="preserve">
+    <value>זכר</value>
+  </data>
+  <data name="PlayerBirthDateHeader" xml:space="preserve">
+    <value>תאריך לידה</value>
+  </data>
+  <data name="PlayerCountryHeader" xml:space="preserve">
+    <value>מדינה</value>
+  </data>
+  <data name="PlayerEnglishNameHeader" xml:space="preserve">
+    <value>שם באנגלית</value>
+  </data>
+  <data name="PlayerEuropeInternationalRankHeader" xml:space="preserve">
+    <value>דירוג אירופי</value>
+  </data>
+  <data name="PlayerGenderHeader" xml:space="preserve">
+    <value>מין</value>
+  </data>
+  <data name="PlayerLocalNameHeader" xml:space="preserve">
+    <value>שם</value>
+  </data>
+  <data name="PlayerNationalRankHeader" xml:space="preserve">
+    <value>דירוג ארצי</value>
+  </data>
+  <data name="PlayerYouthInternationalRankHeader" xml:space="preserve">
+    <value>דירוג נוער</value>
+  </data>
+  <data name="CompetitionLastModified" xml:space="preserve">
+    <value>עודכן לאחרונה</value>
+  </data>
+  <data name="CompetitionMatchesTab" xml:space="preserve">
+    <value>משחקים</value>
+  </data>
+  <data name="CompetitionPlayersTab" xml:space="preserve">
+    <value>שחקנים</value>
+  </data>
+  <data name="CompetitionReferenceId" xml:space="preserve">
+    <value>אסמכתא</value>
+  </data>
+  <data name="CompetitionStatus" xml:space="preserve">
+    <value>סטאטוס</value>
+  </data>
+  <data name="CompetitionStatus.MatchesCreated" xml:space="preserve">
+    <value>המשחקים נוצרו</value>
+  </data>
+  <data name="CompetitionType" xml:space="preserve">
+    <value>סוג התחרות</value>
+  </data>
+  <data name="CompetitionUpdateResultsTab" xml:space="preserve">
+    <value>עדכון תוצאות</value>
+  </data>
+  <data name="CompetitionEndTime" xml:space="preserve">
+    <value>תאריך סיום</value>
+  </data>
+  <data name="CompetitionMainReferee" xml:space="preserve">
+    <value>שופט ראשי</value>
+  </data>
+  <data name="CompetitionMainRefereePhone" xml:space="preserve">
+    <value>טלפון שופט ראשי</value>
+  </data>
+  <data name="CompetitionName" xml:space="preserve">
+    <value>שם</value>
+  </data>
+  <data name="CompetitionPlayers" xml:space="preserve">
+    <value>טעינת שחקנים</value>
+  </data>
+  <data name="CompetitionSite" xml:space="preserve">
+    <value>מועדון</value>
+  </data>
+  <data name="CompetitionSitePhone" xml:space="preserve">
+    <value>טלפון מועדון</value>
+  </data>
+  <data name="CompetitionStartTime" xml:space="preserve">
+    <value>תאריך התחלה</value>
+  </data>
+  <data name="HasConsolation" xml:space="preserve">
+    <value>בית תנחומים?</value>
+  </data>
+  <data name="NameIsRequired" xml:space="preserve">
+    <value>נא לציין שם</value>
+  </data>
+  <data name="PairsCount" xml:space="preserve">
+    <value>מספר הזוגות</value>
+  </data>
+  <data name="PlayersCountIsRequired" xml:space="preserve">
+    <value>נא לציין מספר שחקנים.</value>
+  </data>
+  <data name="QualifyingPairsCount" xml:space="preserve">
+    <value>מוקדמות זוגות</value>
+  </data>
+  <data name="QualifyingPlayersCount" xml:space="preserve">
+    <value>מספק שחקנים במוקדמות</value>
+  </data>
+  <data name="WildcardPairsCount" xml:space="preserve">
+    <value>כרטיסים חופשיים זוגות</value>
+  </data>
+  <data name="WildcardPlayersCount" xml:space="preserve">
+    <value>כרטיסים חופשיים</value>
+  </data>
 </root>

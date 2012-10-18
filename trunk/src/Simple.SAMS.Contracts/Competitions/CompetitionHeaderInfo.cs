@@ -30,6 +30,9 @@ namespace Simple.SAMS.Contracts.Competitions
         public DateTime StartTime { get; set; }
         
         [DataMember(EmitDefaultValue = false)]
+        public DateTime? EndTime { get; set; }
+        
+        [DataMember(EmitDefaultValue = false)]
         public DateTime LastModified { get; set; }
 
     }

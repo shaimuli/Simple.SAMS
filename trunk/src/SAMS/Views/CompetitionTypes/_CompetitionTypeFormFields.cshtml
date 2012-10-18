@@ -1,38 +1,78 @@
-﻿<ul>
-    <li>
-        @Html.Label("Name", Html.ResourceText("Name"))
-        @Html.TextBox("Name")
-    </li>
-    <li>
-        @Html.Label("PlayersCount", Html.ResourceText("PlayersCount"))
-        @Html.TextBox("PlayersCount")
-    </li>
-    <li>
-        @Html.Label("WildcardPlayersCount", Html.ResourceText("WildcardPlayersCount"))
-        @Html.TextBox("WildcardPlayersCount")
-    </li>
-    <li>
-        @Html.Label("QualifyingPlayersCount", Html.ResourceText("QualifyingPlayersCount"))
-        @Html.TextBox("QualifyingPlayersCount")
-    </li>
-    <li>
-        @Html.Label("PairsCount", Html.ResourceText("PairsCount"))
-        @Html.TextBox("PairsCount")
-    </li>
-    <li>
-        @Html.Label("WildcardPairsCount", Html.ResourceText("WildcardPairsCount"))
-        @Html.TextBox("WildcardPairsCount")
-    </li>
-    <li>
-        @Html.Label("QualifyingPairsCount", Html.ResourceText("QualifyingPairsCount"))
-        @Html.TextBox("QualifyingPairsCount")
-    </li>
-    <li>
-        @Html.Label("HasConsolation", Html.ResourceText("HasConsolation"))
-        @Html.CheckBox("HasConsolation")
-    </li>
-    <li>
-        @Html.Label("Method", Html.ResourceText("Method"))
+﻿@using Simple.SAMS.Contracts.Competitions
+<div class="control-group">
+    @Html.Label("Name", Html.ResourceText("Name"), new { @class = "control-label" })
+    <div class="controls">
+        @Html.TextBox("Name", string.Empty, new Dictionary<string, object> { { "data-val", "true" }, { "data-val-required", Html.ResourceText("NameIsRequired") } })
+    </div>
+</div>
+<div class="control-group">
+    @Html.Label("PlayersCount", Html.ResourceText("PlayersCount"), new { @class = "control-label" })
+    <div class="controls">
+        @Html.TextBox("PlayersCount", string.Empty, new Dictionary<string, object> { { "data-val", "true" }, { "data-val-required", Html.ResourceText("PlayersCountIsRequired") } })
+    </div>
+</div>
+<div class="control-group">
+    @Html.Label("WildcardPlayersCount", Html.ResourceText("WildcardPlayersCount"), new { @class = "control-label" })
+    <div class="controls">
+        @Html.TextBox("WildcardPlayersCount", "0")
+    </div>
+</div>
+<div class="control-group">
+    @Html.Label("QualifyingPlayersCount", Html.ResourceText("QualifyingPlayersCount"), new { @class = "control-label" })
+    <div class="controls">
+        @Html.TextBox("QualifyingPlayersCount", "0")
+    </div>
+
+</div>
+<div class="control-group">
+    @Html.Label("PairsCount", Html.ResourceText("PairsCount"), new { @class = "control-label" })
+    <div class="controls">
+        @Html.TextBox("PairsCount", "0")
+    </div>
+</div>
+<div class="control-group">
+    @Html.Label("WildcardPairsCount", Html.ResourceText("WildcardPairsCount"), new { @class = "control-label" })
+    <div class="controls">
+        @Html.TextBox("WildcardPairsCount", "0")
+    </div>
+</div>
+<div class="control-group">
+    @Html.Label("QualifyingPairsCount", Html.ResourceText("QualifyingPairsCount"), new { @class = "control-label" })
+    <div class="controls">
+        @Html.TextBox("QualifyingPairsCount", "0")
+    </div>
+</div>
+<div class="control-group">
+    @Html.Label("HasConsolation", Html.ResourceText("HasConsolation"), new { @class = "control-label" })
+    <div class="controls">
+        @Html.CheckBox("HasConsolation", "0")
+    </div>
+</div>
+<div class="control-group">
+    @Html.Label("Method", Html.ResourceText("Method"), new { @class = "control-label" })
+    <div class="controls">
         @Html.DropDownList("Method", new SelectListItem[] { new SelectListItem() { Value = "0", Text = Html.ResourceText("EliminationTournament") }, })
-    </li>
-</ul>
+    </div>
+</div>
+<div class="control-group">
+    @Html.Label("Ranking", Html.ResourceText("Ranking"), new { @class = "control-label" })
+    <div class="controls">
+    @Html.DropDownList("Ranking", new SelectListItem[] { 
+                                                            new SelectListItem()
+                                                                 {
+                                                                     Value = ((int)Ranking.National).ToString(), 
+                                                                     Text = Html.ResourceText("Ranking.National")
+                                                                 }, 
+                                                            new SelectListItem()
+                                                                 {
+                                                                     Value = ((int)Ranking.EuropeInternational).ToString(), 
+                                                                     Text = Html.ResourceText("Ranking.EuropeInternational")
+                                                                 }, 
+                                                            new SelectListItem()
+                                                                 {
+                                                                     Value = ((int)Ranking.YouthInternational).ToString(), 
+                                                                     Text = Html.ResourceText("Ranking.YouthInternational")
+                                                                 }, 
+        })
+        </div>
+</div>

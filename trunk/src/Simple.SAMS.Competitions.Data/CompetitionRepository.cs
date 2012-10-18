@@ -18,39 +18,40 @@ namespace Simple.SAMS.Competitions.Data
             competitionHeader.ReferenceId = competition.ReferenceId;
             competitionHeader.Name = competition.Name;
             competitionHeader.StartTime = competition.StartDate.ToLocalTime();
+            if (competition.EndTime.HasValue)
+            {
+                competitionHeader.EndTime = competition.EndTime.Value.ToLocalTime();
+            }
             competitionHeader.LastModified = competition.Updated.ToLocalTime();
             competitionHeader.Type = new EntityReference() { Id = competition.TypeId, Text = competition.CompetitionType.Name };
             competitionHeader.Status = (CompetitionStatus) competition.Status;
         }
 
-        private void MapCompetitionToData(CompetitionHeaderInfo headerInfo, Competition competition)
+        private void MapCompetitionToData(CreateCompetitionInfo createCompetitionInfo, Competition competition)
         {
-            if (headerInfo.Id.HasValue)
-            {
-                competition.Id = headerInfo.Id.Value;
-            }
-            competition.ReferenceId = headerInfo.ReferenceId;
-            competition.Name = headerInfo.Name;
-            competition.StartDate = headerInfo.StartTime;
-            competition.TypeId = headerInfo.Type.Id;
-
+            competition.ReferenceId = createCompetitionInfo.ReferenceId;
+            competition.Name = createCompetitionInfo.Name;
+            competition.StartDate = createCompetitionInfo.StartTime;
+            competition.TypeId = createCompetitionInfo.TypeId;
+            competition.Site = createCompetitionInfo.Site;
+            competition.SitePhone = createCompetitionInfo.SitePhone;
+            competition.MainReferee = createCompetitionInfo.MainReferee;
+            competition.MainRefereePhone = createCompetitionInfo.MainRefereePhone;
+            competition.EndTime = createCompetitionInfo.EndTime;
         }
 
-        public int Create(CompetitionHeaderInfo headerInfo)
+        public int Create(CreateCompetitionInfo createCompetitionInfo)
         {
-            Requires.ArgumentNotNull(headerInfo, "headerInfo");
-            Requires.ArgumentNotNull(headerInfo.Type, "headerInfo.Type");
-            if (headerInfo.Id.HasValue)
-            {
-                throw new ArgumentException("headerInfo.Id must be null for new competition.");
-            }
+            Requires.ArgumentNotNull(createCompetitionInfo, "headerInfo");
+            Requires.IntArgumentPositive(createCompetitionInfo.TypeId, "headerInfo.TypeId");
+
             var result = default(int);
 
             UseDataContext(
                 dataContext =>
                 {
                     var competitionData = new Competition();
-                    MapCompetitionToData(headerInfo, competitionData);
+                    MapCompetitionToData(createCompetitionInfo, competitionData);
                     SetNewDataEntityCommonParameter(competitionData);
                     dataContext.Competitions.InsertOnSubmit(competitionData);
                     dataContext.SubmitChanges();
@@ -109,7 +110,15 @@ namespace Simple.SAMS.Competitions.Data
                     {
                         result = new CompetitionDetails();
                         MapCompetitionDataToHeader(competitionData, result);
-
+                        var players =
+                            dataContext.CompetitionPlayers.Where(cp => cp.CompetitionId == id).Select(cp => cp.Player).
+                                ToArray();
+                        result.Players = players.Select(dataEntity =>
+                                           {
+                                               var entity = new Contracts.Players.Player();
+                                               AutoMapper.Mapper.DynamicMap(dataEntity, entity);
+                                               return entity;
+                                           }).ToArray();
                         var matches = dataContext.Matches.Where(m => m.CompetitionId == id && m.RowStatus == 0);
                         result.Matches =
                             matches.Select(m => new MatchHeaderInfo()
@@ -117,6 +126,8 @@ namespace Simple.SAMS.Competitions.Data
                                                         Id = m.Id,
                                                         StartTime = m.StartTime,
                                                         Status = (MatchStatus)m.Status,
+                                                        Section = (CompetitionSection)m.SectionId,
+                                                        StartTimeType = (StartTimeType)m.StartTimeType,
                                                         Round =m.Round,
                                                         Position = m.Position,
                                                         Player1 = new Contracts.Competitions.MatchPlayer()
@@ -196,7 +207,7 @@ namespace Simple.SAMS.Competitions.Data
         }
 
 
-        public void UpdateCompetitionsByReferenceId(CompetitionHeaderInfo[] competitions)
+        public void UpdateCompetitionsByReferenceId(CreateCompetitionInfo[] competitions)
         {
             UseDataContext(
                 dataContext =>

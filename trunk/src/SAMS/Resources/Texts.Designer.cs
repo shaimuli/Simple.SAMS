@@ -115,6 +115,24 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to תאריך סיום.
+        /// </summary>
+        internal static string CompetitionEndTime {
+            get {
+                return ResourceManager.GetString("CompetitionEndTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to עודכן לאחרונה.
+        /// </summary>
+        internal static string CompetitionLastModified {
+            get {
+                return ResourceManager.GetString("CompetitionLastModified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to עודכן לאחרונה.
         /// </summary>
         internal static string CompetitionLastModifiedHeader {
@@ -124,11 +142,74 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to שופט ראשי.
+        /// </summary>
+        internal static string CompetitionMainReferee {
+            get {
+                return ResourceManager.GetString("CompetitionMainReferee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to טלפון שופט ראשי.
+        /// </summary>
+        internal static string CompetitionMainRefereePhone {
+            get {
+                return ResourceManager.GetString("CompetitionMainRefereePhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to משחקים.
+        /// </summary>
+        internal static string CompetitionMatchesTab {
+            get {
+                return ResourceManager.GetString("CompetitionMatchesTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to שם.
+        /// </summary>
+        internal static string CompetitionName {
+            get {
+                return ResourceManager.GetString("CompetitionName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to שם.
         /// </summary>
         internal static string CompetitionNameHeader {
             get {
                 return ResourceManager.GetString("CompetitionNameHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to טעינת שחקנים.
+        /// </summary>
+        internal static string CompetitionPlayers {
+            get {
+                return ResourceManager.GetString("CompetitionPlayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to שחקנים.
+        /// </summary>
+        internal static string CompetitionPlayersTab {
+            get {
+                return ResourceManager.GetString("CompetitionPlayersTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to אסמכתא.
+        /// </summary>
+        internal static string CompetitionReferenceId {
+            get {
+                return ResourceManager.GetString("CompetitionReferenceId", resourceCulture);
             }
         }
         
@@ -151,11 +232,38 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to מועדון.
+        /// </summary>
+        internal static string CompetitionSite {
+            get {
+                return ResourceManager.GetString("CompetitionSite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to טלפון מועדון.
+        /// </summary>
+        internal static string CompetitionSitePhone {
+            get {
+                return ResourceManager.GetString("CompetitionSitePhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to רשימת תחרויות.
         /// </summary>
         internal static string CompetitionsList {
             get {
                 return ResourceManager.GetString("CompetitionsList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to תאריך התחלה.
+        /// </summary>
+        internal static string CompetitionStartTime {
+            get {
+                return ResourceManager.GetString("CompetitionStartTime", resourceCulture);
             }
         }
         
@@ -169,11 +277,38 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to סטאטוס.
+        /// </summary>
+        internal static string CompetitionStatus {
+            get {
+                return ResourceManager.GetString("CompetitionStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to המשחקים נוצרו.
+        /// </summary>
+        internal static string CompetitionStatus_MatchesCreated {
+            get {
+                return ResourceManager.GetString("CompetitionStatus.MatchesCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to תחרות.
         /// </summary>
         internal static string CompetitionTitle {
             get {
                 return ResourceManager.GetString("CompetitionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to סוג התחרות.
+        /// </summary>
+        internal static string CompetitionType {
+            get {
+                return ResourceManager.GetString("CompetitionType", resourceCulture);
             }
         }
         
@@ -201,6 +336,15 @@ namespace SAMS.Resources {
         internal static string CompetitionTypes {
             get {
                 return ResourceManager.GetString("CompetitionTypes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to עדכון תוצאות.
+        /// </summary>
+        internal static string CompetitionUpdateResultsTab {
+            get {
+                return ResourceManager.GetString("CompetitionUpdateResultsTab", resourceCulture);
             }
         }
         
@@ -304,6 +448,24 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to נקבה.
+        /// </summary>
+        internal static string FemaleAbbr {
+            get {
+                return ResourceManager.GetString("FemaleAbbr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to בית תנחומים?.
+        /// </summary>
+        internal static string HasConsolation {
+            get {
+                return ResourceManager.GetString("HasConsolation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to עזרה.
         /// </summary>
         internal static string Help {
@@ -385,6 +547,15 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to זכר.
+        /// </summary>
+        internal static string MaleAbbr {
+            get {
+                return ResourceManager.GetString("MaleAbbr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to משתמשים.
         /// </summary>
         internal static string ManageUsers {
@@ -412,11 +583,29 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to נא לציין שם.
+        /// </summary>
+        internal static string NameIsRequired {
+            get {
+                return ResourceManager.GetString("NameIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to הוספת סוג תחרות.
         /// </summary>
         internal static string NewCompetitionType {
             get {
                 return ResourceManager.GetString("NewCompetitionType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to מספר הזוגות.
+        /// </summary>
+        internal static string PairsCount {
+            get {
+                return ResourceManager.GetString("PairsCount", resourceCulture);
             }
         }
         
@@ -430,6 +619,69 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to תאריך לידה.
+        /// </summary>
+        internal static string PlayerBirthDateHeader {
+            get {
+                return ResourceManager.GetString("PlayerBirthDateHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to מדינה.
+        /// </summary>
+        internal static string PlayerCountryHeader {
+            get {
+                return ResourceManager.GetString("PlayerCountryHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to שם באנגלית.
+        /// </summary>
+        internal static string PlayerEnglishNameHeader {
+            get {
+                return ResourceManager.GetString("PlayerEnglishNameHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to דירוג אירופי.
+        /// </summary>
+        internal static string PlayerEuropeInternationalRankHeader {
+            get {
+                return ResourceManager.GetString("PlayerEuropeInternationalRankHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to מין.
+        /// </summary>
+        internal static string PlayerGenderHeader {
+            get {
+                return ResourceManager.GetString("PlayerGenderHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to שם.
+        /// </summary>
+        internal static string PlayerLocalNameHeader {
+            get {
+                return ResourceManager.GetString("PlayerLocalNameHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to דירוג ארצי.
+        /// </summary>
+        internal static string PlayerNationalRankHeader {
+            get {
+                return ResourceManager.GetString("PlayerNationalRankHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to מספר שחקנים.
         /// </summary>
         internal static string PlayersCount {
@@ -439,11 +691,47 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to נא לציין מספר שחקנים..
+        /// </summary>
+        internal static string PlayersCountIsRequired {
+            get {
+                return ResourceManager.GetString("PlayersCountIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to בחר קובץ שחקנים.
         /// </summary>
         internal static string PlayersFileLabel {
             get {
                 return ResourceManager.GetString("PlayersFileLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to דירוג נוער.
+        /// </summary>
+        internal static string PlayerYouthInternationalRankHeader {
+            get {
+                return ResourceManager.GetString("PlayerYouthInternationalRankHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to מוקדמות זוגות.
+        /// </summary>
+        internal static string QualifyingPairsCount {
+            get {
+                return ResourceManager.GetString("QualifyingPairsCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to מספק שחקנים במוקדמות.
+        /// </summary>
+        internal static string QualifyingPlayersCount {
+            get {
+                return ResourceManager.GetString("QualifyingPlayersCount", resourceCulture);
             }
         }
         
@@ -552,6 +840,24 @@ namespace SAMS.Resources {
         internal static string UsernameHeader {
             get {
                 return ResourceManager.GetString("UsernameHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to כרטיסים חופשיים זוגות.
+        /// </summary>
+        internal static string WildcardPairsCount {
+            get {
+                return ResourceManager.GetString("WildcardPairsCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to כרטיסים חופשיים.
+        /// </summary>
+        internal static string WildcardPlayersCount {
+            get {
+                return ResourceManager.GetString("WildcardPlayersCount", resourceCulture);
             }
         }
     }

@@ -11,7 +11,13 @@ namespace Simple.SAMS.Contracts.Competitions
     public class MatchHeaderInfo
     {
         [DataMember(EmitDefaultValue = false)]
+        public CompetitionSection Section { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
         public int Id { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
+        public StartTimeType StartTimeType { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
         public MatchStatus Status { get; set; }

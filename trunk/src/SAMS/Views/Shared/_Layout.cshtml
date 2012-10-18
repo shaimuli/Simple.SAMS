@@ -8,6 +8,7 @@
     <link rel='shortcut icon' href='~/Images/favicon.ico' type='image/xicon' />
     <meta name="viewport" content="width=device-width" />
     <link href="~/Content/bootstrap-rtl.min.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/datepicker.css" type="text/css" rel="stylesheet" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -75,6 +76,17 @@
     </footer>
 
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript" src="~/Scripts/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/bootstrap/bootstrap-datepicker.js"></script>
+    
+    <script type="text/javascript">
+        $(function () {
+            $(".date").datepicker();
+        });
+    </script>
+
     @RenderSection("scripts", required: false)
+    
 </body>
 </html>

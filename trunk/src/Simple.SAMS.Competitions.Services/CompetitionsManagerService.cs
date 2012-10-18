@@ -17,19 +17,20 @@ namespace Simple.SAMS.Competitions.Services
 {
     public class CompetitionsManagerService : ICompetitionsManager
     {
-        public void Create(CreateCompetitionInfo competitionCreateInfo)
+        public void Create(CreateCompetitionInfo competitionCreateInfo, string playersFile)
         {
             var competitionsEngine = ServiceProvider.Get<ICompetitionsEngine>();
             var competitionId = competitionsEngine.CreateCompetition(competitionCreateInfo);
 
-            //var players = competitionsEngine.GetCompetitionPlayers(competitionCreateInfo.PlayersFileUrl);
-            
-            //competitionsEngine.AddPlayersToCompetition(competitionId, players);
+            if (playersFile.NotNullOrEmpty())
+            {
+                var players = competitionsEngine.GetCompetitionPlayers(playersFile);
+                competitionsEngine.AddPlayersToCompetition(competitionId, players);
 
-            //var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
-            //var competitionHeaderInfo = competitionsRepository.GetCompetition(competitionId);
-            //competitionsEngine.CreateCompetitionsMatches(new[] {competitionHeaderInfo});
-
+                var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
+                var competitionHeaderInfo = competitionsRepository.GetCompetition(competitionId);
+                competitionsEngine.CreateCompetitionsMatches(new[] {competitionHeaderInfo});
+            }
         }
 
 

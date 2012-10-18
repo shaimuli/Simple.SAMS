@@ -25,13 +25,19 @@ namespace SAMS.Controllers
             var competition = competitionsRepository.GetCompetitionDetails(id);
             model.Id = id;
             model.Name = competition.Name;
-            model.StartTime = competition.StartTime;
-
+            model.StartTime = competition.StartTime.ToShortDateString();
+            model.EndTime = competition.EndTime.HasValue ? " - " + competition.EndTime.Value.ToShortDateString() : string.Empty;
+            model.LastModified = competition.LastModified.ToString();
+            model.Type = competition.Type;
+            model.Status = competition.Status;
+            model.ReferenceId = competition.ReferenceId;
+            model.Players = competition.Players;
             model.Matches =
                 competition.Matches.Select(
                     m => new CompetitionMatchViewModel()
                              {
                                  Id = m.Id,
+                                 Section = m.Section,
                                  StartTime = m.StartTime,
                                  Status = m.Status,
                                  Round=m.Round,
@@ -62,7 +68,7 @@ namespace SAMS.Controllers
             var manager = ServiceProvider.Get<ICompetitionsManager>();
             var url = AcceptCsvFile(playersFile, "CompetitionPlayers");
             manager.UpdateCompetitionPlayers(competitionId, url.ToString());
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", new {id=competitionId});
         }
                 
         public ActionResult Import()
@@ -84,19 +90,31 @@ namespace SAMS.Controllers
         [HttpPost]
         public ActionResult Create(CreateCompetitionParameters parameters, HttpPostedFileBase playersFile)
         {
-
             var manager = ServiceProvider.Get<ICompetitionsManager>();
+            var createCompetitionInfo = CreateCompetitionInfo(parameters);
+            var url = default(string);
+            if (playersFile.IsNotNull())
+            {
+                url = AcceptCsvFile(playersFile, "CompetitionPlayers").ToString();
+            }
+
+            manager.Create(createCompetitionInfo, url);
+
+            return RedirectToAction("Index");
+        }
+
+        private static CreateCompetitionInfo CreateCompetitionInfo(CreateCompetitionParameters parameters)
+        {
             var createCompetitionInfo = new CreateCompetitionInfo();
             createCompetitionInfo.Name = parameters.Name;
             createCompetitionInfo.StartTime = parameters.StartTime;
+            createCompetitionInfo.EndTime = parameters.EndTime;
             createCompetitionInfo.TypeId = parameters.Type;
-
-            var url = AcceptCsvFile(playersFile, "CompetitionPlayers");
-
-            //createCompetitionInfo.PlayersFileUrl = url.ToString();
-            manager.Create(createCompetitionInfo);
-
-            return RedirectToAction("Index");
+            createCompetitionInfo.MainReferee = parameters.MainReferee;
+            createCompetitionInfo.MainRefereePhone = parameters.MainRefereePhone;
+            createCompetitionInfo.Site = parameters.Site;
+            createCompetitionInfo.SitePhone = parameters.SitePhone;
+            return createCompetitionInfo;
         }
 
         private Uri AcceptCsvFile(HttpPostedFileBase file, string folder)

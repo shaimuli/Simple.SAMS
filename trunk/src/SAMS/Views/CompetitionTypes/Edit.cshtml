@@ -9,7 +9,7 @@
 
 }
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "CompetitionTypes", FormMethod.Post, new { id = "mainForm", @class = "form-horizontal" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
@@ -18,7 +18,10 @@
         <legend>@Html.Resource("EditCompetitionTypeHeader")</legend>
         @Html.HiddenFor(m => m.Id)
         @Html.Partial("_CompetitionTypeFormFields")
-        <input type="submit" value="@Html.ResourceText("Update")"/>
+
+        <div class="form-actions">
+            <input class="btn btn-primary" type="submit" value="@Html.ResourceText("Update")"/>
+        </div>
     </fieldset>
     
 
