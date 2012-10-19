@@ -30,6 +30,9 @@ namespace Simple.SAMS.Contracts.Competitions
 
         [OperationContract]
         CompetitionDetails GetCompetitionDetails(int id);
+        
+        [OperationContract]
+        CompetitionDetails GetCompetitionUnplayedMatches(string competitionReferenceId);
 
         [OperationContract]
         CompetitionsSearchResult SearchCompetitions(CompetitionSearchQuery searchQuery);

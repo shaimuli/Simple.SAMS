@@ -129,3 +129,27 @@ border-radius: 3px 0px 0px 3px;
 [class^="icon-"], [class*=" icon-"] {
     background-image: url("../Images/glyphicons-halflings.png");
 }
+
+.apiHelpContent {
+    direction: ltr;
+}
+
+pre.wrapped
+{
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    white-space: pre-wrap
+}
+
+.warning-message-container
+{
+    margin-top: 20px;
+    padding: 0 .7em;
+}
+
+.warning-message-icon
+{
+    float: left; 
+    margin-right: .3em;
+}

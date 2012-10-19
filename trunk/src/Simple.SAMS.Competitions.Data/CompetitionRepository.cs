@@ -23,8 +23,12 @@ namespace Simple.SAMS.Competitions.Data
                 competitionHeader.EndTime = competition.EndTime.Value.ToLocalTime();
             }
             competitionHeader.LastModified = competition.Updated.ToLocalTime();
-            competitionHeader.Type = new EntityReference() { Id = competition.TypeId, Text = competition.CompetitionType.Name };
-            competitionHeader.Status = (CompetitionStatus) competition.Status;
+            competitionHeader.Type = new EntityReference()
+                                         {
+                                             Id = competition.TypeId,
+                                             Text = competition.CompetitionType.Name
+                                         };
+            competitionHeader.Status = (CompetitionStatus)competition.Status;
         }
 
         private void MapCompetitionToData(CreateCompetitionInfo createCompetitionInfo, Competition competition)
@@ -95,7 +99,17 @@ namespace Simple.SAMS.Competitions.Data
             return loadOptions;
         }
 
-        public CompetitionDetails GetCompetitionDetails(int id)
+        public CompetitionDetails GetCompetitionUnplayedMatches(string competitionReferenceId)
+        {
+            Requires.ArgumentNotNullOrEmptyString(competitionReferenceId, "competitionReferenceId");
+
+            var result = GetCompetitionDetails(
+                dataContext => dataContext.Competitions.FirstOrDefault(c => c.ReferenceId == competitionReferenceId),
+                matches => matches.Where(m => !m.StartTime.HasValue && m.Status == (int)MatchStatus.PlayersAssigned));
+            return result;
+        }
+
+        private CompetitionDetails GetCompetitionDetails(Func<CompetitionsDataContext, Competition> queryCompetitionDetails, Func<IQueryable<Match>, IQueryable<Match>> filterMatches = null)
         {
             var result = default(CompetitionDetails);
 
@@ -105,44 +119,90 @@ namespace Simple.SAMS.Competitions.Data
                     dataContext.ObjectTrackingEnabled = false;
                     dataContext.LoadOptions = GetCompetitionsLoadOptions();
 
-                    var competitionData = dataContext.Competitions.FirstOrDefault(c => c.Id == id);
+                    var competitionData = queryCompetitionDetails(dataContext);
                     if (competitionData.IsNotNull())
                     {
                         result = new CompetitionDetails();
                         MapCompetitionDataToHeader(competitionData, result);
                         var players =
-                            dataContext.CompetitionPlayers.Where(cp => cp.CompetitionId == id).Select(cp => cp.Player).
-                                ToArray();
+                            dataContext.CompetitionPlayers.Where(cp => cp.CompetitionId == competitionData.Id && cp.Player.RowStatus == 0).Select(cp => cp.Player).ToArray();
                         result.Players = players.Select(dataEntity =>
-                                           {
-                                               var entity = new Contracts.Players.Player();
-                                               AutoMapper.Mapper.DynamicMap(dataEntity, entity);
-                                               return entity;
-                                           }).ToArray();
-                        var matches = dataContext.Matches.Where(m => m.CompetitionId == id && m.RowStatus == 0);
+                        {
+                            var entity = new Contracts.Players.Player();
+                            AutoMapper.Mapper.DynamicMap(dataEntity, entity);
+                            return entity;
+                        }).ToArray();
+                        var matches = dataContext.Matches.Where(m => m.CompetitionId == competitionData.Id && m.RowStatus == 0);
+
+                        if (filterMatches.IsNotNull())
+                        {
+                            matches = filterMatches(matches);
+                        }
+
                         result.Matches =
-                            matches.Select(m => new MatchHeaderInfo()
-                                                    {
-                                                        Id = m.Id,
-                                                        StartTime = m.StartTime,
-                                                        Status = (MatchStatus)m.Status,
-                                                        Section = (CompetitionSection)m.SectionId,
-                                                        StartTimeType = (StartTimeType)m.StartTimeType,
-                                                        Round =m.Round,
-                                                        Position = m.Position,
-                                                        Player1 = new Contracts.Competitions.MatchPlayer()
-                                                                      {
-                                                                          PlayerId = 1,
-                                                                          PlayerName = "Not loaded #1"
-                                                                      },
-                                                        Player2 = new Contracts.Competitions.MatchPlayer()
-                                                                      {
-                                                                          PlayerId = 2,
-                                                                          PlayerName = "Not loaded #2"
-                                                                      }
-                                                    }).ToArray();
+                            matches.Select(m => CreateMatchFromData(m)).ToArray();
                     }
                 });
+
+            return result;
+
+        }
+
+        private MatchHeaderInfo CreateMatchFromData(Match match)
+        {
+            var result = new MatchHeaderInfo()
+                       {
+                           Id = match.Id,
+                           StartTime = match.StartTime,
+                           Status = (MatchStatus)match.Status,
+                           Section = (CompetitionSection)match.SectionId,
+                           StartTimeType = (StartTimeType)match.StartTimeType,
+                           Round = match.Round,
+                           Position = match.Position
+                       };
+            var matchPlayers = match.MatchPlayers.Select(mp => new { mp.Player, mp.Position }).ToArray();
+            var player1 = matchPlayers.FirstOrDefault(mp => mp.Position == 1);
+            if (player1 != null)
+            {
+                result.Player1 = CreateMatchPlayerFromData(player1.Player);
+            }
+            var player2 = matchPlayers.FirstOrDefault(mp => mp.Position == 2);
+            if (player2 != null)
+            {
+                result.Player2 = CreateMatchPlayerFromData(player2.Player);
+            }
+            var player3 = matchPlayers.FirstOrDefault(mp => mp.Position == 3);
+            if (player3 != null)
+            {
+                result.Player3 = CreateMatchPlayerFromData(player3.Player);
+            }
+            var player4 = matchPlayers.FirstOrDefault(mp => mp.Position == 4);
+            if (player4 != null)
+            {
+                result.Player4 = CreateMatchPlayerFromData(player4.Player);
+            }
+
+            return result;
+        }
+
+        private Contracts.Competitions.MatchPlayer CreateMatchPlayerFromData(Player player)
+        {
+            var result = new Contracts.Competitions.MatchPlayer();
+
+            result.Id = player.Id;
+            result.IdNumber = player.IdNumber;
+
+            result.LocalFirstName = player.LocalFirstName;
+            result.LocalLastName = player.LocalLastName;
+            result.EnglishFirstName = player.EnglishFirstName;
+            result.EnglishLastName = player.EnglishLastName;
+            return result;
+        }
+
+
+        public CompetitionDetails GetCompetitionDetails(int id)
+        {
+            var result = GetCompetitionDetails(dataContext => dataContext.Competitions.FirstOrDefault(c => c.Id == id));
 
             return result;
         }
@@ -178,21 +238,21 @@ namespace Simple.SAMS.Competitions.Data
         {
             UseDataContext(
                 dataContext =>
+                {
+                    foreach (var playerInCompetition in players)
                     {
-                        foreach (var playerInCompetition in players)
+                        var playerAlreadyInCompetition =
+                            dataContext.CompetitionPlayers.Any(
+                                player =>
+                                player.CompetitionId == competitionId &&
+                                player.PlayerId == playerInCompetition.PlayerId);
+                        if (!playerAlreadyInCompetition)
                         {
-                            var playerAlreadyInCompetition =
-                                dataContext.CompetitionPlayers.Any(
-                                    player =>
-                                    player.CompetitionId == competitionId &&
-                                    player.PlayerId == playerInCompetition.PlayerId);
-                            if (!playerAlreadyInCompetition)
-                            {
-                                dataContext.CompetitionPlayers.InsertOnSubmit(new CompetitionPlayer(){CompetitionId = competitionId, PlayerId = playerInCompetition.PlayerId, Rank = playerInCompetition.Rank });
-                            }
+                            dataContext.CompetitionPlayers.InsertOnSubmit(new CompetitionPlayer() { CompetitionId = competitionId, PlayerId = playerInCompetition.PlayerId, Rank = playerInCompetition.Rank });
                         }
-                        dataContext.SubmitChanges();
-                    });
+                    }
+                    dataContext.SubmitChanges();
+                });
         }
 
         public bool DoesCompetitionExists(int competitionId)
@@ -200,9 +260,9 @@ namespace Simple.SAMS.Competitions.Data
             var exists = false;
             UseDataContext(
                 dataContext =>
-                    {
-                        exists = dataContext.Competitions.Any(competiton => competiton.Id == competitionId);
-                    });
+                {
+                    exists = dataContext.Competitions.Any(competiton => competiton.Id == competitionId);
+                });
             return exists;
         }
 
@@ -211,48 +271,48 @@ namespace Simple.SAMS.Competitions.Data
         {
             UseDataContext(
                 dataContext =>
-                    {
-                        competitions.ForEach(
-                            competition =>
-                                {
-                                    var dataCompetition = dataContext.Competitions.FirstOrDefault(dc=>dc.ReferenceId == competition.ReferenceId);
+                {
+                    competitions.ForEach(
+                        competition =>
+                        {
+                            var dataCompetition = dataContext.Competitions.FirstOrDefault(dc => dc.ReferenceId == competition.ReferenceId);
 
-                                    if (dataCompetition.IsNull())
-                                    {
-                                        dataCompetition = new Competition();
-                                        SetNewDataEntityCommonParameter(dataCompetition);
-                                        dataContext.Competitions.InsertOnSubmit(dataCompetition);
-                                    }
-                                    else
-                                    {
-                                        dataCompetition.Updated = DateTime.UtcNow;
-                                    }
+                            if (dataCompetition.IsNull())
+                            {
+                                dataCompetition = new Competition();
+                                SetNewDataEntityCommonParameter(dataCompetition);
+                                dataContext.Competitions.InsertOnSubmit(dataCompetition);
+                            }
+                            else
+                            {
+                                dataCompetition.Updated = DateTime.UtcNow;
+                            }
 
-                                    MapCompetitionToData(competition, dataCompetition);
+                            MapCompetitionToData(competition, dataCompetition);
 
-                                });
+                        });
 
-                        dataContext.SubmitChanges();
-                    });
+                    dataContext.SubmitChanges();
+                });
         }
 
         public void UpdateCompetitionStatus(int competitionId, CompetitionStatus newStatus)
         {
             UseDataContext(
                 dataContext =>
+                {
+                    var dataCompetition = dataContext.Competitions.FirstOrDefault(dc => dc.Id == competitionId);
+
+                    if (dataCompetition.IsNull())
                     {
-                        var dataCompetition = dataContext.Competitions.FirstOrDefault(dc => dc.Id == competitionId);
+                        throw new ArgumentException("Competition '{0}' could not be found.".ParseTemplate(competitionId));
+                    }
 
-                        if (dataCompetition.IsNull())
-                        {
-                            throw new ArgumentException("Competition '{0}' could not be found.".ParseTemplate(competitionId));
-                        }
+                    dataCompetition.Status = (int)newStatus;
+                    dataCompetition.Updated = DateTime.UtcNow;
 
-                        dataCompetition.Status = (int) newStatus;
-                        dataCompetition.Updated = DateTime.UtcNow;
-
-                        dataContext.SubmitChanges();
-                    });
+                    dataContext.SubmitChanges();
+                });
         }
 
         public CompetitionHeaderInfo[] GetCompetitionsByStatus(CompetitionStatus status)
@@ -261,18 +321,18 @@ namespace Simple.SAMS.Competitions.Data
 
             UseDataContext(
                 dataContext =>
-                    {
-                        var competitionsByStatus = dataContext.Competitions.Where(comp => comp.Status == (int) status);
+                {
+                    var competitionsByStatus = dataContext.Competitions.Where(comp => comp.Status == (int)status);
 
-                        competitionsByStatus.ForEach(dataCompetition =>
-                                                         {
-                                                             var competitionHeader =
-                                                                 new CompetitionHeaderInfo();
-                                                             MapCompetitionDataToHeader(dataCompetition, competitionHeader);
+                    competitionsByStatus.ForEach(dataCompetition =>
+                                                     {
+                                                         var competitionHeader =
+                                                             new CompetitionHeaderInfo();
+                                                         MapCompetitionDataToHeader(dataCompetition, competitionHeader);
 
-                                                             competitions.Add(competitionHeader);
-                                                         });
-                    });
+                                                         competitions.Add(competitionHeader);
+                                                     });
+                });
 
             return competitions.ToArray();
         }

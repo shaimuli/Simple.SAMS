@@ -36,6 +36,12 @@ namespace Simple.SAMS.Contracts.Competitions
         
         [DataMember(EmitDefaultValue = false)]
         public MatchPlayer Player2 { get; set; }
+        
+        [DataMember(EmitDefaultValue = false)]
+        public MatchPlayer Player3 { get; set; }
+        
+        [DataMember(EmitDefaultValue = false)]
+        public MatchPlayer Player4 { get; set; }
 
 
     }

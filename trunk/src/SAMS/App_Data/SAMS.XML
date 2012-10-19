@@ -1,0 +1,874 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SAMS</name>
+    </assembly>
+    <members>
+        <member name="M:SAMS.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:SAMS.Areas.HelpPage.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="T:SAMS.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="M:SAMS.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:SAMS.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+            Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleObjects">The sample objects.</param>
+        </member>
+        <member name="M:SAMS.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:SAMS.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:SAMS.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:SAMS.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:SAMS.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The parameter type or return type of an action.</param>
+        </member>
+        <member name="M:SAMS.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:SAMS.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:SAMS.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:SAMS.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:SAMS.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:SAMS.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,SAMS.Areas.HelpPage.HelpPageSampleGenerator)">
+            <summary>
+            Sets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleGenerator">The help page sample generator.</param>
+        </member>
+        <member name="M:SAMS.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
+            <returns>
+            An <see cref="T:SAMS.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="T:SAMS.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:SAMS.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SAMS.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:SAMS.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:SAMS.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:SAMS.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:SAMS.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:SAMS.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:SAMS.Areas.HelpPage.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:SAMS.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SAMS.Areas.HelpPage.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="M:SAMS.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:SAMS.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:SAMS.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,SAMS.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:SAMS.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,SAMS.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:SAMS.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:SAMS.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:SAMS.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create one using <see cref="T:SAMS.Areas.HelpPage.ObjectGenerator"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:SAMS.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},SAMS.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:SAMS.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="P:SAMS.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:SAMS.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:SAMS.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="T:SAMS.Areas.HelpPage.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:SAMS.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:SAMS.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:SAMS.Areas.HelpPage.HelpPageSampleKey.#ctor(SAMS.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:SAMS.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:SAMS.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:SAMS.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:SAMS.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,SAMS.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:SAMS.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:SAMS.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:SAMS.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:SAMS.Areas.HelpPage.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:SAMS.Areas.HelpPage.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:SAMS.Areas.HelpPage.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:SAMS.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:SAMS.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:SAMS.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="T:SAMS.Areas.HelpPage.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:SAMS.Areas.HelpPage.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SAMS.Areas.HelpPage.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="T:SAMS.Areas.HelpPage.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:SAMS.Areas.HelpPage.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:SAMS.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:SAMS.Areas.HelpPage.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="T:SAMS.Areas.HelpPage.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:SAMS.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:SAMS.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SAMS.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="M:SAMS.Controllers.Api.CompetitionsController.Get">
+            <summary>
+            Get list of competitions
+            </summary>
+            <returns><see cref="!:IEnumerable[CompetitionHeaderInfo]"/></returns>
+        </member>
+        <member name="M:SAMS.Controllers.Api.CompetitionsController.Get(System.String)">
+            <summary>
+            Get competition details with unplayed matches list
+            </summary>
+            <param name="referenceId">competition referenceid</param>
+            <returns><see cref="T:Simple.SAMS.Contracts.Competitions.CompetitionDetails"/></returns>
+        </member>
+        <member name="T:SAMS.Resources.Texts">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.About">
+            <summary>
+              Looks up a localized string similar to אודות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.ActivateUser">
+            <summary>
+              Looks up a localized string similar to הפוך פעיל.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.ActivateUserTitle">
+            <summary>
+              Looks up a localized string similar to הפיכת משתמש לפעיל.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.Admin">
+            <summary>
+              Looks up a localized string similar to ניהול.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.Cancel">
+            <summary>
+              Looks up a localized string similar to ביטול.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionDetails">
+            <summary>
+              Looks up a localized string similar to פרטי תחרות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionEndTime">
+            <summary>
+              Looks up a localized string similar to תאריך סיום.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionLastModified">
+            <summary>
+              Looks up a localized string similar to עודכן לאחרונה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionLastModifiedHeader">
+            <summary>
+              Looks up a localized string similar to עודכן לאחרונה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionMainReferee">
+            <summary>
+              Looks up a localized string similar to שופט ראשי.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionMainRefereePhone">
+            <summary>
+              Looks up a localized string similar to טלפון שופט ראשי.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionMatchesTab">
+            <summary>
+              Looks up a localized string similar to משחקים.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionName">
+            <summary>
+              Looks up a localized string similar to שם.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionNameHeader">
+            <summary>
+              Looks up a localized string similar to שם.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionPlayers">
+            <summary>
+              Looks up a localized string similar to טעינת שחקנים.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionPlayersTab">
+            <summary>
+              Looks up a localized string similar to שחקנים.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionReferenceId">
+            <summary>
+              Looks up a localized string similar to אסמכתא.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.Competitions">
+            <summary>
+              Looks up a localized string similar to תחרויות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionsFileLabel">
+            <summary>
+              Looks up a localized string similar to בחר קובץ תחרויות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionSite">
+            <summary>
+              Looks up a localized string similar to מועדון.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionSitePhone">
+            <summary>
+              Looks up a localized string similar to טלפון מועדון.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionsList">
+            <summary>
+              Looks up a localized string similar to רשימת תחרויות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionStartTime">
+            <summary>
+              Looks up a localized string similar to תאריך התחלה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionStartTimeHeader">
+            <summary>
+              Looks up a localized string similar to תאריך.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionStatus">
+            <summary>
+              Looks up a localized string similar to סטאטוס.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionStatus_MatchesCreated">
+            <summary>
+              Looks up a localized string similar to המשחקים נוצרו.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionTitle">
+            <summary>
+              Looks up a localized string similar to תחרות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionType">
+            <summary>
+              Looks up a localized string similar to סוג התחרות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionTypeHeader">
+            <summary>
+              Looks up a localized string similar to סוג.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionTypeNameHeader">
+            <summary>
+              Looks up a localized string similar to שם.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionTypes">
+            <summary>
+              Looks up a localized string similar to סוגי תחרויות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionUpdateResultsTab">
+            <summary>
+              Looks up a localized string similar to עדכון תוצאות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CreateCompetition">
+            <summary>
+              Looks up a localized string similar to יצירת תחרות חדשה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CreateCompetitionLink">
+            <summary>
+              Looks up a localized string similar to יצירת תחרות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CreateCompetitionType">
+            <summary>
+              Looks up a localized string similar to צור סוג תחרות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CreateCompetitionTypeHeader">
+            <summary>
+              Looks up a localized string similar to יצירת סוג תחרות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.Dashboard">
+            <summary>
+              Looks up a localized string similar to Dashboard.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.DeactivateUser">
+            <summary>
+              Looks up a localized string similar to הפוך ללא פעיל.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.DeactivateUserTitle">
+            <summary>
+              Looks up a localized string similar to הפיכת משתמש ללא פעיל.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.Delete">
+            <summary>
+              Looks up a localized string similar to מחק.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.Edit">
+            <summary>
+              Looks up a localized string similar to עריכה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.EditCompetitionTypeHeader">
+            <summary>
+              Looks up a localized string similar to עריכת פרטי סוג תחרות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.EliminationTournament">
+            <summary>
+              Looks up a localized string similar to טורניר.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.FemaleAbbr">
+            <summary>
+              Looks up a localized string similar to נקבה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.HasConsolation">
+            <summary>
+              Looks up a localized string similar to בית תנחומים?.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.Help">
+            <summary>
+              Looks up a localized string similar to עזרה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.HelpAndSupport">
+            <summary>
+              Looks up a localized string similar to עזרה ותמיכה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.Home">
+            <summary>
+              Looks up a localized string similar to ראשי.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.Import">
+            <summary>
+              Looks up a localized string similar to טעינה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.ImportCompetitions">
+            <summary>
+              Looks up a localized string similar to טעינת קובץ תחרויות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.LoadCompetitionPlayersHeader">
+            <summary>
+              Looks up a localized string similar to טעינת קובץ שחקנים.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.Login">
+            <summary>
+              Looks up a localized string similar to כניסה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.LoginFormTitle">
+            <summary>
+              Looks up a localized string similar to כניסה למערכת.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.LogOff">
+            <summary>
+              Looks up a localized string similar to יציאה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.MaleAbbr">
+            <summary>
+              Looks up a localized string similar to זכר.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.ManageUsers">
+            <summary>
+              Looks up a localized string similar to משתמשים.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.Method">
+            <summary>
+              Looks up a localized string similar to שיטה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.Name">
+            <summary>
+              Looks up a localized string similar to שם.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.NameIsRequired">
+            <summary>
+              Looks up a localized string similar to נא לציין שם.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.NewCompetitionType">
+            <summary>
+              Looks up a localized string similar to הוספת סוג תחרות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.PairsCount">
+            <summary>
+              Looks up a localized string similar to מספר הזוגות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.Password">
+            <summary>
+              Looks up a localized string similar to סיסמה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.PlayerBirthDateHeader">
+            <summary>
+              Looks up a localized string similar to תאריך לידה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.PlayerCountryHeader">
+            <summary>
+              Looks up a localized string similar to מדינה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.PlayerEnglishNameHeader">
+            <summary>
+              Looks up a localized string similar to שם באנגלית.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.PlayerEuropeInternationalRankHeader">
+            <summary>
+              Looks up a localized string similar to דירוג אירופי.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.PlayerGenderHeader">
+            <summary>
+              Looks up a localized string similar to מין.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.PlayerLocalNameHeader">
+            <summary>
+              Looks up a localized string similar to שם.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.PlayerNationalRankHeader">
+            <summary>
+              Looks up a localized string similar to דירוג ארצי.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.PlayersCount">
+            <summary>
+              Looks up a localized string similar to מספר שחקנים.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.PlayersCountIsRequired">
+            <summary>
+              Looks up a localized string similar to נא לציין מספר שחקנים..
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.PlayersFileLabel">
+            <summary>
+              Looks up a localized string similar to בחר קובץ שחקנים.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.PlayerYouthInternationalRankHeader">
+            <summary>
+              Looks up a localized string similar to דירוג נוער.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.QualifyingPairsCount">
+            <summary>
+              Looks up a localized string similar to מוקדמות זוגות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.QualifyingPlayersCount">
+            <summary>
+              Looks up a localized string similar to מספק שחקנים במוקדמות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.ResetPassword">
+            <summary>
+              Looks up a localized string similar to אפס סיסמה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.ResetPasswordCompleted">
+            <summary>
+              Looks up a localized string similar to סיסמת המשתמש &quot;{0}&quot; אופסה, הסיסמה החדשה היא: {1}.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.ResetPasswordTitle">
+            <summary>
+              Looks up a localized string similar to איפוס סיסמת משתמש.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.SAMS">
+            <summary>
+              Looks up a localized string similar to Simple. SAMS.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.StartImportCompetition">
+            <summary>
+              Looks up a localized string similar to התחל טעינה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.Update">
+            <summary>
+              Looks up a localized string similar to עדכן.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.UpdateCompetitionPlayers">
+            <summary>
+              Looks up a localized string similar to עדכן שחקנים.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.UpdateCompetitionPlayersHeader">
+            <summary>
+              Looks up a localized string similar to עדכון שחקנים לתחרות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.UserActivated">
+            <summary>
+              Looks up a localized string similar to המשתמש &quot;{0}&quot; הפך לפעיל, משתמש זה יוכל מעתה להכנס למערכת..
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.UserDeactivated">
+            <summary>
+              Looks up a localized string similar to המשתמש &quot;{0}&quot; הפך ללא פעיל, משתמש זה לא יוכל מעתה להכנס למערכת..
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.Username">
+            <summary>
+              Looks up a localized string similar to שם משתמש.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.UsernameHeader">
+            <summary>
+              Looks up a localized string similar to שם משתמש.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.WildcardPairsCount">
+            <summary>
+              Looks up a localized string similar to כרטיסים חופשיים זוגות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.WildcardPlayersCount">
+            <summary>
+              Looks up a localized string similar to כרטיסים חופשיים.
+            </summary>
+        </member>
+    </members>
+</doc>

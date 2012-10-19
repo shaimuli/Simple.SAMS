@@ -11,13 +11,23 @@ namespace Simple.SAMS.Contracts.Competitions
     public class MatchPlayer
     {
         [DataMember(EmitDefaultValue = false)]
-        public int PlayerId { get; set; }
+        public int Id { get; set; }
+        
+        [DataMember(EmitDefaultValue = false)]
+        public string IdNumber { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public string PlayerName { get; set; }
+        public string LocalFirstName { get; set; }
+        
+        [DataMember(EmitDefaultValue = false)]
+        public string LocalLastName { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public int CompetitionRank { get; set; }
+        public string EnglishFirstName { get; set; }
+        
+        [DataMember(EmitDefaultValue = false)]
+        public string EnglishLastName { get; set; }
+
 
     }
 }
