@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.SAMS.Competitions.Se
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompetitionsTestClient", "tests\CompetitionsTestClient\CompetitionsTestClient.csproj", "{2AFCA70D-DC06-46CF-959C-4FACF803AD7C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple.SAMS.Utilities", "src\Simple.SAMS.Utilities\Simple.SAMS.Utilities.csproj", "{58A9B75C-A893-4733-A02F-4F9E817BEA77}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{2AFCA70D-DC06-46CF-959C-4FACF803AD7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AFCA70D-DC06-46CF-959C-4FACF803AD7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AFCA70D-DC06-46CF-959C-4FACF803AD7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58A9B75C-A893-4733-A02F-4F9E817BEA77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58A9B75C-A893-4733-A02F-4F9E817BEA77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58A9B75C-A893-4733-A02F-4F9E817BEA77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58A9B75C-A893-4733-A02F-4F9E817BEA77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -96,6 +96,11 @@ namespace Simple.SAMS.Competitions.Data
         {
             var loadOptions = new DataLoadOptions();
             loadOptions.LoadWith<Competition>(c => c.CompetitionType);
+            loadOptions.LoadWith<CompetitionPlayer>(cp => cp.Player);
+            loadOptions.LoadWith<Match>(m => m.Player);
+            loadOptions.LoadWith<Match>(m => m.Player5);
+            loadOptions.LoadWith<Match>(m => m.Player6);
+            loadOptions.LoadWith<Match>(m => m.Player7);
             return loadOptions;
         }
 
@@ -125,11 +130,12 @@ namespace Simple.SAMS.Competitions.Data
                         result = new CompetitionDetails();
                         MapCompetitionDataToHeader(competitionData, result);
                         var players =
-                            dataContext.CompetitionPlayers.Where(cp => cp.CompetitionId == competitionData.Id && cp.Player.RowStatus == 0).Select(cp => cp.Player).ToArray();
+                            dataContext.CompetitionPlayers.Where(cp => cp.CompetitionId == competitionData.Id && cp.Player.RowStatus == 0).ToArray();
                         result.Players = players.Select(dataEntity =>
                         {
-                            var entity = new Contracts.Players.Player();
-                            AutoMapper.Mapper.DynamicMap(dataEntity, entity);
+                            var entity = new Contracts.Players.CompetitionPlayer();
+                            AutoMapper.Mapper.DynamicMap(dataEntity.Player, entity);
+                            entity.CompetitionRank = dataEntity.Rank.GetValueOrDefault();
                             return entity;
                         }).ToArray();
                         var matches = dataContext.Matches.Where(m => m.CompetitionId == competitionData.Id && m.RowStatus == 0);
@@ -160,42 +166,29 @@ namespace Simple.SAMS.Competitions.Data
                            Round = match.Round,
                            Position = match.Position
                        };
-            var matchPlayers = match.MatchPlayers.Select(mp => new { mp.Player, mp.Position }).ToArray();
-            var player1 = matchPlayers.FirstOrDefault(mp => mp.Position == 1);
-            if (player1 != null)
-            {
-                result.Player1 = CreateMatchPlayerFromData(player1.Player);
-            }
-            var player2 = matchPlayers.FirstOrDefault(mp => mp.Position == 2);
-            if (player2 != null)
-            {
-                result.Player2 = CreateMatchPlayerFromData(player2.Player);
-            }
-            var player3 = matchPlayers.FirstOrDefault(mp => mp.Position == 3);
-            if (player3 != null)
-            {
-                result.Player3 = CreateMatchPlayerFromData(player3.Player);
-            }
-            var player4 = matchPlayers.FirstOrDefault(mp => mp.Position == 4);
-            if (player4 != null)
-            {
-                result.Player4 = CreateMatchPlayerFromData(player4.Player);
-            }
+                result.Player1 = CreateMatchPlayerFromData(match.Player);
+                result.Player2 = CreateMatchPlayerFromData(match.Player5);
+                result.Player3 = CreateMatchPlayerFromData(match.Player6);
+                result.Player4 = CreateMatchPlayerFromData(match.Player7);
 
             return result;
         }
 
         private Contracts.Competitions.MatchPlayer CreateMatchPlayerFromData(Player player)
         {
-            var result = new Contracts.Competitions.MatchPlayer();
+            var result = default(Contracts.Competitions.MatchPlayer);
+            if (player.IsNotNull())
+            {
+                result = new Contracts.Competitions.MatchPlayer();
 
-            result.Id = player.Id;
-            result.IdNumber = player.IdNumber;
+                result.Id = player.Id;
+                result.IdNumber = player.IdNumber;
 
-            result.LocalFirstName = player.LocalFirstName;
-            result.LocalLastName = player.LocalLastName;
-            result.EnglishFirstName = player.EnglishFirstName;
-            result.EnglishLastName = player.EnglishLastName;
+                result.LocalFirstName = player.LocalFirstName;
+                result.LocalLastName = player.LocalLastName;
+                result.EnglishFirstName = player.EnglishFirstName;
+                result.EnglishLastName = player.EnglishLastName;
+            }
             return result;
         }
 

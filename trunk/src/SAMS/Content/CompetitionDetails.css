@@ -1,12 +1,107 @@
-﻿
-.competitonContainer {
+﻿.competitonContainer {
     max-width: 100%;
     overflow: auto;
 }
-.roundContainer {
+
+.round {
+    width: 180px;
     float: left;
 }
-.rtl .roundContainer {
+.rtl .round {
     float: right;
 }
 
+.matches {
+    width: 140px;
+    
+    float: left;
+}
+.rtl .matches {
+    float: right;
+}
+
+.matchSpot {
+    width: 128px;
+    height: 40px;
+    background-color: transparent;
+    border: solid 1px transparent;
+    margin: 3px;
+    padding: 3px;
+    border-radius: 4px;
+}
+
+.players {
+    font-size: 12px;
+    width: 100%;
+    height: 50%;
+    overflow: hidden;
+}
+
+.players:first-child {
+    border-bottom: solid 1px #ddd;
+}
+.player {
+    width: 100px;
+    text-overflow: ellipsis;
+    float: left;
+}
+.rtl .player {
+    float: right;
+}
+
+.score {
+    width: 22px;
+    text-overflow: ellipsis;
+    float: left;
+    font-weight: bold;
+}
+.rtl .score {
+    float: right;
+}
+
+
+.matchSpot.filled
+{
+    background-color: #B8D0E8;
+    border-color: #B8D0FF;
+    
+}
+
+.matchSpot a
+{
+    color: black;
+}
+
+.competitionHost {
+    width: 960px;
+    height: 960px;
+    overflow: auto;
+}
+
+
+.matchesGrid {
+    min-height: 960px;
+}
+
+
+
+.m16 {
+    min-height: 768px;   
+}
+
+.m32 {
+    min-height: 1536px;   
+}
+
+.r3 {
+    width: 720px; 
+}
+.r4 {
+    width: 960px; 
+}
+.r5 {
+    width: 1200px; 
+}
+.r6 {
+    width: 1440px; 
+}

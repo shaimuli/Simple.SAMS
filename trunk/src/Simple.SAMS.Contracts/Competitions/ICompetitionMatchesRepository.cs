@@ -13,5 +13,7 @@ namespace Simple.SAMS.Contracts.Competitions
         [OperationContract]
         void AddCompetitionMatches(int competitionId,  MatchHeaderInfo[] matches);
 
+        [OperationContract]
+        void UpdatePlayersPosition(int competitionId, UpdatePlayerPositionInfo[] positions);
     }
 }

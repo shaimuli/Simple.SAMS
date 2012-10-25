@@ -17,11 +17,10 @@ namespace SAMS.Models
         public int Round { get; set; }
 
         public DateTime? StartTime { get; set; }
-        public MatchPlayerViewModel LeftPlayer1 { get; set; }
-        public MatchPlayerViewModel LeftPlayer2 { get; set; }
-
-        public MatchPlayerViewModel RightPlayer1 { get; set; }
-        public MatchPlayerViewModel RightPlayer2 { get; set; }
+        public MatchPlayerViewModel Player1 { get; set; }
+        public MatchPlayerViewModel Player2 { get; set; }
+        public MatchPlayerViewModel Player3 { get; set; }
+        public MatchPlayerViewModel Player4 { get; set; }
 
     }
 }

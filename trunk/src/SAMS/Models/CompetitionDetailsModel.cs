@@ -18,6 +18,6 @@ namespace SAMS.Models
         public CompetitionStatus Status { get; set; }
         public EntityReference Type { get; set; }
         public CompetitionMatchViewModel[] Matches { get; set; }
-        public Player[] Players { get; set; }
+        public CompetitionPlayer[] Players { get; set; }
     }
 }

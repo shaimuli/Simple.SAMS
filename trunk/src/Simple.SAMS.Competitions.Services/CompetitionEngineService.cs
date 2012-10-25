@@ -8,8 +8,11 @@ using System.Threading.Tasks;
 using FileHelpers;
 using Rhino.Etl.Core.Files;
 using Simple.ComponentModel;
+using Simple.Data;
 using Simple.SAMS.Contracts.Competitions;
 using Simple.SAMS.Contracts.Players;
+using Simple.SAMS.Contracts.Positioning;
+using Simple.SAMS.Utilities;
 
 namespace Simple.SAMS.Competitions.Services
 {
@@ -59,15 +62,7 @@ namespace Simple.SAMS.Competitions.Services
             for (var i = 0; i < players.Length; i++)
             {
                 var player = players[i];
-                var rank = player.NationalRank;
-                if (competitionType.Ranking == Ranking.YouthInternational)
-                {
-                    rank = player.YouthInternationalRank;
-                }
-                else if (competitionType.Ranking == Ranking.EuropeInternational)
-                {
-                    rank = player.EuropeInternationalRank;
-                }
+                var rank = competitionType.RankPlayer(player);
                 var playerInCompetition = new PlayerInCompetition() { PlayerId = playerIds[i], Rank = rank };
                 competitionPlayers.Add(playerInCompetition);
             }
@@ -205,6 +200,41 @@ namespace Simple.SAMS.Competitions.Services
         {
             var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
             competitionsRepository.UpdateCompetitionsByReferenceId(competitions);
+        }
+
+
+        private void UpdateCompetitionPlayersPosition(int competitionId)
+        {
+            var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
+            var competitionTypesRepository = ServiceProvider.Get<ICompetitionTypeRepository>();
+            var competitionDetails = competitionsRepository.GetCompetitionDetails(competitionId);
+            var competitionType = competitionTypesRepository.Get(competitionDetails.Type.Id);
+
+            var positioningEngineFactory = ServiceProvider.Get<IPositioningEngineFactory>();
+            var positioningEngine = positioningEngineFactory.Create(competitionType.Method);
+            if (positioningEngine.IsNull())
+            {
+                throw new ApplicationException("Positioning engine factory '{0}' returned null, instance of {1} is expected.".ParseTemplate(positioningEngineFactory.GetType().FullName, typeof(IPositioningEngine).FullName));
+            }
+
+            var positions = positioningEngine.PositionPlayers(competitionDetails, competitionType);
+
+            var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
+            
+            competitionMatchesRepository.UpdatePlayersPosition(competitionId, positions);
+            // TRACE
+            //var json = positions.ToJson();
+            //var file = "E:\\temp\\positions.json.txt";
+            //if (File.Exists(file))
+            //{
+            //    File.Delete(file);
+            //}
+            //File.WriteAllText(file, json);
+        }
+
+        public void UpdatePlayersPosition(int[] competitionIds)
+        {
+            competitionIds.ForEach(UpdateCompetitionPlayersPosition);
         }
     }
 }

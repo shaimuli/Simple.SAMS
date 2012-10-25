@@ -16,15 +16,6 @@
       <Column Name="IsActive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.MatchPlayer" Member="MatchPlayers">
-    <Type Name="MatchPlayer">
-      <Column Name="MatchId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="PlayerId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="Position" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="Player_MatchPlayer" Member="Player" ThisKey="PlayerId" OtherKey="Id" Type="Player" IsForeignKey="true" />
-      <Association Name="Match_MatchPlayer" Member="Match" ThisKey="MatchId" OtherKey="Id" Type="Match" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Competition" Member="Competitions">
     <Type Name="Competition">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -42,6 +33,7 @@
       <Column Name="MainRefereePhone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Column Name="SitePhone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Association Name="Competition_CompetitionPlayer" Member="CompetitionPlayers" ThisKey="Id" OtherKey="CompetitionId" Type="CompetitionPlayer" />
+      <Association Name="Competition_Match" Member="Matches" ThisKey="Id" OtherKey="CompetitionId" Type="Match" />
       <Association Name="CompetitionType_Competition" Member="CompetitionType" ThisKey="TypeId" OtherKey="Id" Type="CompetitionType" IsForeignKey="true" />
     </Type>
   </Table>
@@ -65,7 +57,10 @@
       <Column Name="IPIN" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="Phone" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
       <Association Name="Player_CompetitionPlayer" Member="CompetitionPlayers" ThisKey="Id" OtherKey="PlayerId" Type="CompetitionPlayer" />
-      <Association Name="Player_MatchPlayer" Member="MatchPlayers" ThisKey="Id" OtherKey="PlayerId" Type="MatchPlayer" />
+      <Association Name="Player_Match" Member="Matches" ThisKey="Id" OtherKey="Player1" Type="Match" />
+      <Association Name="Player_Match1" Member="Matches1" ThisKey="Id" OtherKey="Player2" Type="Match" />
+      <Association Name="Player_Match2" Member="Matches2" ThisKey="Id" OtherKey="Player3" Type="Match" />
+      <Association Name="Player_Match3" Member="Matches3" ThisKey="Id" OtherKey="Player4" Type="Match" />
     </Type>
   </Table>
   <Table Name="dbo.Section" Member="Sections">
@@ -108,7 +103,15 @@
       <Column Name="SectionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="EndTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="StartTimeType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Match_MatchPlayer" Member="MatchPlayers" ThisKey="Id" OtherKey="MatchId" Type="MatchPlayer" />
+      <Column Name="Player1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Player2" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Player3" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Player4" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Competition_Match" Member="Competition" ThisKey="CompetitionId" OtherKey="Id" Type="Competition" IsForeignKey="true" />
+      <Association Name="Player_Match" Member="Player" ThisKey="Player1" OtherKey="Id" Type="Player" IsForeignKey="true" />
+      <Association Name="Player_Match1" Member="Player5" ThisKey="Player2" OtherKey="Id" Type="Player" IsForeignKey="true" />
+      <Association Name="Player_Match2" Member="Player6" ThisKey="Player3" OtherKey="Id" Type="Player" IsForeignKey="true" />
+      <Association Name="Player_Match3" Member="Player7" ThisKey="Player4" OtherKey="Id" Type="Player" IsForeignKey="true" />
       <Association Name="Section_Match" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
     </Type>
   </Table>

@@ -12,7 +12,7 @@ namespace Simple.SAMS.Contracts.Competitions
     public class CompetitionDetails : CompetitionHeaderInfo
     {
         [DataMember(EmitDefaultValue = false)]
-        public Player[] Players { get; set; }
+        public CompetitionPlayer[] Players { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
         public MatchHeaderInfo[] Matches { get; set; }

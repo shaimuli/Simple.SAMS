@@ -55,13 +55,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompetitionEngineService.cs" />
+    <Compile Include="DefaultPositioningEngineFactory.cs" />
     <Compile Include="CompetitionsManagerService.cs" />
+    <Compile Include="KnockoutPositioningEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Simple.SAMS.Contracts\Simple.SAMS.Contracts.csproj">
       <Project>{cb2ba29b-7909-4307-97cb-8c63cbcfa224}</Project>
       <Name>Simple.SAMS.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Simple.SAMS.Utilities\Simple.SAMS.Utilities.csproj">
+      <Project>{58a9b75c-a893-4733-a02f-4f9e817bea77}</Project>
+      <Name>Simple.SAMS.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

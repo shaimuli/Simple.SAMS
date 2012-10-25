@@ -10,5 +10,8 @@ namespace Simple.SAMS.Contracts.Competitions
         Player[] GetCompetitionPlayers(string playersFileUrl);
         CreateCompetitionInfo[] GetCompetitions(string competitionsFileUrl);
         void ImportCompetitions(CreateCompetitionInfo[] competitions);
+
+
+        void UpdatePlayersPosition(int[] p);
     }
 }

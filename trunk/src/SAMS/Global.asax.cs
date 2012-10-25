@@ -134,6 +134,7 @@ namespace SAMS
             ServiceProvider.Add<IRemoteStorageProviderFactory, SimpleRemoteStorageProviderFactory>();
 
             ServiceProvider.Add<IMatchProvisioningEngineFactory, DefaultMatchProvisioningEngineFactory>();
+            ServiceProvider.Add<IPositioningEngineFactory, DefaultPositioningEngineFactory>();
         }
     }
 }

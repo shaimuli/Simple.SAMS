@@ -1,0 +1,12 @@
+﻿@using Simple
+@model SAMS.Models.MatchPlayerViewModel
+@if (Model.LocalLastName.NotNullOrEmpty())
+{
+    @Html.ActionLink((Model.LocalLastName.NotNullOrEmpty() ? Model.LocalLastName + ", " + Model.LocalFirstName : Model.LocalFirstName), "Details", "Players", new { target = "_blank" })
+}
+else
+{
+    @Html.ActionLink( Model.LocalFirstName , "Details", "Players", new { target = "_blank" })    
+}
+
+

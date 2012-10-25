@@ -1,0 +1,26 @@
+﻿@using Simple
+@model SAMS.Models.CompetitionMatchViewModel
+
+<div class="matchContainer">
+    <div class="matchHeader">
+        Position: @Model.Position
+    </div>
+    
+    <div class="matchPlayers">
+        @if (Model.Player1.IsNotNull())
+        {
+            <div>
+                @Html.DisplayFor(m => m.Player1)
+            </div>
+        }
+
+        @if (Model.Player2.IsNotNull())
+        {
+            <div>
+                @Html.DisplayFor(m => m.Player2)
+            </div>
+        }
+
+    </div>
+</div>
+

@@ -12,6 +12,7 @@ using Simple.Common.Storage;
 using Simple.ComponentModel;
 using Simple.SAMS.Contracts.Competitions;
 using Simple.SAMS.Contracts.Players;
+using Simple.SAMS.Contracts.Positioning;
 
 namespace Simple.SAMS.Competitions.Services
 {
@@ -22,14 +23,17 @@ namespace Simple.SAMS.Competitions.Services
             var competitionsEngine = ServiceProvider.Get<ICompetitionsEngine>();
             var competitionId = competitionsEngine.CreateCompetition(competitionCreateInfo);
 
+            var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
+            var competitionHeaderInfo = competitionsRepository.GetCompetition(competitionId);
+            competitionsEngine.CreateCompetitionsMatches(new[] { competitionHeaderInfo });
+
             if (playersFile.NotNullOrEmpty())
             {
                 var players = competitionsEngine.GetCompetitionPlayers(playersFile);
                 competitionsEngine.AddPlayersToCompetition(competitionId, players);
 
-                var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
-                var competitionHeaderInfo = competitionsRepository.GetCompetition(competitionId);
-                competitionsEngine.CreateCompetitionsMatches(new[] {competitionHeaderInfo});
+                
+                competitionsEngine.UpdatePlayersPosition(new[] { competitionId });
             }
         }
 

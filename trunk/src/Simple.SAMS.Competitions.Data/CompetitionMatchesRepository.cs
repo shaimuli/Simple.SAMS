@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Simple.Data;
 using Simple.SAMS.Contracts.Competitions;
 using Simple.Utilities;
 
@@ -48,6 +50,44 @@ namespace Simple.SAMS.Competitions.Data
             dataMatch.Round = match.Round;
             dataMatch.Status = (int) match.Status;
             dataMatch.StartTimeType = (int) match.StartTimeType;
+        }
+
+
+        public void UpdatePlayersPosition(int competitionId, UpdatePlayerPositionInfo[] positions)
+        {
+            UseDataContext(
+                dataContext =>
+                    {
+                        var matches = dataContext.Matches.Where(m => m.CompetitionId == competitionId).ToArray();
+                        var matchesMap = new Dictionary<int, Match>();
+                        matches.ForEach(match=>
+                                            {
+                                                matchesMap[match.Id] = match;
+                                            });
+                        positions.ForEach(position=>
+                                              {
+                                                  var match = matchesMap[position.MatchId];
+                                                  if(position.Position == 0)
+                                                  {
+                                                      match.Player1 = position.PlayerId;
+                                                  }
+                                                  if(position.Position == 1)
+                                                  {
+                                                      match.Player2 = position.PlayerId;
+                                                  }
+                                                  if(position.Position == 2)
+                                                  {
+                                                      match.Player3 = position.PlayerId;
+                                                  }
+                                                  if(position.Position == 3)
+                                                  {
+                                                      match.Player4 = position.PlayerId;
+                                                  }
+
+                                              });
+
+                        dataContext.SubmitChanges();
+                    });
         }
     }
 }

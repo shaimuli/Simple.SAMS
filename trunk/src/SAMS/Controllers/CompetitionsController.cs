@@ -8,6 +8,7 @@ using SAMS.Models;
 using Simple;
 using Simple.Common.Storage;
 using Simple.ComponentModel;
+using Simple.Data;
 using Simple.SAMS.Contracts.Competitions;
 
 namespace SAMS.Controllers
@@ -21,7 +22,7 @@ namespace SAMS.Controllers
         {
             var model = new CompetitionDetailsModel();
             var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
-            
+
             var competition = competitionsRepository.GetCompetitionDetails(id);
             model.Id = id;
             model.Name = competition.Name;
@@ -32,6 +33,8 @@ namespace SAMS.Controllers
             model.Status = competition.Status;
             model.ReferenceId = competition.ReferenceId;
             model.Players = competition.Players;
+
+            var json = competition.Matches.ToJson();
             model.Matches =
                 competition.Matches.Select(
                     m => new CompetitionMatchViewModel()
@@ -40,8 +43,13 @@ namespace SAMS.Controllers
                                  Section = m.Section,
                                  StartTime = m.StartTime,
                                  Status = m.Status,
-                                 Round=m.Round,
-                                 Position = m.Position
+                                 Round = m.Round,
+                                 Position = m.Position,
+                                 Player1 = m.Player1.IsNotNull() ? new MatchPlayerViewModel(m.Player1) : null,
+                                 Player2 = m.Player2.IsNotNull() ? new MatchPlayerViewModel(m.Player2) : null,
+                                 Player3 = m.Player3.IsNotNull() ? new MatchPlayerViewModel(m.Player3) : null,
+                                 Player4 = m.Player4.IsNotNull() ? new MatchPlayerViewModel(m.Player4) : null,
+
                              }).ToArray();
             return View(model);
         }
@@ -49,7 +57,7 @@ namespace SAMS.Controllers
         public ActionResult Index(int startIndex = 0, int pageSize = 50)
         {
             var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
-            var result = competitionsRepository.SearchCompetitions(new CompetitionSearchQuery() { StartIndex = startIndex, PageSize = pageSize});
+            var result = competitionsRepository.SearchCompetitions(new CompetitionSearchQuery() { StartIndex = startIndex, PageSize = pageSize });
 
             return View(result.Items);
         }
@@ -61,21 +69,21 @@ namespace SAMS.Controllers
 
             return View(competition);
         }
-        
+
         [HttpPost]
         public ActionResult UpdatePlayers(int competitionId, HttpPostedFileBase playersFile)
         {
             var manager = ServiceProvider.Get<ICompetitionsManager>();
             var url = AcceptCsvFile(playersFile, "CompetitionPlayers");
             manager.UpdateCompetitionPlayers(competitionId, url.ToString());
-            return RedirectToAction("Details", new {id=competitionId});
+            return RedirectToAction("Details", new { id = competitionId });
         }
-                
+
         public ActionResult Import()
         {
             return View();
         }
-        
+
         [HttpPost]
         public ActionResult Import(HttpPostedFileBase competitionsFile)
         {
@@ -121,7 +129,7 @@ namespace SAMS.Controllers
         {
             var providerFactory = ServiceProvider.Get<IRemoteStorageProviderFactory>();
             var remoteStorageProvider = providerFactory.Create();
-            
+
             var storageInfo = new RemoteStorageInfo()
                                   {
                                       ContentType = "text/csv",
@@ -146,8 +154,8 @@ namespace SAMS.Controllers
             var createModel = new CreateCompetitionModel();
             var competitionTypeRepository = ServiceProvider.Get<ICompetitionTypeRepository>();
             var competitionTypes = competitionTypeRepository.GetCompetitionTypes();
-            createModel.AvailableTypes = competitionTypes.Select(ct => new CompetitionTypeReference() { Id= ct.Id, Name = ct.Name });
-                
+            createModel.AvailableTypes = competitionTypes.Select(ct => new CompetitionTypeReference() { Id = ct.Id, Name = ct.Name });
+
             return createModel;
         }
 
@@ -155,7 +163,7 @@ namespace SAMS.Controllers
         {
             return View();
         }
-        
+
 
 
 

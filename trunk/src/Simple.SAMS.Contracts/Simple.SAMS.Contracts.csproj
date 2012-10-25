@@ -67,12 +67,15 @@
     <Compile Include="Competitions\ICompetitionTypeRepository.cs" />
     <Compile Include="Competitions\IMatchProvisioningEngine.cs" />
     <Compile Include="Competitions\IMatchProvisioningEngineFactory.cs" />
+    <Compile Include="Competitions\IPositioningEngineFactory.cs" />
     <Compile Include="Competitions\MatchDetails.cs" />
     <Compile Include="Competitions\MatchStatus.cs" />
     <Compile Include="Competitions\Ranking.cs" />
     <Compile Include="Competitions\StartTimeType.cs" />
+    <Compile Include="Competitions\UpdatePlayerPositionInfo.cs" />
     <Compile Include="DefaultMatchProvisioningEngineFactory.cs" />
     <Compile Include="KnockoutMatchProvisioningEngine.cs" />
+    <Compile Include="Players\CompetitionPlayer.cs" />
     <Compile Include="Users\UserInfo.cs" />
     <Compile Include="Competitions\IPlayersRepository.cs" />
     <Compile Include="Users\IUsersRepository.cs" />
