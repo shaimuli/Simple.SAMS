@@ -19,6 +19,6 @@ namespace Simple.SAMS.Contracts.Competitions
         [EnumMember]
         Started,
         [EnumMember]
-        Comppleted
+        Finished
     }
 }

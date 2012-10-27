@@ -107,12 +107,24 @@
       <Column Name="Player2" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Player3" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Player4" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Player1Points" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Player2Points" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Match_MatchScore" Member="MatchScores" ThisKey="Id" OtherKey="MatchId" Type="MatchScore" />
       <Association Name="Competition_Match" Member="Competition" ThisKey="CompetitionId" OtherKey="Id" Type="Competition" IsForeignKey="true" />
       <Association Name="Player_Match" Member="Player" ThisKey="Player1" OtherKey="Id" Type="Player" IsForeignKey="true" />
       <Association Name="Player_Match1" Member="Player5" ThisKey="Player2" OtherKey="Id" Type="Player" IsForeignKey="true" />
       <Association Name="Player_Match2" Member="Player6" ThisKey="Player3" OtherKey="Id" Type="Player" IsForeignKey="true" />
       <Association Name="Player_Match3" Member="Player7" ThisKey="Player4" OtherKey="Id" Type="Player" IsForeignKey="true" />
       <Association Name="Section_Match" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MatchScore" Member="MatchScores">
+    <Type Name="MatchScore">
+      <Column Name="MatchId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SetNumber" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Player1Points" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Player2Points" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Match_MatchScore" Member="Match" ThisKey="MatchId" OtherKey="Id" Type="Match" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

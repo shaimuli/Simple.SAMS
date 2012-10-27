@@ -12,6 +12,8 @@ namespace Simple.SAMS.Contracts.Competitions
         void ImportCompetitions(CreateCompetitionInfo[] competitions);
 
 
-        void UpdatePlayersPosition(int[] p);
+        void UpdatePlayersPosition(int[] competitionIds);
+
+        void UpdateMatchScore(MatchScoreUpdateInfo scoreUpdateInfo);
     }
 }

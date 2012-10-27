@@ -4,7 +4,7 @@
 }
 
 .round {
-    width: 180px;
+    width: 200px;
     float: left;
 }
 .rtl .round {
@@ -12,7 +12,7 @@
 }
 
 .matches {
-    width: 140px;
+    width: 160px;
     
     float: left;
 }
@@ -21,7 +21,7 @@
 }
 
 .matchSpot {
-    width: 128px;
+    width: 148px;
     height: 40px;
     background-color: transparent;
     border: solid 1px transparent;
@@ -50,7 +50,7 @@
 }
 
 .score {
-    width: 22px;
+    width: 42px;
     text-overflow: ellipsis;
     float: left;
     font-weight: bold;

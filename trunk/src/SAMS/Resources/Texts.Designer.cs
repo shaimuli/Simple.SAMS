@@ -223,6 +223,51 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to בית התנחומים.
+        /// </summary>
+        internal static string CompetitionSection_Consolation {
+            get {
+                return ResourceManager.GetString("CompetitionSection.Consolation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to בית הגמר.
+        /// </summary>
+        internal static string CompetitionSection_Final {
+            get {
+                return ResourceManager.GetString("CompetitionSection.Final", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to בית הגמר זוגות.
+        /// </summary>
+        internal static string CompetitionSection_PairsFinal {
+            get {
+                return ResourceManager.GetString("CompetitionSection.PairsFinal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to מוקדמות זוגות.
+        /// </summary>
+        internal static string CompetitionSection_PairsQualifying {
+            get {
+                return ResourceManager.GetString("CompetitionSection.PairsQualifying", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to מוקדמות.
+        /// </summary>
+        internal static string CompetitionSection_Qualifying {
+            get {
+                return ResourceManager.GetString("CompetitionSection.Qualifying", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to בחר קובץ תחרויות.
         /// </summary>
         internal static string CompetitionsFileLabel {
@@ -286,11 +331,38 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to התחרות הסתיימה.
+        /// </summary>
+        internal static string CompetitionStatus_Finished {
+            get {
+                return ResourceManager.GetString("CompetitionStatus.Finished", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to המשחקים נוצרו.
         /// </summary>
         internal static string CompetitionStatus_MatchesCreated {
             get {
                 return ResourceManager.GetString("CompetitionStatus.MatchesCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to הוצבו השחקנים.
+        /// </summary>
+        internal static string CompetitionStatus_Positioned {
+            get {
+                return ResourceManager.GetString("CompetitionStatus.Positioned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to התחרות החלה.
+        /// </summary>
+        internal static string CompetitionStatus_Started {
+            get {
+                return ResourceManager.GetString("CompetitionStatus.Started", resourceCulture);
             }
         }
         
@@ -453,6 +525,15 @@ namespace SAMS.Resources {
         internal static string FemaleAbbr {
             get {
                 return ResourceManager.GetString("FemaleAbbr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to סיים תחרות.
+        /// </summary>
+        internal static string FinishCompetition {
+            get {
+                return ResourceManager.GetString("FinishCompetition", resourceCulture);
             }
         }
         
@@ -768,6 +849,15 @@ namespace SAMS.Resources {
         internal static string SAMS {
             get {
                 return ResourceManager.GetString("SAMS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to התחל תחרות.
+        /// </summary>
+        internal static string StartCompetition {
+            get {
+                return ResourceManager.GetString("StartCompetition", resourceCulture);
             }
         }
         

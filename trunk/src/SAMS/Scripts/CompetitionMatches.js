@@ -61,23 +61,34 @@
                         var spot = $(spotId).addClass("filled");
                         var player1 = $("<div/>").addClass("players").appendTo(spot);
                         var player2 = $("<div/>").addClass("players").appendTo(spot);
-                        function player(host, players) {
+                        function player(host, players, score) {
                             var pHost = $("<div/>").addClass("player").appendTo(host);
                             if ($.isArray(players)) {
                             } else {
                                 $("<a/>").attr("href", "#").text((players.LocalLastName || "") + " " + players.LocalFirstName).appendTo(pHost);
                             }
-                            $("<div/>").addClass("score").text("0").appendTo(host);
+                            $("<div/>").addClass("score").text(score).appendTo(host);
                         }
+                        
+                        function getScore(playerNumber, setScores) {
+                            var scores = [];
+                            for (var setNumber = 0; setNumber < setScores.length; setNumber++) {
+                                var setPoints = setScores[setNumber];
+                                scores.push(setPoints["Player" + playerNumber + "Points"] || 0);
+                            }
+                            return scores.join(" ");
+                        }
+
                         if (match.Player3 || match.Player4) {
                             
                         } else {
                             if (match.Player1) {
-                                player(player1, match.Player1);
+                                
+                                player(player1, match.Player1, getScore(1, match.SetScores));
                             }
                             
                             if (match.Player2) {
-                                player(player2, match.Player2);
+                                player(player2, match.Player2, getScore(2, match.SetScores));
                             }
                         }
                         

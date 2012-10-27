@@ -21,6 +21,6 @@ namespace SAMS.Models
         public MatchPlayerViewModel Player2 { get; set; }
         public MatchPlayerViewModel Player3 { get; set; }
         public MatchPlayerViewModel Player4 { get; set; }
-
+        public SetScore[] SetScores { get; set; }
     }
 }

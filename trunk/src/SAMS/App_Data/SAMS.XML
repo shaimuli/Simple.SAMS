@@ -515,6 +515,31 @@
               Looks up a localized string similar to תחרויות.
             </summary>
         </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionSection_Consolation">
+            <summary>
+              Looks up a localized string similar to בית התנחומים.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionSection_Final">
+            <summary>
+              Looks up a localized string similar to בית הגמר.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionSection_PairsFinal">
+            <summary>
+              Looks up a localized string similar to בית הגמר זוגות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionSection_PairsQualifying">
+            <summary>
+              Looks up a localized string similar to מוקדמות זוגות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionSection_Qualifying">
+            <summary>
+              Looks up a localized string similar to מוקדמות.
+            </summary>
+        </member>
         <member name="P:SAMS.Resources.Texts.CompetitionsFileLabel">
             <summary>
               Looks up a localized string similar to בחר קובץ תחרויות.
@@ -550,9 +575,24 @@
               Looks up a localized string similar to סטאטוס.
             </summary>
         </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionStatus_Finished">
+            <summary>
+              Looks up a localized string similar to התחרות הסתיימה.
+            </summary>
+        </member>
         <member name="P:SAMS.Resources.Texts.CompetitionStatus_MatchesCreated">
             <summary>
               Looks up a localized string similar to המשחקים נוצרו.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionStatus_Positioned">
+            <summary>
+              Looks up a localized string similar to הוצבו השחקנים.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionStatus_Started">
+            <summary>
+              Looks up a localized string similar to התחרות החלה.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.CompetitionTitle">
@@ -643,6 +683,11 @@
         <member name="P:SAMS.Resources.Texts.FemaleAbbr">
             <summary>
               Looks up a localized string similar to נקבה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.FinishCompetition">
+            <summary>
+              Looks up a localized string similar to סיים תחרות.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.HasConsolation">
@@ -818,6 +863,11 @@
         <member name="P:SAMS.Resources.Texts.SAMS">
             <summary>
               Looks up a localized string similar to Simple. SAMS.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.StartCompetition">
+            <summary>
+              Looks up a localized string similar to התחל תחרות.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.StartImportCompetition">

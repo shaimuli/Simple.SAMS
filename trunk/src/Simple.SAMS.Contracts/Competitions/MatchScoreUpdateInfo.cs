@@ -17,7 +17,7 @@ namespace Simple.SAMS.Contracts.Competitions
         public GameScoreUpdateInfo CurrentGameScore { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public SetScoreUpdateInfo[] SetScores { get; set; }
+        public SetScore[] SetScores { get; set; }
 
     }
 }

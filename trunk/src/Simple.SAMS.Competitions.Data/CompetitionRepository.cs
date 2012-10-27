@@ -101,6 +101,7 @@ namespace Simple.SAMS.Competitions.Data
             loadOptions.LoadWith<Match>(m => m.Player5);
             loadOptions.LoadWith<Match>(m => m.Player6);
             loadOptions.LoadWith<Match>(m => m.Player7);
+            loadOptions.LoadWith<Match>(m => m.MatchScores);
             return loadOptions;
         }
 
@@ -166,10 +167,17 @@ namespace Simple.SAMS.Competitions.Data
                            Round = match.Round,
                            Position = match.Position
                        };
-                result.Player1 = CreateMatchPlayerFromData(match.Player);
-                result.Player2 = CreateMatchPlayerFromData(match.Player5);
-                result.Player3 = CreateMatchPlayerFromData(match.Player6);
-                result.Player4 = CreateMatchPlayerFromData(match.Player7);
+            result.Player1 = CreateMatchPlayerFromData(match.Player);
+            result.Player2 = CreateMatchPlayerFromData(match.Player5);
+            result.Player3 = CreateMatchPlayerFromData(match.Player6);
+            result.Player4 = CreateMatchPlayerFromData(match.Player7);
+            result.SetScores =
+                match.MatchScores.Select(ms => new SetScore()
+                                                   {
+                                                       Number = ms.SetNumber,
+                                                       Player1Points = ms.Player1Points,
+                                                       Player2Points = ms.Player2Points
+                                                   }).ToArray();
 
             return result;
         }

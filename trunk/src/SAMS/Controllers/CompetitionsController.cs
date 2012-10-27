@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
 using SAMS.Models;
 using Simple;
 using Simple.Common.Storage;
@@ -17,7 +18,21 @@ namespace SAMS.Controllers
     {
         //
         // GET: /Competitions/
-
+        [HttpPost]
+        public ActionResult StartCompetition(int competitionId)
+        {
+            var competitionManager = ServiceProvider.Get<ICompetitionsManager>();
+            competitionManager.StartCompetition(competitionId);
+            return RedirectToAction("Details", new {id = competitionId});
+        }
+        [HttpPost]
+        public ActionResult FinishCompetition(int competitionId)
+        {
+            var competitionManager = ServiceProvider.Get<ICompetitionsManager>();
+            competitionManager.FinishCompetition(competitionId);
+            return RedirectToAction("Details", new {id = competitionId});
+        }
+        
         public ActionResult Details(int id)
         {
             var model = new CompetitionDetailsModel();
@@ -34,7 +49,6 @@ namespace SAMS.Controllers
             model.ReferenceId = competition.ReferenceId;
             model.Players = competition.Players;
 
-            var json = competition.Matches.ToJson();
             model.Matches =
                 competition.Matches.Select(
                     m => new CompetitionMatchViewModel()
@@ -49,8 +63,9 @@ namespace SAMS.Controllers
                                  Player2 = m.Player2.IsNotNull() ? new MatchPlayerViewModel(m.Player2) : null,
                                  Player3 = m.Player3.IsNotNull() ? new MatchPlayerViewModel(m.Player3) : null,
                                  Player4 = m.Player4.IsNotNull() ? new MatchPlayerViewModel(m.Player4) : null,
-
+                                 SetScores = m.SetScores
                              }).ToArray();
+            
             return View(model);
         }
 

@@ -11,6 +11,11 @@ namespace Simple.SAMS.Contracts.Competitions
     public interface ICompetitionsManager
     {
         [OperationContract(IsOneWay = true)]
+        void StartCompetition(int id);
+        [OperationContract(IsOneWay = true)]
+        void FinishCompetition(int id);
+
+        [OperationContract(IsOneWay = true)]
         void Create(CreateCompetitionInfo competitionCreateInfo, string playersFile);
         
         [OperationContract(IsOneWay = true)]

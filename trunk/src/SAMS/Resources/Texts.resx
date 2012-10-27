@@ -384,4 +384,34 @@
   <data name="WildcardPlayersCount" xml:space="preserve">
     <value>כרטיסים חופשיים</value>
   </data>
+  <data name="CompetitionSection.Consolation" xml:space="preserve">
+    <value>בית התנחומים</value>
+  </data>
+  <data name="CompetitionSection.Final" xml:space="preserve">
+    <value>בית הגמר</value>
+  </data>
+  <data name="CompetitionSection.PairsFinal" xml:space="preserve">
+    <value>בית הגמר זוגות</value>
+  </data>
+  <data name="CompetitionSection.PairsQualifying" xml:space="preserve">
+    <value>מוקדמות זוגות</value>
+  </data>
+  <data name="CompetitionSection.Qualifying" xml:space="preserve">
+    <value>מוקדמות</value>
+  </data>
+  <data name="CompetitionStatus.Finished" xml:space="preserve">
+    <value>התחרות הסתיימה</value>
+  </data>
+  <data name="CompetitionStatus.Positioned" xml:space="preserve">
+    <value>הוצבו השחקנים</value>
+  </data>
+  <data name="CompetitionStatus.Started" xml:space="preserve">
+    <value>התחרות החלה</value>
+  </data>
+  <data name="FinishCompetition" xml:space="preserve">
+    <value>סיים תחרות</value>
+  </data>
+  <data name="StartCompetition" xml:space="preserve">
+    <value>התחל תחרות</value>
+  </data>
 </root>

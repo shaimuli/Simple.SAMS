@@ -29,17 +29,17 @@ namespace SAMS.Controllers.Api
         /// </summary>
         /// <param name="referenceId">competition referenceid</param>
         /// <returns><see cref="CompetitionDetails"/></returns>
-        public CompetitionDetails Get(string referenceId)
+        public CompetitionDetails Get(string id)
         {
-            if (referenceId.IsNullOrEmpty())
+            if (id.IsNullOrEmpty())
             {
                 throw new HttpException(400, "You must provide valid referenceId");
             }
             var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
-            var details = competitionsRepository.GetCompetitionUnplayedMatches(referenceId);
+            var details = competitionsRepository.GetCompetitionUnplayedMatches(id);
             if (details.IsNull())
             {
-                throw new HttpException(404, "Competition '{0}' couuld not be found.".ParseTemplate(referenceId));
+                throw new HttpException(404, "Competition '{0}' couuld not be found.".ParseTemplate(id));
             }
             return details;
         }

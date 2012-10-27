@@ -10,6 +10,7 @@ namespace Simple.SAMS.Contracts.Competitions
     [ServiceContract(Namespace = Namespaces.Services)]
     public interface ICompetitionRepository
     {
+        
         [OperationContract]
         CompetitionHeaderInfo[] GetCompetitionsByStatus(CompetitionStatus status);
 

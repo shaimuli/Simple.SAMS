@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Simple.ComponentModel;
+using Simple.SAMS.Contracts.Competitions;
 
 namespace SAMS.Controllers.Api
 {
@@ -21,10 +23,12 @@ namespace SAMS.Controllers.Api
         //    return "value";
         //}
 
-        //// POST api/score
-        //public void Post([FromBody]string value)
-        //{
-        //}
+        // POST api/score
+        public void Post([FromBody]MatchScoreUpdateInfo matchInfo)
+        {
+            var manager = ServiceProvider.Get<ICompetitionsManager>();
+            manager.UpdateMatchScore(matchInfo);
+        }
 
         //// PUT api/score/5
         //public void Put(int id, [FromBody]string value)

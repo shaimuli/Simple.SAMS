@@ -16,6 +16,8 @@ namespace SAMS.Filters
 
         public override void OnException(ExceptionContext filterContext)
         {
+            SystemMonitor.Error(filterContext.Exception, "Error executing request.");
+
             if (filterContext.ExceptionHandled || !filterContext.HttpContext.IsCustomErrorEnabled)
             {
                 return;
@@ -30,6 +32,8 @@ namespace SAMS.Filters
             {
                 return;
             }
+
+            
 
             // if the request is AJAX return JSON else view.
             if (filterContext.HttpContext.Request.Headers["X-Requested-With"] == "XMLHttpRequest")

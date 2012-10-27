@@ -83,7 +83,7 @@
     <Compile Include="Competitions\MatchPlayer.cs" />
     <Compile Include="Competitions\MatchScoreUpdateInfo.cs" />
     <Compile Include="Competitions\PlayerInCompetition.cs" />
-    <Compile Include="Competitions\SetScoreUpdateInfo.cs" />
+    <Compile Include="Competitions\SetScore.cs" />
     <Compile Include="EntityItemStatus.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="IEntityRepository.cs" />

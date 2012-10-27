@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Simple.SAMS.Contracts.Competitions
 {
     [DataContract(Namespace = Namespaces.Data)]
-    public class SetScoreUpdateInfo
+    public class SetScore
     {
         [DataMember(EmitDefaultValue = false)]
         public int Number { get; set; }

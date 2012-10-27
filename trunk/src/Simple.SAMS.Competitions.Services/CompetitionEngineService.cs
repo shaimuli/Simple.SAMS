@@ -222,6 +222,8 @@ namespace Simple.SAMS.Competitions.Services
             var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
             
             competitionMatchesRepository.UpdatePlayersPosition(competitionId, positions);
+
+            
             // TRACE
             //var json = positions.ToJson();
             //var file = "E:\\temp\\positions.json.txt";
@@ -235,6 +237,13 @@ namespace Simple.SAMS.Competitions.Services
         public void UpdatePlayersPosition(int[] competitionIds)
         {
             competitionIds.ForEach(UpdateCompetitionPlayersPosition);
+        }
+
+        public void UpdateMatchScore(MatchScoreUpdateInfo scoreUpdateInfo)
+        {
+
+            var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
+            competitionMatchesRepository.UpdateMatchScore(scoreUpdateInfo);
         }
     }
 }

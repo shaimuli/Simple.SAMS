@@ -58,6 +58,13 @@ namespace Simple.SAMS.Competitions.Data
             UseDataContext(
                 dataContext =>
                     {
+                        var competition = dataContext.Competitions.FirstOrDefault(c => c.Id == competitionId);
+                        if (competition == null)
+                        {
+                            throw new ArgumentException("Competition '{0}' could not be found.".ParseTemplate(competitionId));
+                        }
+
+                        competition.Status = (int) CompetitionStatus.Positioned;
                         var matches = dataContext.Matches.Where(m => m.CompetitionId == competitionId).ToArray();
                         var matchesMap = new Dictionary<int, Match>();
                         matches.ForEach(match=>
@@ -83,8 +90,51 @@ namespace Simple.SAMS.Competitions.Data
                                                   {
                                                       match.Player4 = position.PlayerId;
                                                   }
-
+                                                  match.Status = (int) MatchStatus.PlayersAssigned;
                                               });
+
+                        dataContext.SubmitChanges();
+                    });
+        }
+
+
+        public void UpdateMatchScore(MatchScoreUpdateInfo scoreUpdateInfo)
+        {
+            if (scoreUpdateInfo.SetScores.IsNullOrEmpty())
+            {
+                throw new ArgumentException("You must specify set scores.");
+            }
+            UseDataContext(
+                dataContext =>
+                    {
+                        var matchId = scoreUpdateInfo.MatchId;
+                        var match = dataContext.Matches.FirstOrDefault(m=>m.Id == matchId);
+                        if(match == null)
+                        {
+                            throw new ArgumentException("Match '{0}' could not be found, could not update score.".ParseTemplate(scoreUpdateInfo.MatchId));
+                        }
+
+                        var latest = scoreUpdateInfo.SetScores.OrderByDescending(s => s.Number).First();
+                        match.Player1Points = latest.Player1Points;
+                        match.Player2Points = latest.Player2Points;
+
+                        scoreUpdateInfo.SetScores.ForEach(
+                            setScore =>
+                                {
+                                    var dataSetScore =
+                                        dataContext.MatchScores.FirstOrDefault(ms => ms.MatchId == matchId && ms.SetNumber == setScore.Number);
+                                    if (dataSetScore == null)
+                                    {
+                                        dataSetScore = new MatchScore();
+                                        dataSetScore.SetNumber = setScore.Number;
+                                        dataSetScore.MatchId = matchId;
+                                        dataContext.MatchScores.InsertOnSubmit(dataSetScore);
+                                    }
+
+                                    dataSetScore.Player1Points = setScore.Player1Points;
+                                    dataSetScore.Player2Points = setScore.Player2Points;
+
+                                });
 
                         dataContext.SubmitChanges();
                     });

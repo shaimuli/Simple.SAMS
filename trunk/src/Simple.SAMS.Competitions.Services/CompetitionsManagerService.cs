@@ -52,6 +52,8 @@ namespace Simple.SAMS.Competitions.Services
             var players = competitionsEngine.GetCompetitionPlayers(playersFileUrl);
 
             competitionsEngine.AddPlayersToCompetition(competitionId, players);
+
+            competitionsEngine.UpdatePlayersPosition(new[] { competitionId });
         }
 
 
@@ -65,7 +67,6 @@ namespace Simple.SAMS.Competitions.Services
             var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
             var unprovisionedCompetitions = competitionsRepository.GetCompetitionsByStatus(CompetitionStatus.Created);
             competitionsEngine.CreateCompetitionsMatches(unprovisionedCompetitions);
-
         }
 
 
@@ -76,7 +77,45 @@ namespace Simple.SAMS.Competitions.Services
 
         public void UpdateMatchScore(MatchScoreUpdateInfo scoreUpdateInfo)
         {
-            throw new NotImplementedException();
+            if (scoreUpdateInfo.SetScores.IsNullOrEmpty())
+            {
+                throw new ArgumentException("You must specify set scores.");
+            }
+            var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
+            //var match
+            var competitionsEngine = ServiceProvider.Get<ICompetitionsEngine>();
+            competitionsEngine.UpdateMatchScore(scoreUpdateInfo);
+        }
+        public void FinishCompetition(int id)
+        {
+            var repository = ServiceProvider.Get<ICompetitionRepository>();
+            var competition = repository.GetCompetition(id);
+            if (competition.IsNull())
+            {
+                throw new ArgumentException("Competition '{0}' does not exist.".ParseTemplate(id));
+            }
+            if (competition.Status != CompetitionStatus.Started)
+            {
+                throw new ArgumentException("Competition '{0}' must be in status '{1}' in order to be started.".ParseTemplate(id, CompetitionStatus.Started));
+            }
+
+            repository.UpdateCompetitionStatus(id, CompetitionStatus.Finished);
+        }
+
+        public void StartCompetition(int id)
+        {
+            var repository = ServiceProvider.Get<ICompetitionRepository>();
+            var competition = repository.GetCompetition(id);
+            if (competition.IsNull())
+            {
+                throw new ArgumentException("Competition '{0}' does not exist.".ParseTemplate(id));
+            }
+            if (competition.Status != CompetitionStatus.Positioned)
+            {
+                throw new ArgumentException("Competition '{0}' must be in status '{1}' in order to be started.".ParseTemplate(id, CompetitionStatus.Positioned));
+            }
+
+            repository.UpdateCompetitionStatus(id, CompetitionStatus.Started);
         }
     }
 }
