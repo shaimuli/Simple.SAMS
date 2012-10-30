@@ -41,6 +41,14 @@ namespace SAMS.Controllers
             return View();
         }
 
+        public ActionResult BriefDetails(int id)
+        {
+            var competitionTypesRepository = ServiceProvider.Get<ICompetitionTypeRepository>();
+            var competitionType = competitionTypesRepository.Get(id);
+
+            return View(competitionType);
+        }
+
         public ActionResult Edit(int id)
         {
             var competitionTypesRepository = ServiceProvider.Get<ICompetitionTypeRepository>();

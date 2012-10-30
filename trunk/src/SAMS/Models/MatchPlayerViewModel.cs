@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Simple;
 using Simple.SAMS.Contracts.Competitions;
 
 namespace SAMS.Models
@@ -22,5 +23,10 @@ namespace SAMS.Models
         public string EnglishLastName { get; set; }
 
         public int Id { get; set; }
+
+        public string FullName
+        {
+            get { return LocalLastName.NotNullOrEmpty() ? LocalLastName + " " + LocalFirstName : LocalFirstName; }
+        }
     }
 }

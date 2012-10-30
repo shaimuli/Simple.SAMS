@@ -1,0 +1,9 @@
+﻿.setScore {
+    width: 12px;
+}
+
+tr.edit-mode td,
+.table tbody tr.edit-mode:hover td, 
+.table tbody tr.edit-mode:hover th {
+background-color: lightyellow;
+}

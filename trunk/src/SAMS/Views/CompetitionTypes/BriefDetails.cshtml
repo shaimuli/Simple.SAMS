@@ -1,0 +1,27 @@
+﻿@model Simple.SAMS.Contracts.Competitions.CompetitionType
+@{
+    Layout = "";
+}
+<dl>
+   <dt>@Html.Resource("CompetitionMethod")</dt>
+    <dd>@Html.Resource("CompetitionMethod."+ Model.Method)
+    </dd>
+   <dt>@Html.Resource("Ranking")</dt>
+    <dd>@Html.Resource("Ranking."+ Model.Ranking)
+    </dd>
+    
+    <dt>@Html.Resource("PlayersCount")</dt>
+    <dd>@Model.PlayersCount</dd>
+    <dt>@Html.Resource("WildcardPlayersCount")</dt>
+    <dd>@Model.WildcardPlayersCount</dd>
+    <dt>@Html.Resource("QualifyingPlayersCount")</dt>
+    <dd>@Model.QualifyingPlayersCount</dd>
+    <dt>@Html.Resource("PairsCount")</dt>
+    <dd>@Model.PairsCount</dd>
+    <dt>@Html.Resource("WildcardPairsCount")</dt>
+    <dd>@Model.WildcardPairsCount</dd>
+    <dt>@Html.Resource("QualifyingPairsCount")</dt>
+    <dd>@Model.QualifyingPairsCount</dd>
+
+
+</dl>

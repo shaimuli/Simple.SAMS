@@ -13,10 +13,9 @@ namespace Simple.SAMS.Contracts.Competitions
         [EnumMember]
         Created,
         [EnumMember]
-        Planned,
-        [EnumMember]
         PlayersAssigned,
-        /* ... */
+        [EnumMember]
+        Planned,
         [EnumMember]
         Playing,
         [EnumMember]

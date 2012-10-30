@@ -16,8 +16,16 @@ namespace SAMS.Controllers
 {
     public class CompetitionsController : Controller
     {
+        [HttpPost]
+        public ActionResult UpdateMatchResults(FormCollection values)
+        {
+            SystemMonitor.Info("Queued...{0}", string.Join(",", values.AllKeys));
+            return new HttpStatusCodeResult(200);
+        }
+
         //
         // GET: /Competitions/
+        
         [HttpPost]
         public ActionResult StartCompetition(int competitionId)
         {

@@ -485,6 +485,16 @@
               Looks up a localized string similar to משחקים.
             </summary>
         </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionMethod">
+            <summary>
+              Looks up a localized string similar to סוג התחרות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionMethod_Knockout">
+            <summary>
+              Looks up a localized string similar to טורניר נוק-אאוט.
+            </summary>
+        </member>
         <member name="P:SAMS.Resources.Texts.CompetitionName">
             <summary>
               Looks up a localized string similar to שם.
@@ -750,6 +760,41 @@
               Looks up a localized string similar to משתמשים.
             </summary>
         </member>
+        <member name="P:SAMS.Resources.Texts.MatchBreakPoint">
+            <summary>
+              Looks up a localized string similar to נק&apos; בשובר שיוויון.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.MatchDateHeader">
+            <summary>
+              Looks up a localized string similar to תאריך.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.MatchPlayersHeader">
+            <summary>
+              Looks up a localized string similar to שחקנים.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.MatchResultsHeader">
+            <summary>
+              Looks up a localized string similar to תוצאות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.MatchStatusHeader">
+            <summary>
+              Looks up a localized string similar to מצב עדכון.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.MatchTimeHeader">
+            <summary>
+              Looks up a localized string similar to שעה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.MatchWinnerHeader">
+            <summary>
+              Looks up a localized string similar to מנצח.
+            </summary>
+        </member>
         <member name="P:SAMS.Resources.Texts.Method">
             <summary>
               Looks up a localized string similar to שיטה.
@@ -842,7 +887,27 @@
         </member>
         <member name="P:SAMS.Resources.Texts.QualifyingPlayersCount">
             <summary>
-              Looks up a localized string similar to מספק שחקנים במוקדמות.
+              Looks up a localized string similar to מספר שחקנים במוקדמות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.Ranking">
+            <summary>
+              Looks up a localized string similar to סוג דירוג.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.Ranking_EuropeInternational">
+            <summary>
+              Looks up a localized string similar to בינלאומי אירופאי.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.Ranking_National">
+            <summary>
+              Looks up a localized string similar to ארצי.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.Ranking_YouthInternational">
+            <summary>
+              Looks up a localized string similar to בינלאומי נוער.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.ResetPassword">
@@ -873,6 +938,31 @@
         <member name="P:SAMS.Resources.Texts.StartImportCompetition">
             <summary>
               Looks up a localized string similar to התחל טעינה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.StartTimeType_AfterRest">
+            <summary>
+              Looks up a localized string similar to AR.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.StartTimeType_FollowedBy">
+            <summary>
+              Looks up a localized string similar to FB.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.StartTimeType_NotBefore">
+            <summary>
+              Looks up a localized string similar to NB.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.StartTimeType_NotDetermined">
+            <summary>
+              Looks up a localized string similar to  .
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.StartTimeType_StartTime">
+            <summary>
+              Looks up a localized string similar to ST.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.Update">

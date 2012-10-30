@@ -14,7 +14,9 @@
     <div class="span4">
         <dl>
             <dt>@Html.Resource("CompetitionType")</dt>
-            <dd>@Model.Type.Text</dd>
+            <dd><a  href="@Url.Action("BriefDetails", "CompetitionTypes", new { id= Model.Type.Id })" 
+                    target="popup" data-template="CompetitionTypeDetailsPopup"
+                    id="CompetitionType">@Model.Type.Text</a></dd>
             <dt>@Html.Resource("CompetitionLastModified")</dt>
             <dd>@Model.LastModified</dd>
         </dl>
@@ -59,10 +61,10 @@
 <input id="matchesInfo" type="hidden" value="@Newtonsoft.Json.JsonConvert.SerializeObject(Model.Matches)"/>
 <div class="tabbable">
     <ul id="tabs" class="nav nav-tabs">
-        <li class="active">
+        <li>
             <a href="#matches" data-toggle="tab">@Html.Resource("CompetitionMatchesTab")</a>
         </li>
-        <li><a href="#updateResults" data-toggle="tab">
+        <li class="active"><a href="#updateResults" data-toggle="tab">
             @Html.Resource("CompetitionUpdateResultsTab")
         </a></li>
         <li><a href="#players" data-toggle="tab">
@@ -71,7 +73,7 @@
         </li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane active" id="matches">
+        <div class="tab-pane" id="matches">
             @if (Model.Matches.GroupBy(m => m.Section).Count() > 1)
             {
                 <ul id="sections" class="nav nav-tabs">
@@ -96,11 +98,10 @@
                 }
             </div>
         </div>
-        <div class="tab-pane" id="updateResults">
-
+        <div class="tab-pane active" id="updateResults">
             <div class="competitionUpdateResultsContainer">
+                @Html.Partial("_UpdateResultsView", Model)
             </div>
-
         </div>
         <div class="tab-pane" id="players">
 
@@ -124,6 +125,14 @@
                 items = JSON.parse(itemsJson);
             }
             $(".competitonContainer").grid(items);
+
+            var config = {
+                containerSelector: ".competitionUpdateResultsContainer",
+                logicalItemContainerSelector: "tr",
+                storageRootKey: "Matches:Results",
+                sendUrl: "@Url.Action("UpdateMatchResults", "Competitions")"
+            };
+            var editor = new Simple.ContinuesEdit(config);
         });
     </script>
 }

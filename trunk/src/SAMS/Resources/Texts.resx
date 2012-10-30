@@ -376,7 +376,7 @@
     <value>מוקדמות זוגות</value>
   </data>
   <data name="QualifyingPlayersCount" xml:space="preserve">
-    <value>מספק שחקנים במוקדמות</value>
+    <value>מספר שחקנים במוקדמות</value>
   </data>
   <data name="WildcardPairsCount" xml:space="preserve">
     <value>כרטיסים חופשיים זוגות</value>
@@ -413,5 +413,59 @@
   </data>
   <data name="StartCompetition" xml:space="preserve">
     <value>התחל תחרות</value>
+  </data>
+  <data name="CompetitionMethod" xml:space="preserve">
+    <value>סוג התחרות</value>
+  </data>
+  <data name="CompetitionMethod.Knockout" xml:space="preserve">
+    <value>טורניר נוק-אאוט</value>
+  </data>
+  <data name="Ranking" xml:space="preserve">
+    <value>סוג דירוג</value>
+  </data>
+  <data name="Ranking.EuropeInternational" xml:space="preserve">
+    <value>בינלאומי אירופאי</value>
+  </data>
+  <data name="Ranking.National" xml:space="preserve">
+    <value>ארצי</value>
+  </data>
+  <data name="Ranking.YouthInternational" xml:space="preserve">
+    <value>בינלאומי נוער</value>
+  </data>
+  <data name="MatchDateHeader" xml:space="preserve">
+    <value>תאריך</value>
+  </data>
+  <data name="MatchPlayersHeader" xml:space="preserve">
+    <value>שחקנים</value>
+  </data>
+  <data name="MatchResultsHeader" xml:space="preserve">
+    <value>תוצאות</value>
+  </data>
+  <data name="MatchStatusHeader" xml:space="preserve">
+    <value>מצב עדכון</value>
+  </data>
+  <data name="MatchTimeHeader" xml:space="preserve">
+    <value>שעה</value>
+  </data>
+  <data name="MatchWinnerHeader" xml:space="preserve">
+    <value>מנצח</value>
+  </data>
+  <data name="StartTimeType.AfterRest" xml:space="preserve">
+    <value>AR</value>
+  </data>
+  <data name="StartTimeType.FollowedBy" xml:space="preserve">
+    <value>FB</value>
+  </data>
+  <data name="StartTimeType.NotBefore" xml:space="preserve">
+    <value>NB</value>
+  </data>
+  <data name="StartTimeType.NotDetermined" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="StartTimeType.StartTime" xml:space="preserve">
+    <value>ST</value>
+  </data>
+  <data name="MatchBreakPoint" xml:space="preserve">
+    <value>נק' בשובר שיוויון</value>
   </data>
 </root>
