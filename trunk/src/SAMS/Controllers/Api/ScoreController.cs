@@ -27,7 +27,7 @@ namespace SAMS.Controllers.Api
         public void Post([FromBody]MatchScoreUpdateInfo matchInfo)
         {
             var manager = ServiceProvider.Get<ICompetitionsManager>();
-            manager.UpdateMatchScore(matchInfo);
+            manager.UpdateMatchScore(new[]{matchInfo});
         }
 
         //// PUT api/score/5

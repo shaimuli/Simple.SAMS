@@ -167,6 +167,15 @@ namespace Simple.SAMS.Competitions.Data
                            Round = match.Round,
                            Position = match.Position
                        };
+            if (match.Winner.HasValue)
+            {
+                result.Winner = (MatchWinner) match.Winner.Value;
+            }
+            if (match.Result.HasValue)
+            {
+                result.Result = (MatchResult)match.Result.Value;
+            }
+
             result.Player1 = CreateMatchPlayerFromData(match.Player);
             result.Player2 = CreateMatchPlayerFromData(match.Player5);
             result.Player3 = CreateMatchPlayerFromData(match.Player6);
@@ -176,7 +185,8 @@ namespace Simple.SAMS.Competitions.Data
                                                    {
                                                        Number = ms.SetNumber,
                                                        Player1Points = ms.Player1Points,
-                                                       Player2Points = ms.Player2Points
+                                                       Player2Points = ms.Player2Points,
+                                                       BreakPoints = ms.BreakPoints
                                                    }).ToArray();
 
             return result;

@@ -23,6 +23,12 @@ namespace Simple.SAMS.Contracts.Competitions
         public MatchStatus Status { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
+        public MatchWinner Winner { get; set; }
+        
+        [DataMember(EmitDefaultValue = false)]
+        public MatchResult? Result { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
         public int? Position { get; set; }
         
         [DataMember(EmitDefaultValue = false)]

@@ -1,18 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using FileHelpers;
-using Rhino.Etl.Core;
-using Rhino.Etl.Core.Files;
-using Simple.Common.Storage;
 using Simple.ComponentModel;
 using Simple.SAMS.Contracts.Competitions;
-using Simple.SAMS.Contracts.Players;
-using Simple.SAMS.Contracts.Positioning;
 
 namespace Simple.SAMS.Competitions.Services
 {
@@ -75,16 +63,21 @@ namespace Simple.SAMS.Competitions.Services
             throw new NotImplementedException();
         }
 
-        public void UpdateMatchScore(MatchScoreUpdateInfo scoreUpdateInfo)
+        public void UpdateMatchScore(MatchScoreUpdateInfo[] scoreUpdateInfoItems)
         {
-            if (scoreUpdateInfo.SetScores.IsNullOrEmpty())
-            {
-                throw new ArgumentException("You must specify set scores.");
-            }
-            var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
-            //var match
             var competitionsEngine = ServiceProvider.Get<ICompetitionsEngine>();
-            competitionsEngine.UpdateMatchScore(scoreUpdateInfo);
+
+            scoreUpdateInfoItems.ForEach(
+                scoreUpdateInfo =>
+                    {
+                        if (scoreUpdateInfo.SetScores.IsNullOrEmpty())
+                        {
+                            throw new ArgumentException("You must specify set scores.");
+                        }
+
+                        competitionsEngine.UpdateMatchScore(scoreUpdateInfo);
+                    });
+            
         }
         public void FinishCompetition(int id)
         {

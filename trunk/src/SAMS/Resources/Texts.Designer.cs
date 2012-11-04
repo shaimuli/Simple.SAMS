@@ -691,6 +691,42 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to פסילה.
+        /// </summary>
+        internal static string MatchResult_Disqualification {
+            get {
+                return ResourceManager.GetString("MatchResult.Disqualification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to הפסקה.
+        /// </summary>
+        internal static string MatchResult_Pause {
+            get {
+                return ResourceManager.GetString("MatchResult.Pause", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to פרישה.
+        /// </summary>
+        internal static string MatchResult_Retirement {
+            get {
+                return ResourceManager.GetString("MatchResult.Retirement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to נצחון.
+        /// </summary>
+        internal static string MatchResult_Win {
+            get {
+                return ResourceManager.GetString("MatchResult.Win", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to תוצאות.
         /// </summary>
         internal static string MatchResultsHeader {
@@ -714,6 +750,33 @@ namespace SAMS.Resources {
         internal static string MatchTimeHeader {
             get {
                 return ResourceManager.GetString("MatchTimeHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string MatchWinner_None {
+            get {
+                return ResourceManager.GetString("MatchWinner.None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to שחקן/קב&apos; 1.
+        /// </summary>
+        internal static string MatchWinner_Player1 {
+            get {
+                return ResourceManager.GetString("MatchWinner.Player1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to שחקן/קב&apos; 2.
+        /// </summary>
+        internal static string MatchWinner_Player2 {
+            get {
+                return ResourceManager.GetString("MatchWinner.Player2", resourceCulture);
             }
         }
         
@@ -1056,6 +1119,24 @@ namespace SAMS.Resources {
         internal static string UpdateCompetitionPlayersHeader {
             get {
                 return ResourceManager.GetString("UpdateCompetitionPlayersHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to נשמר לאחרונה.
+        /// </summary>
+        internal static string UpdateResults_LastSaveTime {
+            get {
+                return ResourceManager.GetString("UpdateResults.LastSaveTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to שמור עכשיו.
+        /// </summary>
+        internal static string UpdateResults_SendUpdatesNow {
+            get {
+                return ResourceManager.GetString("UpdateResults.SendUpdatesNow", resourceCulture);
             }
         }
         

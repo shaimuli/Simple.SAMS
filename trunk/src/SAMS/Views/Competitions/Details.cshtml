@@ -58,7 +58,7 @@
 
     </div>
 </div>
-<input id="matchesInfo" type="hidden" value="@Newtonsoft.Json.JsonConvert.SerializeObject(Model.Matches)"/>
+
 <div class="tabbable">
     <ul id="tabs" class="nav nav-tabs">
         <li>
@@ -74,6 +74,7 @@
     </ul>
     <div class="tab-content">
         <div class="tab-pane" id="matches">
+            <input id="matchesInfo" type="hidden" value="@Newtonsoft.Json.JsonConvert.SerializeObject(Model.Matches)"/>
             @if (Model.Matches.GroupBy(m => m.Section).Count() > 1)
             {
                 <ul id="sections" class="nav nav-tabs">
@@ -132,7 +133,7 @@
                 storageRootKey: "Matches:Results",
                 sendUrl: "@Url.Action("UpdateMatchResults", "Competitions")"
             };
-            var editor = new Simple.ContinuesEdit(config);
+            var editor = new Simple.MatchResultsContinuesEdit(config);
         });
     </script>
 }

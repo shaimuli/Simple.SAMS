@@ -69,7 +69,9 @@
     <Compile Include="Competitions\IMatchProvisioningEngineFactory.cs" />
     <Compile Include="Competitions\IPositioningEngineFactory.cs" />
     <Compile Include="Competitions\MatchDetails.cs" />
+    <Compile Include="Competitions\MatchResult.cs" />
     <Compile Include="Competitions\MatchStatus.cs" />
+    <Compile Include="Competitions\MatchWinner.cs" />
     <Compile Include="Competitions\Ranking.cs" />
     <Compile Include="Competitions\StartTimeType.cs" />
     <Compile Include="Competitions\UpdatePlayerPositionInfo.cs" />

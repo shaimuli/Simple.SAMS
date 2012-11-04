@@ -14,9 +14,12 @@ namespace Simple.SAMS.Contracts.Competitions
         public int Number { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public int Player1Points { get; set; }
+        public int? Player1Points { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public int Player2Points { get; set; }
+        public int? BreakPoints { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
+        public int? Player2Points { get; set; }
     }
 }

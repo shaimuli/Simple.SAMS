@@ -28,6 +28,6 @@ namespace Simple.SAMS.Contracts.Competitions
         MatchHeaderInfo[] GetCompetitionMatches(CompetitionMatchesQuery matchesQuery);
 
         [OperationContract]
-        void UpdateMatchScore(MatchScoreUpdateInfo scoreUpdateInfo);
+        void UpdateMatchScore(MatchScoreUpdateInfo[] scoreUpdateInfoItems);
     }
 }

@@ -14,6 +14,12 @@ namespace Simple.SAMS.Contracts.Competitions
         public int MatchId { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
+        public MatchWinner? Winner { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
+        public MatchResult? Result { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
         public GameScoreUpdateInfo CurrentGameScore { get; set; }
 
         [DataMember(EmitDefaultValue = false)]

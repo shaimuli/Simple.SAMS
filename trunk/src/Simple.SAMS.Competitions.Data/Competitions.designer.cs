@@ -30,27 +30,30 @@ namespace Simple.SAMS.Competitions.Data
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertCompetitionPlayer(CompetitionPlayer instance);
-    partial void UpdateCompetitionPlayer(CompetitionPlayer instance);
-    partial void DeleteCompetitionPlayer(CompetitionPlayer instance);
     partial void InsertCompetition(Competition instance);
     partial void UpdateCompetition(Competition instance);
     partial void DeleteCompetition(Competition instance);
+    partial void InsertUserProfile(UserProfile instance);
+    partial void UpdateUserProfile(UserProfile instance);
+    partial void DeleteUserProfile(UserProfile instance);
+    partial void InsertCompetitionPlayer(CompetitionPlayer instance);
+    partial void UpdateCompetitionPlayer(CompetitionPlayer instance);
+    partial void DeleteCompetitionPlayer(CompetitionPlayer instance);
+    partial void InsertCompetitionType(CompetitionType instance);
+    partial void UpdateCompetitionType(CompetitionType instance);
+    partial void DeleteCompetitionType(CompetitionType instance);
+    partial void InsertMatchScore(MatchScore instance);
+    partial void UpdateMatchScore(MatchScore instance);
+    partial void DeleteMatchScore(MatchScore instance);
     partial void InsertPlayer(Player instance);
     partial void UpdatePlayer(Player instance);
     partial void DeletePlayer(Player instance);
     partial void InsertSection(Section instance);
     partial void UpdateSection(Section instance);
     partial void DeleteSection(Section instance);
-    partial void InsertCompetitionType(CompetitionType instance);
-    partial void UpdateCompetitionType(CompetitionType instance);
-    partial void DeleteCompetitionType(CompetitionType instance);
     partial void InsertMatch(Match instance);
     partial void UpdateMatch(Match instance);
     partial void DeleteMatch(Match instance);
-    partial void InsertMatchScore(MatchScore instance);
-    partial void UpdateMatchScore(MatchScore instance);
-    partial void DeleteMatchScore(MatchScore instance);
     #endregion
 		
 		public CompetitionsDataContext() : 
@@ -83,6 +86,22 @@ namespace Simple.SAMS.Competitions.Data
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<Competition> Competitions
+		{
+			get
+			{
+				return this.GetTable<Competition>();
+			}
+		}
+		
+		public System.Data.Linq.Table<UserProfile> UserProfiles
+		{
+			get
+			{
+				return this.GetTable<UserProfile>();
+			}
+		}
+		
 		public System.Data.Linq.Table<CompetitionPlayer> CompetitionPlayers
 		{
 			get
@@ -91,19 +110,19 @@ namespace Simple.SAMS.Competitions.Data
 			}
 		}
 		
-		public System.Data.Linq.Table<User> Users
+		public System.Data.Linq.Table<CompetitionType> CompetitionTypes
 		{
 			get
 			{
-				return this.GetTable<User>();
+				return this.GetTable<CompetitionType>();
 			}
 		}
 		
-		public System.Data.Linq.Table<Competition> Competitions
+		public System.Data.Linq.Table<MatchScore> MatchScores
 		{
 			get
 			{
-				return this.GetTable<Competition>();
+				return this.GetTable<MatchScore>();
 			}
 		}
 		
@@ -123,11 +142,11 @@ namespace Simple.SAMS.Competitions.Data
 			}
 		}
 		
-		public System.Data.Linq.Table<CompetitionType> CompetitionTypes
+		public System.Data.Linq.Table<User> Users
 		{
 			get
 			{
-				return this.GetTable<CompetitionType>();
+				return this.GetTable<User>();
 			}
 		}
 		
@@ -136,269 +155,6 @@ namespace Simple.SAMS.Competitions.Data
 			get
 			{
 				return this.GetTable<Match>();
-			}
-		}
-		
-		public System.Data.Linq.Table<MatchScore> MatchScores
-		{
-			get
-			{
-				return this.GetTable<MatchScore>();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CompetitionPlayer")]
-	public partial class CompetitionPlayer : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _CompetitionId;
-		
-		private int _PlayerId;
-		
-		private System.Nullable<int> _Rank;
-		
-		private EntityRef<Competition> _Competition;
-		
-		private EntityRef<Player> _Player;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnCompetitionIdChanging(int value);
-    partial void OnCompetitionIdChanged();
-    partial void OnPlayerIdChanging(int value);
-    partial void OnPlayerIdChanged();
-    partial void OnRankChanging(System.Nullable<int> value);
-    partial void OnRankChanged();
-    #endregion
-		
-		public CompetitionPlayer()
-		{
-			this._Competition = default(EntityRef<Competition>);
-			this._Player = default(EntityRef<Player>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompetitionId", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int CompetitionId
-		{
-			get
-			{
-				return this._CompetitionId;
-			}
-			set
-			{
-				if ((this._CompetitionId != value))
-				{
-					if (this._Competition.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnCompetitionIdChanging(value);
-					this.SendPropertyChanging();
-					this._CompetitionId = value;
-					this.SendPropertyChanged("CompetitionId");
-					this.OnCompetitionIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PlayerId", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int PlayerId
-		{
-			get
-			{
-				return this._PlayerId;
-			}
-			set
-			{
-				if ((this._PlayerId != value))
-				{
-					if (this._Player.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnPlayerIdChanging(value);
-					this.SendPropertyChanging();
-					this._PlayerId = value;
-					this.SendPropertyChanged("PlayerId");
-					this.OnPlayerIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rank", DbType="Int")]
-		public System.Nullable<int> Rank
-		{
-			get
-			{
-				return this._Rank;
-			}
-			set
-			{
-				if ((this._Rank != value))
-				{
-					this.OnRankChanging(value);
-					this.SendPropertyChanging();
-					this._Rank = value;
-					this.SendPropertyChanged("Rank");
-					this.OnRankChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Competition_CompetitionPlayer", Storage="_Competition", ThisKey="CompetitionId", OtherKey="Id", IsForeignKey=true)]
-		public Competition Competition
-		{
-			get
-			{
-				return this._Competition.Entity;
-			}
-			set
-			{
-				Competition previousValue = this._Competition.Entity;
-				if (((previousValue != value) 
-							|| (this._Competition.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Competition.Entity = null;
-						previousValue.CompetitionPlayers.Remove(this);
-					}
-					this._Competition.Entity = value;
-					if ((value != null))
-					{
-						value.CompetitionPlayers.Add(this);
-						this._CompetitionId = value.Id;
-					}
-					else
-					{
-						this._CompetitionId = default(int);
-					}
-					this.SendPropertyChanged("Competition");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Player_CompetitionPlayer", Storage="_Player", ThisKey="PlayerId", OtherKey="Id", IsForeignKey=true)]
-		public Player Player
-		{
-			get
-			{
-				return this._Player.Entity;
-			}
-			set
-			{
-				Player previousValue = this._Player.Entity;
-				if (((previousValue != value) 
-							|| (this._Player.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Player.Entity = null;
-						previousValue.CompetitionPlayers.Remove(this);
-					}
-					this._Player.Entity = value;
-					if ((value != null))
-					{
-						value.CompetitionPlayers.Add(this);
-						this._PlayerId = value.Id;
-					}
-					else
-					{
-						this._PlayerId = default(int);
-					}
-					this.SendPropertyChanged("Player");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Users")]
-	public partial class User
-	{
-		
-		private int _UserId;
-		
-		private string _UserName;
-		
-		private System.Nullable<bool> _IsActive;
-		
-		public User()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL")]
-		public int UserId
-		{
-			get
-			{
-				return this._UserId;
-			}
-			set
-			{
-				if ((this._UserId != value))
-				{
-					this._UserId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="NVarChar(56) NOT NULL", CanBeNull=false)]
-		public string UserName
-		{
-			get
-			{
-				return this._UserName;
-			}
-			set
-			{
-				if ((this._UserName != value))
-				{
-					this._UserName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsActive", DbType="Bit")]
-		public System.Nullable<bool> IsActive
-		{
-			get
-			{
-				return this._IsActive;
-			}
-			set
-			{
-				if ((this._IsActive != value))
-				{
-					this._IsActive = value;
-				}
 			}
 		}
 	}
@@ -871,6 +627,885 @@ namespace Simple.SAMS.Competitions.Data
 		{
 			this.SendPropertyChanging();
 			entity.Competition = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserProfile")]
+	public partial class UserProfile : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _UserId;
+		
+		private string _UserName;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnUserIdChanging(int value);
+    partial void OnUserIdChanged();
+    partial void OnUserNameChanging(string value);
+    partial void OnUserNameChanged();
+    #endregion
+		
+		public UserProfile()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="NVarChar(56) NOT NULL", CanBeNull=false)]
+		public string UserName
+		{
+			get
+			{
+				return this._UserName;
+			}
+			set
+			{
+				if ((this._UserName != value))
+				{
+					this.OnUserNameChanging(value);
+					this.SendPropertyChanging();
+					this._UserName = value;
+					this.SendPropertyChanged("UserName");
+					this.OnUserNameChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CompetitionPlayer")]
+	public partial class CompetitionPlayer : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _CompetitionId;
+		
+		private int _PlayerId;
+		
+		private System.Nullable<int> _Rank;
+		
+		private EntityRef<Competition> _Competition;
+		
+		private EntityRef<Player> _Player;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCompetitionIdChanging(int value);
+    partial void OnCompetitionIdChanged();
+    partial void OnPlayerIdChanging(int value);
+    partial void OnPlayerIdChanged();
+    partial void OnRankChanging(System.Nullable<int> value);
+    partial void OnRankChanged();
+    #endregion
+		
+		public CompetitionPlayer()
+		{
+			this._Competition = default(EntityRef<Competition>);
+			this._Player = default(EntityRef<Player>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompetitionId", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int CompetitionId
+		{
+			get
+			{
+				return this._CompetitionId;
+			}
+			set
+			{
+				if ((this._CompetitionId != value))
+				{
+					if (this._Competition.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnCompetitionIdChanging(value);
+					this.SendPropertyChanging();
+					this._CompetitionId = value;
+					this.SendPropertyChanged("CompetitionId");
+					this.OnCompetitionIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PlayerId", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int PlayerId
+		{
+			get
+			{
+				return this._PlayerId;
+			}
+			set
+			{
+				if ((this._PlayerId != value))
+				{
+					if (this._Player.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPlayerIdChanging(value);
+					this.SendPropertyChanging();
+					this._PlayerId = value;
+					this.SendPropertyChanged("PlayerId");
+					this.OnPlayerIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Rank", DbType="Int")]
+		public System.Nullable<int> Rank
+		{
+			get
+			{
+				return this._Rank;
+			}
+			set
+			{
+				if ((this._Rank != value))
+				{
+					this.OnRankChanging(value);
+					this.SendPropertyChanging();
+					this._Rank = value;
+					this.SendPropertyChanged("Rank");
+					this.OnRankChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Competition_CompetitionPlayer", Storage="_Competition", ThisKey="CompetitionId", OtherKey="Id", IsForeignKey=true)]
+		public Competition Competition
+		{
+			get
+			{
+				return this._Competition.Entity;
+			}
+			set
+			{
+				Competition previousValue = this._Competition.Entity;
+				if (((previousValue != value) 
+							|| (this._Competition.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Competition.Entity = null;
+						previousValue.CompetitionPlayers.Remove(this);
+					}
+					this._Competition.Entity = value;
+					if ((value != null))
+					{
+						value.CompetitionPlayers.Add(this);
+						this._CompetitionId = value.Id;
+					}
+					else
+					{
+						this._CompetitionId = default(int);
+					}
+					this.SendPropertyChanged("Competition");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Player_CompetitionPlayer", Storage="_Player", ThisKey="PlayerId", OtherKey="Id", IsForeignKey=true)]
+		public Player Player
+		{
+			get
+			{
+				return this._Player.Entity;
+			}
+			set
+			{
+				Player previousValue = this._Player.Entity;
+				if (((previousValue != value) 
+							|| (this._Player.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Player.Entity = null;
+						previousValue.CompetitionPlayers.Remove(this);
+					}
+					this._Player.Entity = value;
+					if ((value != null))
+					{
+						value.CompetitionPlayers.Add(this);
+						this._PlayerId = value.Id;
+					}
+					else
+					{
+						this._PlayerId = default(int);
+					}
+					this.SendPropertyChanged("Player");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CompetitionType")]
+	public partial class CompetitionType : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Name;
+		
+		private int _RowStatus;
+		
+		private System.DateTime _Created;
+		
+		private System.DateTime _Updated;
+		
+		private int _PlayersCount;
+		
+		private int _CompetitionMethod;
+		
+		private int _WildcardPlayersCount;
+		
+		private int _QualifyingPlayersCount;
+		
+		private int _QualifyingPairsCount;
+		
+		private int _WildcardPairsCount;
+		
+		private int _PairsCount;
+		
+		private bool _HasConsolation;
+		
+		private int _Ranking;
+		
+		private EntitySet<Competition> _Competitions;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnNameChanging(string value);
+    partial void OnNameChanged();
+    partial void OnRowStatusChanging(int value);
+    partial void OnRowStatusChanged();
+    partial void OnCreatedChanging(System.DateTime value);
+    partial void OnCreatedChanged();
+    partial void OnUpdatedChanging(System.DateTime value);
+    partial void OnUpdatedChanged();
+    partial void OnPlayersCountChanging(int value);
+    partial void OnPlayersCountChanged();
+    partial void OnCompetitionMethodChanging(int value);
+    partial void OnCompetitionMethodChanged();
+    partial void OnWildcardPlayersCountChanging(int value);
+    partial void OnWildcardPlayersCountChanged();
+    partial void OnQualifyingPlayersCountChanging(int value);
+    partial void OnQualifyingPlayersCountChanged();
+    partial void OnQualifyingPairsCountChanging(int value);
+    partial void OnQualifyingPairsCountChanged();
+    partial void OnWildcardPairsCountChanging(int value);
+    partial void OnWildcardPairsCountChanged();
+    partial void OnPairsCountChanging(int value);
+    partial void OnPairsCountChanged();
+    partial void OnHasConsolationChanging(bool value);
+    partial void OnHasConsolationChanged();
+    partial void OnRankingChanging(int value);
+    partial void OnRankingChanged();
+    #endregion
+		
+		public CompetitionType()
+		{
+			this._Competitions = new EntitySet<Competition>(new Action<Competition>(this.attach_Competitions), new Action<Competition>(this.detach_Competitions));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string Name
+		{
+			get
+			{
+				return this._Name;
+			}
+			set
+			{
+				if ((this._Name != value))
+				{
+					this.OnNameChanging(value);
+					this.SendPropertyChanging();
+					this._Name = value;
+					this.SendPropertyChanged("Name");
+					this.OnNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RowStatus", DbType="Int NOT NULL")]
+		public int RowStatus
+		{
+			get
+			{
+				return this._RowStatus;
+			}
+			set
+			{
+				if ((this._RowStatus != value))
+				{
+					this.OnRowStatusChanging(value);
+					this.SendPropertyChanging();
+					this._RowStatus = value;
+					this.SendPropertyChanged("RowStatus");
+					this.OnRowStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Created", DbType="DateTime NOT NULL")]
+		public System.DateTime Created
+		{
+			get
+			{
+				return this._Created;
+			}
+			set
+			{
+				if ((this._Created != value))
+				{
+					this.OnCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._Created = value;
+					this.SendPropertyChanged("Created");
+					this.OnCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Updated", DbType="DateTime NOT NULL")]
+		public System.DateTime Updated
+		{
+			get
+			{
+				return this._Updated;
+			}
+			set
+			{
+				if ((this._Updated != value))
+				{
+					this.OnUpdatedChanging(value);
+					this.SendPropertyChanging();
+					this._Updated = value;
+					this.SendPropertyChanged("Updated");
+					this.OnUpdatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PlayersCount", DbType="Int NOT NULL")]
+		public int PlayersCount
+		{
+			get
+			{
+				return this._PlayersCount;
+			}
+			set
+			{
+				if ((this._PlayersCount != value))
+				{
+					this.OnPlayersCountChanging(value);
+					this.SendPropertyChanging();
+					this._PlayersCount = value;
+					this.SendPropertyChanged("PlayersCount");
+					this.OnPlayersCountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompetitionMethod", DbType="Int NOT NULL")]
+		public int CompetitionMethod
+		{
+			get
+			{
+				return this._CompetitionMethod;
+			}
+			set
+			{
+				if ((this._CompetitionMethod != value))
+				{
+					this.OnCompetitionMethodChanging(value);
+					this.SendPropertyChanging();
+					this._CompetitionMethod = value;
+					this.SendPropertyChanged("CompetitionMethod");
+					this.OnCompetitionMethodChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WildcardPlayersCount", DbType="Int NOT NULL")]
+		public int WildcardPlayersCount
+		{
+			get
+			{
+				return this._WildcardPlayersCount;
+			}
+			set
+			{
+				if ((this._WildcardPlayersCount != value))
+				{
+					this.OnWildcardPlayersCountChanging(value);
+					this.SendPropertyChanging();
+					this._WildcardPlayersCount = value;
+					this.SendPropertyChanged("WildcardPlayersCount");
+					this.OnWildcardPlayersCountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QualifyingPlayersCount", DbType="Int NOT NULL")]
+		public int QualifyingPlayersCount
+		{
+			get
+			{
+				return this._QualifyingPlayersCount;
+			}
+			set
+			{
+				if ((this._QualifyingPlayersCount != value))
+				{
+					this.OnQualifyingPlayersCountChanging(value);
+					this.SendPropertyChanging();
+					this._QualifyingPlayersCount = value;
+					this.SendPropertyChanged("QualifyingPlayersCount");
+					this.OnQualifyingPlayersCountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QualifyingPairsCount", DbType="Int NOT NULL")]
+		public int QualifyingPairsCount
+		{
+			get
+			{
+				return this._QualifyingPairsCount;
+			}
+			set
+			{
+				if ((this._QualifyingPairsCount != value))
+				{
+					this.OnQualifyingPairsCountChanging(value);
+					this.SendPropertyChanging();
+					this._QualifyingPairsCount = value;
+					this.SendPropertyChanged("QualifyingPairsCount");
+					this.OnQualifyingPairsCountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WildcardPairsCount", DbType="Int NOT NULL")]
+		public int WildcardPairsCount
+		{
+			get
+			{
+				return this._WildcardPairsCount;
+			}
+			set
+			{
+				if ((this._WildcardPairsCount != value))
+				{
+					this.OnWildcardPairsCountChanging(value);
+					this.SendPropertyChanging();
+					this._WildcardPairsCount = value;
+					this.SendPropertyChanged("WildcardPairsCount");
+					this.OnWildcardPairsCountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PairsCount", DbType="Int NOT NULL")]
+		public int PairsCount
+		{
+			get
+			{
+				return this._PairsCount;
+			}
+			set
+			{
+				if ((this._PairsCount != value))
+				{
+					this.OnPairsCountChanging(value);
+					this.SendPropertyChanging();
+					this._PairsCount = value;
+					this.SendPropertyChanged("PairsCount");
+					this.OnPairsCountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HasConsolation", DbType="Bit NOT NULL")]
+		public bool HasConsolation
+		{
+			get
+			{
+				return this._HasConsolation;
+			}
+			set
+			{
+				if ((this._HasConsolation != value))
+				{
+					this.OnHasConsolationChanging(value);
+					this.SendPropertyChanging();
+					this._HasConsolation = value;
+					this.SendPropertyChanged("HasConsolation");
+					this.OnHasConsolationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ranking", DbType="Int NOT NULL")]
+		public int Ranking
+		{
+			get
+			{
+				return this._Ranking;
+			}
+			set
+			{
+				if ((this._Ranking != value))
+				{
+					this.OnRankingChanging(value);
+					this.SendPropertyChanging();
+					this._Ranking = value;
+					this.SendPropertyChanged("Ranking");
+					this.OnRankingChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CompetitionType_Competition", Storage="_Competitions", ThisKey="Id", OtherKey="TypeId")]
+		public EntitySet<Competition> Competitions
+		{
+			get
+			{
+				return this._Competitions;
+			}
+			set
+			{
+				this._Competitions.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Competitions(Competition entity)
+		{
+			this.SendPropertyChanging();
+			entity.CompetitionType = this;
+		}
+		
+		private void detach_Competitions(Competition entity)
+		{
+			this.SendPropertyChanging();
+			entity.CompetitionType = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.MatchScore")]
+	public partial class MatchScore : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _MatchId;
+		
+		private int _SetNumber;
+		
+		private int _Player1Points;
+		
+		private int _Player2Points;
+		
+		private int _BreakPoints;
+		
+		private EntityRef<Match> _Match;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMatchIdChanging(int value);
+    partial void OnMatchIdChanged();
+    partial void OnSetNumberChanging(int value);
+    partial void OnSetNumberChanged();
+    partial void OnPlayer1PointsChanging(int value);
+    partial void OnPlayer1PointsChanged();
+    partial void OnPlayer2PointsChanging(int value);
+    partial void OnPlayer2PointsChanged();
+    partial void OnBreakPointsChanging(int value);
+    partial void OnBreakPointsChanged();
+    #endregion
+		
+		public MatchScore()
+		{
+			this._Match = default(EntityRef<Match>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchId", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int MatchId
+		{
+			get
+			{
+				return this._MatchId;
+			}
+			set
+			{
+				if ((this._MatchId != value))
+				{
+					if (this._Match.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnMatchIdChanging(value);
+					this.SendPropertyChanging();
+					this._MatchId = value;
+					this.SendPropertyChanged("MatchId");
+					this.OnMatchIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SetNumber", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int SetNumber
+		{
+			get
+			{
+				return this._SetNumber;
+			}
+			set
+			{
+				if ((this._SetNumber != value))
+				{
+					this.OnSetNumberChanging(value);
+					this.SendPropertyChanging();
+					this._SetNumber = value;
+					this.SendPropertyChanged("SetNumber");
+					this.OnSetNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Player1Points", DbType="Int NOT NULL")]
+		public int Player1Points
+		{
+			get
+			{
+				return this._Player1Points;
+			}
+			set
+			{
+				if ((this._Player1Points != value))
+				{
+					this.OnPlayer1PointsChanging(value);
+					this.SendPropertyChanging();
+					this._Player1Points = value;
+					this.SendPropertyChanged("Player1Points");
+					this.OnPlayer1PointsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Player2Points", DbType="Int NOT NULL")]
+		public int Player2Points
+		{
+			get
+			{
+				return this._Player2Points;
+			}
+			set
+			{
+				if ((this._Player2Points != value))
+				{
+					this.OnPlayer2PointsChanging(value);
+					this.SendPropertyChanging();
+					this._Player2Points = value;
+					this.SendPropertyChanged("Player2Points");
+					this.OnPlayer2PointsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BreakPoints", DbType="Int NOT NULL")]
+		public int BreakPoints
+		{
+			get
+			{
+				return this._BreakPoints;
+			}
+			set
+			{
+				if ((this._BreakPoints != value))
+				{
+					this.OnBreakPointsChanging(value);
+					this.SendPropertyChanging();
+					this._BreakPoints = value;
+					this.SendPropertyChanged("BreakPoints");
+					this.OnBreakPointsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Match_MatchScore", Storage="_Match", ThisKey="MatchId", OtherKey="Id", IsForeignKey=true)]
+		public Match Match
+		{
+			get
+			{
+				return this._Match.Entity;
+			}
+			set
+			{
+				Match previousValue = this._Match.Entity;
+				if (((previousValue != value) 
+							|| (this._Match.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Match.Entity = null;
+						previousValue.MatchScores.Remove(this);
+					}
+					this._Match.Entity = value;
+					if ((value != null))
+					{
+						value.MatchScores.Add(this);
+						this._MatchId = value.Id;
+					}
+					else
+					{
+						this._MatchId = default(int);
+					}
+					this.SendPropertyChanged("Match");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
@@ -1574,405 +2209,66 @@ namespace Simple.SAMS.Competitions.Data
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CompetitionType")]
-	public partial class CompetitionType : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Users")]
+	public partial class User
 	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		private int _UserId;
 		
-		private int _Id;
+		private string _UserName;
 		
-		private string _Name;
+		private System.Nullable<bool> _IsActive;
 		
-		private int _RowStatus;
-		
-		private System.DateTime _Created;
-		
-		private System.DateTime _Updated;
-		
-		private int _PlayersCount;
-		
-		private int _CompetitionMethod;
-		
-		private int _WildcardPlayersCount;
-		
-		private int _QualifyingPlayersCount;
-		
-		private int _QualifyingPairsCount;
-		
-		private int _WildcardPairsCount;
-		
-		private int _PairsCount;
-		
-		private bool _HasConsolation;
-		
-		private int _Ranking;
-		
-		private EntitySet<Competition> _Competitions;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnNameChanging(string value);
-    partial void OnNameChanged();
-    partial void OnRowStatusChanging(int value);
-    partial void OnRowStatusChanged();
-    partial void OnCreatedChanging(System.DateTime value);
-    partial void OnCreatedChanged();
-    partial void OnUpdatedChanging(System.DateTime value);
-    partial void OnUpdatedChanged();
-    partial void OnPlayersCountChanging(int value);
-    partial void OnPlayersCountChanged();
-    partial void OnCompetitionMethodChanging(int value);
-    partial void OnCompetitionMethodChanged();
-    partial void OnWildcardPlayersCountChanging(int value);
-    partial void OnWildcardPlayersCountChanged();
-    partial void OnQualifyingPlayersCountChanging(int value);
-    partial void OnQualifyingPlayersCountChanged();
-    partial void OnQualifyingPairsCountChanging(int value);
-    partial void OnQualifyingPairsCountChanged();
-    partial void OnWildcardPairsCountChanging(int value);
-    partial void OnWildcardPairsCountChanged();
-    partial void OnPairsCountChanging(int value);
-    partial void OnPairsCountChanged();
-    partial void OnHasConsolationChanging(bool value);
-    partial void OnHasConsolationChanged();
-    partial void OnRankingChanging(int value);
-    partial void OnRankingChanged();
-    #endregion
-		
-		public CompetitionType()
+		public User()
 		{
-			this._Competitions = new EntitySet<Competition>(new Action<Competition>(this.attach_Competitions), new Action<Competition>(this.detach_Competitions));
-			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL")]
+		public int UserId
 		{
 			get
 			{
-				return this._Id;
+				return this._UserId;
 			}
 			set
 			{
-				if ((this._Id != value))
+				if ((this._UserId != value))
 				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
+					this._UserId = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Name", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
-		public string Name
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="NVarChar(56) NOT NULL", CanBeNull=false)]
+		public string UserName
 		{
 			get
 			{
-				return this._Name;
+				return this._UserName;
 			}
 			set
 			{
-				if ((this._Name != value))
+				if ((this._UserName != value))
 				{
-					this.OnNameChanging(value);
-					this.SendPropertyChanging();
-					this._Name = value;
-					this.SendPropertyChanged("Name");
-					this.OnNameChanged();
+					this._UserName = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RowStatus", DbType="Int NOT NULL")]
-		public int RowStatus
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsActive", DbType="Bit")]
+		public System.Nullable<bool> IsActive
 		{
 			get
 			{
-				return this._RowStatus;
+				return this._IsActive;
 			}
 			set
 			{
-				if ((this._RowStatus != value))
+				if ((this._IsActive != value))
 				{
-					this.OnRowStatusChanging(value);
-					this.SendPropertyChanging();
-					this._RowStatus = value;
-					this.SendPropertyChanged("RowStatus");
-					this.OnRowStatusChanged();
+					this._IsActive = value;
 				}
 			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Created", DbType="DateTime NOT NULL")]
-		public System.DateTime Created
-		{
-			get
-			{
-				return this._Created;
-			}
-			set
-			{
-				if ((this._Created != value))
-				{
-					this.OnCreatedChanging(value);
-					this.SendPropertyChanging();
-					this._Created = value;
-					this.SendPropertyChanged("Created");
-					this.OnCreatedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Updated", DbType="DateTime NOT NULL")]
-		public System.DateTime Updated
-		{
-			get
-			{
-				return this._Updated;
-			}
-			set
-			{
-				if ((this._Updated != value))
-				{
-					this.OnUpdatedChanging(value);
-					this.SendPropertyChanging();
-					this._Updated = value;
-					this.SendPropertyChanged("Updated");
-					this.OnUpdatedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PlayersCount", DbType="Int NOT NULL")]
-		public int PlayersCount
-		{
-			get
-			{
-				return this._PlayersCount;
-			}
-			set
-			{
-				if ((this._PlayersCount != value))
-				{
-					this.OnPlayersCountChanging(value);
-					this.SendPropertyChanging();
-					this._PlayersCount = value;
-					this.SendPropertyChanged("PlayersCount");
-					this.OnPlayersCountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompetitionMethod", DbType="Int NOT NULL")]
-		public int CompetitionMethod
-		{
-			get
-			{
-				return this._CompetitionMethod;
-			}
-			set
-			{
-				if ((this._CompetitionMethod != value))
-				{
-					this.OnCompetitionMethodChanging(value);
-					this.SendPropertyChanging();
-					this._CompetitionMethod = value;
-					this.SendPropertyChanged("CompetitionMethod");
-					this.OnCompetitionMethodChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WildcardPlayersCount", DbType="Int NOT NULL")]
-		public int WildcardPlayersCount
-		{
-			get
-			{
-				return this._WildcardPlayersCount;
-			}
-			set
-			{
-				if ((this._WildcardPlayersCount != value))
-				{
-					this.OnWildcardPlayersCountChanging(value);
-					this.SendPropertyChanging();
-					this._WildcardPlayersCount = value;
-					this.SendPropertyChanged("WildcardPlayersCount");
-					this.OnWildcardPlayersCountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QualifyingPlayersCount", DbType="Int NOT NULL")]
-		public int QualifyingPlayersCount
-		{
-			get
-			{
-				return this._QualifyingPlayersCount;
-			}
-			set
-			{
-				if ((this._QualifyingPlayersCount != value))
-				{
-					this.OnQualifyingPlayersCountChanging(value);
-					this.SendPropertyChanging();
-					this._QualifyingPlayersCount = value;
-					this.SendPropertyChanged("QualifyingPlayersCount");
-					this.OnQualifyingPlayersCountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_QualifyingPairsCount", DbType="Int NOT NULL")]
-		public int QualifyingPairsCount
-		{
-			get
-			{
-				return this._QualifyingPairsCount;
-			}
-			set
-			{
-				if ((this._QualifyingPairsCount != value))
-				{
-					this.OnQualifyingPairsCountChanging(value);
-					this.SendPropertyChanging();
-					this._QualifyingPairsCount = value;
-					this.SendPropertyChanged("QualifyingPairsCount");
-					this.OnQualifyingPairsCountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WildcardPairsCount", DbType="Int NOT NULL")]
-		public int WildcardPairsCount
-		{
-			get
-			{
-				return this._WildcardPairsCount;
-			}
-			set
-			{
-				if ((this._WildcardPairsCount != value))
-				{
-					this.OnWildcardPairsCountChanging(value);
-					this.SendPropertyChanging();
-					this._WildcardPairsCount = value;
-					this.SendPropertyChanged("WildcardPairsCount");
-					this.OnWildcardPairsCountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PairsCount", DbType="Int NOT NULL")]
-		public int PairsCount
-		{
-			get
-			{
-				return this._PairsCount;
-			}
-			set
-			{
-				if ((this._PairsCount != value))
-				{
-					this.OnPairsCountChanging(value);
-					this.SendPropertyChanging();
-					this._PairsCount = value;
-					this.SendPropertyChanged("PairsCount");
-					this.OnPairsCountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HasConsolation", DbType="Bit NOT NULL")]
-		public bool HasConsolation
-		{
-			get
-			{
-				return this._HasConsolation;
-			}
-			set
-			{
-				if ((this._HasConsolation != value))
-				{
-					this.OnHasConsolationChanging(value);
-					this.SendPropertyChanging();
-					this._HasConsolation = value;
-					this.SendPropertyChanged("HasConsolation");
-					this.OnHasConsolationChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ranking", DbType="Int NOT NULL")]
-		public int Ranking
-		{
-			get
-			{
-				return this._Ranking;
-			}
-			set
-			{
-				if ((this._Ranking != value))
-				{
-					this.OnRankingChanging(value);
-					this.SendPropertyChanging();
-					this._Ranking = value;
-					this.SendPropertyChanged("Ranking");
-					this.OnRankingChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CompetitionType_Competition", Storage="_Competitions", ThisKey="Id", OtherKey="TypeId")]
-		public EntitySet<Competition> Competitions
-		{
-			get
-			{
-				return this._Competitions;
-			}
-			set
-			{
-				this._Competitions.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Competitions(Competition entity)
-		{
-			this.SendPropertyChanging();
-			entity.CompetitionType = this;
-		}
-		
-		private void detach_Competitions(Competition entity)
-		{
-			this.SendPropertyChanging();
-			entity.CompetitionType = null;
 		}
 	}
 	
@@ -2017,6 +2313,12 @@ namespace Simple.SAMS.Competitions.Data
 		private int _Player1Points;
 		
 		private int _Player2Points;
+		
+		private int _BreakPoints;
+		
+		private System.Nullable<int> _Result;
+		
+		private System.Nullable<int> _Winner;
 		
 		private EntitySet<MatchScore> _MatchScores;
 		
@@ -2072,6 +2374,12 @@ namespace Simple.SAMS.Competitions.Data
     partial void OnPlayer1PointsChanged();
     partial void OnPlayer2PointsChanging(int value);
     partial void OnPlayer2PointsChanged();
+    partial void OnBreakPointsChanging(int value);
+    partial void OnBreakPointsChanged();
+    partial void OnResultChanging(System.Nullable<int> value);
+    partial void OnResultChanged();
+    partial void OnWinnerChanging(System.Nullable<int> value);
+    partial void OnWinnerChanged();
     #endregion
 		
 		public Match()
@@ -2470,6 +2778,66 @@ namespace Simple.SAMS.Competitions.Data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BreakPoints", DbType="Int NOT NULL")]
+		public int BreakPoints
+		{
+			get
+			{
+				return this._BreakPoints;
+			}
+			set
+			{
+				if ((this._BreakPoints != value))
+				{
+					this.OnBreakPointsChanging(value);
+					this.SendPropertyChanging();
+					this._BreakPoints = value;
+					this.SendPropertyChanged("BreakPoints");
+					this.OnBreakPointsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Result", DbType="Int")]
+		public System.Nullable<int> Result
+		{
+			get
+			{
+				return this._Result;
+			}
+			set
+			{
+				if ((this._Result != value))
+				{
+					this.OnResultChanging(value);
+					this.SendPropertyChanging();
+					this._Result = value;
+					this.SendPropertyChanged("Result");
+					this.OnResultChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Winner", DbType="Int")]
+		public System.Nullable<int> Winner
+		{
+			get
+			{
+				return this._Winner;
+			}
+			set
+			{
+				if ((this._Winner != value))
+				{
+					this.OnWinnerChanging(value);
+					this.SendPropertyChanging();
+					this._Winner = value;
+					this.SendPropertyChanged("Winner");
+					this.OnWinnerChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Match_MatchScore", Storage="_MatchScores", ThisKey="Id", OtherKey="MatchId")]
 		public EntitySet<MatchScore> MatchScores
 		{
@@ -2717,181 +3085,6 @@ namespace Simple.SAMS.Competitions.Data
 		{
 			this.SendPropertyChanging();
 			entity.Match = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.MatchScore")]
-	public partial class MatchScore : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _MatchId;
-		
-		private int _SetNumber;
-		
-		private int _Player1Points;
-		
-		private int _Player2Points;
-		
-		private EntityRef<Match> _Match;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMatchIdChanging(int value);
-    partial void OnMatchIdChanged();
-    partial void OnSetNumberChanging(int value);
-    partial void OnSetNumberChanged();
-    partial void OnPlayer1PointsChanging(int value);
-    partial void OnPlayer1PointsChanged();
-    partial void OnPlayer2PointsChanging(int value);
-    partial void OnPlayer2PointsChanged();
-    #endregion
-		
-		public MatchScore()
-		{
-			this._Match = default(EntityRef<Match>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchId", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int MatchId
-		{
-			get
-			{
-				return this._MatchId;
-			}
-			set
-			{
-				if ((this._MatchId != value))
-				{
-					if (this._Match.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnMatchIdChanging(value);
-					this.SendPropertyChanging();
-					this._MatchId = value;
-					this.SendPropertyChanged("MatchId");
-					this.OnMatchIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SetNumber", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int SetNumber
-		{
-			get
-			{
-				return this._SetNumber;
-			}
-			set
-			{
-				if ((this._SetNumber != value))
-				{
-					this.OnSetNumberChanging(value);
-					this.SendPropertyChanging();
-					this._SetNumber = value;
-					this.SendPropertyChanged("SetNumber");
-					this.OnSetNumberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Player1Points", DbType="Int NOT NULL")]
-		public int Player1Points
-		{
-			get
-			{
-				return this._Player1Points;
-			}
-			set
-			{
-				if ((this._Player1Points != value))
-				{
-					this.OnPlayer1PointsChanging(value);
-					this.SendPropertyChanging();
-					this._Player1Points = value;
-					this.SendPropertyChanged("Player1Points");
-					this.OnPlayer1PointsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Player2Points", DbType="Int NOT NULL")]
-		public int Player2Points
-		{
-			get
-			{
-				return this._Player2Points;
-			}
-			set
-			{
-				if ((this._Player2Points != value))
-				{
-					this.OnPlayer2PointsChanging(value);
-					this.SendPropertyChanging();
-					this._Player2Points = value;
-					this.SendPropertyChanged("Player2Points");
-					this.OnPlayer2PointsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Match_MatchScore", Storage="_Match", ThisKey="MatchId", OtherKey="Id", IsForeignKey=true)]
-		public Match Match
-		{
-			get
-			{
-				return this._Match.Entity;
-			}
-			set
-			{
-				Match previousValue = this._Match.Entity;
-				if (((previousValue != value) 
-							|| (this._Match.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Match.Entity = null;
-						previousValue.MatchScores.Remove(this);
-					}
-					this._Match.Entity = value;
-					if ((value != null))
-					{
-						value.MatchScores.Add(this);
-						this._MatchId = value.Id;
-					}
-					else
-					{
-						this._MatchId = default(int);
-					}
-					this.SendPropertyChanged("Match");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 }

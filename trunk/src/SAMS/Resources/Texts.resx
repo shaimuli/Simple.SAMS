@@ -468,4 +468,31 @@
   <data name="MatchBreakPoint" xml:space="preserve">
     <value>נק' בשובר שיוויון</value>
   </data>
+  <data name="UpdateResults.LastSaveTime" xml:space="preserve">
+    <value>נשמר לאחרונה</value>
+  </data>
+  <data name="UpdateResults.SendUpdatesNow" xml:space="preserve">
+    <value>שמור עכשיו</value>
+  </data>
+  <data name="MatchResult.Disqualification" xml:space="preserve">
+    <value>פסילה</value>
+  </data>
+  <data name="MatchResult.Pause" xml:space="preserve">
+    <value>הפסקה</value>
+  </data>
+  <data name="MatchResult.Retirement" xml:space="preserve">
+    <value>פרישה</value>
+  </data>
+  <data name="MatchResult.Win" xml:space="preserve">
+    <value>נצחון</value>
+  </data>
+  <data name="MatchWinner.None" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MatchWinner.Player1" xml:space="preserve">
+    <value>שחקן/קב' 1</value>
+  </data>
+  <data name="MatchWinner.Player2" xml:space="preserve">
+    <value>שחקן/קב' 2</value>
+  </data>
 </root>

@@ -775,6 +775,26 @@
               Looks up a localized string similar to שחקנים.
             </summary>
         </member>
+        <member name="P:SAMS.Resources.Texts.MatchResult_Disqualification">
+            <summary>
+              Looks up a localized string similar to פסילה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.MatchResult_Pause">
+            <summary>
+              Looks up a localized string similar to הפסקה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.MatchResult_Retirement">
+            <summary>
+              Looks up a localized string similar to פרישה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.MatchResult_Win">
+            <summary>
+              Looks up a localized string similar to נצחון.
+            </summary>
+        </member>
         <member name="P:SAMS.Resources.Texts.MatchResultsHeader">
             <summary>
               Looks up a localized string similar to תוצאות.
@@ -788,6 +808,21 @@
         <member name="P:SAMS.Resources.Texts.MatchTimeHeader">
             <summary>
               Looks up a localized string similar to שעה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.MatchWinner_None">
+            <summary>
+              Looks up a localized string similar to .
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.MatchWinner_Player1">
+            <summary>
+              Looks up a localized string similar to שחקן/קב&apos; 1.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.MatchWinner_Player2">
+            <summary>
+              Looks up a localized string similar to שחקן/קב&apos; 2.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.MatchWinnerHeader">
@@ -978,6 +1013,16 @@
         <member name="P:SAMS.Resources.Texts.UpdateCompetitionPlayersHeader">
             <summary>
               Looks up a localized string similar to עדכון שחקנים לתחרות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.UpdateResults_LastSaveTime">
+            <summary>
+              Looks up a localized string similar to נשמר לאחרונה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.UpdateResults_SendUpdatesNow">
+            <summary>
+              Looks up a localized string similar to שמור עכשיו.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.UserActivated">

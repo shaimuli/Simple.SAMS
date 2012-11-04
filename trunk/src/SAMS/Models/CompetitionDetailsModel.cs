@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using Simple.SAMS.Contracts.Competitions;
 using Simple.SAMS.Contracts.Players;
 
@@ -19,5 +20,7 @@ namespace SAMS.Models
         public EntityReference Type { get; set; }
         public CompetitionMatchViewModel[] Matches { get; set; }
         public CompetitionPlayer[] Players { get; set; }
+        public IEnumerable<SelectListItem> StartTimeHours { get; set; }
+        public IEnumerable<SelectListItem> StartTimeMinutes { get; set; }
     }
 }

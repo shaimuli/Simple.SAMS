@@ -1,159 +1,143 @@
 ﻿@using Simple.SAMS.Contracts.Competitions
 @model SAMS.Models.CompetitionDetailsModel
 
-
-
-@foreach (var section in Model.Matches.Where(m => (int)m.Status >= (int)MatchStatus.PlayersAssigned).GroupBy(m => m.Section))
-{
-    <h3>
-        @(Html.ResourceText("CompetitionSection." + section.Key))
-    </h3>
-    
-    foreach (var round in section.GroupBy(m => m.Round))
+<div class="row-fluid">
+    <div class="span6"></div>
+    <div class="span3">
+        @Html.Resource("UpdateResults.LastSaveTime"):<span class="lastSaveTime"></span>
+    </div>
+    <div class="span3">
+        <button type="button" class="btn btn-primary sendUpdatesNow">@Html.Resource("UpdateResults.SendUpdatesNow")</button>
+    </div>
+</div>
+<div class="updateResultsMatches">
+    @foreach (var section in Model.Matches.Where(m => (int)m.Status >= (int)MatchStatus.PlayersAssigned).GroupBy(m => m.Section))
     {
-    <table class="table">
-        <thead>
-            <tr>
-                <th class="span1">#
-                </th>
-                <th class="span2">
+        <h3>
+            @(Html.ResourceText("CompetitionSection." + section.Key))
+        </h3>
+    
+        foreach (var round in section.GroupBy(m => m.Round))
+        {
+        <div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="span1">#
+                    </th>
+                    <th class="span3">
+                        @Html.Resource("MatchDateHeader") / @Html.Resource("MatchTimeHeader")
+                    </th>
+                    <th class="span5">
 
-                    @Html.Resource("MatchDateHeader")
-                </th>
-                <th class="span2">
-                    @Html.Resource("MatchTimeHeader")
-                </th>
-                <th class="span5">
-
-                    <div class="row-fluid">
-                        <div class="span6">
-                            @Html.Resource("MatchPlayersHeader")
-                        </div>
-                        <div class="span1">
-                            @Html.Resource("MatchWinnerHeader")
-
-                        </div>
-                        <div class="span1">1</div>
-                        <div class="span1">2</div>
-                        <div class="span1">3</div>
-                        <div class="span1">4</div>
-                        <div class="span1">5</div>
-
-                    </div>
-                </th>
-                <th class="span1">@Html.Resource("MatchStatusHeader")
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var match in round)
-            {
-                <tr data-key="@match.Id">
-                    <td>
-                        @match.Id
-                    </td>
-                    <td>
-
-                        <div class="input-append date" data-date="@DateTime.Now.ToShortDateString()" data-date-format="dd/mm/yyyy">
-                            <div class="row-fluid">
-                                <input  class="span6" type="text" name="StartTime" value="@DateTime.Now.ToShortDateString()">
-                                <span class="add-on"><i class="icon-th"></i></span>
-                            </div>
-                        </div>
-
-                    </td>
-                    <td>
-                        <div class="row-fluid">
-                            <input type="text" size="4" class="span6" name="startTime"/>
-                            <select class="span4" name="startTimeType">
-                                <option value="@StartTimeType.NotDetermined">@Html.Resource("StartTimeType.NotDetermined")</option>
-                                <option value="@StartTimeType.StartTime">@Html.Resource("StartTimeType.StartTime")</option>
-                                <option value="@StartTimeType.NotBefore">@Html.Resource("StartTimeType.NotBefore")</option>
-                                <option value="@StartTimeType.AfterRest">@Html.Resource("StartTimeType.AfterRest")</option>
-                                <option value="@StartTimeType.FollowedBy">@Html.Resource("StartTimeType.FollowedBy")</option>
-                            </select>
-
-                        </div>
-                    </td>
-                    <td>
                         <div class="row-fluid">
                             <div class="span6">
-                                <a href="#">@(match.Player1 != null ? match.Player1.FullName : string.Empty)</a>
+                                @Html.Resource("MatchPlayersHeader")
                             </div>
-                            <div class="span1">
-                                <input type="radio" class="setScore" name="p@(match.Id)winner" data-name="p1winner" checked="checked" />
-                            </div>
+                            <div class="span1">1</div>
+                            <div class="span1">2</div>
+                            <div class="span1">3</div>
+                            <div class="span1">4</div>
+                            <div class="span1">5</div>
 
-                            <div class="span1">
-                                <input type="text" class="setScore" maxlength="1" name="p1s1" data-numeric="true"/>
-                            </div>
-                            <div class="span1">
-                                <input type="text" class="setScore" maxlength="1" name="p1s2"  data-numeric="true"/>
-                            </div>
-                            <div class="span1">
-                                <input type="text" class="setScore" maxlength="1" name="p1s3"  data-numeric="true"/>
-                            </div>
-                            <div class="span1">
-                                <input type="text" class="setScore" maxlength="1"  name="p1s4" data-numeric="true"/>
-                            </div>
-                            <div class="span1">
-                                <input type="text" class="setScore" maxlength="1"  name="p1s5" data-numeric="true"/>
-                            </div>
                         </div>
-                        <div class="row-fluid">
-                            <div class="span6">
-                                <a href="#">@(match.Player2 != null ? match.Player2.FullName : string.Empty)</a>
-                            </div>
-                            <div class="span1">
-                                <input type="radio" class="setScore" name="p@(match.Id)winner" data-name="p2winner" />
-                            </div>
-
-                            <div class="span1">
-                                <input type="text" class="setScore" maxlength="1"  name="p2s1" data-numeric="true"/>
-                            </div>
-                            <div class="span1">
-                                <input type="text" class="setScore" maxlength="1"  name="p2s2" data-numeric="true"/>
-                            </div>
-                            <div class="span1">
-                                <input type="text" class="setScore" maxlength="1"  name="p2s3" data-numeric="true"/>
-                            </div>
-                            <div class="span1">
-                                <input type="text" class="setScore" maxlength="1"  name="p2s4" data-numeric="true"/>
-                            </div>
-                            <div class="span1">
-                                <input type="text" class="setScore" maxlength="1"  name="p2s5" data-numeric="true"/>
-                            </div>
-                        </div>                        
-                        <div class="row-fluid">
-                            <div class="span6">
-                                @Html.Resource("MatchBreakPoint")
-                            </div>
-                            <div class="span1">
-                                
-                            </div>
-
-                            <div class="span1">
-                                <input type="text" class="setScore" maxlength="1" name="bp1" data-numeric="true"/>
-                            </div>
-                            <div class="span1">
-                                <input type="text" class="setScore" maxlength="1" name="bp2" data-numeric="true"/>
-                            </div>
-                            <div class="span1">
-                                <input type="text" class="setScore" maxlength="1" name="bp3" data-numeric="true"/>
-                            </div>
-                            <div class="span1">
-                                <input type="text" class="setScore" maxlength="1" name="bp4" data-numeric="true"/>
-                            </div>
-                            <div class="span1">
-                                <input type="text" class="setScore" maxlength="1" name="bp5" data-numeric="true"/>
-                            </div>
-                        </div>
-                    </td>
-
-                    <td></td>
+                    </th>
+                    <th class="span2">
+                        @Html.Resource("MatchWinnerHeader")
+                    </th>
+                    <th class="span1">@Html.Resource("MatchStatusHeader")
+                    </th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var match in round)
+                {
+                    <tr data-key="@match.Id" class="sending">
+                        <td>
+                            @match.Id
+                        </td>
+                        <td>
+
+                            <div class="input-append date" data-date="@DateTime.Now.ToShortDateString()" data-date-format="dd/mm/yyyy">
+                                <div class="row-fluid">
+                                    <input  class="span6" type="text" name="Date" value="@DateTime.Now.ToShortDateString()">
+                                    <span class="add-on"><i class="icon-th"></i></span>
+                                </div>
+                            </div>
+                            <div class="row-fluid">
+                                @Html.DropDownList("startTimeHours", Model.StartTimeHours, new { @class = "startTimeSelect" })
+                                @Html.DropDownList("startTimeMinutes", Model.StartTimeMinutes, new { @class = "startTimeSelect" })
+                                <select class="startTimeSelect" name="startTimeType">
+                                    <option value="@StartTimeType.NotDetermined">@Html.Resource("StartTimeType.NotDetermined")</option>
+                                    <option value="@StartTimeType.StartTime">@Html.Resource("StartTimeType.StartTime")</option>
+                                    <option value="@StartTimeType.NotBefore">@Html.Resource("StartTimeType.NotBefore")</option>
+                                    <option value="@StartTimeType.AfterRest">@Html.Resource("StartTimeType.AfterRest")</option>
+                                    <option value="@StartTimeType.FollowedBy">@Html.Resource("StartTimeType.FollowedBy")</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="row-fluid">
+                                <div class="span6">
+                                    <div class="matchPlayerName">
+                                        <b>1.</b> @(match.Player1 != null ? match.Player1.FullName : string.Empty)
+                                    </div>
+                                    <div class="matchPlayerName">
+                                        <b>2.</b> @(match.Player2 != null ? match.Player2.FullName : string.Empty)
+                                    </div>
+                                    <div class="matchPlayerName">
+                                    @Html.Resource("MatchBreakPoint")
+                                     </div>
+                                </div>
+                                <div class="span1">
+                                    <input type="text" class="setScore" maxlength="1" name="p1s1" data-numeric="true" value="@match.Score(1,1)"/>
+                                    <input type="text" class="setScore" maxlength="1" name="p2s1" data-numeric="true" value="@match.Score(2,1)" />
+                                    <input type="text" class="setScore" maxlength="1" name="bp1" data-numeric="true"  value="@match.Score(0,1)"/>
+                                </div>
+                                <div class="span1">
+                                    <input type="text" class="setScore" maxlength="1" name="p1s2" data-numeric="true" value="@match.Score(1,2)"/>
+                                    <input type="text" class="setScore" maxlength="1" name="p2s2" data-numeric="true" value="@match.Score(2,2)"/>
+                                    <input type="text" class="setScore" maxlength="1" name="bp2" data-numeric="true"  value="@match.Score(0,2)"/>
+                                </div>
+                                <div class="span1">
+                                    <input type="text" class="setScore" maxlength="1" name="p1s3" data-numeric="true"  value="@match.Score(1,3)"/>
+                                    <input type="text" class="setScore" maxlength="1" name="p2s3" data-numeric="true"  value="@match.Score(2,3)"/>
+                                    <input type="text" class="setScore" maxlength="1" name="bp3" data-numeric="true" value="@match.Score(0,3)"/>
+                                </div>
+                                <div class="span1">
+                                    <input type="text" class="setScore" maxlength="1" name="p1s4" data-numeric="true" value="@match.Score(1,4)"/>
+                                    <input type="text" class="setScore" maxlength="1" name="p2s4" data-numeric="true" value="@match.Score(2,4)"/>
+                                    <input type="text" class="setScore" maxlength="1" name="bp4" data-numeric="true" value="@match.Score(0,4)"/>
+                                </div>
+                                <div class="span1">
+                                    <input type="text" class="setScore" maxlength="1" name="p1s5" data-numeric="true" value="@match.Score(1,5)"/>
+                                    <input type="text" class="setScore" maxlength="1" name="p2s5" data-numeric="true" value="@match.Score(2,5)"/>
+                                    <input type="text" class="setScore" maxlength="1" name="bp5" data-numeric="true" value="@match.Score(0,5)"/>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <select class="matchWinnerSelect" name="matchWinner">
+                                <option value="@MatchWinner.None">@Html.Resource("MatchWinner.None")</option>
+                                <option value="@MatchWinner.Player1">@Html.Resource("MatchWinner.Player1")</option>
+                                <option value="@MatchWinner.Player2">@Html.Resource("MatchWinner.Player2")</option>
+                            </select>
+                            <select class="matchResultSelect" name="matchResult">
+                                <option value="@MatchResult.Win">@Html.Resource("MatchResult.Win")</option>
+                                <option value="@MatchResult.Pause">@Html.Resource("MatchResult.Pause")</option>
+                                <option value="@MatchResult.Disqualification">@Html.Resource("MatchResult.Disqualification")</option>
+                                <option value="@MatchResult.Retirement">@Html.Resource("MatchResult.Retirement")</option>
+                            </select>
+                        </td>
+
+                        <td class="status">
+                            <div class="statusIndicator"></div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        }
     }
-}
+</div>

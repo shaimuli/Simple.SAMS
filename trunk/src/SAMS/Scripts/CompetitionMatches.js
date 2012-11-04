@@ -16,7 +16,6 @@
                 var matchesContainer = $("<div/>").addClass("matches m" + maxMatches).appendTo(roundContainer);
                 for (var i = 0; i < maxMatches; i++) {
                     var matchSpot = $("<div/>").addClass("matchSpot").attr("id","s"+ target.data("section") + "r" + r + "m" + i).appendTo(matchesContainer);
-                    console.log(matchSpot);
                 }
             }
         } else {
@@ -32,9 +31,6 @@
                     
                     if (lastRound != rnd) {
                         p = 0;
-                        //if (rnd == rounds) {
-                        //    p = parseInt((mc - 2) / 4, 10);
-                        //}
                     }
                     lastRound = rnd;
                     xy[rnd - 1] = xy[rnd - 1] || [];
@@ -47,20 +43,23 @@
                     
                     for (var y = 0; y < xl; y++) {
                         var match = xy[x][y];
-                        var off = offset;
-                        console.log("OFF", x, xl, off, y);
+                        
                         var realOffset = offset;
                         if (y < xl / 2) {
                             realOffset -= Math.floor(offset / 2);
                         } else {
                             realOffset += Math.floor(offset / 2);
                         }
-                        console.log("THE OFF", realOffset);
                         var p = realOffset + y;
                         var spotId = "#s" + target.data("section") + "r" + x + "m" + p;
                         var spot = $(spotId).addClass("filled");
                         var player1 = $("<div/>").addClass("players").appendTo(spot);
                         var player2 = $("<div/>").addClass("players").appendTo(spot);
+                        if (match.Player1Won) {
+                            player1.addClass("winner");
+                        } else {
+                            player2.addClass("winner");
+                        }
                         function player(host, players, score) {
                             var pHost = $("<div/>").addClass("player").appendTo(host);
                             if ($.isArray(players)) {

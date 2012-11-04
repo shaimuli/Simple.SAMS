@@ -58,6 +58,7 @@
     </Compile>
     <Compile Include="Competitions.IDataEntityImplementations.cs" />
     <Compile Include="CompetitionTypeRepository.cs" />
+    <Compile Include="DebuggerWriter.cs" />
     <Compile Include="EntityRepositoryBase.cs" />
     <Compile Include="IDataEntity.cs" />
     <Compile Include="PlayerRepository.cs" />

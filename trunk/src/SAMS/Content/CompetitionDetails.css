@@ -4,7 +4,7 @@
 }
 
 .round {
-    width: 200px;
+    width: 220px;
     float: left;
 }
 .rtl .round {
@@ -12,7 +12,7 @@
 }
 
 .matches {
-    width: 160px;
+    width: 180px;
     
     float: left;
 }
@@ -21,7 +21,7 @@
 }
 
 .matchSpot {
-    width: 148px;
+    width: 168px;
     height: 40px;
     background-color: transparent;
     border: solid 1px transparent;
@@ -32,9 +32,20 @@
 
 .players {
     font-size: 12px;
-    width: 100%;
+    width: 150px;
     height: 50%;
+    padding-left: 18px;
     overflow: hidden;
+    background-position: left center;
+    background-repeat: no-repeat;
+}
+.rtl .players {
+    padding-right: 18px;
+    padding-left: 0;
+    background-position: right center;
+}
+.players.winner {
+    background-image: url(../Images/winner.png);
 }
 
 .players:first-child {
@@ -50,7 +61,7 @@
 }
 
 .score {
-    width: 42px;
+    width: 48px;
     text-overflow: ellipsis;
     float: left;
     font-weight: bold;
@@ -105,3 +116,4 @@
 .r6 {
     width: 1440px; 
 }
+

@@ -211,6 +211,7 @@
     <Compile Include="Models\CreateCompetitionModel.cs" />
     <Compile Include="Models\CreateCompetitionParameters.cs" />
     <Compile Include="Models\MatchPlayerViewModel.cs" />
+    <Compile Include="Models\MatchResultUpdateModel.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\PageHeaderModel.cs" />
     <Compile Include="Models\ResetPasswordViewModel.cs" />
@@ -245,6 +246,8 @@
     <Content Include="Content\jQueryUi\images\ui-icons_ffffff_256x240.png" />
     <Content Include="Content\jQueryUi\jquery-ui-1.9.1.custom.min.css" />
     <Content Include="Content\UpdateResults.css" />
+    <Content Include="Images\ajax-loader.gif" />
+    <Content Include="Images\edit.png" />
     <Content Include="Images\glyphicons-halflings-white.png" />
     <Content Include="Images\glyphicons-halflings.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -304,6 +307,9 @@
     <Content Include="Global.asax" />
     <Content Include="Images\favicon.ico" />
     <Content Include="Images\ita.png" />
+    <Content Include="Images\ok.png" />
+    <Content Include="Images\waiting.png" />
+    <Content Include="Images\winner.png" />
     <Content Include="NLog.config" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
     <Content Include="Areas\HelpPage\Views\Shared\_Layout.cshtml" />

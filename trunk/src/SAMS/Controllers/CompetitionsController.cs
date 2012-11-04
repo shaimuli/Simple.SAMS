@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
@@ -17,9 +18,28 @@ namespace SAMS.Controllers
     public class CompetitionsController : Controller
     {
         [HttpPost]
-        public ActionResult UpdateMatchResults(FormCollection values)
+        public ActionResult UpdateMatchResults(MatchResultUpdateModel[] updates)
         {
-            SystemMonitor.Info("Queued...{0}", string.Join(",", values.AllKeys));
+            var manager = ServiceProvider.Get<ICompetitionsManager>();
+            var matchScoreUpdateInfoItems = new List<MatchScoreUpdateInfo>();
+            updates.ForEach(update=>
+                                {
+                                    if (update.SetScores.NotNullOrEmpty())
+                                    {
+                                        var matchScoreUpdateInfo = new MatchScoreUpdateInfo();
+                                        matchScoreUpdateInfo.SetScores = update.SetScores;
+                                        matchScoreUpdateInfo.MatchId = update.Id;
+                                        matchScoreUpdateInfo.Result = update.Result;
+                                        matchScoreUpdateInfo.Winner = update.Winner;
+                                        
+                                        matchScoreUpdateInfoItems.Add(matchScoreUpdateInfo);
+                                    }
+                                });
+            if (matchScoreUpdateInfoItems.NotNullOrEmpty())
+            {
+                manager.UpdateMatchScore(matchScoreUpdateInfoItems.ToArray());
+            }
+
             return new HttpStatusCodeResult(200);
         }
 
@@ -56,7 +76,8 @@ namespace SAMS.Controllers
             model.Status = competition.Status;
             model.ReferenceId = competition.ReferenceId;
             model.Players = competition.Players;
-
+            model.StartTimeHours = GetStartTimeHours();
+            model.StartTimeMinutes = GetStartTimeMinutes();
             model.Matches =
                 competition.Matches.Select(
                     m => new CompetitionMatchViewModel()
@@ -75,6 +96,18 @@ namespace SAMS.Controllers
                              }).ToArray();
             
             return View(model);
+        }
+
+        private IEnumerable<SelectListItem> GetStartTimeMinutes()
+        {
+            return
+                Enumerable.Range(0, 59).Where(i => i%15 == 0).Select(
+                    i => new SelectListItem() {Value = i.ToString(), Text = i.ToString().PadLeft(2, '0')});
+        }
+
+        private IEnumerable<SelectListItem> GetStartTimeHours()
+        {
+            return Enumerable.Range(0, 24).Select(i => new SelectListItem() { Value = i.ToString(), Text = i.ToString().PadLeft(2,'0')});
         }
 
         public ActionResult Index(int startIndex = 0, int pageSize = 50)
