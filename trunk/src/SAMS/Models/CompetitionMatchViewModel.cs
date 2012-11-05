@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using Simple;
 using Simple.SAMS.Contracts.Competitions;
 
@@ -17,13 +18,18 @@ namespace SAMS.Models
 
         public int Round { get; set; }
 
+        public IEnumerable<SelectListItem> StartTimeHours { get; set; }
+        public IEnumerable<SelectListItem> StartTimeMinutes { get; set; }
+
         public DateTime? StartTime { get; set; }
+        public StartTimeType StartTimeType { get; set; }
         public MatchPlayerViewModel Player1 { get; set; }
         public MatchPlayerViewModel Player2 { get; set; }
         public MatchPlayerViewModel Player3 { get; set; }
         public MatchPlayerViewModel Player4 { get; set; }
         public SetScore[] SetScores { get; set; }
-
+        public MatchWinner? Winner { get; set; }
+        public MatchResult Result { get; set; }
         public string Score(int player, int setNumber)
         {
             var result = string.Empty;

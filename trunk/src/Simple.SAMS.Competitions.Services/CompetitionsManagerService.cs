@@ -110,5 +110,18 @@ namespace Simple.SAMS.Competitions.Services
 
             repository.UpdateCompetitionStatus(id, CompetitionStatus.Started);
         }
+
+        public void UpdateMatchStartTime(MatchStartTimeUpdateInfo[] updates)
+        {
+            var competitionsEngine = ServiceProvider.Get<ICompetitionsEngine>();            
+            updates.ForEach(
+                startTimeUpdateInfo =>
+                    {
+                        Requires.IntArgumentPositive(startTimeUpdateInfo.MatchId, "startTimeUpdateInfo.MatchId");
+                        
+                        competitionsEngine.UpdateMatchStartTime(startTimeUpdateInfo);
+                    });
+     
+        }
     }
 }

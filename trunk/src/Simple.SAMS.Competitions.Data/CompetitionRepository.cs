@@ -160,7 +160,7 @@ namespace Simple.SAMS.Competitions.Data
             var result = new MatchHeaderInfo()
                        {
                            Id = match.Id,
-                           StartTime = match.StartTime,
+                           StartTime = match.StartTime.HasValue? DateTime.SpecifyKind( match.StartTime.Value, DateTimeKind.Utc).ToLocalTime() : default(DateTime?),
                            Status = (MatchStatus)match.Status,
                            Section = (CompetitionSection)match.SectionId,
                            StartTimeType = (StartTimeType)match.StartTimeType,

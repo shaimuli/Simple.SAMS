@@ -245,5 +245,11 @@ namespace Simple.SAMS.Competitions.Services
             var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
             competitionMatchesRepository.UpdateMatchScore(scoreUpdateInfo);
         }
+
+        public void UpdateMatchStartTime(MatchStartTimeUpdateInfo startTimeUpdateInfo)
+        {
+            var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
+            competitionMatchesRepository.UpdateMatchStartTime(startTimeUpdateInfo);
+        }
     }
 }

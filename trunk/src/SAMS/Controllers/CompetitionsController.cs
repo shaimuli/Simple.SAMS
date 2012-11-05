@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -21,8 +22,71 @@ namespace SAMS.Controllers
         public ActionResult UpdateMatchResults(MatchResultUpdateModel[] updates)
         {
             var manager = ServiceProvider.Get<ICompetitionsManager>();
+            UpdateStartTimes(updates, manager);
+            UpdateScres(updates, manager);
+
+            return new HttpStatusCodeResult(200);
+        }
+
+        private void UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager)
+        {
+            var dateUpdates =
+            updates.Where(
+                up =>
+                up.StartTimeHours.HasValue || up.StartTimeMinutes.HasValue || up.StartTimeType.HasValue ||
+                up.Date.NotNullOrEmpty());
+            
+            var startTimeUpdates =
+            dateUpdates.Select(
+                dateUpdate =>
+                {
+                    var startTimeUpdateInfo = new MatchStartTimeUpdateInfo();
+                    startTimeUpdateInfo.MatchId = dateUpdate.Id;
+                    startTimeUpdateInfo.StartTime = BuildStartTime(dateUpdate.Date, dateUpdate.StartTimeHours,
+                                                                   dateUpdate.StartTimeMinutes);
+                    if (dateUpdate.StartTimeType.HasValue)
+                    {
+                        startTimeUpdateInfo.StartTimeType = dateUpdate.StartTimeType.Value;
+                    }
+
+                    return startTimeUpdateInfo;
+                });
+
+            manager.UpdateMatchStartTime(startTimeUpdates.ToArray());
+        }
+
+        private DateTime BuildStartTime(string date, int? hours, int? minutes)
+        {
+            var time = new List<string>();
+            if (hours.HasValue)
+            {
+                time.Add(hours.Value.ToString().PadLeft(2, '0'));
+            }
+            else
+            {
+                time.Add("00");
+            }
+            if (minutes.HasValue)
+            {
+                time.Add(minutes.Value.ToString().PadLeft(2, '0'));
+
+            }
+            else
+            {
+                time.Add("00");
+            }
+
+            date += " " + string.Join(":", time.ToArray());
+
+            var startTime = DateTime.ParseExact(date, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
+
+            return startTime;
+        }
+
+        private static void UpdateScres(MatchResultUpdateModel[] updates, ICompetitionsManager manager)
+        {
             var matchScoreUpdateInfoItems = new List<MatchScoreUpdateInfo>();
-            updates.ForEach(update=>
+            updates.ForEach(update =>
                                 {
                                     if (update.SetScores.NotNullOrEmpty())
                                     {
@@ -31,7 +95,7 @@ namespace SAMS.Controllers
                                         matchScoreUpdateInfo.MatchId = update.Id;
                                         matchScoreUpdateInfo.Result = update.Result;
                                         matchScoreUpdateInfo.Winner = update.Winner;
-                                        
+
                                         matchScoreUpdateInfoItems.Add(matchScoreUpdateInfo);
                                     }
                                 });
@@ -39,28 +103,26 @@ namespace SAMS.Controllers
             {
                 manager.UpdateMatchScore(matchScoreUpdateInfoItems.ToArray());
             }
-
-            return new HttpStatusCodeResult(200);
         }
 
         //
         // GET: /Competitions/
-        
+
         [HttpPost]
         public ActionResult StartCompetition(int competitionId)
         {
             var competitionManager = ServiceProvider.Get<ICompetitionsManager>();
             competitionManager.StartCompetition(competitionId);
-            return RedirectToAction("Details", new {id = competitionId});
+            return RedirectToAction("Details", new { id = competitionId });
         }
         [HttpPost]
         public ActionResult FinishCompetition(int competitionId)
         {
             var competitionManager = ServiceProvider.Get<ICompetitionsManager>();
             competitionManager.FinishCompetition(competitionId);
-            return RedirectToAction("Details", new {id = competitionId});
+            return RedirectToAction("Details", new { id = competitionId });
         }
-        
+
         public ActionResult Details(int id)
         {
             var model = new CompetitionDetailsModel();
@@ -76,8 +138,7 @@ namespace SAMS.Controllers
             model.Status = competition.Status;
             model.ReferenceId = competition.ReferenceId;
             model.Players = competition.Players;
-            model.StartTimeHours = GetStartTimeHours();
-            model.StartTimeMinutes = GetStartTimeMinutes();
+
             model.Matches =
                 competition.Matches.Select(
                     m => new CompetitionMatchViewModel()
@@ -85,29 +146,52 @@ namespace SAMS.Controllers
                                  Id = m.Id,
                                  Section = m.Section,
                                  StartTime = m.StartTime,
+                                 StartTimeType = m.StartTimeType,
                                  Status = m.Status,
                                  Round = m.Round,
                                  Position = m.Position,
+                                 Winner = m.Winner,
+                                 Result = m.Result.HasValue ? m.Result.Value : MatchResult.Win,
                                  Player1 = m.Player1.IsNotNull() ? new MatchPlayerViewModel(m.Player1) : null,
                                  Player2 = m.Player2.IsNotNull() ? new MatchPlayerViewModel(m.Player2) : null,
                                  Player3 = m.Player3.IsNotNull() ? new MatchPlayerViewModel(m.Player3) : null,
                                  Player4 = m.Player4.IsNotNull() ? new MatchPlayerViewModel(m.Player4) : null,
-                                 SetScores = m.SetScores
+                                 SetScores = m.SetScores,
+                                 StartTimeHours = new[] { new SelectListItem(), }.Concat(GetStartTimeHours(m.StartTime)),
+                                 StartTimeMinutes = new[] { new SelectListItem(), }.Concat(GetStartTimeMinutes(m.StartTime))
+
                              }).ToArray();
-            
+
             return View(model);
         }
 
-        private IEnumerable<SelectListItem> GetStartTimeMinutes()
+        private IEnumerable<SelectListItem> GetStartTimeMinutes(DateTime? startTime)
         {
-            return
-                Enumerable.Range(0, 59).Where(i => i%15 == 0).Select(
-                    i => new SelectListItem() {Value = i.ToString(), Text = i.ToString().PadLeft(2, '0')});
+            var items = Enumerable.Range(0, 59).Where(i => i % 15 == 0).Select(
+                    i => new SelectListItem() { Value = i.ToString(), Text = i.ToString().PadLeft(2, '0') }).ToArray();
+            if (startTime.HasValue)
+            {
+                var selected = items.FirstOrDefault(i => int.Parse(i.Value) >= startTime.Value.ToLocalTime().Minute);
+                if (selected.IsNotNull())
+                {
+                    selected.Selected = true;
+                }
+            }
+            return items;
         }
 
-        private IEnumerable<SelectListItem> GetStartTimeHours()
+        private IEnumerable<SelectListItem> GetStartTimeHours(DateTime? startTime)
         {
-            return Enumerable.Range(0, 24).Select(i => new SelectListItem() { Value = i.ToString(), Text = i.ToString().PadLeft(2,'0')});
+            var items = Enumerable.Range(0, 24).Select(i => new SelectListItem() { Value = i.ToString(), Text = i.ToString().PadLeft(2, '0') }).ToArray();
+            if (startTime.HasValue)
+            {
+                var selected = items.FirstOrDefault(i => int.Parse(i.Value) >= startTime.Value.ToLocalTime().Hour);
+                if (selected.IsNotNull())
+                {
+                    selected.Selected = true;
+                }
+            }
+            return items;
         }
 
         public ActionResult Index(int startIndex = 0, int pageSize = 50)

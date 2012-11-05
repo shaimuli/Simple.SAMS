@@ -29,5 +29,9 @@ namespace Simple.SAMS.Contracts.Competitions
 
         [OperationContract]
         void UpdateMatchScore(MatchScoreUpdateInfo[] scoreUpdateInfoItems);
+
+        [OperationContract]
+        void UpdateMatchStartTime(MatchStartTimeUpdateInfo[] startTimeUpdateInfo);
+
     }
 }

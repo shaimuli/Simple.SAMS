@@ -82,15 +82,44 @@
     @Scripts.Render("~/bundles/jqueryval")
     <script type="text/javascript" src="~/Scripts/jquery-ui-1.9.1.custom.min.js"></script>
     <script type="text/javascript" src="~/Scripts/bootstrap/bootstrap.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/bootstrap/bootstrap-datepicker.js"></script>
     <script type="text/javascript" src="~/Scripts/underscore.1.3.3.js"></script>
+    <script type="text/javascript" src="~/Scripts/JSLangExtensions.string.js"></script>
     <script type="text/javascript" src="~/Scripts/Simple.js"></script>
     <script type="text/javascript" src="~/Scripts/Simple.ContinuesEdit.js"></script>
     <script type="text/javascript" src="~/Scripts/Shell.js"></script>
     
     <script type="text/javascript">
         $(function () {
-            $(".date").datepicker();
+            $(".date").each(function () {
+                var textInput = $("input[type=text]", this);
+                
+                textInput.datepicker({
+                    dateFormat: "dd/mm/yy",
+                    isRTL: true,
+                    onClose: function () {
+                        textInput.data("visible", false);
+                    }, 
+                    onSelect: function () {
+                        textInput.focus();
+                    }
+                });
+                
+                function hide() {
+                    textInput.datepicker("hide");
+                    textInput.data("visible", false);
+                }
+                function show() {
+                    textInput.datepicker("show");
+                    textInput.data("visible", true);
+                }
+                $(".trigger", this).click(function () {
+                    if (textInput.data("visible")) {
+                        hide();
+                    } else {
+                        show();
+                    }
+                });
+            });
         });
     </script>
 

@@ -17,6 +17,9 @@ namespace Simple.SAMS.Contracts.Competitions
         void UpdatePlayersPosition(int competitionId, UpdatePlayerPositionInfo[] positions);
 
         [OperationContract]
+        void UpdateMatchStartTime(MatchStartTimeUpdateInfo startTimeUpdateInfo);
+
+        [OperationContract]
         void UpdateMatchScore(MatchScoreUpdateInfo scoreUpdateInfo);
     }
 }

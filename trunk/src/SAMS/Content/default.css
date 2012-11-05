@@ -3,6 +3,10 @@
     font-family: arial, sans-serif;
 }
 
+.ltr {
+    direction: ltr;
+}
+
 h1 {
     font-size: 28pt;
     font-weight: normal;

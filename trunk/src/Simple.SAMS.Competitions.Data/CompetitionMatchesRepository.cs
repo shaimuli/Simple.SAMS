@@ -99,6 +99,22 @@ namespace Simple.SAMS.Competitions.Data
         }
 
         private readonly object m_lock = new object();
+        public void UpdateMatchStartTime(MatchStartTimeUpdateInfo startTimeUpdateInfo)
+        {
+            UseDataContext(
+                dataContext =>
+                    {
+                        var match = dataContext.Matches.FirstOrDefault(m=>m.Id == startTimeUpdateInfo.MatchId);
+                        if (match.Status < (int)MatchStatus.Planned)
+                        {
+                            match.Status = (int) MatchStatus.Planned;
+                        }
+                        match.StartTime = startTimeUpdateInfo.StartTime.ToUniversalTime();
+                        match.StartTimeType = (int) startTimeUpdateInfo.StartTimeType;
+
+                        dataContext.SubmitChanges();
+                    });
+        }
 
         public void UpdateMatchScore(MatchScoreUpdateInfo scoreUpdateInfo)
         {
@@ -112,7 +128,6 @@ namespace Simple.SAMS.Competitions.Data
             dataContext =>
             {
                 var matchId = scoreUpdateInfo.MatchId;
-                dataContext.Log = new DebuggerWriter();
                 var dataSetScores = new Dictionary<int, MatchScore>();
                 scoreUpdateInfo.SetScores.ForEach(
                     setScore =>

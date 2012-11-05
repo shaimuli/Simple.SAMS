@@ -22,7 +22,7 @@
             this.inputs.keypress(_.bind(this.onFieldKeyPress, this));
             $("input[type=radio]", this.inputs).change(_.bind(this.onRadioFieldChanged, this));
             this.rxQueued = /.*?\:Q/gi;
-            this.loadItems();
+            
             this.version = this.get("Version") || 1;
             this.updateInterval = config.interval;
             
@@ -110,12 +110,15 @@
                             return singleItem.item;
                         })),
                         success: _.bind(function () {
-                            this.setByKey(key, null);
+                            _.each(items, _.bind(function(it) {
+                                this.setByKey(it.Id + ":Q", null);
+                            }, this));
+                            
                             $.each(items, function(index, singleItem) {
                                 singleItem.row.removeClass("sending").addClass("success");
                             });
                             var now = new Date();
-                            $(".lastSaveTime", this.container).text(now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds());
+                            $(".lastSaveTime", this.container).text(String(now.getHours()).padLeft(2, '0') + ":" + String(now.getMinutes()).padLeft(2, '0') + ":" + String(now.getSeconds()).padLeft(2, '0'));
 
                         }, this),
                         failure: _.bind(function () {
@@ -132,20 +135,30 @@
             
             
         },
-        queueSave: function (key, queuedCallback) {
+        queueSave: function (row) {
+            var key = row.attr("data-key");
             var item = this.get(key);
+            var rowItem = { key: key };
+            if (row.attr("data-changed")) {
+                $(":input", row).each(function(index, input) {
+                    input = $(input);
+                    rowItem[input.attr("name")] = input.val();
+                });
+                row.attr("data-changed", false);
+                this.set(key + ":Q", this.translate(rowItem));
+            }
 
-            if (item && !this.exists(key + ":Q")) {
+/*            if (item && !this.exists(key + ":Q")) {
                 item = this.translate(item);
                 
                 this.set(key + ":Q", item);
                 this.set(key, null);
-            }
+            }*/
         },
         onSave: function () {
             var items = $(this.logicalItemContainerSelector, this.container);
             _.each(items, function (item) {
-                this.queueSave($(item).attr("data-key"));
+                this.queueSave($(item));
             }, this);
 
             this.send();
@@ -153,6 +166,7 @@
         storeValue: function (input) {
             input = $(input);
             var parentItem = input.closest(this.logicalItemContainerSelector);
+            parentItem.attr("data-changed", true);
             var key = parentItem.attr("data-key");
             var item = this.get(key) || { key: key, version: this.version++ };
             var name = input.attr("data-name") || input.attr("name");
@@ -227,8 +241,6 @@
                 
                 return score;
             }
-            var startTime = { hours: 0, mins: 0 };
-            var startTimeChanged = false;
             _.each(item,
                 function (value, name) {
                     var setMatch = rxSetScore.exec(name);
@@ -253,6 +265,10 @@
                         updateInfo.StartTimeMinutes = value;
                     } else if (name == "Date") {
                         updateInfo.Date = value;
+                    } else if (name == "matchWinner") {
+                        updateInfo.Winner = value;
+                    } else if (name == "matchResult") {
+                        updateInfo.Result = value;
                     }
                 });
             updateInfo.SetScores = setScores;

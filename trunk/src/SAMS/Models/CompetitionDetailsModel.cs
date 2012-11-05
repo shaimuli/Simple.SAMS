@@ -20,7 +20,5 @@ namespace SAMS.Models
         public EntityReference Type { get; set; }
         public CompetitionMatchViewModel[] Matches { get; set; }
         public CompetitionPlayer[] Players { get; set; }
-        public IEnumerable<SelectListItem> StartTimeHours { get; set; }
-        public IEnumerable<SelectListItem> StartTimeMinutes { get; set; }
     }
 }
