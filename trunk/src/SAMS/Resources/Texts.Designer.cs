@@ -943,6 +943,15 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to הדפס.
+        /// </summary>
+        internal static string PrintMatchesDraw {
+            get {
+                return ResourceManager.GetString("PrintMatchesDraw", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to מוקדמות זוגות.
         /// </summary>
         internal static string QualifyingPairsCount {

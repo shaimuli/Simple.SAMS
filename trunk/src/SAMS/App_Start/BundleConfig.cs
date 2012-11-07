@@ -26,7 +26,7 @@ namespace SAMS
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                             "~/Scripts/bootstrap/bootstrap.min.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/bootstrap-rtl.min.css").Include("~/Content/default.css").Include("~/Content/CompetitionDetails.css"));
+            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/bootstrap-rtl.min.css").Include("~/Content/default.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",

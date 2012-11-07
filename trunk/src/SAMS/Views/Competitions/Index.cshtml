@@ -1,5 +1,4 @@
-﻿@using SAMS.Models
-@model IEnumerable<Simple.SAMS.Contracts.Competitions.CompetitionHeaderInfo>
+﻿@model IEnumerable<Simple.SAMS.Contracts.Competitions.CompetitionHeaderInfo>
 @{
     
     ViewContext.Controller.ViewBag.Title = Html.ResourceText("CompetitionsList");
@@ -26,7 +25,7 @@
                 <td>
                     @Html.ActionLink(item.Name, "Details", new { id=item.Id })
                 </td>
-                <td>@item.Type.Text</td>
+                <td>@item.Type.Name</td>
                 <td>@item.StartTime.ToShortDateString()</td>
                 <td class="@((DateTime.UtcNow.Subtract(item.LastModified)).TotalHours < 2 ?"modifiedRecently" :"")">@item.LastModified</td>
                 <td>@Html.ActionLink(Html.ResourceText("UpdateCompetitionPlayers"), "UpdatePlayers", new {id = item.Id})</td>

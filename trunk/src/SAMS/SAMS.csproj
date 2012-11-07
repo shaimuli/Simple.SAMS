@@ -227,7 +227,6 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap-rtl.min.css" />
     <Content Include="Content\bootstrap.blue.css" />
-    <Content Include="Content\CompetitionDetails.css" />
     <Content Include="Content\datepicker.css" />
     <Content Include="Content\default.css" />
     <Content Include="Content\jQueryUi\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
@@ -245,6 +244,7 @@
     <Content Include="Content\jQueryUi\images\ui-icons_72a7cf_256x240.png" />
     <Content Include="Content\jQueryUi\images\ui-icons_ffffff_256x240.png" />
     <Content Include="Content\jQueryUi\jquery-ui-1.9.1.custom.min.css" />
+    <Content Include="Content\tournament.css" />
     <Content Include="Content\UpdateResults.css" />
     <Content Include="Images\ajax-loader.gif" />
     <Content Include="Images\edit.png" />
@@ -306,6 +306,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Images\favicon.ico" />
+    <Content Include="Images\grey-grid20x20.png" />
     <Content Include="Images\ita.png" />
     <Content Include="Images\ok.png" />
     <Content Include="Images\waiting.png" />
@@ -336,6 +337,7 @@
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
     <Content Include="Scripts\jquery-ui-1.9.1.custom.min.js" />
+    <Content Include="Scripts\jquery.overscroll.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />

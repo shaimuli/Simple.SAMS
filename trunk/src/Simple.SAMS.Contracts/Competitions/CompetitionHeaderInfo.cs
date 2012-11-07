@@ -24,7 +24,7 @@ namespace Simple.SAMS.Contracts.Competitions
         public string Name { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public EntityReference Type { get; set; }
+        public CompetitionType Type { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
         public DateTime StartTime { get; set; }

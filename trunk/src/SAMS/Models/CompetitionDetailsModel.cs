@@ -17,7 +17,8 @@ namespace SAMS.Models
         public string EndTime { get; set; }
         public string LastModified { get; set; }
         public CompetitionStatus Status { get; set; }
-        public EntityReference Type { get; set; }
+        public CompetitionType Type { get; set; }
+
         public CompetitionMatchViewModel[] Matches { get; set; }
         public CompetitionPlayer[] Players { get; set; }
     }

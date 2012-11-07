@@ -3628,3 +3628,162 @@ System.FormatException: String was not recognized as a valid DateTime.
    at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
 2012-11-05 22:11:26.3024 SimpleSite|Info| SAMS Application started... 
 2012-11-05 22:11:26.9274 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-06 22:27:42.1258 SimpleSite|Info| SAMS Application started... 
+2012-11-06 22:27:43.3169 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-06 22:37:56.3339 SimpleSite|Info| SAMS Application started... 
+2012-11-06 22:37:56.7659 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-06 22:47:35.7901 SimpleSite|Info| SAMS Application started... 
+2012-11-06 22:47:36.1321 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-06 23:16:08.5170 SimpleSite|Info| SAMS Application started... 
+2012-11-06 23:16:08.7750 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-06 23:25:11.9931 SimpleSite|Info| SAMS Application started... 
+2012-11-06 23:25:12.2601 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-06 23:41:37.6245 SimpleSite|Info| SAMS Application started... 
+2012-11-06 23:41:37.8865 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-06 23:45:30.8548 SimpleSite|Info| SAMS Application started... 
+2012-11-06 23:45:31.4779 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-06 23:54:25.3014 SimpleSite|Info| SAMS Application started... 
+2012-11-06 23:54:25.5584 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-06 23:59:11.8848 SimpleSite|Info| SAMS Application started... 
+2012-11-06 23:59:12.1708 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-07 08:28:29.7746 SimpleSite|Info| SAMS Application started... 
+2012-11-07 08:28:30.4646 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-07 20:32:20.0097 SimpleSite|Info| SAMS Application started... 
+2012-11-07 20:32:20.6517 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-07 20:32:31.1143 SimpleSite|Info| SAMS Application started... 
+2012-11-07 20:32:31.7243 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-07 20:35:15.4937 SimpleSite|Info| SAMS Application started... 
+2012-11-07 20:35:16.1087 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-07 21:02:44.7780 SimpleSite|Info| SAMS Application started... 
+2012-11-07 21:02:45.1001 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-07 21:22:27.2857 SimpleSite|Info| SAMS Application started... 
+2012-11-07 21:22:27.6147 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-07 21:35:53.0938 SimpleSite|Info| SAMS Application started... 
+2012-11-07 21:35:53.7288 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-07 21:36:45.8798 SimpleSite|Info| SAMS Application started... 
+2012-11-07 21:36:46.5108 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-07 21:36:48.4979 SimpleSite|Error| Error executing request.
+Details:
+System.Web.HttpCompileException (0x80004005): c:\Data\git\Simple.SAMS\trunk\src\SAMS\Views\Competitions\Index.cshtml(29): error CS1061: 'Simple.SAMS.Contracts.Competitions.CompetitionType' does not contain a definition for 'Text' and no extension method 'Text' accepting a first argument of type 'Simple.SAMS.Contracts.Competitions.CompetitionType' could be found (are you missing a using directive or an assembly reference?)
+   at System.Web.Compilation.AssemblyBuilder.Compile()
+   at System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.GetObjectFactory(String virtualPath, Boolean throwIfNotFound)
+   at System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.FileExists(String virtualPath)
+   at System.Web.Mvc.BuildManagerViewEngine.FileExists(ControllerContext controllerContext, String virtualPath)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.<>c__DisplayClass4.<GetPathFromGeneralName>b__0(String path)
+   at System.Web.WebPages.DefaultDisplayMode.GetDisplayInfo(HttpContextBase httpContext, String virtualPath, Func`2 virtualPathExists)
+   at System.Web.WebPages.DisplayModeProvider.<>c__DisplayClassb.<GetDisplayInfoForVirtualPath>b__8(IDisplayMode mode)
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at System.Web.WebPages.DisplayModeProvider.GetDisplayInfoForVirtualPath(String virtualPath, HttpContextBase httpContext, Func`2 virtualPathExists, IDisplayMode currentDisplayMode, Boolean requireConsistentDisplayMode)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPathFromGeneralName(ControllerContext controllerContext, List`1 locations, String name, String controllerName, String areaName, String cacheKey, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPath(ControllerContext controllerContext, String[] locations, String[] areaLocations, String locationsPropertyName, String name, String controllerName, String cacheKeyPrefix, Boolean useCache, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.FindView(ControllerContext controllerContext, String viewName, String masterName, Boolean useCache)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClassc.<FindView>b__b(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-07 21:37:06.9330 SimpleSite|Info| SAMS Application started... 
+2012-11-07 21:37:07.4250 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-07 21:37:49.8374 SimpleSite|Error| Error executing request.
+Details:
+System.Web.HttpCompileException (0x80004005): c:\Data\git\Simple.SAMS\trunk\src\SAMS\Views\Competitions\Index.cshtml(29): error CS1061: 'Simple.SAMS.Contracts.Competitions.CompetitionType' does not contain a definition for 'Text' and no extension method 'Text' accepting a first argument of type 'Simple.SAMS.Contracts.Competitions.CompetitionType' could be found (are you missing a using directive or an assembly reference?)
+   at System.Web.Compilation.AssemblyBuilder.Compile()
+   at System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.GetObjectFactory(String virtualPath, Boolean throwIfNotFound)
+   at System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.FileExists(String virtualPath)
+   at System.Web.Mvc.BuildManagerViewEngine.FileExists(ControllerContext controllerContext, String virtualPath)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.<>c__DisplayClass4.<GetPathFromGeneralName>b__0(String path)
+   at System.Web.WebPages.DefaultDisplayMode.GetDisplayInfo(HttpContextBase httpContext, String virtualPath, Func`2 virtualPathExists)
+   at System.Web.WebPages.DisplayModeProvider.<>c__DisplayClassb.<GetDisplayInfoForVirtualPath>b__8(IDisplayMode mode)
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at System.Web.WebPages.DisplayModeProvider.GetDisplayInfoForVirtualPath(String virtualPath, HttpContextBase httpContext, Func`2 virtualPathExists, IDisplayMode currentDisplayMode, Boolean requireConsistentDisplayMode)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPathFromGeneralName(ControllerContext controllerContext, List`1 locations, String name, String controllerName, String areaName, String cacheKey, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPath(ControllerContext controllerContext, String[] locations, String[] areaLocations, String locationsPropertyName, String name, String controllerName, String cacheKeyPrefix, Boolean useCache, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.FindView(ControllerContext controllerContext, String viewName, String masterName, Boolean useCache)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClassc.<FindView>b__b(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-07 21:38:15.2239 SimpleSite|Error| Error executing request.
+Details:
+System.Web.HttpCompileException (0x80004005): c:\Data\git\Simple.SAMS\trunk\src\SAMS\Views\Competitions\Index.cshtml(29): error CS1061: 'Simple.SAMS.Contracts.Competitions.CompetitionType' does not contain a definition for 'Text' and no extension method 'Text' accepting a first argument of type 'Simple.SAMS.Contracts.Competitions.CompetitionType' could be found (are you missing a using directive or an assembly reference?)
+   at System.Web.Compilation.AssemblyBuilder.Compile()
+   at System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.GetObjectFactory(String virtualPath, Boolean throwIfNotFound)
+   at System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.FileExists(String virtualPath)
+   at System.Web.Mvc.BuildManagerViewEngine.FileExists(ControllerContext controllerContext, String virtualPath)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.<>c__DisplayClass4.<GetPathFromGeneralName>b__0(String path)
+   at System.Web.WebPages.DefaultDisplayMode.GetDisplayInfo(HttpContextBase httpContext, String virtualPath, Func`2 virtualPathExists)
+   at System.Web.WebPages.DisplayModeProvider.<>c__DisplayClassb.<GetDisplayInfoForVirtualPath>b__8(IDisplayMode mode)
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at System.Web.WebPages.DisplayModeProvider.GetDisplayInfoForVirtualPath(String virtualPath, HttpContextBase httpContext, Func`2 virtualPathExists, IDisplayMode currentDisplayMode, Boolean requireConsistentDisplayMode)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPathFromGeneralName(ControllerContext controllerContext, List`1 locations, String name, String controllerName, String areaName, String cacheKey, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPath(ControllerContext controllerContext, String[] locations, String[] areaLocations, String locationsPropertyName, String name, String controllerName, String cacheKeyPrefix, Boolean useCache, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.FindView(ControllerContext controllerContext, String viewName, String masterName, Boolean useCache)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClassc.<FindView>b__b(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-07 21:39:00.2015 SimpleSite|Info| SAMS Application started... 
+2012-11-07 21:39:01.0995 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-07 21:41:24.0297 SimpleSite|Info| SAMS Application started... 
+2012-11-07 21:41:24.3287 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-07 21:41:41.4557 SimpleSite|Info| SAMS Application started... 
+2012-11-07 21:41:42.0657 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-07 21:42:12.8615 SimpleSite|Info| SAMS Application started... 
+2012-11-07 21:42:13.1675 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-07 23:36:05.3923 SimpleSite|Info| SAMS Application started... 
+2012-11-07 23:36:06.0153 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-07 23:40:51.5956 SimpleSite|Info| SAMS Application started... 
+2012-11-07 23:40:52.2197 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-08 00:20:28.6176 SimpleSite|Info| SAMS Application started... 
+2012-11-08 00:20:29.2796 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-08 00:22:00.5569 SimpleSite|Info| SAMS Application started... 
+2012-11-08 00:22:00.9279 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-08 00:40:25.7231 SimpleSite|Info| SAMS Application started... 
+2012-11-08 00:40:27.0822 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-08 00:40:46.8513 SimpleSite|Info| SAMS Application started... 
+2012-11-08 00:40:47.6853 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-08 00:44:46.9920 SimpleSite|Info| SAMS Application started... 
+2012-11-08 00:44:47.6001 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-08 00:44:56.4706 SimpleSite|Info| SAMS Application started... 
+2012-11-08 00:44:57.0786 SimpleSite|Info| SAMS Application initialization completed.

@@ -23,10 +23,11 @@ namespace Simple.SAMS.Competitions.Data
                 competitionHeader.EndTime = competition.EndTime.Value.ToLocalTime();
             }
             competitionHeader.LastModified = competition.Updated.ToLocalTime();
-            competitionHeader.Type = new EntityReference()
+            competitionHeader.Type = new Contracts.Competitions.CompetitionType()
                                          {
                                              Id = competition.TypeId,
-                                             Text = competition.CompetitionType.Name
+                                             Name = competition.CompetitionType.Name,
+                                             PlayersCount = competition.CompetitionType.PlayersCount
                                          };
             competitionHeader.Status = (CompetitionStatus)competition.Status;
         }

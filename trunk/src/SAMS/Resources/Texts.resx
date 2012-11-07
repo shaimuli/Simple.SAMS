@@ -495,4 +495,7 @@
   <data name="MatchWinner.Player2" xml:space="preserve">
     <value>שחקן/קב' 2</value>
   </data>
+  <data name="PrintMatchesDraw" xml:space="preserve">
+    <value>הדפס</value>
+  </data>
 </root>
