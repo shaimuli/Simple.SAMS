@@ -70,6 +70,15 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to פעולות.
+        /// </summary>
+        internal static string Actions {
+            get {
+                return ResourceManager.GetString("Actions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to הפוך פעיל.
         /// </summary>
         internal static string ActivateUser {
@@ -156,6 +165,15 @@ namespace SAMS.Resources {
         internal static string CompetitionMainRefereePhone {
             get {
                 return ResourceManager.GetString("CompetitionMainRefereePhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to רשימת משחקים.
+        /// </summary>
+        internal static string CompetitionMatchesListTab {
+            get {
+                return ResourceManager.GetString("CompetitionMatchesListTab", resourceCulture);
             }
         }
         
@@ -727,7 +745,16 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to תוצאות.
+        ///   Looks up a localized string similar to תוצאה.
+        /// </summary>
+        internal static string MatchResultHeader {
+            get {
+                return ResourceManager.GetString("MatchResultHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ניקוד.
         /// </summary>
         internal static string MatchResultsHeader {
             get {
@@ -736,7 +763,34 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to מצב עדכון.
+        ///   Looks up a localized string similar to הסתיים.
+        /// </summary>
+        internal static string MatchStatus_Completed {
+            get {
+                return ResourceManager.GetString("MatchStatus.Completed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to מתוכנן.
+        /// </summary>
+        internal static string MatchStatus_Planned {
+            get {
+                return ResourceManager.GetString("MatchStatus.Planned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to שחקנים הוצבו.
+        /// </summary>
+        internal static string MatchStatus_PlayersAssigned {
+            get {
+                return ResourceManager.GetString("MatchStatus.PlayersAssigned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to סטאטוס.
         /// </summary>
         internal static string MatchStatusHeader {
             get {
@@ -750,6 +804,15 @@ namespace SAMS.Resources {
         internal static string MatchTimeHeader {
             get {
                 return ResourceManager.GetString("MatchTimeHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to מצב עדכון.
+        /// </summary>
+        internal static string MatchUpdateStatusHeader {
+            get {
+                return ResourceManager.GetString("MatchUpdateStatusHeader", resourceCulture);
             }
         }
         

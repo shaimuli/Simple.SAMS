@@ -33,7 +33,7 @@ namespace SAMS.Controllers
             var dateUpdates =
             updates.Where(
                 up =>
-                up.StartTimeHours.HasValue || up.StartTimeMinutes.HasValue || up.StartTimeType.HasValue ||
+                (up.StartTimeHours.HasValue || up.StartTimeMinutes.HasValue || up.StartTimeType.HasValue) &&
                 up.Date.NotNullOrEmpty());
             
             var startTimeUpdates =
@@ -78,7 +78,7 @@ namespace SAMS.Controllers
 
             date += " " + string.Join(":", time.ToArray());
 
-            var startTime = DateTime.ParseExact(date, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
+            var startTime = DateTime.ParseExact(date, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.AllowWhiteSpaces);
 
             return startTime;
         }

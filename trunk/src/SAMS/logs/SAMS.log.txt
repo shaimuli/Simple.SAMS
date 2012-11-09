@@ -3787,3 +3787,1127 @@ System.Web.HttpCompileException (0x80004005): c:\Data\git\Simple.SAMS\trunk\src\
 2012-11-08 00:44:47.6001 SimpleSite|Info| SAMS Application initialization completed.
 2012-11-08 00:44:56.4706 SimpleSite|Info| SAMS Application started... 
 2012-11-08 00:44:57.0786 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 09:07:59.3477 SimpleSite|Info| SAMS Application started... 
+2012-11-09 09:08:00.2598 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 09:09:09.1247 SimpleSite|Info| SAMS Application started... 
+2012-11-09 09:09:09.7407 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 09:15:57.2691 SimpleSite|Info| SAMS Application started... 
+2012-11-09 09:15:57.8781 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 09:17:01.1157 SimpleSite|Info| SAMS Application started... 
+2012-11-09 09:17:01.7157 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 09:18:02.2802 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:18:20.5293 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:18:35.6571 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:18:50.7850 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:19:05.9158 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:19:35.3705 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:19:50.4574 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:20:05.5843 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:20:20.7181 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:20:35.8450 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:20:50.9799 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:21:06.1127 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:21:21.2426 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:21:36.7755 SimpleSite|Info| SAMS Application started... 
+2012-11-09 09:21:37.0985 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 09:21:37.1575 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:21:54.9925 SimpleSite|Info| SAMS Application started... 
+2012-11-09 09:21:55.5916 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 09:21:55.7166 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:22:14.0866 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:22:29.1475 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:22:46.1054 SimpleSite|Info| SAMS Application started... 
+2012-11-09 09:22:46.7135 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 09:22:46.8615 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:23:05.7186 SimpleSite|Info| SAMS Application started... 
+2012-11-09 09:23:05.9646 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 09:23:06.0236 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:23:22.0435 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:23:37.1684 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:23:52.2932 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:32:25.8136 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:32:26.0476 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:32:41.1875 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:32:56.3173 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:33:18.9496 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:33:34.0835 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:33:49.2184 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:34:09.1895 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:34:24.3254 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:39:04.9294 SimpleSite|Info| SAMS Application started... 
+2012-11-09 09:39:05.9245 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 09:42:08.0939 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:42:23.9878 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:42:39.1017 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:42:54.2265 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:43:09.3514 SimpleSite|Error| Error executing request.
+Details:
+System.FormatException: String was not recognized as a valid DateTime.
+   at System.DateTimeParse.ParseExact(String s, String format, DateTimeFormatInfo dtfi, DateTimeStyles style)
+   at System.DateTime.ParseExact(String s, String format, IFormatProvider provider)
+   at SAMS.Controllers.CompetitionsController.BuildStartTime(String date, Nullable`1 hours, Nullable`1 minutes) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 81
+   at SAMS.Controllers.CompetitionsController.<UpdateStartTimes>b__1(MatchResultUpdateModel dateUpdate) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 45
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SAMS.Controllers.CompetitionsController.UpdateStartTimes(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 55
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 25
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 09:43:25.8374 SimpleSite|Info| SAMS Application started... 
+2012-11-09 09:43:26.5294 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 10:24:10.9892 SimpleSite|Info| SAMS Application started... 
+2012-11-09 10:24:11.7452 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 10:24:51.9896 SimpleSite|Info| SAMS Application started... 
+2012-11-09 10:24:52.8336 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 10:25:09.3545 SimpleSite|Error| Error executing request.
+Details:
+System.Web.HttpParseException (0x80004005): Unexpected "if" keyword after "@" character.  Once inside code, you do not need to prefix constructs like "if" with "@".
+
+   at System.Web.WebPages.Razor.RazorBuildProvider.EnsureGeneratedCode()
+   at System.Web.WebPages.Razor.RazorBuildProvider.get_CodeCompilerType()
+   at System.Web.Compilation.BuildProvider.GetCompilerTypeFromBuildProvider(BuildProvider buildProvider)
+   at System.Web.Compilation.BuildProvidersCompiler.ProcessBuildProviders()
+   at System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   at System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   at System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   at System.Web.Compilation.BuildManager.GetObjectFactory(String virtualPath, Boolean throwIfNotFound)
+   at System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.FileExists(String virtualPath)
+   at System.Web.Mvc.BuildManagerViewEngine.FileExists(ControllerContext controllerContext, String virtualPath)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.<>c__DisplayClass4.<GetPathFromGeneralName>b__0(String path)
+   at System.Web.WebPages.DefaultDisplayMode.GetDisplayInfo(HttpContextBase httpContext, String virtualPath, Func`2 virtualPathExists)
+   at System.Web.WebPages.DisplayModeProvider.<>c__DisplayClassb.<GetDisplayInfoForVirtualPath>b__8(IDisplayMode mode)
+   at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source, Func`2 predicate)
+   at System.Web.WebPages.DisplayModeProvider.GetDisplayInfoForVirtualPath(String virtualPath, HttpContextBase httpContext, Func`2 virtualPathExists, IDisplayMode currentDisplayMode, Boolean requireConsistentDisplayMode)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPathFromGeneralName(ControllerContext controllerContext, List`1 locations, String name, String controllerName, String areaName, String cacheKey, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.GetPath(ControllerContext controllerContext, String[] locations, String[] areaLocations, String locationsPropertyName, String name, String controllerName, String cacheKeyPrefix, Boolean useCache, String[]& searchedLocations)
+   at System.Web.Mvc.VirtualPathProviderViewEngine.FindView(ControllerContext controllerContext, String viewName, String masterName, Boolean useCache)
+   at System.Web.Mvc.ViewEngineCollection.<>c__DisplayClassc.<FindView>b__b(IViewEngine e)
+   at System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   at System.Web.Mvc.ViewEngineCollection.FindView(ControllerContext controllerContext, String viewName, String masterName)
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 10:33:37.8936 SimpleSite|Info| SAMS Application started... 
+2012-11-09 10:33:38.6377 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 10:35:01.3264 SimpleSite|Info| SAMS Application started... 
+2012-11-09 10:35:01.9344 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 10:35:19.3664 SimpleSite|Info| SAMS Application started... 
+2012-11-09 10:35:20.0435 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 10:36:39.7780 SimpleSite|Info| SAMS Application started... 
+2012-11-09 10:36:40.4121 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 10:38:29.0953 SimpleSite|Info| SAMS Application started... 
+2012-11-09 10:38:29.7323 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 10:52:27.7463 SimpleSite|Error| Error executing request.
+Details:
+System.InvalidOperationException: Sequence contains no matching element
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source, Func`2 predicate)
+   at ASP._Page_Views_Competitions__MatchesList_cshtml.Execute() in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Views\Competitions\_MatchesList.cshtml:line 49
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.HtmlHelper.RenderPartialInternal(String partialViewName, ViewDataDictionary viewData, Object model, TextWriter writer, ViewEngineCollection viewEngineCollection)
+   at System.Web.Mvc.Html.PartialExtensions.Partial(HtmlHelper htmlHelper, String partialViewName, Object model, ViewDataDictionary viewData)
+   at System.Web.Mvc.Html.PartialExtensions.Partial(HtmlHelper htmlHelper, String partialViewName, Object model)
+   at ASP._Page_Views_Competitions_Details_cshtml.Execute() in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Views\Competitions\Details.cshtml:line 52
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-09 10:54:47.5863 SimpleSite|Info| SAMS Application started... 
+2012-11-09 10:54:48.2723 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 10:59:15.2036 SimpleSite|Info| SAMS Application started... 
+2012-11-09 10:59:15.8116 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 10:59:55.6319 SimpleSite|Info| SAMS Application started... 
+2012-11-09 10:59:56.2619 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 11:04:03.6141 SimpleSite|Info| SAMS Application started... 
+2012-11-09 11:04:04.2561 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 11:06:29.3294 SimpleSite|Info| SAMS Application started... 
+2012-11-09 11:06:29.9564 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 11:26:01.6484 SimpleSite|Info| SAMS Application started... 
+2012-11-09 11:26:02.2695 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 11:31:23.6999 SimpleSite|Info| SAMS Application started... 
+2012-11-09 11:31:24.3219 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 11:31:41.7279 SimpleSite|Info| SAMS Application started... 
+2012-11-09 11:31:42.3549 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 11:32:45.4325 SimpleSite|Info| SAMS Application started... 
+2012-11-09 11:32:46.0746 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 11:35:05.2845 SimpleSite|Info| SAMS Application started... 
+2012-11-09 11:35:05.9086 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 14:28:16.5369 SimpleSite|Info| SAMS Application started... 
+2012-11-09 14:28:17.1869 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 14:31:04.4705 SimpleSite|Info| SAMS Application started... 
+2012-11-09 14:31:04.7795 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 14:31:20.5234 SimpleSite|Info| SAMS Application started... 
+2012-11-09 14:31:20.8254 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 14:32:52.5777 SimpleSite|Info| SAMS Application started... 
+2012-11-09 14:32:52.8967 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 14:35:56.4252 SimpleSite|Info| SAMS Application started... 
+2012-11-09 14:35:57.0922 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 14:36:21.7786 SimpleSite|Info| SAMS Application started... 
+2012-11-09 14:36:22.1357 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 14:37:58.9482 SimpleSite|Info| SAMS Application started... 
+2012-11-09 14:37:59.8042 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 14:51:57.0801 SimpleSite|Info| SAMS Application started... 
+2012-11-09 14:51:57.4122 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 14:56:16.7290 SimpleSite|Info| SAMS Application started... 
+2012-11-09 14:56:17.0810 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 14:57:18.5765 SimpleSite|Info| SAMS Application started... 
+2012-11-09 14:57:18.9015 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 15:13:01.8875 SimpleSite|Info| SAMS Application started... 
+2012-11-09 15:13:02.2215 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 15:13:17.9634 SimpleSite|Info| SAMS Application started... 
+2012-11-09 15:13:18.2764 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 15:14:43.8803 SimpleSite|Info| SAMS Application started... 
+2012-11-09 15:14:44.5203 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 15:32:48.7294 SimpleSite|Info| SAMS Application started... 
+2012-11-09 15:32:49.0894 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-09 15:34:34.0274 SimpleSite|Info| SAMS Application started... 
+2012-11-09 15:34:34.6424 SimpleSite|Info| SAMS Application initialization completed.

@@ -37,10 +37,12 @@ namespace SAMS.Controllers.Api
             }
             var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
             var details = competitionsRepository.GetCompetitionUnplayedMatches(id);
+            
             if (details.IsNull())
             {
-                throw new HttpException(404, "Competition '{0}' couuld not be found.".ParseTemplate(id));
+                throw new HttpException(404, "Competition '{0}' could not be found.".ParseTemplate(id));
             }
+
             return details;
         }
 

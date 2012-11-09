@@ -1,0 +1,26 @@
+﻿@model SAMS.Models.CompetitionDetailsModel
+           <input id="matchesInfo" type="hidden" value="@Newtonsoft.Json.JsonConvert.SerializeObject(Model.Matches)"/>
+            <button type="button" class="btn PrintMatchesDraw">@Html.Resource("PrintMatchesDraw")</button>
+            @if (Model.Matches.GroupBy(m => m.Section).Count() > 1)
+            {
+                <ul id="sections" class="nav nav-tabs">
+                    @foreach (var section in Model.Matches.GroupBy(m => m.Section))
+                    {
+                        <li class=" @(Model.Matches.GroupBy(m => m.Section).First().Key == section.Key ? "active" : "")">
+                            <a href="#section-@(section.Key)" data-toggle="tab">@(Html.ResourceText("CompetitionSection." + section.Key))</a>
+                        </li>
+                    }
+                </ul>
+            }
+
+            <div class="tab-content">
+                @foreach (var section in Model.Matches.GroupBy(m => m.Section))
+                {
+                    <div class="tab-pane @(Model.Matches.GroupBy(m => m.Section).First().Key == section.Key ? "active" : "")" id="section-@(section.Key)">
+                        <div class="competitionHost">
+                            <div class="t-host t-@(Model.Type.PlayersCount)p" data-rounds="@(section.GroupBy(m => m.Round).Count())" data-matches="@(section.Count() / 2)" data-section="@((int)section.Key)">
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>

@@ -10,54 +10,8 @@
 
 
 <i>@Model.StartTime @Model.EndTime</i>
-<div class="row-fluid">
-    <div class="span4">
-        <dl>
-            <dt>@Html.Resource("CompetitionType")</dt>
-            <dd><a  href="@Url.Action("BriefDetails", "CompetitionTypes", new { id= Model.Type.Id })" 
-                    target="popup" data-template="CompetitionTypeDetailsPopup"
-                    id="CompetitionType">@Model.Type.Name</a></dd>
-            <dt>@Html.Resource("CompetitionLastModified")</dt>
-            <dd>@Model.LastModified</dd>
-        </dl>
-    </div>
-    <div class="span4">
-        <dl>
-            <dt>@Html.Resource("CompetitionStatus")</dt>
-            <dd>@(Html.Resource("CompetitionStatus." + Model.Status))</dd>
-            <dt>@Html.Resource("CompetitionReferenceId")</dt>
-            <dd>@Model.ReferenceId</dd>
-        </dl>
-    </div>
-    <div class="span4">
-        @if (Model.Status == CompetitionStatus.Positioned)
-        {
-            <div>
-                @Html.ActionLink(Html.ResourceText("UpdateCompetitionPlayers"), "UpdatePlayers", new { id = Model.Id })
-            </div>
-            <hr class="space"/>
-            <div>
-                @using (Html.BeginForm("StartCompetition","Competitions", FormMethod.Post))
-                {
-                    @Html.Hidden("CompetitionId", Model.Id)
-                    <button class="btn btn-primary">@Html.Resource("StartCompetition")</button>
-                }
-                
-            </div>
-        } else if (Model.Status == CompetitionStatus.Started)
-        {
-            <div>
-                @using (Html.BeginForm("FinishCompetition","Competitions", FormMethod.Post))
-                {
-                    @Html.Hidden("CompetitionId", Model.Id)
-                    <button class="btn btn-primary">@Html.Resource("FinishCompetition")</button>
-                }
-                
-            </div>
-        }
 
-    </div>
-</div>
+@Html.Partial("_CompetitionHeaderView", Model)
 
 <div class="tabbable">
     <ul id="tabs" class="nav nav-tabs">
@@ -71,34 +25,17 @@
             @Html.Resource("CompetitionPlayersTab")
         </a>
         </li>
+        <li><a href="#matchesList" data-toggle="tab">
+            @Html.Resource("CompetitionMatchesListTab")
+        </a>
+        </li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane active" id="matches">
-            <input id="matchesInfo" type="hidden" value="@Newtonsoft.Json.JsonConvert.SerializeObject(Model.Matches)"/>
-            <button type="button" class="btn PrintMatchesDraw">@Html.Resource("PrintMatchesDraw")</button>
-            @if (Model.Matches.GroupBy(m => m.Section).Count() > 1)
+            @if(Model.Type.Method == CompetitionMethod.Knockout)
             {
-                <ul id="sections" class="nav nav-tabs">
-                    @foreach (var section in Model.Matches.GroupBy(m => m.Section))
-                    {
-                        <li class=" @(Model.Matches.GroupBy(m => m.Section).First().Key == section.Key ? "active" : "")">
-                            <a href="#section-@(section.Key)" data-toggle="tab">@(Html.ResourceText("CompetitionSection." + section.Key))</a>
-                        </li>
-                    }
-                </ul>
+                @Html.Partial("_KnockoutMatches", Model);
             }
-
-            <div class="tab-content">
-                @foreach (var section in Model.Matches.GroupBy(m => m.Section))
-                {
-                    <div class="tab-pane @(Model.Matches.GroupBy(m => m.Section).First().Key == section.Key ? "active" : "")" id="section-@(section.Key)">
-                        <div class="competitionHost">
-                            <div class="t-host t-@(Model.Type.PlayersCount)p" data-rounds="@(section.GroupBy(m => m.Round).Count())" data-matches="@(section.Count() / 2)" data-section="@((int)section.Key)">
-                            </div>
-                        </div>
-                    </div>
-                }
-            </div>
         </div>
         <div class="tab-pane" id="updateResults">
             <div class="competitionUpdateResultsContainer">
@@ -106,9 +43,13 @@
             </div>
         </div>
         <div class="tab-pane" id="players">
-
             <div class="competitionPlayersContainer">
                 @Html.Partial("_CompetitionPlayers", Model.Players)
+            </div>
+        </div>        
+        <div class="tab-pane" id="matchesList">
+            <div class="matchesListContainer">
+                @Html.Partial("_MatchesList", Model.Matches)
             </div>
         </div>
     </div>
@@ -127,14 +68,7 @@
             }
             $(".t-host").tournament(items);
             
-            $(".PrintMatchesDraw").click(function() {
-                var html = ["<html><head>"];
-                html.push("<title>");
-                html.push("@Model.Name");
-                html.push("</title>");
-                html.push("<link type='text/css' rel='stylesheet' href='");
-                html.push("@Url.Content("~/Content/tournament.css")");
-                html.push("'/></head><body class='t-print rtl'>");
+            function addPrintPageHeaders(html) {
                 html.push("<h1>");
                 html.push("@Model.Name");
                 html.push("</h1>");
@@ -146,15 +80,50 @@
                 html.push("@Model.StartTime");
                 html.push("@Model.EndTime");
                 html.push("</i>");
+
+
+            }
+            
+            function printPage(content) {
+                var html = ["<html><head>"];
+                html.push("<title>");
+                html.push("@Model.Name");
+                html.push("</title>");
+                html.push("<link type='text/css' rel='stylesheet' href='");
+                html.push("@Url.Content("~/Content/tournament.css")");
+                html.push("'/></head><body class='t-print rtl'>");
+                addPrintPageHeaders(html);
+                html.push(content);
+                html.push("</body></html>");
+
+                var win = window.open();
+
+                win.document.write(html.join(""));
+
+            }
+
+            $(".PrintMatchesList").click(function() {
+                var html = [];
+                html.push("<style text='text/css'>table{ width: 100%; border:solid 1px black; border-collapse: collapse; } table td{ border: solid 1px black; } table tr{ vertical-align: top; } .span2{ display:inline-block; width: 24px;}</style>");
+                html.push($(".competitionMatchesList").html());
+                printPage(html.join(""));
+            });
+
+            $(".PrintPlayersList").click(function () {
+                var html = [];
+                html.push("<style text='text/css'>table{ width: 100%; border:solid 1px black; border-collapse: collapse; } table td{ border: solid 1px black; } table tr{ vertical-align: top; }</style>");
+                html.push($(".competitionPlayersContainer").html());
+                printPage(html.join(""));
+            });
+            
+            $(".PrintMatchesDraw").click(function () {
+                var html = [];
                 html.push("<div class='t-host t-@(Model.Type.PlayersCount)p'>");
                 html.push($(".t-host").html());
                 html.push("</div>");
-                html.push("</body></html>");
-                
-                var win = window.open();
-                
-                win.document.write(html.join(""));
+                printPage(html.join(""));
             });
+            
             var config = {
                 containerSelector: ".competitionUpdateResultsContainer",
                 logicalItemContainerSelector: "tbody tr",

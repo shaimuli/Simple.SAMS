@@ -10,6 +10,15 @@ namespace Simple.SAMS.Contracts.Competitions
     [DataContract(Namespace = Namespaces.Data)]
     public class MatchHeaderInfo
     {
+        public string Date
+        {
+            get { return StartTime.HasValue ? StartTime.Value.ToShortDateString() : string.Empty; }
+        }
+        public string Time
+        {
+            get { return StartTime.HasValue ? StartTime.Value.ToShortTimeString() : string.Empty; }
+        }
+
         [DataMember(EmitDefaultValue = false)]
         public CompetitionSection Section { get; set; }
 

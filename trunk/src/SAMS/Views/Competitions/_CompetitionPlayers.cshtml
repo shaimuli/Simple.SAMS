@@ -1,45 +1,44 @@
 ﻿@model IEnumerable<Simple.SAMS.Contracts.Players.Player>
+<button type="button" class="btn PrintPlayersList">@Html.Resource("PrintMatchesDraw")</button>
+<div class="competitionPlayersContainer">
+    
+    <table>
 
-<table >
-    <style>
-        thead tr {
-            vertical-align: bottom;
-        }
-    </style>
-    <thead>
-        <tr>
-            <th class="span2">@Html.Resource("PlayerLocalNameHeader")</th>
-            <th class="span2">@Html.Resource("PlayerEnglishNameHeader")</th>
-            <th class="span2">@Html.Resource("PlayerBirthDateHeader")</th>
-            <th class="span2">@Html.Resource("PlayerCountryHeader")</th>
-            <th class="span1">@Html.Resource("PlayerGenderHeader")</th>
-            <th class="span1">@Html.Resource("PlayerNationalRankHeader")</th>
-            <th class="span1">@Html.Resource("PlayerEuropeInternationalRankHeader")</th>
-            <th class="span1">@Html.Resource("PlayerYouthInternationalRankHeader")</th>
-        </tr>
-    </thead>
-    <tbody>
-        
-        @{
-            var index = 0;
-        }
-        @foreach(var item in Model)
-        {
-            <tr class="item@(index++ % 2 == 0 ? "":" alternate")">
-                <td>
-                    @Html.ActionLink(item.LocalLastName + " " + (item.LocalFirstName ?? string.Empty), "Details", new { id=item.Id })
-                </td>
-                <td>@(item.EnglishLastName + " " + (item.EnglishFirstName ?? string.Empty))</td>
-                <td>@(item.BirthDate.HasValue? item.BirthDate.Value.ToShortDateString():string.Empty)</td>
-                <td>@item.Country</td>
-                <td>@(item.IsFemale?Html.Resource("FemaleAbbr"):Html.Resource("MaleAbbr"))</td>
-                <td>@item.NationalRank</td>
-                <td>@item.EuropeInternationalRank</td>
-                <td>@item.YouthInternationalRank</td>
+        <thead>
+            <tr>
+                <th class="span2">@Html.Resource("PlayerLocalNameHeader")</th>
+                <th class="span2">@Html.Resource("PlayerEnglishNameHeader")</th>
+                <th class="span2">@Html.Resource("PlayerBirthDateHeader")</th>
+                <th class="span2">@Html.Resource("PlayerCountryHeader")</th>
+                <th class="span1">@Html.Resource("PlayerGenderHeader")</th>
+                <th class="span1">@Html.Resource("PlayerNationalRankHeader")</th>
+                <th class="span1">@Html.Resource("PlayerEuropeInternationalRankHeader")</th>
+                <th class="span1">@Html.Resource("PlayerYouthInternationalRankHeader")</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        
+            @{
+                var index = 0;
+            }
+            @foreach(var item in Model)
+            {
+                <tr class="item@(index++ % 2 == 0 ? "":" alternate")">
+                    <td>
+                        @Html.ActionLink(item.LocalLastName + " " + (item.LocalFirstName ?? string.Empty), "Details", new { id=item.Id })
+                    </td>
+                    <td>@(item.EnglishLastName + " " + (item.EnglishFirstName ?? string.Empty))</td>
+                    <td>@(item.BirthDate.HasValue? item.BirthDate.Value.ToShortDateString():string.Empty)</td>
+                    <td>@item.Country</td>
+                    <td>@(item.IsFemale?Html.Resource("FemaleAbbr"):Html.Resource("MaleAbbr"))</td>
+                    <td>@item.NationalRank</td>
+                    <td>@item.EuropeInternationalRank</td>
+                    <td>@item.YouthInternationalRank</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
 
 
+</div>

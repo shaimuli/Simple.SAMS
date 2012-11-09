@@ -1,0 +1,57 @@
+﻿@using Simple.SAMS.Contracts.Competitions
+@model SAMS.Models.CompetitionDetailsModel
+<div class="row-fluid">
+    <div class="span3">
+        <dl>
+            <dt>@Html.Resource("CompetitionType")</dt>
+            <dd><a  href="@Url.Action("BriefDetails", "CompetitionTypes", new { id = Model.Type.Id })" 
+                    target="popup" data-template="CompetitionTypeDetailsPopup"
+                    id="CompetitionType">@Model.Type.Name</a></dd>
+            <dt>@Html.Resource("CompetitionLastModified")</dt>
+            <dd>@Model.LastModified</dd>
+        </dl>
+    </div>
+    <div class="span3">
+        <dl>
+            <dt>@Html.Resource("CompetitionStatus")</dt>
+            <dd>@(Html.Resource("CompetitionStatus." + Model.Status))</dd>
+            <dt>@Html.Resource("CompetitionReferenceId")</dt>
+            <dd>@Model.ReferenceId</dd>
+        </dl>
+    </div>
+    <div class="span3">
+        <h3>@Html.Resource("Actions")</h3>
+        @if ((int)Model.Status < (int)CompetitionStatus.Started)
+        {
+            <div>
+                @Html.ActionLink(Html.ResourceText("UpdateCompetitionPlayers"), "UpdatePlayers", new { id = Model.Id })
+            </div>
+            
+            if (Model.Status == CompetitionStatus.Positioned)
+            {
+                
+                <div>
+                    @using (Html.BeginForm("StartCompetition", "Competitions", FormMethod.Post))
+                    {
+                        @Html.Hidden("CompetitionId", Model.Id)
+                        <button class="btn btn-primary">@Html.Resource("StartCompetition")</button>
+                    }
+
+                </div>
+            }
+        }
+        else if (Model.Status == CompetitionStatus.Started)
+        {
+            <div>
+                @using (Html.BeginForm("FinishCompetition", "Competitions", FormMethod.Post))
+                {
+                    @Html.Hidden("CompetitionId", Model.Id)
+                    <button class="btn btn-primary">@Html.Resource("FinishCompetition")</button>
+                }
+
+            </div>
+        }
+
+    </div>
+</div>
+

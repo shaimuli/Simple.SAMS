@@ -439,9 +439,9 @@
     <value>שחקנים</value>
   </data>
   <data name="MatchResultsHeader" xml:space="preserve">
-    <value>תוצאות</value>
+    <value>ניקוד</value>
   </data>
-  <data name="MatchStatusHeader" xml:space="preserve">
+  <data name="MatchUpdateStatusHeader" xml:space="preserve">
     <value>מצב עדכון</value>
   </data>
   <data name="MatchTimeHeader" xml:space="preserve">
@@ -497,5 +497,26 @@
   </data>
   <data name="PrintMatchesDraw" xml:space="preserve">
     <value>הדפס</value>
+  </data>
+  <data name="CompetitionMatchesListTab" xml:space="preserve">
+    <value>רשימת משחקים</value>
+  </data>
+  <data name="MatchStatus.Completed" xml:space="preserve">
+    <value>הסתיים</value>
+  </data>
+  <data name="MatchStatus.Planned" xml:space="preserve">
+    <value>מתוכנן</value>
+  </data>
+  <data name="MatchStatus.PlayersAssigned" xml:space="preserve">
+    <value>שחקנים הוצבו</value>
+  </data>
+  <data name="MatchStatusHeader" xml:space="preserve">
+    <value>סטאטוס</value>
+  </data>
+  <data name="MatchResultHeader" xml:space="preserve">
+    <value>תוצאה</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>פעולות</value>
   </data>
 </root>
