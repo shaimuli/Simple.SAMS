@@ -32,6 +32,7 @@ namespace Simple.SAMS.Contracts
                 match.Section = section;
                 match.Position = i;
                 match.Round = rounds - Math.Max(0, (int) Math.Log((playersCount - (i + 1)), 2));
+                match.IsFinal = (match.Round == rounds) && i < playersCount - 1;
                 match.Status = MatchStatus.Created;
                 matches.Add(match);
             }

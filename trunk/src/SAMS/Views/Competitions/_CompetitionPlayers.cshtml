@@ -1,7 +1,19 @@
 ﻿@model IEnumerable<Simple.SAMS.Contracts.Players.Player>
-<button type="button" class="btn PrintPlayersList">@Html.Resource("PrintMatchesDraw")</button>
 <div class="competitionPlayersContainer">
-    
+    <div class="row-fluid">
+
+        <div class="span2">
+            @Html.Resource("FilterByName")
+        </div>
+        <div class="span2">
+            @Html.TextBox("NameFilter")
+        </div>
+        <div class="span4"></div>
+        <div class="span2"></div>
+        <div class="span2">
+            <button type="button" class="btn PrintPlayersList">@Html.Resource("PrintMatchesDraw")</button>
+        </div>
+    </div>
     <table>
 
         <thead>
@@ -17,20 +29,20 @@
             </tr>
         </thead>
         <tbody>
-        
+
             @{
                 var index = 0;
             }
-            @foreach(var item in Model)
+            @foreach (var item in Model)
             {
-                <tr class="item@(index++ % 2 == 0 ? "":" alternate")">
+                <tr class="player item@(index++ % 2 == 0 ? "" : " alternate")">
                     <td>
-                        @Html.ActionLink(item.LocalLastName + " " + (item.LocalFirstName ?? string.Empty), "Details", new { id=item.Id })
+                        @Html.ActionLink(item.LocalLastName + " " + (item.LocalFirstName ?? string.Empty), "Details", new { id = item.Id })
                     </td>
                     <td>@(item.EnglishLastName + " " + (item.EnglishFirstName ?? string.Empty))</td>
-                    <td>@(item.BirthDate.HasValue? item.BirthDate.Value.ToShortDateString():string.Empty)</td>
+                    <td>@(item.BirthDate.HasValue ? item.BirthDate.Value.ToShortDateString() : string.Empty)</td>
                     <td>@item.Country</td>
-                    <td>@(item.IsFemale?Html.Resource("FemaleAbbr"):Html.Resource("MaleAbbr"))</td>
+                    <td>@(item.IsFemale ? Html.Resource("FemaleAbbr") : Html.Resource("MaleAbbr"))</td>
                     <td>@item.NationalRank</td>
                     <td>@item.EuropeInternationalRank</td>
                     <td>@item.YouthInternationalRank</td>

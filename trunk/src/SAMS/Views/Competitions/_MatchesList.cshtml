@@ -2,7 +2,7 @@
 @model IEnumerable<SAMS.Models.CompetitionMatchViewModel>
 <button type="button" class="btn PrintMatchesList">@Html.Resource("PrintMatchesDraw")</button>
 <div class="competitionMatchesList">
-    @foreach (var section in Model.Where(m => (int)m.Status >= (int)MatchStatus.PlayersAssigned).GroupBy(m => m.Section))
+    @foreach (var section in Model.GroupBy(m => m.Section))
     {
         <h3>
             @(Html.ResourceText("CompetitionSection." + section.Key))
@@ -10,8 +10,9 @@
     
         foreach (var round in section.GroupBy(m => m.Round))
         {
-        <div>
-        </div>
+            <div>
+                <h4>@Html.RoundName(round.Key)</h4>
+            </div>
         <table class="table">
             <thead>
                 <tr>

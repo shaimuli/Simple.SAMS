@@ -104,9 +104,12 @@ namespace Simple.SAMS.Competitions.Data
                         {
                             throw new ArgumentException("Cannot find entity '{0}' with id '{1}'".ParseTemplate(typeof(CompetitionType).Name, entity.Id));
                         }
-                        dataEntity.Updated = DateTime.UtcNow;
+                        var created = dataEntity.Created;
+                        var rowStatus = dataEntity.RowStatus;
                         MapEntityToDataEntity(entity, dataEntity);
-
+                        dataEntity.Created = created;
+                        dataEntity.RowStatus = rowStatus;
+                        dataEntity.Updated = DateTime.UtcNow;
                         dataContext.SubmitChanges();
                     });
         }

@@ -316,7 +316,7 @@
     <value>עודכן לאחרונה</value>
   </data>
   <data name="CompetitionMatchesTab" xml:space="preserve">
-    <value>משחקים</value>
+    <value>הגרלות</value>
   </data>
   <data name="CompetitionPlayersTab" xml:space="preserve">
     <value>שחקנים</value>
@@ -496,27 +496,76 @@
     <value>שחקן/קב' 2</value>
   </data>
   <data name="PrintMatchesDraw" xml:space="preserve">
-    <value>הדפס</value>
+    <value>תצוגת הדפסה</value>
   </data>
   <data name="CompetitionMatchesListTab" xml:space="preserve">
     <value>רשימת משחקים</value>
   </data>
   <data name="MatchStatus.Completed" xml:space="preserve">
-    <value>הסתיים</value>
+    <value>משחק הסתיים</value>
+  </data>
+  <data name="MatchStatus.Started" xml:space="preserve">
+    <value>משחק החל</value>
   </data>
   <data name="MatchStatus.Planned" xml:space="preserve">
-    <value>מתוכנן</value>
+    <value>לוז נקבע</value>
+  </data>  
+  <data name="MatchStatus.Delayed" xml:space="preserve">
+    <value>מתעכב</value>
+  </data>    
+  <data name="MatchStatus.Paused" xml:space="preserve">
+    <value>בהפסקה</value>
+  </data>  
+  <data name="MatchStatus.Cancelled" xml:space="preserve">
+    <value>משח הופסק</value>
   </data>
+  <data name="MatchStatus.Created" xml:space="preserve">
+    <value>משחק נוצר</value>
+  </data>  
   <data name="MatchStatus.PlayersAssigned" xml:space="preserve">
-    <value>שחקנים הוצבו</value>
+    <value>ממתין ללוז</value>
   </data>
   <data name="MatchStatusHeader" xml:space="preserve">
-    <value>סטאטוס</value>
+    <value>הערות</value>
   </data>
   <data name="MatchResultHeader" xml:space="preserve">
-    <value>תוצאה</value>
+    <value>סטאטוס</value>
   </data>
   <data name="Actions" xml:space="preserve">
     <value>פעולות</value>
   </data>
+  <data name="DeleteConfirmationTitle" xml:space="preserve">
+    <value>אישור מחיקה</value>
+  </data>
+  <data name="DeleteConfirmation" xml:space="preserve">
+    <value>האם למחוק את</value>
+  </data>
+  <data name="ConfirmDelete" xml:space="preserve">
+    <value>מחק</value>
+  </data>
+  <data name="Round" xml:space="preserve">
+    <value>סיבוב</value>
+  </data>
+  <data name="ThirdPlace" xml:space="preserve">
+    <value>מקום שלישי</value>
+  </data>  
+  <data name="QuarterFinal" xml:space="preserve">
+    <value>רבע גמר</value>
+  </data>
+  <data name="SemiFinal" xml:space="preserve">
+    <value>חצי גמר</value>
+  </data>
+  <data name="Final" xml:space="preserve">
+    <value>גמר</value>
+  </data>
+  <data name="FilterByDate" xml:space="preserve">
+    <value>תאריך</value>
+  </data>
+  <data name="FilterByRound" xml:space="preserve">
+    <value>סיבוב</value>
+  </data>
+  <data name="FilterByName" xml:space="preserve">
+    <value>שם</value>
+  </data>
+
 </root>

@@ -1,51 +1,54 @@
 ﻿@using Simple.SAMS.Contracts.Competitions
+@model CompetitionType
 <div class="control-group">
     @Html.Label("Name", Html.ResourceText("Name"), new { @class = "control-label" })
     <div class="controls">
-        @Html.TextBox("Name", string.Empty, new Dictionary<string, object> { { "data-val", "true" }, { "data-val-required", Html.ResourceText("NameIsRequired") } })
+        @Html.TextBox("Name", Model.Name, new Dictionary<string, object> { { "data-val", "true" }, { "data-val-required", Html.ResourceText("NameIsRequired") } })
     </div>
 </div>
 <div class="control-group">
     @Html.Label("PlayersCount", Html.ResourceText("PlayersCount"), new { @class = "control-label" })
     <div class="controls">
-        @Html.TextBox("PlayersCount", string.Empty, new Dictionary<string, object> { { "data-val", "true" }, { "data-val-required", Html.ResourceText("PlayersCountIsRequired") } })
+        @* Html.TextBox("PlayersCount", string.Empty, new Dictionary<string, object> { { "data-val", "true" }, { "data-val-required", Html.ResourceText("PlayersCountIsRequired") } })*@
+
+        @Html.DropDownList("PlayersCount", (new[]{8,16,24,48,64}).Select(p=> new SelectListItem(){ Text = p.ToString(), Value = p.ToString(), Selected = Model != null ? p==Model.PlayersCount :  p == 8 }))
     </div>
 </div>
 <div class="control-group">
     @Html.Label("WildcardPlayersCount", Html.ResourceText("WildcardPlayersCount"), new { @class = "control-label" })
     <div class="controls">
-        @Html.TextBox("WildcardPlayersCount", "0")
+        @Html.TextBox("WildcardPlayersCount")
     </div>
 </div>
 <div class="control-group">
     @Html.Label("QualifyingPlayersCount", Html.ResourceText("QualifyingPlayersCount"), new { @class = "control-label" })
     <div class="controls">
-        @Html.TextBox("QualifyingPlayersCount", "0")
+        @Html.TextBox("QualifyingPlayersCount")
     </div>
 
 </div>
 <div class="control-group">
     @Html.Label("PairsCount", Html.ResourceText("PairsCount"), new { @class = "control-label" })
     <div class="controls">
-        @Html.TextBox("PairsCount", "0")
+        @Html.TextBox("PairsCount")
     </div>
 </div>
 <div class="control-group">
     @Html.Label("WildcardPairsCount", Html.ResourceText("WildcardPairsCount"), new { @class = "control-label" })
     <div class="controls">
-        @Html.TextBox("WildcardPairsCount", "0")
+        @Html.TextBox("WildcardPairsCount")
     </div>
 </div>
 <div class="control-group">
     @Html.Label("QualifyingPairsCount", Html.ResourceText("QualifyingPairsCount"), new { @class = "control-label" })
     <div class="controls">
-        @Html.TextBox("QualifyingPairsCount", "0")
+        @Html.TextBox("QualifyingPairsCount")
     </div>
 </div>
 <div class="control-group">
     @Html.Label("HasConsolation", Html.ResourceText("HasConsolation"), new { @class = "control-label" })
     <div class="controls">
-        @Html.CheckBox("HasConsolation", "0")
+        @Html.CheckBox("HasConsolation")
     </div>
 </div>
 <div class="control-group">
@@ -57,22 +60,22 @@
 <div class="control-group">
     @Html.Label("Ranking", Html.ResourceText("Ranking"), new { @class = "control-label" })
     <div class="controls">
-    @Html.DropDownList("Ranking", new SelectListItem[] { 
-                                                            new SelectListItem()
-                                                                 {
-                                                                     Value = ((int)Ranking.National).ToString(), 
-                                                                     Text = Html.ResourceText("Ranking.National")
-                                                                 }, 
-                                                            new SelectListItem()
-                                                                 {
-                                                                     Value = ((int)Ranking.EuropeInternational).ToString(), 
-                                                                     Text = Html.ResourceText("Ranking.EuropeInternational")
-                                                                 }, 
-                                                            new SelectListItem()
-                                                                 {
-                                                                     Value = ((int)Ranking.YouthInternational).ToString(), 
-                                                                     Text = Html.ResourceText("Ranking.YouthInternational")
-                                                                 }, 
-        })
-        </div>
+        @Html.DropDownList("Ranking", new SelectListItem[] { 
+                                                               new SelectListItem()
+                                                                   {
+                                                                       Value = Ranking.National.ToString(), 
+                                                                       Text = Html.ResourceText("Ranking.National")
+                                                                   }, 
+                                                               new SelectListItem()
+                                                                   {
+                                                                       Value = Ranking.EuropeInternational.ToString(), 
+                                                                       Text = Html.ResourceText("Ranking.EuropeInternational")
+                                                                   }, 
+                                                               new SelectListItem()
+                                                                   {
+                                                                       Value = Ranking.YouthInternational.ToString(), 
+                                                                       Text = Html.ResourceText("Ranking.YouthInternational")
+                                                                   }, 
+                                                           })
+    </div>
 </div>

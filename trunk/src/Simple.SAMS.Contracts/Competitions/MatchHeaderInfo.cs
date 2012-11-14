@@ -44,6 +44,9 @@ namespace Simple.SAMS.Contracts.Competitions
         public int Round { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
+        public bool IsFinal { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
         public SetScore[] SetScores { get; set; }
 
         [DataMember(EmitDefaultValue = false)]

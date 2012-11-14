@@ -2,23 +2,18 @@
 @model SAMS.Models.CompetitionDetailsModel
 @{
     
-    ViewContext.Controller.ViewBag.GroupTitle = Html.ResourceText("CompetitionDetails");
-    ViewContext.Controller.ViewBag.Title = Model.Name;  
+    ViewContext.Controller.ViewBag.GroupTitle = Model.Name;
+    ViewContext.Controller.ViewBag.Title = "";  
         
 }
-
-
-
 <i>@Model.StartTime @Model.EndTime</i>
-
 @Html.Partial("_CompetitionHeaderView", Model)
-
 <div class="tabbable">
     <ul id="tabs" class="nav nav-tabs">
-        <li class="active">
+        <li>
             <a href="#matches" data-toggle="tab">@Html.Resource("CompetitionMatchesTab")</a>
         </li>
-        <li><a href="#updateResults" data-toggle="tab">
+        <li class="active"><a href="#updateResults" data-toggle="tab">
             @Html.Resource("CompetitionUpdateResultsTab")
         </a></li>
         <li><a href="#players" data-toggle="tab">
@@ -31,13 +26,13 @@
         </li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane active" id="matches">
-            @if(Model.Type.Method == CompetitionMethod.Knockout)
+        <div class="tab-pane " id="matches">
+            @if (Model.Type.Method == CompetitionMethod.Knockout)
             {
                 @Html.Partial("_KnockoutMatches", Model);
             }
         </div>
-        <div class="tab-pane" id="updateResults">
+        <div class="tab-pane active" id="updateResults">
             <div class="competitionUpdateResultsContainer">
                 @Html.Partial("_UpdateResultsView", Model)
             </div>
@@ -46,7 +41,7 @@
             <div class="competitionPlayersContainer">
                 @Html.Partial("_CompetitionPlayers", Model.Players)
             </div>
-        </div>        
+        </div>
         <div class="tab-pane" id="matchesList">
             <div class="matchesListContainer">
                 @Html.Partial("_MatchesList", Model.Matches)
@@ -58,7 +53,14 @@
     <script type="text/javascript">
 
         $(function () {
-            $(".t-host").tournament();
+            var resources = {
+                QuarterFinal: "@Html.ResourceText("QuarterFinal")",
+                SemiFinal: "@Html.ResourceText("SemiFinal")",
+                Final: "@Html.ResourceText("Final")",
+                ThirdPlace: "@Html.ResourceText("ThirdPlace")",
+                Round: "@Html.ResourceText("Round")"
+            };
+            $(".t-host").tournament({ resources: resources });
             // var testData = { "Id": 234, "Player1": { "EnglishFirstName": "Yair", "EnglishLastName": "Cohen", "Id": 8, "IdNumber": "123465789", "LocalFirstName": "יאיר", "LocalLastName": "כהן" }, "Player2": { "EnglishFirstName": "Moshe", "EnglishLastName": "Cohen", "Id": 7, "IdNumber": "987654321", "LocalFirstName": "משה", "LocalLastName": "כהן" }, "Position": 0, "Round": 1, "Section": 1 }, { "Id": 235, "Player1": { "EnglishFirstName": "Player #2", "EnglishLastName": "Cohen", "Id": 9, "IdNumber": "1", "LocalFirstName": "שחקן 3", "LocalLastName": "כהן" }, "Player2": { "EnglishFirstName": "Player#3", "EnglishLastName": "Cohen", "Id": 10, "IdNumber": "2", "LocalFirstName": "שחקן 4", "LocalLastName": "כהן" }, "Position": 1, "Round": 1, "Section": 1 }, { "Id": 236, "Player1": { "EnglishFirstName": "Player #3", "EnglishLastName": "Cohen", "Id": 11, "IdNumber": "3", "LocalFirstName": "שחקן 5", "LocalLastName": "כהן" }, "Player2": { "EnglishFirstName": "Player#4", "EnglishLastName": "Cohen", "Id": 12, "IdNumber": "4", "LocalFirstName": "שחקן 6", "LocalLastName": "כהן" }, "Position": 2, "Round": 1, "Section": 1 }, { "Id": 237, "Player1": { "EnglishFirstName": "Player #4", "EnglishLastName": "Cohen", "Id": 13, "IdNumber": "5", "LocalFirstName": "שחקן 7", "LocalLastName": "כהן" }, "Player2": { "EnglishFirstName": "Player#5", "EnglishLastName": "Cohen", "Id": 14, "IdNumber": "6", "LocalFirstName": "שחקן 8", "LocalLastName": "כהן" }, "Position": 3, "Round": 1, "Section": 1 }, { "Id": 238, "Player1": { "EnglishFirstName": "Player #5", "EnglishLastName": "Cohen", "Id": 15, "IdNumber": "7", "LocalFirstName": "שחקן 9", "LocalLastName": "כהן" }, "Player2": { "EnglishFirstName": "Player#6", "EnglishLastName": "Cohen", "Id": 16, "IdNumber": "8", "LocalFirstName": "שחקן 10", "LocalLastName": "כהן" }, "Position": 4, "Round": 1, "Section": 1 }, { "Id": 239, "Player1": { "EnglishFirstName": "Player #6", "EnglishLastName": "Cohen", "Id": 17, "IdNumber": "9", "LocalFirstName": "שחקן 11", "LocalLastName": "כהן" }, "Player2": { "EnglishFirstName": "Player#7", "EnglishLastName": "Cohen", "Id": 18, "IdNumber": "10", "LocalFirstName": "שחקן 12", "LocalLastName": "כהן" }, "Position": 5, "Round": 1, "Section": 1 }, { "Id": 240, "Player1": { "EnglishFirstName": "Player #7", "EnglishLastName": "Cohen", "Id": 19, "IdNumber": "11", "LocalFirstName": "שחקן 13", "LocalLastName": "כהן" }, "Player2": { "EnglishFirstName": "Player#8", "EnglishLastName": "Cohen", "Id": 20, "IdNumber": "12", "LocalFirstName": "שחקן 14", "LocalLastName": "כהן" }, "Position": 6, "Round": 1, "Section": 1 }, { "Id": 241, "Player1": { "EnglishFirstName": "Player #8", "EnglishLastName": "Cohen", "Id": 21, "IdNumber": "13", "LocalFirstName": "שחקן 15", "LocalLastName": "כהן" }, "Player2": { "EnglishFirstName": "Player#9", "EnglishLastName": "Cohen", "Id": 22, "IdNumber": "14", "LocalFirstName": "שחקן 16", "LocalLastName": "כהן" }, "Position": 7, "Round": 1, "Section": 1 }, { "Id": 242, "Player1": { "EnglishFirstName": "Player #9", "EnglishLastName": "Cohen", "Id": 23, "IdNumber": "15", "LocalFirstName": "שחקן 17", "LocalLastName": "כהן" }, "Player2": { "EnglishFirstName": "Player#10", "EnglishLastName": "Cohen", "Id": 24, "IdNumber": "16", "LocalFirstName": "שחקן 18", "LocalLastName": "כהן" }, "Position": 8, "Round": 1, "Section": 1 }, { "Id": 243, "Player1": { "EnglishFirstName": "Player #10", "EnglishLastName": "Cohen", "Id": 25, "IdNumber": "17", "LocalFirstName": "שחקן 19", "LocalLastName": "כהן" }, "Player2": { "EnglishFirstName": "Player#11", "EnglishLastName": "Cohen", "Id": 26, "IdNumber": "18", "LocalFirstName": "שחקן 20", "LocalLastName": "כהן" }, "Position": 9, "Round": 1, "Section": 1 }, { "Id": 244, "Player1": { "EnglishFirstName": "Player #11", "EnglishLastName": "Cohen", "Id": 27, "IdNumber": "19", "LocalFirstName": "שחקן 21", "LocalLastName": "כהן" }, "Player2": { "EnglishFirstName": "Player#12", "EnglishLastName": "Cohen", "Id": 28, "IdNumber": "20", "LocalFirstName": "שחקן 22", "LocalLastName": "כהן" }, "Position": 10, "Round": 1, "Section": 1 }, { "Id": 245, "Player1": { "EnglishFirstName": "Player #12", "EnglishLastName": "Cohen", "Id": 29, "IdNumber": "21", "LocalFirstName": "שחקן 23", "LocalLastName": "כהן" }, "Player2": { "EnglishFirstName": "Player#13", "EnglishLastName": "Cohen", "Id": 30, "IdNumber": "22", "LocalFirstName": "שחקן 24", "LocalLastName": "כהן" }, "Position": 11, "Round": 1, "Section": 1 }, { "Id": 246, "Player1": { "EnglishFirstName": "Player #13", "EnglishLastName": "Cohen", "Id": 31, "IdNumber": "23", "LocalFirstName": "שחקן 25", "LocalLastName": "כהן" }, "Player2": { "EnglishFirstName": "Player#14", "EnglishLastName": "Cohen", "Id": 32, "IdNumber": "24", "LocalFirstName": "שחקן 26", "LocalLastName": "כהן" }, "Position": 12, "Round": 1, "Section": 1 }, { "Id": 247, "Player1": { "EnglishFirstName": "Player #14", "EnglishLastName": "Cohen", "Id": 33, "IdNumber": "25", "LocalFirstName": "שחקן 27", "LocalLastName": "כהן" }, "Player2": { "EnglishFirstName": "Player#15", "EnglishLastName": "Cohen", "Id": 34, "IdNumber": "26", "LocalFirstName": "שחקן 28", "LocalLastName": "כהן" }, "Position": 13, "Round": 1, "Section": 1 }, { "Id": 248, "Player1": { "EnglishFirstName": "Player #15", "EnglishLastName": "Cohen", "Id": 35, "IdNumber": "27", "LocalFirstName": "שחקן 29", "LocalLastName": "כהן" }, "Player2": { "EnglishFirstName": "Player#16", "EnglishLastName": "Cohen", "Id": 36, "IdNumber": "28", "LocalFirstName": "שחקן 30", "LocalLastName": "כהן" }, "Position": 14, "Round": 1, "Section": 1 }, { "Id": 249, "Player1": { "EnglishFirstName": "Player #16", "EnglishLastName": "Cohen", "Id": 37, "IdNumber": "29", "LocalFirstName": "שחקן 31", "LocalLastName": "כהן" }, "Player2": { "EnglishFirstName": "Player#17", "EnglishLastName": "Cohen", "Id": 38, "IdNumber": "30", "LocalFirstName": "שחקן 32", "LocalLastName": "כהן" }, "Position": 15, "Round": 1, "Section": 1 }, { "Id": 250, "Position": 16, "Round": 2, "Section": 1 }, { "Id": 251, "Position": 17, "Round": 2, "Section": 1 }, { "Id": 252, "Position": 18, "Round": 2, "Section": 1 }, { "Id": 253, "Position": 19, "Round": 2, "Section": 1 }, { "Id": 254, "Position": 20, "Round": 2, "Section": 1 }, { "Id": 255, "Position": 21, "Round": 2, "Section": 1 }, { "Id": 256, "Position": 22, "Round": 2, "Section": 1 }, { "Id": 257, "Position": 23, "Round": 2, "Section": 1 }, { "Id": 258, "Position": 24, "Round": 3, "Section": 1 }, { "Id": 259, "Position": 25, "Round": 3, "Section": 1 }, { "Id": 260, "Position": 26, "Round": 3, "Section": 1 }, { "Id": 261, "Position": 27, "Round": 3, "Section": 1 }, { "Id": 262, "Position": 28, "Round": 4, "Section": 1 }, { "Id": 263, "Position": 29, "Round": 4, "Section": 1 }, { "Id": 264, "Position": 30, "Round": 5, "Section": 1 }, { "Id": 265, "Position": 31, "Round": 5, "Section": 1 }
             ;
             var items = [];
@@ -67,7 +69,7 @@
                 items = JSON.parse(itemsJson);
             }
             $(".t-host").tournament(items);
-            
+
             function addPrintPageHeaders(html) {
                 html.push("<h1>");
                 html.push("@Model.Name");
@@ -83,14 +85,14 @@
 
 
             }
-            
+
             function printPage(content) {
                 var html = ["<html><head>"];
                 html.push("<title>");
                 html.push("@Model.Name");
                 html.push("</title>");
                 html.push("<link type='text/css' rel='stylesheet' href='");
-                html.push("@Url.Content("~/Content/tournament.css")");
+                html.push("@Url.Content("~/Static/CSS/tournament.css")");
                 html.push("'/></head><body class='t-print rtl'>");
                 addPrintPageHeaders(html);
                 html.push(content);
@@ -102,7 +104,7 @@
 
             }
 
-            $(".PrintMatchesList").click(function() {
+            $(".PrintMatchesList").click(function () {
                 var html = [];
                 html.push("<style text='text/css'>table{ width: 100%; border:solid 1px black; border-collapse: collapse; } table td{ border: solid 1px black; } table tr{ vertical-align: top; } .span2{ display:inline-block; width: 24px;}</style>");
                 html.push($(".competitionMatchesList").html());
@@ -115,7 +117,7 @@
                 html.push($(".competitionPlayersContainer").html());
                 printPage(html.join(""));
             });
-            
+
             $(".PrintMatchesDraw").click(function () {
                 var html = [];
                 html.push("<div class='t-host t-@(Model.Type.PlayersCount)p'>");
@@ -123,14 +125,65 @@
                 html.push("</div>");
                 printPage(html.join(""));
             });
-            
+
             var config = {
                 containerSelector: ".competitionUpdateResultsContainer",
                 logicalItemContainerSelector: "tbody tr",
                 storageRootKey: "Matches:Results",
-                sendUrl: "@Url.Action("UpdateMatchResults", "Competitions")"
+                sendUrl: "@Url.Action("UpdateMatchResults", "Competitions")",
+                resources: resources
             };
             var editor = new Simple.MatchResultsContinuesEdit(config);
+            var container = $(".competitionUpdateResultsContainer");
+            $("select[name=Round]", container).change(function (event) {
+                var round = $(this).val();
+
+                if (round == "0") {
+                    $(".roundContainer", container).show();
+                } else {
+                    $(".roundContainer", container).hide();
+                    $(".roundContainer[data-key='" + round + "']", container).show();
+                }
+            });
+
+            $("input[name='DateFilter']", container)
+                .keyup(function (event) {
+                    if ($(this).val() == "") {
+                        $(this).change();
+                    }
+                })
+                .change(function (event) {
+                    var value = $(this).val();
+
+                    if (value.length > 0) {
+                        $(".matchRow", container).hide();
+                        $(".matchRow:has(input[name='Date'][value='" + value + "'])", container).show();
+                    } else {
+                        $(".matchRow", container).show();
+                    }
+                });
+            
+            $("input[name='NameFilter']", ".competitionPlayersContainer")
+                .keyup(function (event) {
+                    if ($(this).val() == "" || event.keyCode == 13) {
+                        $(this).change();
+                    }
+                })
+                .change(function (event) {
+                    var value = $(this).val();
+                    
+                    var players = $(".item.player", ".competitionPlayersContainer");
+                    $.each(players,
+                        function (index, player) {
+                            player = $(player);
+                            var text = $("td:first-child a", player).text();
+                            if (text.indexOf(value) >= 0) {
+                                player.show();
+                            } else {
+                                player.hide();
+                            }
+                        });
+                });
         });
     </script>
 }

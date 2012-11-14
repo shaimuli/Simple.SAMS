@@ -28,14 +28,55 @@
     <tbody>
         @{
             var index = 0;
-        }        
+        }
         @foreach (var item in Model)
         {
-            <tr class="item@(index++ % 2 == 0 ? "":" alternate")">
+            <tr class="item@(index++ % 2 == 0 ? "" : " alternate")">
                 <td>@item.Name</td>
                 <td>@Html.ActionLink(Html.ResourceText("Edit"), "Edit", new { id = item.Id })</td>
-                <td><a href="#">@Html.Resource("Delete")</a></td>
+                <td><a href="#" class="delete" data-key="@item.Id" data-text="@item.Name">@Html.Resource("Delete")</a></td>
             </tr>
         }
     </tbody>
 </table>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $("a.delete", "table").click(function (event) {
+                event.preventDefault();
+                var target = $(this);
+                var id = target.data("key");
+                var text = target.data("text");
+                var dialogContainer = $("div#deleteCompetitionTypeDialog");
+                if (dialogContainer.length == 0) {
+                    dialogContainer = $("<div/>").attr("id", "deleteCompetitionTypeDialog");
+                }
+
+                function closeDialog() {
+                    dialogContainer.dialog("close");
+                }
+
+                dialogContainer.text("@Html.ResourceText("DeleteConfirmationTitle") " + text + "? ").dialog({
+                    modal: true,
+                    title: "@Html.ResourceText("DeleteConfirmationTitle")",
+                    buttons: [
+                        {
+                            text: "@Html.ResourceText("Cancel")",
+                            click: closeDialog
+                        },
+                        {
+                            text: "@Html.ResourceText("ConfirmDelete")",
+                            click: function () {
+                                closeDialog();
+                                target.closest("tr").hide();
+                                $.post("@Url.Action("Delete", "CompetitionTypes")", { id: id });
+                            }
+
+                        }
+                    ]
+                });
+            });
+        });
+    </script>
+}

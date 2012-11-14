@@ -38,7 +38,8 @@ namespace SAMS.Controllers
         }        
         public ActionResult Create()
         {
-            return View();
+            var competitionType = new CompetitionType();
+            return View(competitionType);
         }
 
         public ActionResult BriefDetails(int id)
@@ -54,6 +55,13 @@ namespace SAMS.Controllers
             var competitionTypesRepository = ServiceProvider.Get<ICompetitionTypeRepository>();
             var competitionType = competitionTypesRepository.Get(id);
             return View(competitionType);
+        }
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            var competitionTypesRepository = ServiceProvider.Get<ICompetitionTypeRepository>();
+            competitionTypesRepository.Remove(id);
+            return new HttpStatusCodeResult(200);
         }
     }
 }

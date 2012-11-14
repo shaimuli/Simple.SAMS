@@ -1,5 +1,5 @@
 ﻿(function ($) {
-    function prepareTournament(host) {
+    function prepareTournament(host, resources) {
         var container = $("<div/>").addClass("t-container").appendTo(host);
         var rounds = 6;
         var matchesPerRound = [32, 16, 8, 4, 2, 2];
@@ -14,14 +14,32 @@
 
             return t;
         }
+        function roundName(round) {
+            var result = resources["Round"] + " " + round;
+            if (round == 3) {
+                result = resources["QuarterFinal"];
+            } else if (round == 4) {
+                result = resources["SemiFinal"];
+            } else if (round == 5) {
+                result = resources["Final"];
 
+            } else if (round == 6) {
+                result = resources["ThirdPlace"];
+            }
+            return result;
+        }
         var matchPosition = 0;
-        for (var r = 0; r <rounds ; r++) {
+        for (var r = 0; r < rounds ; r++) {
             var roundContainer = $("<div/>").addClass("t-round r" + r).appendTo(container);
-            var sep = r<rounds-1 ? $("<div/>").addClass("t-sep r" + r).appendTo(container) : null;
+
+            $("<h3/>").text(roundName(r)).appendTo(roundContainer);
+            var sep = r < rounds - 1 ? $("<div/>").addClass("t-sep r" + r).appendTo(container) : null;
             var matchesCount = matchesPerRound[r];
             for (var m = 1; m <= matchesCount; m++) {
-                var matchContainer = $("<div/>").addClass("t-match m" + m).attr("id","match" + (matchPosition++)).appendTo(roundContainer);
+                if (m == matchesCount && r == (rounds - 1)) {
+                    $("<h3/>").text(roundName(6)).appendTo(roundContainer);
+                }
+                var matchContainer = $("<div/>").addClass("t-match m" + m).attr("id", "match" + (matchPosition++)).appendTo(roundContainer);
 
                 var team1 = addTeam(matchContainer);
                 var team2 = addTeam(matchContainer);
@@ -42,14 +60,14 @@
             var target = $(this);
             var rounds = target.data("rounds");
             var maxMatches = target.data("matches");
-            
+
             if (!target.data("tournament-attached")) {
                 target.data("tournament-attached", true);
                 target.html("");
-                prepareTournament(target);
+                prepareTournament(target, options.resources);
             } else {
                 if ($.isArray(options)) {
-                    
+
                     var matches = options;
                     function getScore(playerNumber, setScores) {
                         var scores = [];
@@ -62,7 +80,7 @@
                     function playerName(p) {
                         var text = p.LocalFirstName + (p.LocalLastName ? " " + p.LocalLastName : "");
                         var html = "<a href='#' data-id='" + p.Id + "'>" + text + "</a>";
-                        
+
                         return html;
                     }
                     function players(p1, det, p2, p3) {
@@ -77,16 +95,13 @@
                         }
                     }
 
-                    
-                    
-                    var offset = 32;
-                    for(var i=0; i<matches.length; i++) {
+                    var offset = 64 - maxMatches;
+                    for (var i = 0; i < matches.length; i++) {
                         var matchId = "#match" + String(i + offset);
-                        
+
                         var matchContainer = $(matchId, target);
                         var match = matches[i];
 
-                        console.log("MID", matchId, match);
                         match.Player3 = match.Player1;
                         match.Player4 = match.Player2;
                         var player1 = players(match.Player1, match.Player3, match.Player1, match.Player2);
@@ -106,10 +121,10 @@
 
                         $(".t-icon:first-child", team1).removeClass("winner");
                         $(".t-icon:first-child", team2).removeClass("winner");
-                        
+
                         if (match.Winner == 1) {
                             $(".t-icon:first-child", team1).addClass("winner");
-                        } else if (match.Winner == 2){
+                        } else if (match.Winner == 2) {
                             $(".t-icon:first-child", team2).addClass("winner");
                         }
 
@@ -117,7 +132,7 @@
                         $(".t-score", team2).text(getScore(2, match.SetScores) || "");
                     }
 
-                  
+
 
                 }
             }

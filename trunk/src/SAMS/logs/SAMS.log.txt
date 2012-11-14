@@ -4911,3 +4911,167 @@ System.InvalidOperationException: Sequence contains no matching element
 2012-11-09 15:32:49.0894 SimpleSite|Info| SAMS Application initialization completed.
 2012-11-09 15:34:34.0274 SimpleSite|Info| SAMS Application started... 
 2012-11-09 15:34:34.6424 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-11 21:12:13.7987 SimpleSite|Info| SAMS Application started... 
+2012-11-11 21:12:14.5707 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-11 21:15:23.9935 SimpleSite|Info| SAMS Application started... 
+2012-11-11 21:15:24.6916 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-11 21:17:17.7400 SimpleSite|Info| SAMS Application started... 
+2012-11-11 21:17:18.3671 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-11 21:24:54.2792 SimpleSite|Info| SAMS Application started... 
+2012-11-11 21:24:54.9002 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-11 21:25:42.7239 SimpleSite|Info| SAMS Application started... 
+2012-11-11 21:25:43.3400 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-11 21:26:00.7600 SimpleSite|Info| SAMS Application started... 
+2012-11-11 21:26:01.3930 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-11 21:26:06.1783 SimpleSite|Info| SAMS Application started... 
+2012-11-11 21:26:06.7953 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-11 21:27:07.0748 SimpleSite|Info| SAMS Application started... 
+2012-11-11 21:27:07.6958 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-11 21:38:03.2913 SimpleSite|Info| SAMS Application started... 
+2012-11-11 21:38:03.9063 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-11 22:28:41.0100 SimpleSite|Info| SAMS Application started... 
+2012-11-11 22:28:41.7651 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-11 23:01:51.0419 SimpleSite|Info| SAMS Application started... 
+2012-11-11 23:01:51.6369 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-11 23:10:11.1465 SimpleSite|Info| SAMS Application started... 
+2012-11-11 23:10:11.7555 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-11 23:10:29.2385 SimpleSite|Info| SAMS Application started... 
+2012-11-11 23:10:29.8605 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-11 23:12:44.3522 SimpleSite|Info| SAMS Application started... 
+2012-11-11 23:12:45.2563 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-11 23:21:40.4389 SimpleSite|Info| SAMS Application started... 
+2012-11-11 23:21:41.0459 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-11 23:23:00.5505 SimpleSite|Info| SAMS Application started... 
+2012-11-11 23:23:01.1695 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-11 23:25:28.8810 SimpleSite|Error| Error executing request.
+Details:
+System.Data.SqlTypes.SqlTypeException: SqlDateTime overflow. Must be between 1/1/1753 12:00:00 AM and 12/31/9999 11:59:59 PM.
+   at System.Data.SqlClient.TdsParser.TdsExecuteRPC(_SqlRPC[] rpcArray, Int32 timeout, Boolean inSchema, SqlNotificationRequest notificationRequest, TdsParserStateObject stateObj, Boolean isCommandProc, Boolean sync, TaskCompletionSource`1 completion, Int32 startRpc, Int32 startParam)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at System.Data.Linq.SqlClient.SqlProvider.Execute(Expression query, QueryInfo queryInfo, IObjectReaderFactory factory, Object[] parentArgs, Object[] userArgs, ICompiledSubQuery[] subQueries, Object lastResult)
+   at System.Data.Linq.SqlClient.SqlProvider.ExecuteAll(Expression query, QueryInfo[] queryInfos, IObjectReaderFactory factory, Object[] userArguments, ICompiledSubQuery[] subQueries)
+   at System.Data.Linq.SqlClient.SqlProvider.System.Data.Linq.Provider.IProvider.Execute(Expression query)
+   at System.Data.Linq.ChangeDirector.StandardChangeDirector.DynamicUpdate(TrackedObject item)
+   at System.Data.Linq.ChangeDirector.StandardChangeDirector.Update(TrackedObject item)
+   at System.Data.Linq.ChangeProcessor.SubmitChanges(ConflictMode failureMode)
+   at System.Data.Linq.DataContext.SubmitChanges(ConflictMode failureMode)
+   at System.Data.Linq.DataContext.SubmitChanges()
+   at Simple.SAMS.Competitions.Data.EntityRepositoryBase`3.<>c__DisplayClassa.<Update>b__9(TDataContext dataContext) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\EntityRepositoryBase.cs:line 110
+   at Simple.Utilities.DataRepositoryBase`1.UseDataContext(Action`1 action) in c:\Data\git\Simple.SAMS\trunk\src\Simple.Utilities\DataRepositoryBase.cs:line 25
+   at Simple.SAMS.Competitions.Data.EntityRepositoryBase`3.Update(TEntity entity) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\EntityRepositoryBase.cs:line 99
+   at SAMS.Controllers.CompetitionTypesController.Edit(CompetitionType competitionType) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionTypesController.cs:line 28
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-11 23:58:13.2823 SimpleSite|Error| Error executing request.
+Details:
+System.Data.SqlTypes.SqlTypeException: SqlDateTime overflow. Must be between 1/1/1753 12:00:00 AM and 12/31/9999 11:59:59 PM.
+   at System.Data.SqlClient.TdsParser.TdsExecuteRPC(_SqlRPC[] rpcArray, Int32 timeout, Boolean inSchema, SqlNotificationRequest notificationRequest, TdsParserStateObject stateObj, Boolean isCommandProc, Boolean sync, TaskCompletionSource`1 completion, Int32 startRpc, Int32 startParam)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at System.Data.Linq.SqlClient.SqlProvider.Execute(Expression query, QueryInfo queryInfo, IObjectReaderFactory factory, Object[] parentArgs, Object[] userArgs, ICompiledSubQuery[] subQueries, Object lastResult)
+   at System.Data.Linq.SqlClient.SqlProvider.ExecuteAll(Expression query, QueryInfo[] queryInfos, IObjectReaderFactory factory, Object[] userArguments, ICompiledSubQuery[] subQueries)
+   at System.Data.Linq.SqlClient.SqlProvider.System.Data.Linq.Provider.IProvider.Execute(Expression query)
+   at System.Data.Linq.ChangeDirector.StandardChangeDirector.DynamicUpdate(TrackedObject item)
+   at System.Data.Linq.ChangeDirector.StandardChangeDirector.Update(TrackedObject item)
+   at System.Data.Linq.ChangeProcessor.SubmitChanges(ConflictMode failureMode)
+   at System.Data.Linq.DataContext.SubmitChanges(ConflictMode failureMode)
+   at System.Data.Linq.DataContext.SubmitChanges()
+   at Simple.SAMS.Competitions.Data.EntityRepositoryBase`3.<>c__DisplayClassa.<Update>b__9(TDataContext dataContext) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\EntityRepositoryBase.cs:line 110
+   at Simple.Utilities.DataRepositoryBase`1.UseDataContext(Action`1 action) in c:\Data\git\Simple.SAMS\trunk\src\Simple.Utilities\DataRepositoryBase.cs:line 25
+   at Simple.SAMS.Competitions.Data.EntityRepositoryBase`3.Update(TEntity entity) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\EntityRepositoryBase.cs:line 99
+   at SAMS.Controllers.CompetitionTypesController.Edit(CompetitionType competitionType) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionTypesController.cs:line 28
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-11 23:59:51.9870 SimpleSite|Info| SAMS Application started... 
+2012-11-11 23:59:53.1530 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-12 00:02:48.0220 SimpleSite|Info| SAMS Application started... 
+2012-11-12 00:02:49.0701 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-12 00:10:07.5062 SimpleSite|Info| SAMS Application started... 
+2012-11-12 00:10:08.2802 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-12 00:15:20.5731 SimpleSite|Info| SAMS Application started... 
+2012-11-12 00:15:21.2611 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-12 00:16:42.6568 SimpleSite|Info| SAMS Application started... 
+2012-11-12 00:16:43.3418 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-12 00:25:17.2582 SimpleSite|Info| SAMS Application started... 
+2012-11-12 00:25:17.9832 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-13 23:44:56.7810 SimpleSite|Info| SAMS Application started... 
+2012-11-13 23:44:57.6551 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-13 23:58:35.7569 SimpleSite|Info| SAMS Application started... 
+2012-11-13 23:58:36.3599 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-14 07:02:47.6936 SimpleSite|Info| SAMS Application started... 
+2012-11-14 07:02:48.0536 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-14 07:09:29.8116 SimpleSite|Info| SAMS Application started... 
+2012-11-14 07:09:30.6287 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-14 07:09:48.0297 SimpleSite|Info| SAMS Application started... 
+2012-11-14 07:09:48.6407 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-14 07:12:09.3077 SimpleSite|Info| SAMS Application started... 
+2012-11-14 07:12:09.9488 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-14 07:23:20.2421 SimpleSite|Info| SAMS Application started... 
+2012-11-14 07:23:20.9162 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-14 07:24:39.2516 SimpleSite|Info| SAMS Application started... 
+2012-11-14 07:24:39.8747 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-14 07:25:13.0606 SimpleSite|Info| SAMS Application started... 
+2012-11-14 07:25:13.7336 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-14 07:33:23.8637 SimpleSite|Info| SAMS Application started... 
+2012-11-14 07:33:24.4897 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-14 07:43:15.5745 SimpleSite|Info| SAMS Application started... 
+2012-11-14 07:43:16.2075 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-14 07:44:13.3718 SimpleSite|Info| SAMS Application started... 
+2012-11-14 07:44:13.7898 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-14 07:45:32.6323 SimpleSite|Info| SAMS Application started... 
+2012-11-14 07:45:33.6964 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-14 07:53:11.1806 SimpleSite|Info| SAMS Application started... 
+2012-11-14 07:53:11.7976 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-14 07:59:12.2262 SimpleSite|Info| SAMS Application started... 
+2012-11-14 07:59:12.8442 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-14 08:00:06.1963 SimpleSite|Info| SAMS Application started... 
+2012-11-14 08:00:06.8193 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-14 08:00:25.1804 SimpleSite|Info| SAMS Application started... 
+2012-11-14 08:00:25.7854 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-14 20:43:49.8283 SimpleSite|Info| SAMS Application started... 
+2012-11-14 20:43:50.5833 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-14 20:44:08.6023 SimpleSite|Info| SAMS Application started... 
+2012-11-14 20:44:09.2784 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-14 20:53:06.7041 SimpleSite|Info| SAMS Application started... 
+2012-11-14 20:53:07.4192 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-14 20:54:56.4284 SimpleSite|Info| SAMS Application started... 
+2012-11-14 20:54:57.0634 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-14 21:07:06.0831 SimpleSite|Info| SAMS Application started... 
+2012-11-14 21:07:06.8182 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-14 21:07:13.8466 SimpleSite|Info| SAMS Application started... 
+2012-11-14 21:07:14.5626 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-14 21:09:18.6067 SimpleSite|Info| SAMS Application started... 
+2012-11-14 21:09:19.2687 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-14 21:09:51.9316 SimpleSite|Info| SAMS Application started... 
+2012-11-14 21:09:52.5746 SimpleSite|Info| SAMS Application initialization completed.

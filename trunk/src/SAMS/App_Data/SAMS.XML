@@ -492,7 +492,7 @@
         </member>
         <member name="P:SAMS.Resources.Texts.CompetitionMatchesTab">
             <summary>
-              Looks up a localized string similar to משחקים.
+              Looks up a localized string similar to הגרלות.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.CompetitionMethod">
@@ -645,6 +645,11 @@
               Looks up a localized string similar to עדכון תוצאות.
             </summary>
         </member>
+        <member name="P:SAMS.Resources.Texts.ConfirmDelete">
+            <summary>
+              Looks up a localized string similar to מחק.
+            </summary>
+        </member>
         <member name="P:SAMS.Resources.Texts.CreateCompetition">
             <summary>
               Looks up a localized string similar to יצירת תחרות חדשה.
@@ -685,6 +690,16 @@
               Looks up a localized string similar to מחק.
             </summary>
         </member>
+        <member name="P:SAMS.Resources.Texts.DeleteConfirmation">
+            <summary>
+              Looks up a localized string similar to האם למחוק את.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.DeleteConfirmationTitle">
+            <summary>
+              Looks up a localized string similar to אישור מחיקה.
+            </summary>
+        </member>
         <member name="P:SAMS.Resources.Texts.Edit">
             <summary>
               Looks up a localized string similar to עריכה.
@@ -703,6 +718,26 @@
         <member name="P:SAMS.Resources.Texts.FemaleAbbr">
             <summary>
               Looks up a localized string similar to נקבה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.FilterByDate">
+            <summary>
+              Looks up a localized string similar to תאריך.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.FilterByName">
+            <summary>
+              Looks up a localized string similar to שם.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.FilterByRound">
+            <summary>
+              Looks up a localized string similar to סיבוב.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.Final">
+            <summary>
+              Looks up a localized string similar to גמר.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.FinishCompetition">
@@ -807,7 +842,7 @@
         </member>
         <member name="P:SAMS.Resources.Texts.MatchResultHeader">
             <summary>
-              Looks up a localized string similar to תוצאה.
+              Looks up a localized string similar to סטאטוס.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.MatchResultsHeader">
@@ -815,24 +850,49 @@
               Looks up a localized string similar to ניקוד.
             </summary>
         </member>
+        <member name="P:SAMS.Resources.Texts.MatchStatus_Cancelled">
+            <summary>
+              Looks up a localized string similar to משח הופסק.
+            </summary>
+        </member>
         <member name="P:SAMS.Resources.Texts.MatchStatus_Completed">
             <summary>
-              Looks up a localized string similar to הסתיים.
+              Looks up a localized string similar to משחק הסתיים.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.MatchStatus_Created">
+            <summary>
+              Looks up a localized string similar to משחק נוצר.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.MatchStatus_Delayed">
+            <summary>
+              Looks up a localized string similar to מתעכב.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.MatchStatus_Paused">
+            <summary>
+              Looks up a localized string similar to בהפסקה.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.MatchStatus_Planned">
             <summary>
-              Looks up a localized string similar to מתוכנן.
+              Looks up a localized string similar to לוז נקבע.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.MatchStatus_PlayersAssigned">
             <summary>
-              Looks up a localized string similar to שחקנים הוצבו.
+              Looks up a localized string similar to ממתין ללוז.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.MatchStatus_Started">
+            <summary>
+              Looks up a localized string similar to משחק החל.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.MatchStatusHeader">
             <summary>
-              Looks up a localized string similar to סטאטוס.
+              Looks up a localized string similar to הערות.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.MatchTimeHeader">
@@ -952,7 +1012,7 @@
         </member>
         <member name="P:SAMS.Resources.Texts.PrintMatchesDraw">
             <summary>
-              Looks up a localized string similar to הדפס.
+              Looks up a localized string similar to תצוגת הדפסה.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.QualifyingPairsCount">
@@ -963,6 +1023,11 @@
         <member name="P:SAMS.Resources.Texts.QualifyingPlayersCount">
             <summary>
               Looks up a localized string similar to מספר שחקנים במוקדמות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.QuarterFinal">
+            <summary>
+              Looks up a localized string similar to רבע גמר.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.Ranking">
@@ -1000,9 +1065,19 @@
               Looks up a localized string similar to איפוס סיסמת משתמש.
             </summary>
         </member>
+        <member name="P:SAMS.Resources.Texts.Round">
+            <summary>
+              Looks up a localized string similar to סיבוב.
+            </summary>
+        </member>
         <member name="P:SAMS.Resources.Texts.SAMS">
             <summary>
               Looks up a localized string similar to Simple. SAMS.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.SemiFinal">
+            <summary>
+              Looks up a localized string similar to חצי גמר.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.StartCompetition">
@@ -1038,6 +1113,11 @@
         <member name="P:SAMS.Resources.Texts.StartTimeType_StartTime">
             <summary>
               Looks up a localized string similar to ST.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.ThirdPlace">
+            <summary>
+              Looks up a localized string similar to מקום שלישי.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.Update">

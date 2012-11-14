@@ -46,31 +46,26 @@
     <hr class="space" />
     <div class="container content">
         <div class="subheader">
-        <h1>@ViewContext.Controller.ViewBag.GroupTitle</h1>
-        <div class="row">
-            @if (ViewContext.Controller.ViewBag.MenuItems != null)
+            <h1>@ViewContext.Controller.ViewBag.GroupTitle</h1>
+            <div class="row">
+                @if (ViewContext.Controller.ViewBag.MenuItems != null)
+                {
+                    <ul class="nav nav-pills">
+                        @foreach (MenuItem menuItem in ViewContext.Controller.ViewBag.MenuItems)
+                        {
+                            @Html.MenuItem(menuItem)
+                        }
+                    </ul>
+                }
+            </div>
+            @if (ViewContext.Controller.ViewBag.Title != null)
             {
-                <ul class="nav nav-pills">
-                    @foreach (MenuItem menuItem in ViewContext.Controller.ViewBag.MenuItems)
-                    {
-                        @Html.MenuItem(menuItem)
-                    }
-                    @*                @Html.MenuItem(Html.ResourceText("CompetitionsList"), "Index", "Competitions")
-                @Html.MenuItem(Html.ResourceText("CompetitionTypes"), "Index", "CompetitionTypes")
-                @Html.MenuItem(Html.ResourceText("Import"), "Import", "Competitions")
-                @Html.MenuItem(Html.ResourceText("CreateCompetitionLink"), "Create", "Competitions")*@
-                </ul>
+                <h2>@ViewContext.Controller.ViewBag.Title</h2>
             }
         </div>
-        @if (ViewContext.Controller.ViewBag.Title != null)
-        {
-            <h2>@ViewContext.Controller.ViewBag.Title</h2>
-        }
-
-        </div>
-        <p>
+        <div>
             @RenderBody()
-        </p>
+        </div>
     </div>
     <footer>
         <div class="container">
@@ -105,10 +100,12 @@
                         textInput.change().focus();
                     }
                 });
+                var isNullable = textInput.data("isnullable");
                 var minDate = new Date(1900, 1, 1);
                 textInput.change(function (event) {
                     var date = Date.parseExact(textInput.val(), "dd/MM/yyyy");
-                    if (!date || date < minDate) {
+                    
+                    if ((!isNullable && !date) || date < minDate) {
                         textInput.addClass("error").data("is-valid", false);
                     } else {
                         textInput.removeClass("error").data("is-valid", true);
