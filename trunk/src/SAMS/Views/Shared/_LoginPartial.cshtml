@@ -1,19 +1,15 @@
-﻿<ul class="nav pull-right">
-
-
-    @if (Request.IsAuthenticated)
-    {
-        <li>
-            @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = Html.ResourceText("ManageUser") })
-        </li>
-        <li>
-            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", style="margin:0;padding:0" }))
-            {
-                @Html.AntiForgeryToken()
+﻿@if (Request.IsAuthenticated)
+{
+    <li>
+        @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = Html.ResourceText("ManageUser") })
+    </li>
+    <li>
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", style = "margin:0;padding:0" }))
+        {
+            @Html.AntiForgeryToken()
                 
-                <button class="btn" type="submit">@Html.Resource("LogOff")</button>
-            }
-        </li>    
-    }
+            <button class="btn" type="submit">@Html.Resource("LogOff")</button>
+        }
+    </li>    
+}
 
-</ul>

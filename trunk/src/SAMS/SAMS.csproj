@@ -247,6 +247,9 @@
     <Content Include="Static\Css\tournament.css" />
     <Content Include="Static\Css\UpdateResults.css" />
     <Content Include="Static\Images\ajax-loader.gif" />
+    <Content Include="Static\Images\asc.gif" />
+    <Content Include="Static\Images\bg.gif" />
+    <Content Include="Static\Images\desc.gif" />
     <Content Include="Static\Images\edit.png" />
     <Content Include="Static\Images\glyphicons-halflings-white.png" />
     <Content Include="Static\Images\glyphicons-halflings.png" />
@@ -307,6 +310,7 @@
     <Content Include="Global.asax" />
     <Content Include="Static\Images\favicon.ico" />
     <Content Include="Images\grey-grid20x20.png" />
+    <Content Include="Static\Images\ita-small.png" />
     <Content Include="Static\Images\ita.png" />
     <Content Include="Static\Images\ok.png" />
     <Content Include="Static\Images\scorecard.png" />
@@ -335,6 +339,7 @@
     <Content Include="Static\Scripts\bootstrap\bootstrap.min.js" />
     <Content Include="Static\Scripts\CompetitionMatches.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
+    <Content Include="Static\Scripts\jquery.tablesorter.min.js" />
     <Content Include="Static\Scripts\jQuery\jquery-1.8.2.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
@@ -353,6 +358,7 @@
     <Content Include="Static\Scripts\Shell.js" />
     <Content Include="Static\Scripts\Simple.ContinuesEdit.js" />
     <Content Include="Static\Scripts\Simple.js" />
+    <Content Include="Static\Scripts\Simple.SortableTable.js" />
     <Content Include="Static\Scripts\Underscrore\underscore.1.3.3.js" />
     <Content Include="Static\Scripts\Date\date-he-IL.js" />
     <Content Include="Static\Scripts\Date\date.js" />

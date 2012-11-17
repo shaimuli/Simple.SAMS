@@ -5,13 +5,13 @@
 }
 
 
-<table >
+<table class="sortable">
     <thead>
         <tr>
-            <th class="span5">@Html.Resource("CompetitionNameHeader")</th>
-            <th class="span3">@Html.Resource("CompetitionTypeHeader")</th>
-            <th class="span2">@Html.Resource("CompetitionStartTimeHeader")</th>
-            <th class="span2">@Html.Resource("CompetitionLastModifiedHeader")</th>
+            <th class="span5" data-sort-type="text">@Html.Resource("CompetitionNameHeader")</th>
+            <th class="span3" data-sort-type="text">@Html.Resource("CompetitionTypeHeader")</th>
+            <th class="span2" data-sort-type="date">@Html.Resource("CompetitionStartTimeHeader")</th>
+            <th class="span2" data-sort-type="date">@Html.Resource("CompetitionLastModifiedHeader")</th>
         </tr>
     </thead>
     <tbody>

@@ -14,18 +14,18 @@
             <button type="button" class="btn PrintPlayersList">@Html.Resource("PrintMatchesDraw")</button>
         </div>
     </div>
-    <table>
+    <table class="sortable">
 
         <thead>
             <tr>
-                <th class="span2">@Html.Resource("PlayerLocalNameHeader")</th>
-                <th class="span2">@Html.Resource("PlayerEnglishNameHeader")</th>
-                <th class="span2">@Html.Resource("PlayerBirthDateHeader")</th>
-                <th class="span2">@Html.Resource("PlayerCountryHeader")</th>
-                <th class="span1">@Html.Resource("PlayerGenderHeader")</th>
-                <th class="span1">@Html.Resource("PlayerNationalRankHeader")</th>
-                <th class="span1">@Html.Resource("PlayerEuropeInternationalRankHeader")</th>
-                <th class="span1">@Html.Resource("PlayerYouthInternationalRankHeader")</th>
+                <th class="span2" data-sort-type="text">@Html.Resource("PlayerLocalNameHeader")</th>
+                <th class="span2" data-sort-type="text">@Html.Resource("PlayerEnglishNameHeader")</th>
+                <th class="span2" data-sort-type="text">@Html.Resource("PlayerBirthDateHeader")</th>
+                <th class="span2" data-sort-type="text">@Html.Resource("PlayerCountryHeader")</th>
+                <th class="span1" data-sort-type="text">@Html.Resource("PlayerGenderHeader")</th>
+                <th class="span1" data-sort-type="numeric">@Html.Resource("PlayerNationalRankHeader")</th>
+                <th class="span1" data-sort-type="numeric">@Html.Resource("PlayerEuropeInternationalRankHeader")</th>
+                <th class="span1" data-sort-type="numeric">@Html.Resource("PlayerYouthInternationalRankHeader")</th>
             </tr>
         </thead>
         <tbody>

@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width" />
     <link href="~/Static/Css/bootstrap-rtl.min.css" type="text/css" rel="stylesheet" />
     <link href="~/Static/Css/jQueryUi/jquery-ui-1.9.1.custom.min.css" type="text/css" rel="stylesheet" />
-    
+
     <link href="~/Static/Css/default.css" type="text/css" rel="stylesheet" />
     <link href="~/Static/Css/UpdateResults.css" type="text/css" rel="stylesheet" />
     <link href="~/Static/Css/tournament.css" type="text/css" rel="stylesheet" />
@@ -25,9 +25,19 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    @Html.ActionLink("Simple. SAMS | ITA", "Index", "Home", null, new { @class = "brand" })
+                    
+                    @*@Html.ActionLink("Simple. SAMS | ITA", "Index", "Home", null, new { @class = "brand" })*@
+
                     <div class="nav-collapse collapse">
                         <ul class="nav">
+                            <li><div class="headerLogo"></div></li>
+                            <li><h1>@ViewContext.Controller.ViewBag.GroupTitle</h1></li>
+                        </ul>
+                        <ul class="nav pull-right">
+                            @Html.Partial("_LoginPartial")
+
+                        </ul>
+                        <ul class="nav pull-right">
                             @Html.MenuItem(Html.ResourceText("Home"), "Index", "Home", Html.ResourceText("Home"))
                             @Html.MenuItem(Html.ResourceText("Competitions"), "Index", "Competitions", Html.ResourceText("Competitions"))
 
@@ -36,33 +46,44 @@
                                 @Html.MenuItem(Html.ResourceText("Admin"), "Users", "Account", Html.ResourceText("Admin"))
                             }
                         </ul>
-                        @Html.Partial("_LoginPartial")
+
                     </div>
                     <!--/.nav-collapse -->
                 </div>
             </div>
         </div>
+
     </header>
-    <hr class="space" />
     <div class="container content">
         <div class="subheader">
-            <h1>@ViewContext.Controller.ViewBag.GroupTitle</h1>
-            <div class="row">
-                @if (ViewContext.Controller.ViewBag.MenuItems != null)
-                {
-                    <ul class="nav nav-pills">
-                        @foreach (MenuItem menuItem in ViewContext.Controller.ViewBag.MenuItems)
+            <div class="container">
+                <ul class="nav nav-pills">
+                    <li></li>
+                    
+                    <!--<li>
+                        <h1> - </h1>
+                    </li>
+                    <li>
+                        @if (ViewContext.Controller.ViewBag.Title != null)
                         {
-                            @Html.MenuItem(menuItem)
+                            <h2>@ViewContext.Controller.ViewBag.Title</h2>
                         }
-                    </ul>
-                }
+                    </li>-->
+                </ul>
             </div>
-            @if (ViewContext.Controller.ViewBag.Title != null)
-            {
-                <h2>@ViewContext.Controller.ViewBag.Title</h2>
-            }
-        </div>
+                
+                <div class="row">
+                    @if (ViewContext.Controller.ViewBag.MenuItems != null)
+                    {
+                        <ul class="nav nav-pills">
+                            @foreach (MenuItem menuItem in ViewContext.Controller.ViewBag.MenuItems)
+                            {
+                                @Html.MenuItem(menuItem)
+                            }
+                        </ul>
+                    }
+                </div>
+            </div>
         <div>
             @RenderBody()
         </div>
@@ -81,21 +102,23 @@
     <script type="text/javascript" src="~/Static/Scripts/Date/date-he-IL.js"></script>
     <script type="text/javascript" src="~/Static/Scripts/JSLangExtensions.string.js"></script>
     <script type="text/javascript" src="~/Static/Scripts/Simple.js"></script>
+    <script type="text/javascript" src="~/Static/Scripts/jquery.tablesorter.min.js"></script>
+    <script type="text/javascript" src="~/Static/Scripts/Simple.SortableTable.js"></script>
     <script type="text/javascript" src="~/Static/Scripts/Simple.ContinuesEdit.js"></script>
     <script type="text/javascript" src="~/Static/Scripts/Shell.js"></script>
     <script type="text/javascript" src="~/Static/Scripts/CompetitionMatches.js"></script>
-    
+
     <script type="text/javascript">
         $(function () {
             $(".date").each(function () {
                 var textInput = $("input[type=text]", this);
-                
+
                 textInput.datepicker({
                     dateFormat: "dd/mm/yy",
                     isRTL: true,
                     onClose: function () {
                         textInput.data("visible", false);
-                    }, 
+                    },
                     onSelect: function () {
                         textInput.change().focus();
                     }
@@ -104,7 +127,7 @@
                 var minDate = new Date(1900, 1, 1);
                 textInput.change(function (event) {
                     var date = Date.parseExact(textInput.val(), "dd/MM/yyyy");
-                    
+
                     if ((!isNullable && !date) || date < minDate) {
                         textInput.addClass("error").data("is-valid", false);
                     } else {
@@ -132,6 +155,6 @@
     </script>
 
     @RenderSection("scripts", required: false)
-    
+
 </body>
 </html>

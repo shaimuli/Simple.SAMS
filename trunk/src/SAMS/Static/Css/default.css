@@ -87,10 +87,12 @@ button.stretch
 
 .subheader
 {
-    min-height: 72px;
-    background-image: url(../Images/ita.png);
+    margin-top: 48px;
+    /*
+    min-height: 40px;
+    background-image: url(../Images/ita-small.png);
     background-position: left top;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat;*/
 }
 
     .subheader .nav
@@ -216,7 +218,41 @@ thead tr
 }
 
 
-table, [class*="span"] select, [class*="span"] input[type=text]
+table, .constrainInput select, 
+.constrainInput input[type=text],
+.constrainInput input[type=password] 
 {
     width: 100%;
+} 
+
+.headerLogo {
+    height: 40px;
+    width: 60px;
+    margin-left: 4px;
+    background-color: whitesmoke;
+    background-image: url(../Images/ita-small.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.nav h1 {
+    margin: 0px;
+    height: 40px;
+    color: white;
+}
+
+table.sortable th[data-sort-type] {
+    cursor: pointer;
+}
+
+table.sortable thead tr th.headerSortUp,
+table.sortable thead tr th.headerSortDown {
+    background-position: center left;
+    background-repeat: no-repeat;    
+}
+
+table.sortable thead tr .headerSortUp {
+	background-image: url(../Images/asc.gif);
+}
+table.sortable thead tr .headerSortDown {
+	background-image: url(../Images/desc.gif);
 }

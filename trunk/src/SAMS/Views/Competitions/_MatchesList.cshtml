@@ -13,15 +13,15 @@
             <div>
                 <h4>@Html.RoundName(round.Key)</h4>
             </div>
-        <table class="table">
+        <table class="table sortable">
             <thead>
                 <tr>
-                    <th class="span1">#
+                    <th class="span1" data-sort-type="number">#
                     </th>
-                    <th>
+                    <th  data-sort-type="date">
                         @Html.Resource("MatchDateHeader")
                     </th>
-                    <th>
+                    <th  data-sort-type="time">
                         @Html.Resource("MatchTimeHeader")
                     </th>
                     <th>
@@ -33,9 +33,9 @@
                     <th>
                         @Html.Resource("MatchWinnerHeader")
                     </th>
-                    <th>@Html.Resource("MatchResultHeader")
+                    <th data-sort-type="text">@Html.Resource("MatchResultHeader")
                     </th>
-                    <th>@Html.Resource("MatchStatusHeader")
+                    <th data-sort-type="text">@Html.Resource("MatchStatusHeader")
                     </th>
                 </tr>
             </thead>

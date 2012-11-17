@@ -5,7 +5,7 @@
     border-top: solid 1px #DDD;
     margin-top: 4px;
 }
-.setScore {
+input[type=text].setScore {
     width: 16px;
 }
 

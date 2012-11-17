@@ -126,7 +126,7 @@
                         }, this),
                         complete: _.bind(function () {
                             this.scheduleUpdates();
-                            console.log("Send complete: ", items);
+                            //console.log("Send complete: ", items);
                             
                         }, this)
                     });

@@ -3,6 +3,7 @@
         var proto = {
             start: function () {
                 this.bindPopups();
+                this.bindTables();
             },
             registerDataTemplate: function(name, template) {
                 this.dataTemplates = this.dataTemplates || { };
@@ -23,6 +24,14 @@
                     });
                     return false;
                 });
+            },
+            bindTables: function () {
+                $("table.sortable").each(
+                    function () {
+                        console.log("SORTABLE", $(this).attr("class"));
+                        var sortableTable = new Simple.SortableTable({ containerSelector: this });
+                        
+                    });
             }
         };
         return proto;
