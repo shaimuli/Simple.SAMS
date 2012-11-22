@@ -1,41 +1,19 @@
 ﻿@using Simple.SAMS.Contracts.Competitions
 @model SAMS.Models.CompetitionDetailsModel
 
-<div class="row-fluid">
-    
-    <div class="span2">
-        @Html.Resource("FilterByDate")
-    </div>
-    <div class="span2">
-        <div class="input-append date">
-            <div class="row-fluid">
-                <input  class="span6" type="text" name="DateFilter" value="" data-isnullable="true">
-                <span class="add-on trigger"><i class="icon-th"></i></span>
-            </div>
-        </div>
-    </div>
-    <div class="span2">
-           @Html.Resource("FilterByRound") 
-    </div>
-    <div class="span2 constrainInput">
-        @Html.RoundSelect()
-    </div>
-
-    <div class="span2">
-        @Html.Resource("UpdateResults.LastSaveTime"):<span class="lastSaveTime"></span>
-    </div>
-    <div class="span2">
-        <button type="button" class="btn btn-primary sendUpdatesNow">@Html.Resource("UpdateResults.SendUpdatesNow")</button>
-    </div>
+@Html.Partial("MatchesFilters", true)
+<div class="lastSaved">
+    @Html.Resource("UpdateResults.LastSaveTime"):<span class="lastSaveTime"></span>
 </div>
 <div class="updateResultsMatches">
     @foreach (var section in Model.Matches.Where(m => (int)m.Status >= (int)MatchStatus.PlayersAssigned).GroupBy(m => m.Section))
     {
-        <h3>
-            @(Html.ResourceText("CompetitionSection." + section.Key))
-        </h3>
-    
-        foreach (var round in section.GroupBy(m => m.Round))
+        <div class="sectionContainer" data-key="@((int)section.Key)">
+            <h3>
+                @(Html.ResourceText("CompetitionSection." + section.Key))
+            </h3>
+
+        @foreach (var round in section.GroupBy(m => m.Round))
         {
             <div class="roundContainer" data-key="@round.Key">
                 <div>
@@ -161,6 +139,7 @@
                     </tbody>
                 </table>
             </div>
-                }
+            }
+        </div>
     }
 </div>

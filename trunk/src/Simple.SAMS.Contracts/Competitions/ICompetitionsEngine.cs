@@ -33,5 +33,10 @@ namespace Simple.SAMS.Contracts.Competitions
         [OperationContract]
         void UpdateMatchStartTime(MatchStartTimeUpdateInfo startTimeUpdateInfo);
 
+        [OperationContract]
+        void RemovePlayerFromUnplayedMatches(int competitionId, int playerId);
+
+        [OperationContract]
+        void RemovePlayerFromCompetition(int competitionId, int playerId);
     }
 }

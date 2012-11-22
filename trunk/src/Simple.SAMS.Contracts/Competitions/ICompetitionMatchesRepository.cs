@@ -21,5 +21,8 @@ namespace Simple.SAMS.Contracts.Competitions
 
         [OperationContract]
         void UpdateMatchScore(MatchScoreUpdateInfo scoreUpdateInfo);
+
+        [OperationContract]
+        void RemovePlayerFromUnplayedMatches(int competitionId, int playerId);
     }
 }

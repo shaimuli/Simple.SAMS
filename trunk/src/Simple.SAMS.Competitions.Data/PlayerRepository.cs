@@ -65,5 +65,22 @@ namespace Simple.SAMS.Competitions.Data
 
             return matchedPlayers.ToArray();
         }
+
+
+        public int? GetPlayerIdByIdNumber(string idNumber)
+        {
+            var result = default(int?);
+
+            UseDataContext(dataContext =>
+                               {
+                                   var player = dataContext.Players.FirstOrDefault(p => p.IdNumber == idNumber);
+                                   if (player.IsNotNull())
+                                   {
+                                       result = player.Id;
+                                   }
+                               });
+
+            return result;
+        }
     }
 }

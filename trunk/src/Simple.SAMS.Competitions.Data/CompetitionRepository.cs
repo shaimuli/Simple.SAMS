@@ -138,6 +138,9 @@ namespace Simple.SAMS.Competitions.Data
                             var entity = new Contracts.Players.CompetitionPlayer();
                             AutoMapper.Mapper.DynamicMap(dataEntity.Player, entity);
                             entity.CompetitionRank = dataEntity.Rank.GetValueOrDefault();
+                            entity.Replaceable =
+                                dataEntity.Player.Matches.Count(m => m.CompetitionId == competitionData.Id && m.Status >= (int) MatchStatus.Playing) == 0;
+
                             return entity;
                         }).ToArray();
                         var matches = dataContext.Matches.Where(m => m.CompetitionId == competitionData.Id && m.RowStatus == 0);
@@ -349,5 +352,17 @@ namespace Simple.SAMS.Competitions.Data
             return competitions.ToArray();
         }
 
+        public void RemovePlayerFromCompetition(int competitionId, int playerId)
+        {
+            UseDataContext(dataContext =>
+                               {
+                                   var relevantPlayers =
+                                       dataContext.CompetitionPlayers.Where(
+                                           cp => cp.CompetitionId == competitionId && cp.PlayerId == playerId);
+
+                                   dataContext.CompetitionPlayers.DeleteAllOnSubmit(relevantPlayers);
+                                   dataContext.SubmitChanges();
+                               });
+        }
     }
 }

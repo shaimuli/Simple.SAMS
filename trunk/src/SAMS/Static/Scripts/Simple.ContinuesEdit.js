@@ -1,7 +1,6 @@
 ﻿(function ($, _, S) {
-
-    S.ContinuesEdit = Class.extend({
-        isNumberKey: function (event) {
+    S.Utils = {
+        isNumberKey: function(event) {
             var charCode = (event.which) ? event.which : event.keyCode;
             if (charCode > 31 && (charCode < 48 || charCode > 57)) {
                 return false;
@@ -9,7 +8,9 @@
 
             return true;
 
-        },
+        }
+    };
+    S.ContinuesEdit = Class.extend({
         init: function (config) {
             this.storageRootKey = config.storageRootKey;
             this.sendUrl = config.sendUrl;
@@ -196,7 +197,7 @@
             var result = true;
             if ($(event.target).is("[data-numeric=true]")) {
                 // check if number only...
-                result = this.isNumberKey(event);
+                result = S.Utils.isNumberKey(event);
             }
             return result;
         },

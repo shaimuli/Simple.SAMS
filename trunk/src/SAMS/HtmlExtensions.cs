@@ -19,6 +19,16 @@ namespace SAMS
                                                                                              Selected = selected.HasValue && selected.Value == s
                                                                                          }));
         }
+        public static IHtmlString SectionSelect(this HtmlHelper htmlHelper, string name = "Section", int selected = 0)
+        {
+            return htmlHelper.DropDownList(name, Enumerable.Range(0,5).Select(s=> 
+                                                         new SelectListItem()
+                                                             {
+                                                                 Value = s.ToString(),
+                                                                 Text = htmlHelper.SectionName(s),
+                                                                 Selected = s == selected
+                                                             }));
+        }
         public static IHtmlString RoundSelect(this HtmlHelper htmlHelper, string name = "Round", int selected = 0)
         {
             return htmlHelper.DropDownList(name, Enumerable.Range(0,7).Select(r=> 
@@ -29,6 +39,17 @@ namespace SAMS
                                                                  Selected = r == selected
                                                              }));
         }
+
+        public static string SectionName(this HtmlHelper helper, int section)
+        {
+            var key = "AllSections";
+            if (section > 0)
+            {
+                key = "CompetitionSection." + ((CompetitionSection) section).ToString();
+            }
+            return helper.ResourceText(key);
+        }
+
 
         public static string RoundName(this HtmlHelper helper, int round)
         {
@@ -51,7 +72,7 @@ namespace SAMS
                 result = helper.ResourceText("ThirdPlace");
             } else if (round <= 0)
             {
-                result = string.Empty;
+                result = helper.ResourceText("AllRounds");
             }
 
             return result;

@@ -5105,3 +5105,316 @@ System.Data.SqlTypes.SqlTypeException: SqlDateTime overflow. Must be between 1/1
 2012-11-17 20:59:50.3974 SimpleSite|Info| SAMS Application initialization completed.
 2012-11-17 21:02:34.1238 SimpleSite|Info| SAMS Application started... 
 2012-11-17 21:02:34.7328 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-17 21:53:34.9979 SimpleSite|Info| SAMS Application started... 
+2012-11-17 21:53:35.9229 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-17 21:55:29.2744 SimpleSite|Info| SAMS Application started... 
+2012-11-17 21:55:30.0435 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-17 23:07:17.7188 SimpleSite|Info| SAMS Application started... 
+2012-11-17 23:07:18.4589 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-17 23:08:50.8202 SimpleSite|Info| SAMS Application started... 
+2012-11-17 23:08:51.1772 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-17 23:09:58.7021 SimpleSite|Info| SAMS Application started... 
+2012-11-17 23:09:59.5881 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-17 23:21:29.0755 SimpleSite|Info| SAMS Application started... 
+2012-11-17 23:21:29.7926 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-17 23:23:40.2560 SimpleSite|Info| SAMS Application started... 
+2012-11-17 23:23:40.9221 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-17 23:32:49.7055 SimpleSite|Info| SAMS Application started... 
+2012-11-17 23:32:50.6255 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-17 23:47:19.3442 SimpleSite|Info| SAMS Application started... 
+2012-11-17 23:47:20.1593 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-17 23:53:31.9635 SimpleSite|Info| SAMS Application started... 
+2012-11-17 23:53:32.7196 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-17 23:54:22.2564 SimpleSite|Info| SAMS Application started... 
+2012-11-17 23:54:23.1184 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-18 00:02:39.1078 SimpleSite|Info| SAMS Application started... 
+2012-11-18 00:02:39.8539 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-18 00:02:58.9910 SimpleSite|Info| SAMS Application started... 
+2012-11-18 00:02:59.6460 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-19 07:47:54.0013 SimpleSite|Info| SAMS Application started... 
+2012-11-19 07:47:54.8493 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-19 07:50:31.2823 SimpleSite|Info| SAMS Application started... 
+2012-11-19 07:50:31.9413 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-19 07:50:49.2613 SimpleSite|Info| SAMS Application started... 
+2012-11-19 07:50:49.8833 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-19 07:51:22.3322 SimpleSite|Info| SAMS Application started... 
+2012-11-19 07:51:22.9352 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-19 08:01:18.2393 SimpleSite|Info| SAMS Application started... 
+2012-11-19 08:01:18.9303 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-19 08:06:55.6896 SimpleSite|Info| SAMS Application started... 
+2012-11-19 08:06:56.3116 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-19 08:09:30.8044 SimpleSite|Info| SAMS Application started... 
+2012-11-19 08:09:31.4865 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-19 08:12:36.8331 SimpleSite|Info| SAMS Application started... 
+2012-11-19 08:12:37.6151 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-19 08:32:37.4237 SimpleSite|Info| SAMS Application started... 
+2012-11-19 08:32:38.0958 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-19 08:39:16.0005 SimpleSite|Info| SAMS Application started... 
+2012-11-19 08:39:16.6516 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-19 08:40:04.6903 SimpleSite|Info| SAMS Application started... 
+2012-11-19 08:40:05.3514 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-19 08:40:44.9466 SimpleSite|Info| SAMS Application started... 
+2012-11-19 08:40:45.5717 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-19 08:46:28.1743 SimpleSite|Info| SAMS Application started... 
+2012-11-19 08:46:28.8063 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-19 09:26:23.3623 SimpleSite|Info| SAMS Application started... 
+2012-11-19 09:26:24.0093 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-19 09:28:19.6499 SimpleSite|Error| Error executing request.
+Details:
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at ASP._Page_Views_Players__PlayerFormFields_cshtml.Execute() in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Views\Players\_PlayerFormFields.cshtml:line 17
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.HtmlHelper.RenderPartialInternal(String partialViewName, ViewDataDictionary viewData, Object model, TextWriter writer, ViewEngineCollection viewEngineCollection)
+   at System.Web.Mvc.Html.PartialExtensions.Partial(HtmlHelper htmlHelper, String partialViewName, Object model, ViewDataDictionary viewData)
+   at System.Web.Mvc.Html.PartialExtensions.Partial(HtmlHelper htmlHelper, String partialViewName, Object model)
+   at ASP._Page_Views_Players_Create_cshtml.Execute() in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Views\Players\Create.cshtml:line 11
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-19 09:29:52.0602 SimpleSite|Info| SAMS Application started... 
+2012-11-19 09:29:52.7402 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-19 09:32:59.4909 SimpleSite|Info| SAMS Application started... 
+2012-11-19 09:33:00.1249 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-20 16:06:56.8613 SimpleSite|Info| SAMS Application started... 
+2012-11-20 16:06:57.7524 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-20 16:10:36.7299 SimpleSite|Info| SAMS Application started... 
+2012-11-20 16:10:37.3699 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-20 16:10:54.6859 SimpleSite|Info| SAMS Application started... 
+2012-11-20 16:10:55.2960 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-20 16:19:19.2398 SimpleSite|Info| SAMS Application started... 
+2012-11-20 16:19:19.8728 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-20 16:20:23.0224 SimpleSite|Info| SAMS Application started... 
+2012-11-20 16:20:23.6665 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-20 16:20:43.4216 SimpleSite|Info| SAMS Application started... 
+2012-11-20 16:20:44.0676 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-20 16:21:03.5137 SimpleSite|Info| SAMS Application started... 
+2012-11-20 16:21:04.1588 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-20 16:24:12.0175 SimpleSite|Info| SAMS Application started... 
+2012-11-20 16:24:12.6376 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-20 16:29:38.4812 SimpleSite|Info| SAMS Application started... 
+2012-11-20 16:29:39.4233 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-20 16:32:59.2427 SimpleSite|Info| SAMS Application started... 
+2012-11-20 16:33:00.0107 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-20 16:41:04.0014 SimpleSite|Info| SAMS Application started... 
+2012-11-20 16:41:04.6904 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-20 16:48:58.5696 SimpleSite|Info| SAMS Application started... 
+2012-11-20 16:48:59.1866 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-20 16:50:30.4988 SimpleSite|Info| SAMS Application started... 
+2012-11-20 16:50:31.1018 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-20 16:52:15.8888 SimpleSite|Info| SAMS Application started... 
+2012-11-20 16:52:16.5019 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-20 17:25:37.3773 SimpleSite|Info| SAMS Application started... 
+2012-11-20 17:25:37.9944 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-20 17:30:57.0546 SimpleSite|Info| SAMS Application started... 
+2012-11-20 17:30:57.7446 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-20 18:02:58.8625 SimpleSite|Error| Error executing request.
+Details:
+System.InvalidOperationException: The view 'Index' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Players/Index.aspx
+~/Views/Players/Index.ascx
+~/Views/Shared/Index.aspx
+~/Views/Shared/Index.ascx
+~/Views/Players/Index.cshtml
+~/Views/Players/Index.vbhtml
+~/Views/Shared/Index.cshtml
+~/Views/Shared/Index.vbhtml
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-20 18:10:29.5953 SimpleSite|Info| SAMS Application started... 
+2012-11-20 18:10:30.4754 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-20 18:42:39.5708 SimpleSite|Error| Error executing request.
+Details:
+System.InvalidOperationException: The view 'Index' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Players/Index.aspx
+~/Views/Players/Index.ascx
+~/Views/Shared/Index.aspx
+~/Views/Shared/Index.ascx
+~/Views/Players/Index.cshtml
+~/Views/Players/Index.vbhtml
+~/Views/Shared/Index.cshtml
+~/Views/Shared/Index.vbhtml
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-20 18:45:29.2885 SimpleSite|Info| SAMS Application started... 
+2012-11-20 18:45:30.0735 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-20 18:47:59.6851 SimpleSite|Error| Error executing request.
+Details:
+System.InvalidOperationException: The view 'Index' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Players/Index.aspx
+~/Views/Players/Index.ascx
+~/Views/Shared/Index.aspx
+~/Views/Shared/Index.ascx
+~/Views/Players/Index.cshtml
+~/Views/Players/Index.vbhtml
+~/Views/Shared/Index.cshtml
+~/Views/Shared/Index.vbhtml
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-20 18:49:22.0168 SimpleSite|Info| SAMS Application started... 
+2012-11-20 18:49:22.7369 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-20 18:50:16.6889 SimpleSite|Info| SAMS Application started... 
+2012-11-20 18:50:17.5110 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-20 18:51:32.8203 SimpleSite|Error| Error executing request.
+Details:
+System.InvalidOperationException: The view 'Index' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Players/Index.aspx
+~/Views/Players/Index.ascx
+~/Views/Shared/Index.aspx
+~/Views/Shared/Index.ascx
+~/Views/Players/Index.cshtml
+~/Views/Players/Index.vbhtml
+~/Views/Shared/Index.cshtml
+~/Views/Shared/Index.vbhtml
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-20 18:52:08.7603 SimpleSite|Info| SAMS Application started... 
+2012-11-20 18:52:09.4464 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-20 18:52:09.5584 SimpleSite|Error| Error executing request.
+Details:
+System.InvalidOperationException: The view 'Index' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Players/Index.aspx
+~/Views/Players/Index.ascx
+~/Views/Shared/Index.aspx
+~/Views/Shared/Index.ascx
+~/Views/Players/Index.cshtml
+~/Views/Players/Index.vbhtml
+~/Views/Shared/Index.cshtml
+~/Views/Shared/Index.vbhtml
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-20 18:52:09.5584 SimpleSite|Error| Error executing request.
+Details:
+System.InvalidOperationException: The view 'Index' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Players/Index.aspx
+~/Views/Players/Index.ascx
+~/Views/Shared/Index.aspx
+~/Views/Shared/Index.ascx
+~/Views/Players/Index.cshtml
+~/Views/Players/Index.vbhtml
+~/Views/Shared/Index.cshtml
+~/Views/Shared/Index.vbhtml
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-20 18:53:34.6873 SimpleSite|Info| SAMS Application started... 
+2012-11-20 18:53:35.5533 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-20 22:47:47.8391 SimpleSite|Info| SAMS Application started... 
+2012-11-20 22:47:48.5401 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-22 08:28:09.9836 SimpleSite|Info| SAMS Application started... 
+2012-11-22 08:28:10.6026 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-22 08:32:05.2680 SimpleSite|Info| SAMS Application started... 
+2012-11-22 08:32:06.1481 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-22 08:32:24.1641 SimpleSite|Info| SAMS Application started... 
+2012-11-22 08:32:24.8141 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-22 08:46:53.7758 SimpleSite|Info| SAMS Application started... 
+2012-11-22 08:46:54.7069 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-22 09:03:37.0622 SimpleSite|Info| SAMS Application started... 
+2012-11-22 09:03:37.7583 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-22 09:04:04.6508 SimpleSite|Info| SAMS Application started... 
+2012-11-22 09:04:05.3338 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-22 09:04:54.5017 SimpleSite|Info| SAMS Application started... 
+2012-11-22 09:04:55.2437 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-22 09:07:41.9962 SimpleSite|Info| SAMS Application started... 
+2012-11-22 09:07:42.7083 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-22 09:10:02.3103 SimpleSite|Error| Error executing request.
+Details:
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at SAMS.Controllers.CompetitionsController.Details(Int32 id) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 148
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-22 09:39:53.6717 SimpleSite|Info| SAMS Application started... 
+2012-11-22 09:39:54.3698 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-22 09:42:46.3476 SimpleSite|Info| SAMS Application started... 
+2012-11-22 09:42:47.3207 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-22 10:17:01.2421 SimpleSite|Info| SAMS Application started... 
+2012-11-22 10:17:02.1272 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-22 10:18:06.3819 SimpleSite|Info| SAMS Application started... 
+2012-11-22 10:18:07.2249 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-22 10:30:27.7383 SimpleSite|Info| SAMS Application started... 
+2012-11-22 10:30:28.4273 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-22 10:32:04.9778 SimpleSite|Info| SAMS Application started... 
+2012-11-22 10:32:05.8289 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-22 10:34:26.7279 SimpleSite|Info| SAMS Application started... 
+2012-11-22 10:34:27.4290 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-22 11:18:04.3617 SimpleSite|Info| SAMS Application started... 
+2012-11-22 11:18:05.0317 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-22 11:18:53.2744 SimpleSite|Info| SAMS Application started... 
+2012-11-22 11:18:54.0105 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-22 11:20:59.0506 SimpleSite|Info| SAMS Application started... 
+2012-11-22 11:20:59.8767 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-22 11:32:21.3347 SimpleSite|Info| SAMS Application started... 
+2012-11-22 11:32:21.9467 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-22 11:52:17.1341 SimpleSite|Info| SAMS Application started... 
+2012-11-22 11:52:17.7841 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-22 11:52:41.7575 SimpleSite|Info| SAMS Application started... 
+2012-11-22 11:52:42.3905 SimpleSite|Info| SAMS Application initialization completed.

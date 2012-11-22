@@ -1,0 +1,52 @@
+﻿@model Simple.SAMS.Contracts.Players.Player
+
+
+        <div class="control-group">
+            @Html.LabelFor(m => m.IdNumber, Html.ResourceText("PlayerIdNumber"), new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBox("IdNumber", string.Empty, new Dictionary<string, object> { { "data-val", "true" }, { "data-val-required", Html.ResourceText("IdNumberIsRequired") } })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.LabelFor(m => m.LocalFirstName, Html.ResourceText("PlayerLocalFirstName"), new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBox("LocalFirstName", Model.LocalFirstName, new Dictionary<string, object> { { "data-val", "true" }, { "data-val-required", Html.ResourceText("LocalFirstNameIsRequired") } })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.LabelFor(m => m.LocalLastName, Html.ResourceText("PlayerLocalLastName"), new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBox("LocalLastName", Model.LocalLastName)
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.LabelFor(m => m.EnglishFirstName, Html.ResourceText("PlayerEnglishFirstName"), new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBox("EnglishFirstName", Model.EnglishFirstName, new Dictionary<string, object> { { "data-val", "true" }, { "data-val-required", Html.ResourceText("EnglishFirstNameIsRequired") } })
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.LabelFor(m => m.EnglishLastName, Html.ResourceText("PlayerEnglishLastName"), new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBox("EnglishLastName", Model.EnglishLastName)
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.LabelFor(m => m.IsFemale, Html.ResourceText("PlayerIsFemale"), new { @class = "control-label" })
+            <div class="controls">
+                @Html.CheckBox("IsFemale", Model.IsFemale)
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.LabelFor(m => m.Phone, Html.ResourceText("PlayerPhone"), new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBox("Phone", Model.Phone)
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.LabelFor(m => m.IPIN, Html.ResourceText("PlayerIPIN"), new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBox("IPIN", Model.IPIN)
+            </div>
+        </div>
+

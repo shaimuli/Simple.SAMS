@@ -210,6 +210,8 @@
     <Compile Include="Models\CompetitionTypeReference.cs" />
     <Compile Include="Models\CreateCompetitionModel.cs" />
     <Compile Include="Models\CreateCompetitionParameters.cs" />
+    <Compile Include="Models\CreatePlayerModel.cs" />
+    <Compile Include="Models\CreatePlayerNotificationModel.cs" />
     <Compile Include="Models\MatchPlayerViewModel.cs" />
     <Compile Include="Models\MatchResultUpdateModel.cs" />
     <Compile Include="Models\MenuItem.cs" />
@@ -337,6 +339,7 @@
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Static\Scripts\bootstrap\bootstrap-datepicker.js" />
     <Content Include="Static\Scripts\bootstrap\bootstrap.min.js" />
+    <Content Include="Static\Scripts\CompetitionDetails.js" />
     <Content Include="Static\Scripts\CompetitionMatches.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Static\Scripts\jquery.tablesorter.min.js" />
@@ -429,6 +432,10 @@
     <Content Include="Views\Competitions\_CompetitionHeaderView.cshtml" />
     <Content Include="Views\Competitions\_KnockoutMatches.cshtml" />
     <Content Include="Views\Competitions\_MatchesList.cshtml" />
+    <Content Include="Views\Players\_PlayerFormFields.cshtml" />
+    <Content Include="Views\Players\Create.cshtml" />
+    <Content Include="Views\Players\_CreatePlayerNotification.cshtml" />
+    <Content Include="Views\Competitions\MatchesFilters.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\img\" />

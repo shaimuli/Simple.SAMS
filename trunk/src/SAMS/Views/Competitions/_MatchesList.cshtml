@@ -1,112 +1,112 @@
 ﻿@using Simple.SAMS.Contracts.Competitions
 @model IEnumerable<SAMS.Models.CompetitionMatchViewModel>
-<button type="button" class="btn PrintMatchesList">@Html.Resource("PrintMatchesDraw")</button>
 <div class="competitionMatchesList">
+@Html.Partial("MatchesFilters", false)
+
     @foreach (var section in Model.GroupBy(m => m.Section))
     {
-        <h3>
-            @(Html.ResourceText("CompetitionSection." + section.Key))
-        </h3>
-    
-        foreach (var round in section.GroupBy(m => m.Round))
-        {
-            <div>
-                <h4>@Html.RoundName(round.Key)</h4>
-            </div>
-        <table class="table sortable">
-            <thead>
-                <tr>
-                    <th class="span1" data-sort-type="number">#
-                    </th>
-                    <th  data-sort-type="date">
-                        @Html.Resource("MatchDateHeader")
-                    </th>
-                    <th  data-sort-type="time">
-                        @Html.Resource("MatchTimeHeader")
-                    </th>
-                    <th>
-                        @Html.Resource("MatchPlayersHeader")
-                    </th>
-                    <th>
-                        @Html.Resource("MatchResultsHeader")
-                    </th>
-                    <th>
-                        @Html.Resource("MatchWinnerHeader")
-                    </th>
-                    <th data-sort-type="text">@Html.Resource("MatchResultHeader")
-                    </th>
-                    <th data-sort-type="text">@Html.Resource("MatchStatusHeader")
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var match in round)
-                {
-                    <tr data-key="@match.Id" class="success">
-                        <td>
-                            @match.Id
-                        </td>
-                        <td>
-                            @(match.StartTime.HasValue ? match.StartTime.Value.ToShortDateString() : string.Empty)
-                        </td>
-                        <td>
-                            @(match.StartTime.HasValue ? match.StartTime.Value.Hour.ToString().PadLeft(2, '0') : string.Empty):@(match.StartTime.HasValue ? match.StartTime.Value.Minute.ToString().PadLeft(2, '0') : string.Empty) @Html.Resource("StartTimeType." + match.StartTimeType)
-                        </td>
-                        <td>
-                            <div>
-                                <div>
-                                    <b>1.</b> @(match.Player1 != null ? match.Player1.FullName : string.Empty)
-                                </div>
-                                <div>
-                                    <b>2.</b> @(match.Player2 != null ? match.Player2.FullName : string.Empty)
-                                </div>
-                                <div>
-                                    @Html.Resource("MatchBreakPoint")
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="row-fluid">
-                                <div class="span2">
-                                    @match.Score(1, 1)<br />
-                                    @match.Score(2, 1)<br />
-                                    @match.Score(0, 1)
-                                </div>
-                                <div class="span2">
-                                    @match.Score(1, 2)<br />
-                                    @match.Score(2, 2)<br />
-                                    @match.Score(0, 2)
-                                </div>
-                                <div class="span2">
-                                    @match.Score(1, 3)<br />
-                                    @match.Score(2, 3)<br />
-                                    @match.Score(0, 3)
-                                </div>
-                                <div class="span2">
-                                    @match.Score(1, 4)<br />
-                                    @match.Score(2, 4)<br />
-                                    @match.Score(0, 4)
-                                </div>
-                                <div class="span2">
-                                    @match.Score(1, 5)<br />
-                                    @match.Score(2, 5)<br />
-                                    @match.Score(0, 5)
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            @((match.Winner.HasValue && match.Winner.Value == MatchWinner.None) ? string.Empty : Html.ResourceText("MatchWinner." + match.Winner.Value))
-                        </td>
-                        <td>
-                            @((match.Winner.HasValue && match.Winner.Value == MatchWinner.None) ? string.Empty : Html.ResourceText("MatchResult." + match.Result))
-                        </td>
-                        <td>
-                            @Html.ResourceText("MatchStatus." + match.Status)
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-        }
+        <div class="sectionContainer" data-key="@((int)section.Key)">
+
+            <h3>
+                @(Html.ResourceText("CompetitionSection." + section.Key))
+            </h3>
+
+            @foreach (var round in section.GroupBy(m => m.Round))
+            {
+                <div class="roundContainer" data-key="@round.Key">
+                    <div>
+                        <h4>@Html.RoundName(round.Key)</h4>
+                    </div>
+                    <table class="table sortable">
+                        <thead>
+                            <tr>
+                                <th class="span1" data-sort-type="number">#
+                                </th>
+                                <th data-sort-type="date">
+                                    @Html.Resource("MatchDateHeader")
+                                </th>
+                                <th data-sort-type="time">
+                                    @Html.Resource("MatchTimeHeader")
+                                </th>
+                                <th>
+                                    @Html.Resource("MatchPlayersHeader")
+                                </th>
+                                <th>
+                                    @Html.Resource("MatchResultsHeader")
+                                </th>
+                                <th>
+                                    @Html.Resource("MatchWinnerHeader")
+                                </th>
+                                <th data-sort-type="text">@Html.Resource("MatchResultHeader")
+                                </th>
+                                <th data-sort-type="text">@Html.Resource("MatchStatusHeader")
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var match in round)
+                            {
+                                <tr data-key="@match.Id" class="matchRow success">
+                                    <td>@match.Id</td>
+                                    <td><span class="matchDate">@(match.StartTime.HasValue ? match.StartTime.Value.ToShortDateString() : string.Empty)</span></td>
+                                    <td>@(match.StartTime.HasValue ? match.StartTime.Value.Hour.ToString().PadLeft(2, '0') : string.Empty):@(match.StartTime.HasValue ? match.StartTime.Value.Minute.ToString().PadLeft(2, '0') : string.Empty) @Html.Resource("StartTimeType." + match.StartTimeType)</td>
+                                    <td>
+                                        <div>
+                                            <div>
+                                                <b>1.</b> @(match.Player1 != null ? match.Player1.FullName : string.Empty)
+                                            </div>
+                                            <div>
+                                                <b>2.</b> @(match.Player2 != null ? match.Player2.FullName : string.Empty)
+                                            </div>
+                                            <div>
+                                                @Html.Resource("MatchBreakPoint")
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="row-fluid">
+                                            <div class="span2">
+                                                @match.Score(1, 1)<br />
+                                                @match.Score(2, 1)<br />
+                                                @match.Score(0, 1)
+                                            </div>
+                                            <div class="span2">
+                                                @match.Score(1, 2)<br />
+                                                @match.Score(2, 2)<br />
+                                                @match.Score(0, 2)
+                                            </div>
+                                            <div class="span2">
+                                                @match.Score(1, 3)<br />
+                                                @match.Score(2, 3)<br />
+                                                @match.Score(0, 3)
+                                            </div>
+                                            <div class="span2">
+                                                @match.Score(1, 4)<br />
+                                                @match.Score(2, 4)<br />
+                                                @match.Score(0, 4)
+                                            </div>
+                                            <div class="span2">
+                                                @match.Score(1, 5)<br />
+                                                @match.Score(2, 5)<br />
+                                                @match.Score(0, 5)
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        @((match.Winner.HasValue && match.Winner.Value == MatchWinner.None) ? string.Empty : Html.ResourceText("MatchWinner." + match.Winner.Value))
+                                    </td>
+                                    <td>
+                                        @((match.Winner.HasValue && match.Winner.Value == MatchWinner.None) ? string.Empty : Html.ResourceText("MatchResult." + match.Result))
+                                    </td>
+                                    <td>
+                                        @Html.ResourceText("MatchStatus." + match.Status)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
     }
 </div>

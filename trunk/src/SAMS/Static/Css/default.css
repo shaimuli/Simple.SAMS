@@ -65,10 +65,13 @@ footer
         line-height: 40px;
         font-size: 24px;
     }
-
-.item.alternate
+ .item.alternate
 {
-    background-color: #EEE;
+    background-color: #EAEAEA;
+}
+
+.table td {
+    padding: 4px;
 }
 
 .stretch,
@@ -237,6 +240,8 @@ table, .constrainInput select,
 .nav h1 {
     margin: 0px;
     height: 40px;
+    font-size: 20px;
+    line-height: 40px;
     color: white;
 }
 
@@ -255,4 +260,47 @@ table.sortable thead tr .headerSortUp {
 }
 table.sortable thead tr .headerSortDown {
 	background-image: url(../Images/desc.gif);
+}
+
+.rtl .ui-dialog .ui-dialog-title
+{
+	float: right;
+	margin: .1em 0 .1em 16px;
+}
+
+.rtl .ui-dialog .ui-dialog-titlebar-close
+{
+	right: auto;
+	left: .3em;
+}
+
+.rtl .ui-dialog .ui-dialog-titlebar
+{
+	padding: .4em 1em;
+	position: relative;
+}
+
+.rtl .ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset
+{
+	float: left;
+}
+
+.notification {
+    background-color: lightgoldenrodyellow;
+    background-color: #FFFFEE;
+    border: solid 1px black;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.notification h3 {
+    border-bottom: solid 1px #333;
+}
+
+.lastSaved {
+    text-align: right;
+}
+
+.rtl .lastSaved {
+    text-align: left;
 }

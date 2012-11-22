@@ -110,6 +110,26 @@ namespace Simple.SAMS.Competitions.Services
 
             repository.UpdateCompetitionStatus(id, CompetitionStatus.Started);
         }
+        public void RemovePlayer(int competitionId, int playerId)
+        {
+            var competitionsEngine = ServiceProvider.Get<ICompetitionsEngine>();
+            competitionsEngine.RemovePlayerFromUnplayedMatches(competitionId, playerId);
+            competitionsEngine.RemovePlayerFromCompetition(competitionId, playerId);
+        }
+
+        public void ReplacePlayer(int competitionId, int replacedPlayerId, int replacingPlayerId)
+        {
+            RemovePlayer(competitionId, replacedPlayerId);
+            AddPlayerToCompetition(competitionId, replacingPlayerId);
+        }
+
+        public void AddPlayerToCompetition(int competitionId, int playerId)
+        {
+            var competitionsEngine = ServiceProvider.Get<ICompetitionsEngine>();
+            var playersRepository = ServiceProvider.Get<IPlayersRepository>();
+            var player = playersRepository.Get(playerId);
+            competitionsEngine.AddPlayersToCompetition(competitionId, new[]{player});
+        }
 
         public void UpdateMatchStartTime(MatchStartTimeUpdateInfo[] updates)
         {

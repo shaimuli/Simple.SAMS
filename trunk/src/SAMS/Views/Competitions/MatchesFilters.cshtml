@@ -1,0 +1,37 @@
+﻿@model bool
+<div class="row-fluid">
+
+    <div class="span1">
+        @Html.Resource("FilterByDate")
+    </div>
+    <div class="span2">
+        <div class="input-append date">
+            <div class="row-fluid">
+                <input class="span6" type="text" name="DateFilter" value="" data-isnullable="true">
+                <span class="add-on trigger"><i class="icon-th"></i></span>
+            </div>
+        </div>
+    </div>
+    <div class="span1">
+        @Html.Resource("FilterBySection")
+    </div>
+    <div class="span2 constrainInput">
+        @Html.SectionSelect()
+    </div>
+    <div class="span1">
+        @Html.Resource("FilterByRound")
+    </div>
+    <div class="span2 constrainInput">
+        @Html.RoundSelect()
+    </div>
+        <div class="span2">
+            
+    @if(Model)
+    {
+        <button type="button" class="btn btn-primary sendUpdatesNow">@Html.Resource("UpdateResults.SendUpdatesNow")</button>
+    } else
+    {
+        <button type="button" class="btn PrintMatchesList">@Html.Resource("PrintMatchesDraw")</button>        
+    }
+        </div>
+</div>

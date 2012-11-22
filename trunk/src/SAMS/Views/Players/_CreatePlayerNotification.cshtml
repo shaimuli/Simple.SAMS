@@ -1,0 +1,20 @@
+﻿@using Simple
+@model SAMS.Models.CreatePlayerNotificationModel
+
+<div class="row-fluid">
+    <div class="span3"></div>
+    <div class="span6">
+        <div class="notification">
+            <h3>@Html.Resource(Model.Header)</h3>
+            <b>@Html.Resource("Competition")</b>
+            @Model.CompetitionName
+            @if(Model.PlayerName.NotNullOrEmpty())
+            {
+                <br />
+                <b>@Html.Resource("ReplacedPlayer")</b>
+                @Model.PlayerName
+            }
+        </div>
+    </div>
+    <div class="span3"></div>
+</div>

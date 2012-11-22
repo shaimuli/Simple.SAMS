@@ -1,0 +1,50 @@
+﻿@using SAMS.Models
+@using Simple
+@model SAMS.Models.CreatePlayerModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm("Create", "Players", FormMethod.Post, new { id = "mainForm", enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+
+    <fieldset>
+        <legend>@Html.Resource("CreateNewPlayer")</legend>
+        <div>
+            @Html.ValidationSummary()
+        </div>
+        @if (Model.Competition.IsNotNull())
+        {
+            @Html.Hidden("CompetitionId", Model.Competition.Id)
+            if (Model.ReplacedPlayer.IsNotNull())
+            {
+                @Html.Hidden("ReplacedPlayerId", Model.ReplacedPlayer.Id)
+                @Html.Partial("_CreatePlayerNotification", new CreatePlayerNotificationModel
+                                                               {
+                                                                   Header = "ReplaceCompetitionPlayerWithNew",
+                                                                   CompetitionName = Model.Competition.Name,
+                                                                   PlayerName = Model.ReplacedPlayer.LocalFirstName + " " + Model.ReplacedPlayer.LocalLastName
+                                                               })
+            } else
+            {
+                @Html.Partial("_CreatePlayerNotification", new CreatePlayerNotificationModel
+                                                               {
+                                                                   Header = "AddNewPlayerToCompetition",
+                                                                   CompetitionName = Model.Competition.Name
+                                                               })
+                
+            }
+            
+            <hr class="space" />
+        }
+
+        @Html.Partial("_PlayerFormFields", Model.Player)
+
+        <div class="form-actions">
+            <input class="btn btn-primary" type="submit" value="@Html.ResourceText("CreatePlayer")" />
+        </div>
+    </fieldset>
+
+}

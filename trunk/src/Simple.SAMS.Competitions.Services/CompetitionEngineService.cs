@@ -251,5 +251,18 @@ namespace Simple.SAMS.Competitions.Services
             var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
             competitionMatchesRepository.UpdateMatchStartTime(startTimeUpdateInfo);
         }
+
+
+        public void RemovePlayerFromUnplayedMatches(int competitionId, int playerId)
+        {
+            var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
+            competitionMatchesRepository.RemovePlayerFromUnplayedMatches(competitionId, playerId);
+        }
+
+        public void RemovePlayerFromCompetition(int competitionId, int playerId)
+        {
+            var competitionRepository = ServiceProvider.Get<ICompetitionRepository>();
+            competitionRepository.RemovePlayerFromCompetition(competitionId, playerId);
+        }
     }
 }

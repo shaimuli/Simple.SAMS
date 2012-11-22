@@ -38,7 +38,7 @@
                 headers: headers
             };
             var tableSorter = this.container.tablesorter(options);
-            console.log($.tablesorter.parsers);
+            
         }
     });
 })(jQuery, Simple);

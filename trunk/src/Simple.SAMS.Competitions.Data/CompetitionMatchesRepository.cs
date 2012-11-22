@@ -198,5 +198,47 @@ namespace Simple.SAMS.Competitions.Data
                 
             }
         }
+
+        public void RemovePlayerFromUnplayedMatches(int competitionId, int playerId)
+        {
+            UseDataContext(
+                dataContext =>
+                    {
+                        var relevantMatches = dataContext.Matches.Where(m =>
+                                                                        m.CompetitionId == competitionId &&
+                                                                        m.Status <= (int) MatchStatus.Planned);
+
+                        var matchesWithPlayer1 = relevantMatches.Where(m => m.Player1 == playerId);
+                        var matchesWithPlayer2 = relevantMatches.Where(m => m.Player2 == playerId);
+                        var matchesWithPlayer3 = relevantMatches.Where(m => m.Player3 == playerId);
+                        var matchesWithPlayer4 = relevantMatches.Where(m => m.Player4 == playerId);
+
+                        matchesWithPlayer1.ForEach(
+                            match =>
+                                {
+                                    match.Player1 = default(int?);
+                                });
+
+                        matchesWithPlayer2.ForEach(
+                            match =>
+                                {
+                                    match.Player2 = default(int?);
+                                });
+
+                        matchesWithPlayer3.ForEach(
+                            match =>
+                                {
+                                    match.Player3 = default(int?);
+                                });
+
+                        matchesWithPlayer4.ForEach(
+                            match =>
+                                {
+                                    match.Player4 = default(int?);
+                                });
+
+                        dataContext.SubmitChanges();
+                    });
+        }
     }
 }

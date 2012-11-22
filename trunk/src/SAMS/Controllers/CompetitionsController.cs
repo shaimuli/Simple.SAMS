@@ -19,6 +19,21 @@ namespace SAMS.Controllers
     public class CompetitionsController : Controller
     {
         [HttpPost]
+        public ActionResult ReplaceCompetitionPlayer(int competitionId, int replacedPlayerId, int replacementPlayerId)
+        {
+            SystemMonitor.Info("Replaceing {0} with {1}", replacedPlayerId, replacementPlayerId);
+            return new HttpStatusCodeResult(200);
+        }
+
+        [HttpPost]
+        public ActionResult RemoveCompetitionPlayer(int competitionId, int playerId)
+        {
+            var manager = ServiceProvider.Get<ICompetitionsManager>();
+            manager.RemovePlayer(competitionId, playerId);
+            return new HttpStatusCodeResult(200);
+        }
+
+        [HttpPost]
         public ActionResult UpdateMatchResults(MatchResultUpdateModel[] updates)
         {
             var manager = ServiceProvider.Get<ICompetitionsManager>();
