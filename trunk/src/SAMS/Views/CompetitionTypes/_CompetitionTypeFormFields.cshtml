@@ -11,7 +11,7 @@
     <div class="controls">
         @* Html.TextBox("PlayersCount", string.Empty, new Dictionary<string, object> { { "data-val", "true" }, { "data-val-required", Html.ResourceText("PlayersCountIsRequired") } })*@
 
-        @Html.DropDownList("PlayersCount", (new[]{8,16,24,48,64}).Select(p=> new SelectListItem(){ Text = p.ToString(), Value = p.ToString(), Selected = Model != null ? p==Model.PlayersCount :  p == 8 }))
+        @Html.DropDownList("PlayersCount", (new[]{8,16,24,32,48,64}).Select(p=> new SelectListItem(){ Text = p.ToString(), Value = p.ToString(), Selected = Model != null ? p==Model.PlayersCount :  p == 8 }))
     </div>
 </div>
 <div class="control-group">

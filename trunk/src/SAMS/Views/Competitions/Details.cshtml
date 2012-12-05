@@ -12,13 +12,13 @@
 
 <div class="tabbable">
     <ul id="tabs" class="nav nav-tabs">
-        <li>
+        <li class="active">
             <a href="#matches" data-toggle="tab">@Html.Resource("CompetitionMatchesTab")</a>
         </li>
         <li><a href="#updateResults" data-toggle="tab">
             @Html.Resource("CompetitionUpdateResultsTab")
         </a></li>
-        <li class="active"><a href="#players" data-toggle="tab">
+        <li><a href="#players" data-toggle="tab">
             @Html.Resource("CompetitionPlayersTab")
         </a>
         </li>
@@ -28,7 +28,7 @@
         </li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane " id="matches">
+        <div class="tab-pane active" id="matches">
             @if (Model.Type.Method == CompetitionMethod.Knockout)
             {
                 @Html.Partial("_KnockoutMatches", Model);
@@ -39,7 +39,7 @@
                 @Html.Partial("_UpdateResultsView", Model)
             </div>
         </div>
-        <div class="tab-pane active" id="players">
+        <div class="tab-pane" id="players">
             <div class="competitionPlayersContainer">
                 @Html.Partial("_CompetitionPlayers", Model.Players)
             </div>

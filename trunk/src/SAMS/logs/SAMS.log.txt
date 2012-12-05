@@ -5418,3 +5418,238 @@ System.NullReferenceException: Object reference not set to an instance of an obj
 2012-11-22 11:52:17.7841 SimpleSite|Info| SAMS Application initialization completed.
 2012-11-22 11:52:41.7575 SimpleSite|Info| SAMS Application started... 
 2012-11-22 11:52:42.3905 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-28 06:42:01.9847 SimpleSite|Info| SAMS Application started... 
+2012-11-28 06:42:03.0838 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-28 07:13:11.7767 SimpleSite|Info| SAMS Application started... 
+2012-11-28 07:13:12.4657 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-28 07:14:08.2469 SimpleSite|Error| Error executing request.
+Details:
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at Simple.SAMS.Competitions.Services.KnockoutPositioningEngine.PositionPlayers(CompetitionDetails details, CompetitionType competitionType) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\KnockoutPositioningEngine.cs:line 53
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.UpdateCompetitionPlayersPosition(Int32 competitionId) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 220
+   at Simple.CollectionExtensions.ForEach[T](IEnumerable`1 collection, Action`1 action)
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.UpdatePlayersPosition(Int32[] competitionIds) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 239
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.Create(CreateCompetitionInfo competitionCreateInfo, String playersFile) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 24
+   at SAMS.Controllers.CompetitionsController.Create(CreateCompetitionParameters parameters, HttpPostedFileBase playersFile) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 264
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-28 07:39:31.2660 SimpleSite|Info| SAMS Application started... 
+2012-11-28 07:39:31.9880 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-28 07:43:51.7099 SimpleSite|Error| Error executing request.
+Details:
+FileHelpers.ConvertException: Line: 2. Column: 46. Field: BirthDate. Error Converting '27/11/1980' to type: 'DateTime'.  Using the format: 'yyyy-MM-dd'
+   at FileHelpers.FieldBase.AssignFromString(ExtractedInfo fieldString, LineInfo line)
+   at FileHelpers.FieldBase.ExtractValue(LineInfo line)
+   at FileHelpers.RecordInfo.StringToRecord(LineInfo line)
+   at FileHelpers.FileHelperAsyncEngine.ReadNextRecord()
+   at FileHelpers.FileHelperAsyncEngine.ReadNext()
+   at FileHelpers.FileHelperAsyncEngine.AsyncEnumerator.MoveNext()
+   at System.Linq.Enumerable.<CastIterator>d__b1`1.MoveNext()
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.<LoadPlayersFromFile>d__6.MoveNext() in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 117
+   at System.Linq.Enumerable.WhereSelectEnumerableIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.GetCompetitionPlayers(String playersFileUrl) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 78
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.Create(CreateCompetitionInfo competitionCreateInfo, String playersFile) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 20
+   at SAMS.Controllers.CompetitionsController.Create(CreateCompetitionParameters parameters, HttpPostedFileBase playersFile) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 264
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-28 07:54:16.1746 SimpleSite|Info| SAMS Application started... 
+2012-11-28 07:54:16.8607 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-28 08:29:44.5704 SimpleSite|Info| SAMS Application started... 
+2012-11-28 08:29:45.1914 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-28 08:48:23.7004 SimpleSite|Info| SAMS Application started... 
+2012-11-28 08:48:24.3264 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-28 08:48:32.0568 SimpleSite|Info| SAMS Application started... 
+2012-11-28 08:48:32.6789 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-28 08:51:25.8268 SimpleSite|Error| Error executing request.
+Details:
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at Simple.SAMS.Competitions.Services.KnockoutPositioningEngine.<>c__DisplayClassc.<PositionPlayers>b__7(UpdatePlayerPositionInfo position) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\KnockoutPositioningEngine.cs:line 59
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at Simple.SAMS.Competitions.Services.KnockoutPositioningEngine.PositionPlayers(CompetitionDetails details, CompetitionType competitionType) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\KnockoutPositioningEngine.cs:line 55
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.UpdateCompetitionPlayersPosition(Int32 competitionId) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 220
+   at Simple.CollectionExtensions.ForEach[T](IEnumerable`1 collection, Action`1 action)
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.UpdatePlayersPosition(Int32[] competitionIds) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 239
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.Create(CreateCompetitionInfo competitionCreateInfo, String playersFile) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 24
+   at SAMS.Controllers.CompetitionsController.Create(CreateCompetitionParameters parameters, HttpPostedFileBase playersFile) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 264
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-28 08:52:16.9367 SimpleSite|Error| Error executing request.
+Details:
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at Simple.SAMS.Competitions.Services.KnockoutPositioningEngine.<>c__DisplayClassc.<PositionPlayers>b__7(UpdatePlayerPositionInfo position) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\KnockoutPositioningEngine.cs:line 59
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at Simple.SAMS.Competitions.Services.KnockoutPositioningEngine.PositionPlayers(CompetitionDetails details, CompetitionType competitionType) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\KnockoutPositioningEngine.cs:line 55
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.UpdateCompetitionPlayersPosition(Int32 competitionId) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 220
+   at Simple.CollectionExtensions.ForEach[T](IEnumerable`1 collection, Action`1 action)
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.UpdatePlayersPosition(Int32[] competitionIds) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 239
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.Create(CreateCompetitionInfo competitionCreateInfo, String playersFile) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 24
+   at SAMS.Controllers.CompetitionsController.Create(CreateCompetitionParameters parameters, HttpPostedFileBase playersFile) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 264
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-28 08:52:31.7916 SimpleSite|Info| SAMS Application started... 
+2012-11-28 08:52:32.4866 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-28 08:53:31.3150 SimpleSite|Error| Error executing request.
+Details:
+System.ArgumentOutOfRangeException: 'minValue' cannot be greater than maxValue.
+Parameter name: minValue
+   at System.Random.Next(Int32 minValue, Int32 maxValue)
+   at Simple.SAMS.Competitions.Services.KnockoutPositioningEngine.GetRandomPosition(Int32 minValue, Int32 maxValue) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\KnockoutPositioningEngine.cs:line 17
+   at Simple.SAMS.Competitions.Services.KnockoutPositioningEngine.<>c__DisplayClassc.<PositionPlayers>b__7(UpdatePlayerPositionInfo position) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\KnockoutPositioningEngine.cs:line 58
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at Simple.SAMS.Competitions.Services.KnockoutPositioningEngine.PositionPlayers(CompetitionDetails details, CompetitionType competitionType) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\KnockoutPositioningEngine.cs:line 55
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.UpdateCompetitionPlayersPosition(Int32 competitionId) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 220
+   at Simple.CollectionExtensions.ForEach[T](IEnumerable`1 collection, Action`1 action)
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.UpdatePlayersPosition(Int32[] competitionIds) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 239
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.Create(CreateCompetitionInfo competitionCreateInfo, String playersFile) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 24
+   at SAMS.Controllers.CompetitionsController.Create(CreateCompetitionParameters parameters, HttpPostedFileBase playersFile) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 264
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-28 08:54:35.9487 SimpleSite|Info| SAMS Application started... 
+2012-11-28 08:54:36.6557 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-28 08:55:36.1431 SimpleSite|Error| Error executing request.
+Details:
+System.ArgumentOutOfRangeException: 'minValue' cannot be greater than maxValue.
+Parameter name: minValue
+   at System.Random.Next(Int32 minValue, Int32 maxValue)
+   at Simple.SAMS.Competitions.Services.KnockoutPositioningEngine.GetRandomPosition(Int32 minValue, Int32 maxValue) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\KnockoutPositioningEngine.cs:line 17
+   at Simple.SAMS.Competitions.Services.KnockoutPositioningEngine.<>c__DisplayClassd.<PositionPlayers>b__7(UpdatePlayerPositionInfo position) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\KnockoutPositioningEngine.cs:line 59
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at Simple.SAMS.Competitions.Services.KnockoutPositioningEngine.PositionPlayers(CompetitionDetails details, CompetitionType competitionType) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\KnockoutPositioningEngine.cs:line 56
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.UpdateCompetitionPlayersPosition(Int32 competitionId) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 220
+   at Simple.CollectionExtensions.ForEach[T](IEnumerable`1 collection, Action`1 action)
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.UpdatePlayersPosition(Int32[] competitionIds) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 239
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.Create(CreateCompetitionInfo competitionCreateInfo, String playersFile) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 24
+   at SAMS.Controllers.CompetitionsController.Create(CreateCompetitionParameters parameters, HttpPostedFileBase playersFile) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 264
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-28 18:43:26.7715 SimpleSite|Info| SAMS Application started... 
+2012-11-28 18:43:27.4765 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-28 18:46:30.8210 SimpleSite|Error| Error executing request.
+Details:
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.RemoveAt(Int32 index)
+   at Simple.SAMS.Competitions.Services.KnockoutPositioningEngine.PositionWildcardPlayers(Int32[] rankedPositions, CompetitionPlayer[] wildCardPlayers, List`1 positions, Boolean randomize) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\KnockoutPositioningEngine.cs:line 156
+   at Simple.SAMS.Competitions.Services.KnockoutPositioningEngine.PositionPlayers(CompetitionDetails details, CompetitionType competitionType) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\KnockoutPositioningEngine.cs:line 67
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.UpdateCompetitionPlayersPosition(Int32 competitionId) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 220
+   at Simple.CollectionExtensions.ForEach[T](IEnumerable`1 collection, Action`1 action)
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.UpdatePlayersPosition(Int32[] competitionIds) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 239
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.Create(CreateCompetitionInfo competitionCreateInfo, String playersFile) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 24
+   at SAMS.Controllers.CompetitionsController.Create(CreateCompetitionParameters parameters, HttpPostedFileBase playersFile) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 264
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2012-11-28 18:46:54.8824 SimpleSite|Info| SAMS Application started... 
+2012-11-28 18:46:55.5754 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-28 19:01:18.5848 SimpleSite|Info| SAMS Application started... 
+2012-11-28 19:01:19.3148 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-28 19:01:25.4842 SimpleSite|Info| SAMS Application started... 
+2012-11-28 19:01:26.2012 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-28 19:04:45.4636 SimpleSite|Info| SAMS Application started... 
+2012-11-28 19:04:46.1726 SimpleSite|Info| SAMS Application initialization completed.
+2012-11-28 19:10:32.7945 SimpleSite|Info| SAMS Application started... 
+2012-11-28 19:10:33.4285 SimpleSite|Info| SAMS Application initialization completed.
+2012-12-04 17:20:33.4457 SimpleSite|Info| SAMS Application started... 
+2012-12-04 17:20:34.6468 SimpleSite|Info| SAMS Application initialization completed.

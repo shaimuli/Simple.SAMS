@@ -102,8 +102,8 @@
                         var matchContainer = $(matchId, target);
                         var match = matches[i];
 
-                        match.Player3 = match.Player1;
-                        match.Player4 = match.Player2;
+                        /*match.Player3 = match.Player2;
+                        match.Player4 = match.Player2;*/
                         var player1 = players(match.Player1, match.Player3, match.Player1, match.Player2);
                         var player2 = players(match.Player2, match.Player3, match.Player3, match.Player4);
                         var team1 = $(".t-team:first-child", matchContainer);
