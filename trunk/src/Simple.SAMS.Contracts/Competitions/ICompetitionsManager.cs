@@ -16,7 +16,7 @@ namespace Simple.SAMS.Contracts.Competitions
         void FinishCompetition(int id);
 
         [OperationContract(IsOneWay = true)]
-        void Create(CreateCompetitionInfo competitionCreateInfo, string playersFile);
+        void Create(CreateCompetitionInfo competitionCreateInfo, string playersFile, string qualifyingPlayersFile);
         
         [OperationContract(IsOneWay = true)]
         void UpdateCompetitionPlayers(int competitionId, string playersFileUrl);

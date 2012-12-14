@@ -6,7 +6,7 @@ namespace Simple.SAMS.Competitions.Services
 {
     public class CompetitionsManagerService : ICompetitionsManager
     {
-        public void Create(CreateCompetitionInfo competitionCreateInfo, string playersFile)
+        public void Create(CreateCompetitionInfo competitionCreateInfo, string playersFile, string qualifyingPlayersFile)
         {
             var competitionsEngine = ServiceProvider.Get<ICompetitionsEngine>();
             var competitionId = competitionsEngine.CreateCompetition(competitionCreateInfo);
@@ -19,9 +19,14 @@ namespace Simple.SAMS.Competitions.Services
             {
                 var players = competitionsEngine.GetCompetitionPlayers(playersFile);
                 competitionsEngine.AddPlayersToCompetition(competitionId, players);
-
-                
                 competitionsEngine.UpdatePlayersPosition(new[] { competitionId });
+            }            
+            
+            if (qualifyingPlayersFile.NotNullOrEmpty())
+            {
+                var qualifyingPlayers = competitionsEngine.GetCompetitionPlayers(qualifyingPlayersFile);
+                //competitionsEngine.AddPlayersToCompetition(competitionId, players);
+                //competitionsEngine.UpdatePlayersPosition(new[] { competitionId });
             }
         }
 

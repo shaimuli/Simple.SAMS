@@ -295,7 +295,7 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to טעינת שחקנים.
+        ///   Looks up a localized string similar to שחקנים בגמר.
         /// </summary>
         internal static string CompetitionPlayers {
             get {
@@ -309,6 +309,15 @@ namespace SAMS.Resources {
         internal static string CompetitionPlayersTab {
             get {
                 return ResourceManager.GetString("CompetitionPlayersTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to שחקנים במודמות.
+        /// </summary>
+        internal static string CompetitionQualifyingPlayers {
+            get {
+                return ResourceManager.GetString("CompetitionQualifyingPlayers", resourceCulture);
             }
         }
         
@@ -1317,6 +1326,42 @@ namespace SAMS.Resources {
         internal static string QualifyingPlayersCount {
             get {
                 return ResourceManager.GetString("QualifyingPlayersCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to זוגות עולים מהמוקדמות.
+        /// </summary>
+        internal static string QualifyingToFinalPaisCount {
+            get {
+                return ResourceManager.GetString("QualifyingToFinalPaisCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to עולים מהמוקדמות.
+        /// </summary>
+        internal static string QualifyingToFinalPlayersCount {
+            get {
+                return ResourceManager.GetString("QualifyingToFinalPlayersCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to כרטיסים חופשיים מוקדמות זוגות.
+        /// </summary>
+        internal static string QualifyingWildcardPairsCount {
+            get {
+                return ResourceManager.GetString("QualifyingWildcardPairsCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to כרטיסים חופשיים מוקדמות.
+        /// </summary>
+        internal static string QualifyingWildcardPlayersCount {
+            get {
+                return ResourceManager.GetString("QualifyingWildcardPlayersCount", resourceCulture);
             }
         }
         

@@ -61,6 +61,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Simple.SAMS.CompetitionEngine\Simple.SAMS.CompetitionEngine\Simple.SAMS.CompetitionEngine.csproj">
+      <Project>{85a56a53-cc12-482d-a825-8a4f8eb221d5}</Project>
+      <Name>Simple.SAMS.CompetitionEngine</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Simple.SAMS.Contracts\Simple.SAMS.Contracts.csproj">
       <Project>{cb2ba29b-7909-4307-97cb-8c63cbcfa224}</Project>
       <Name>Simple.SAMS.Contracts</Name>

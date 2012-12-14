@@ -557,12 +557,17 @@
         </member>
         <member name="P:SAMS.Resources.Texts.CompetitionPlayers">
             <summary>
-              Looks up a localized string similar to טעינת שחקנים.
+              Looks up a localized string similar to שחקנים בגמר.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.CompetitionPlayersTab">
             <summary>
               Looks up a localized string similar to שחקנים.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionQualifyingPlayers">
+            <summary>
+              Looks up a localized string similar to שחקנים במודמות.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.CompetitionReferenceId">
@@ -1123,6 +1128,26 @@
         <member name="P:SAMS.Resources.Texts.QualifyingPlayersCount">
             <summary>
               Looks up a localized string similar to מספר שחקנים במוקדמות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.QualifyingToFinalPaisCount">
+            <summary>
+              Looks up a localized string similar to זוגות עולים מהמוקדמות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.QualifyingToFinalPlayersCount">
+            <summary>
+              Looks up a localized string similar to עולים מהמוקדמות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.QualifyingWildcardPairsCount">
+            <summary>
+              Looks up a localized string similar to כרטיסים חופשיים מוקדמות זוגות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.QualifyingWildcardPlayersCount">
+            <summary>
+              Looks up a localized string similar to כרטיסים חופשיים מוקדמות.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.QuarterFinal">

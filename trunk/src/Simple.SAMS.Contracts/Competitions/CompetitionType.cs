@@ -39,6 +39,15 @@ namespace Simple.SAMS.Contracts.Competitions
 
         [DataMember(EmitDefaultValue = false)]
         public bool HasConsolation { get; set; }
-        
+
+        [DataMember(EmitDefaultValue = false)]
+        public int QualifyingWildcardPlayersCount { get; set; }
+        [DataMember(EmitDefaultValue = false)]
+        public int QualifyingWildcardPairsCount { get; set; }
+        [DataMember(EmitDefaultValue = false)]
+        public int QualifyingToFinalPlayersCount { get; set; }
+        [DataMember(EmitDefaultValue = false)]
+        public int QualifyingToFinalPaisCount { get; set; }
+
     }
 }

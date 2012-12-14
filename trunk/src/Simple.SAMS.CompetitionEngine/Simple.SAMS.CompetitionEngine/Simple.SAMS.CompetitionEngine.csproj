@@ -43,9 +43,6 @@
     <Compile Include="CompetitionPositioningParameters.cs" />
     <Compile Include="FinalPositioningEngine.cs" />
     <Compile Include="FinalPositioningParameters.cs" />
-    <Compile Include="ICompetitionPositioningStrategy.cs" />
-    <Compile Include="KnockoutFinalPositioningStrategy.cs" />
-    <Compile Include="KnockoutQualifyingPositioningStrategy.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PositioningType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

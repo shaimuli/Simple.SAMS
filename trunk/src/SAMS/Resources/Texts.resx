@@ -348,8 +348,11 @@
   <data name="CompetitionName" xml:space="preserve">
     <value>שם</value>
   </data>
+  <data name="CompetitionQualifyingPlayers" xml:space="preserve">
+    <value>שחקנים במודמות</value>
+  </data>
   <data name="CompetitionPlayers" xml:space="preserve">
-    <value>טעינת שחקנים</value>
+    <value>שחקנים בגמר</value>
   </data>
   <data name="CompetitionSite" xml:space="preserve">
     <value>מועדון</value>
@@ -653,5 +656,17 @@
   </data>
   <data name="AllRounds" xml:space="preserve">
     <value>כל הסיבובים</value>
+  </data>
+  <data name="QualifyingToFinalPaisCount" xml:space="preserve">
+    <value>זוגות עולים מהמוקדמות</value>
+  </data>
+  <data name="QualifyingToFinalPlayersCount" xml:space="preserve">
+    <value>עולים מהמוקדמות</value>
+  </data>
+  <data name="QualifyingWildcardPairsCount" xml:space="preserve">
+    <value>כרטיסים חופשיים מוקדמות זוגות</value>
+  </data>
+  <data name="QualifyingWildcardPlayersCount" xml:space="preserve">
+    <value>כרטיסים חופשיים מוקדמות</value>
   </data>
 </root>

@@ -251,17 +251,22 @@ namespace SAMS.Controllers
 
 
         [HttpPost]
-        public ActionResult Create(CreateCompetitionParameters parameters, HttpPostedFileBase playersFile)
+        public ActionResult Create(CreateCompetitionParameters parameters, HttpPostedFileBase playersFile, HttpPostedFileBase qualifyingPlayersFile)
         {
             var manager = ServiceProvider.Get<ICompetitionsManager>();
             var createCompetitionInfo = CreateCompetitionInfo(parameters);
             var url = default(string);
+            var qualifyingUrl = default(string);
             if (playersFile.IsNotNull())
             {
                 url = AcceptCsvFile(playersFile, "CompetitionPlayers").ToString();
             }
+            if (qualifyingPlayersFile.IsNotNull())
+            {
+                qualifyingUrl = AcceptCsvFile(qualifyingPlayersFile, "CompetitionQualifyingPlayers").ToString();
+            }
 
-            manager.Create(createCompetitionInfo, url);
+            manager.Create(createCompetitionInfo, url, qualifyingUrl);
 
             return RedirectToAction("Index");
         }
