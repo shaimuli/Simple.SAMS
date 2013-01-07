@@ -13,6 +13,10 @@ namespace SAMS.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string ReferenceId { get; set; }
+        public string MainRefereeName { get; set; }
+        public string MainRefereePhone { get; set; }
+        public string SitePhone { get; set; }
+        public string Site { get; set; }
         public string StartTime { get; set; }
         public string EndTime { get; set; }
         public string LastModified { get; set; }

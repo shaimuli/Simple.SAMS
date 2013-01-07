@@ -9,6 +9,7 @@ namespace Simple.SAMS.Contracts.Positioning
 {
     public interface IPositioningEngine
     {
-        UpdatePlayerPositionInfo[] PositionPlayers(CompetitionDetails details, CompetitionType competitionType);
+        UpdatePlayerPositionInfo[] PositionPlayers(CompetitionDetails details);
+        UpdatePlayerPositionInfo AddPlayer(PlayerInCompetition player, CompetitionSection section, CompetitionDetails details);
     }
 }

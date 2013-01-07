@@ -49,5 +49,6 @@ namespace Simple.SAMS.Contracts.Players
         [DataMember(EmitDefaultValue = false)]
         public int? YouthInternationalRank { get; set; }
 
+
     }
 }

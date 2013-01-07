@@ -14,7 +14,7 @@ namespace Simple.SAMS.Contracts
             var matches = new List<MatchHeaderInfo>();
 
             var finalSectionMatches = CreateSectionMatches(competitionType.PlayersCount, CompetitionSection.Final);
-            var qualifyingSectionMatches = CreateSectionMatches(competitionType.QualifyingPlayersCount, CompetitionSection.Qualifying);
+            var qualifyingSectionMatches = CreateSectionMatches(competitionType.QualifyingPlayersCount, CompetitionSection.Qualifying, competitionType.QualifyingToFinalPlayersCount);
 
             matches.AddRange(qualifyingSectionMatches);
             matches.AddRange(finalSectionMatches);
@@ -22,11 +22,12 @@ namespace Simple.SAMS.Contracts
             return matches.ToArray();
         }
 
-        private static IEnumerable<MatchHeaderInfo> CreateSectionMatches(int playersCount, CompetitionSection section)
+        private IEnumerable<MatchHeaderInfo> CreateSectionMatches(int playersCount, CompetitionSection section, int? qualifyingToNextSection = default(int?))
         {
             var rounds = (int) Math.Log((playersCount), 2);
             var matches = new List<MatchHeaderInfo>(playersCount);
-            for (int i = 0; i < playersCount; i++)
+            
+            for (int i = 0; i < (playersCount - qualifyingToNextSection.GetValueOrDefault()) ; i++)
             {
                 var match = new MatchHeaderInfo();
                 match.Section = section;
@@ -35,6 +36,15 @@ namespace Simple.SAMS.Contracts
                 match.IsFinal = (match.Round == rounds) && i < playersCount - 1;
                 match.Status = MatchStatus.Created;
                 matches.Add(match);
+            }
+            var matchesByRound = matches.GroupBy(m => m.Round).ToArray();
+            foreach (var roundMatches in matchesByRound)
+            {
+                var index = 0;
+                foreach (var match in roundMatches)
+                {
+                    match.RoundRelativePosition = index++;
+                }
             }
             return matches;
         }

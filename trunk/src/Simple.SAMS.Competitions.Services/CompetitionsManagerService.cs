@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using Boo.Lang;
 using Simple.ComponentModel;
 using Simple.SAMS.Contracts.Competitions;
 
@@ -6,7 +8,7 @@ namespace Simple.SAMS.Competitions.Services
 {
     public class CompetitionsManagerService : ICompetitionsManager
     {
-        public void Create(CreateCompetitionInfo competitionCreateInfo, string playersFile, string qualifyingPlayersFile)
+        public void Create(CreateCompetitionInfo competitionCreateInfo)
         {
             var competitionsEngine = ServiceProvider.Get<ICompetitionsEngine>();
             var competitionId = competitionsEngine.CreateCompetition(competitionCreateInfo);
@@ -15,19 +17,30 @@ namespace Simple.SAMS.Competitions.Services
             var competitionHeaderInfo = competitionsRepository.GetCompetition(competitionId);
             competitionsEngine.CreateCompetitionsMatches(new[] { competitionHeaderInfo });
 
-            if (playersFile.NotNullOrEmpty())
+            if (competitionCreateInfo.PlayersFileUrl.NotNullOrEmpty())
             {
-                var players = competitionsEngine.GetCompetitionPlayers(playersFile);
-                competitionsEngine.AddPlayersToCompetition(competitionId, players);
-                competitionsEngine.UpdatePlayersPosition(new[] { competitionId });
+                UpdateCompetitionPlayers(competitionId, competitionCreateInfo.PlayersFileUrl);
             }            
             
-            if (qualifyingPlayersFile.NotNullOrEmpty())
+           
+        }
+
+        private static AddCompetitionPlayerInfo[] GetCompetitionPlayersToAdd(string playersFile, ICompetitionsEngine competitionsEngine)
+        {
+            var players = competitionsEngine.GetCompetitionPlayers(playersFile);
+            var playersRepository = ServiceProvider.Get<IPlayersRepository>();
+            var playersToMatch = players.ToArray();
+            var playerIds = playersRepository.MatchPlayerByIdNumber(playersToMatch);
+            var playersToAdd = new List<AddCompetitionPlayerInfo>();
+            for (var i = 0; i < players.Length; i++)
             {
-                var qualifyingPlayers = competitionsEngine.GetCompetitionPlayers(qualifyingPlayersFile);
-                //competitionsEngine.AddPlayersToCompetition(competitionId, players);
-                //competitionsEngine.UpdatePlayersPosition(new[] { competitionId });
+                players[i].Id = playerIds[i];
+                var addInfo = new AddCompetitionPlayerInfo();
+                addInfo.Player = players[i];
+                addInfo.Source = players[i].Source;
+                playersToAdd.Add(addInfo);
             }
+            return playersToAdd.ToArray();
         }
 
 
@@ -42,11 +55,10 @@ namespace Simple.SAMS.Competitions.Services
             }
 
             var competitionsEngine = ServiceProvider.Get<ICompetitionsEngine>();
-            var players = competitionsEngine.GetCompetitionPlayers(playersFileUrl);
-
-            competitionsEngine.AddPlayersToCompetition(competitionId, players);
-
+            var playersToAdd = GetCompetitionPlayersToAdd(playersFileUrl, competitionsEngine);
+            competitionsEngine.AddPlayersToCompetition(competitionId, playersToAdd);
             competitionsEngine.UpdatePlayersPosition(new[] { competitionId });
+
         }
 
 
@@ -81,6 +93,11 @@ namespace Simple.SAMS.Competitions.Services
                         }
 
                         competitionsEngine.UpdateMatchScore(scoreUpdateInfo);
+                        
+                        if (scoreUpdateInfo.Winner.HasValue)
+                        {
+                            competitionsEngine.QualifyMatchWinner(scoreUpdateInfo.MatchId);
+                        }
                     });
             
         }
@@ -122,18 +139,19 @@ namespace Simple.SAMS.Competitions.Services
             competitionsEngine.RemovePlayerFromCompetition(competitionId, playerId);
         }
 
-        public void ReplacePlayer(int competitionId, int replacedPlayerId, int replacingPlayerId)
+        public void ReplacePlayer(int competitionId, int replacedPlayerId, int replacingPlayerId, CompetitionPlayerSource source)
         {
             RemovePlayer(competitionId, replacedPlayerId);
-            AddPlayerToCompetition(competitionId, replacingPlayerId);
+            AddPlayerToCompetition(competitionId, replacingPlayerId, source);
         }
 
-        public void AddPlayerToCompetition(int competitionId, int playerId)
+        public void AddPlayerToCompetition(int competitionId, int playerId, CompetitionPlayerSource source)
         {
             var competitionsEngine = ServiceProvider.Get<ICompetitionsEngine>();
             var playersRepository = ServiceProvider.Get<IPlayersRepository>();
             var player = playersRepository.Get(playerId);
-            competitionsEngine.AddPlayersToCompetition(competitionId, new[]{player});
+            
+            competitionsEngine.AddPlayersToCompetition(competitionId, new[]{ new AddCompetitionPlayerInfo(){ Player = player, Source = source }});
         }
 
         public void UpdateMatchStartTime(MatchStartTimeUpdateInfo[] updates)

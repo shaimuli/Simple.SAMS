@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using SAMS.Models;
 using Simple;
 using Simple.Common.Storage;
+using Simple.Common.Web;
 using Simple.ComponentModel;
 using Simple.Data;
 using Simple.SAMS.Contracts.Competitions;
@@ -18,6 +19,20 @@ namespace SAMS.Controllers
 {
     public class CompetitionsController : Controller
     {
+        protected override void OnException(ExceptionContext filterContext)
+        {
+            SystemMonitor.Error(filterContext.Exception, "Unhandled exception");
+
+            if (HttpHelper.IsDebug)
+            {
+                throw filterContext.Exception;
+            }
+            else
+            {
+                base.OnException(filterContext);
+            }
+        }
+
         [HttpPost]
         public ActionResult ReplaceCompetitionPlayer(int competitionId, int replacedPlayerId, int replacementPlayerId)
         {
@@ -38,7 +53,7 @@ namespace SAMS.Controllers
         {
             var manager = ServiceProvider.Get<ICompetitionsManager>();
             UpdateStartTimes(updates, manager);
-            UpdateScres(updates, manager);
+            UpdateScores(updates, manager);
 
             return new HttpStatusCodeResult(200);
         }
@@ -98,12 +113,13 @@ namespace SAMS.Controllers
             return startTime;
         }
 
-        private static void UpdateScres(MatchResultUpdateModel[] updates, ICompetitionsManager manager)
+        private void UpdateScores(MatchResultUpdateModel[] updates, ICompetitionsManager manager)
         {
             var matchScoreUpdateInfoItems = new List<MatchScoreUpdateInfo>();
             updates.ForEach(update =>
                                 {
-                                    if (update.SetScores.NotNullOrEmpty())
+                                    var scores = update.SetScores.Where(s=> !(s.Player1Points == 0 && s.Player2Points == 0));
+                                    if ( scores.NotNullOrEmpty())
                                     {
                                         var matchScoreUpdateInfo = new MatchScoreUpdateInfo();
                                         matchScoreUpdateInfo.SetScores = update.SetScores;
@@ -140,10 +156,24 @@ namespace SAMS.Controllers
 
         public ActionResult Details(int id)
         {
-            var model = new CompetitionDetailsModel();
-            var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
+            var model = GetCompetitionDetailsModel(id);
 
-            var competition = competitionsRepository.GetCompetitionDetails(id);
+            return View(model);
+        }
+
+        public ActionResult GetSectionMatches(int id, int section)
+        {
+            var details = GetCompetitionDetailsModel(id);
+            var matches = details.Matches.Where(m => (int) m.Section == section);
+            return Json(matches, JsonRequestBehavior.AllowGet);
+        }
+
+        private CompetitionDetailsModel GetCompetitionDetailsModel(int id)
+        {
+            var model = new CompetitionDetailsModel();
+            var competitionEngine = ServiceProvider.Get<ICompetitionsEngine>();
+
+            var competition = competitionEngine.GetCompetitionDetails(id);
             model.Id = id;
             model.Name = competition.Name;
             model.StartTime = competition.StartTime.ToShortDateString();
@@ -152,6 +182,10 @@ namespace SAMS.Controllers
             model.Type = competition.Type;
             model.Status = competition.Status;
             model.ReferenceId = competition.ReferenceId;
+            model.MainRefereeName = competition.MainRefereeName;
+            model.MainRefereePhone = competition.MainRefereePhone;
+            model.Site = competition.Site;
+            model.SitePhone = competition.SitePhone;
             model.Players = competition.Players;
 
             model.Matches =
@@ -164,6 +198,7 @@ namespace SAMS.Controllers
                                  StartTimeType = m.StartTimeType,
                                  Status = m.Status,
                                  Round = m.Round,
+                                 RoundRelativePosition = m.RoundRelativePosition,
                                  Position = m.Position,
                                  Winner = m.Winner,
                                  Result = m.Result.HasValue ? m.Result.Value : MatchResult.Win,
@@ -172,12 +207,10 @@ namespace SAMS.Controllers
                                  Player3 = m.Player3.IsNotNull() ? new MatchPlayerViewModel(m.Player3) : null,
                                  Player4 = m.Player4.IsNotNull() ? new MatchPlayerViewModel(m.Player4) : null,
                                  SetScores = m.SetScores,
-                                 StartTimeHours = new[] { new SelectListItem(), }.Concat(GetStartTimeHours(m.StartTime)),
-                                 StartTimeMinutes = new[] { new SelectListItem(), }.Concat(GetStartTimeMinutes(m.StartTime))
-
+                                 StartTimeHours = new[] {new SelectListItem(),}.Concat(GetStartTimeHours(m.StartTime)),
+                                 StartTimeMinutes = new[] {new SelectListItem(),}.Concat(GetStartTimeMinutes(m.StartTime))
                              }).ToArray();
-
-            return View(model);
+            return model;
         }
 
         private IEnumerable<SelectListItem> GetStartTimeMinutes(DateTime? startTime)
@@ -255,18 +288,12 @@ namespace SAMS.Controllers
         {
             var manager = ServiceProvider.Get<ICompetitionsManager>();
             var createCompetitionInfo = CreateCompetitionInfo(parameters);
-            var url = default(string);
-            var qualifyingUrl = default(string);
             if (playersFile.IsNotNull())
             {
-                url = AcceptCsvFile(playersFile, "CompetitionPlayers").ToString();
-            }
-            if (qualifyingPlayersFile.IsNotNull())
-            {
-                qualifyingUrl = AcceptCsvFile(qualifyingPlayersFile, "CompetitionQualifyingPlayers").ToString();
+                createCompetitionInfo.PlayersFileUrl = AcceptCsvFile(playersFile, "CompetitionPlayers").ToString();
             }
 
-            manager.Create(createCompetitionInfo, url, qualifyingUrl);
+            manager.Create(createCompetitionInfo);
 
             return RedirectToAction("Index");
         }

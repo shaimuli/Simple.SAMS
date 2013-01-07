@@ -12,6 +12,18 @@ namespace Simple.SAMS.Contracts.Competitions
     public class CompetitionDetails : CompetitionHeaderInfo
     {
         [DataMember(EmitDefaultValue = false)]
+        public string MainRefereeName { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
+        public string MainRefereePhone { get; set; }
+        
+        [DataMember(EmitDefaultValue = false)]
+        public string Site { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
+        public string SitePhone { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
         public CompetitionPlayer[] Players { get; set; }
 
         [DataMember(EmitDefaultValue = false)]

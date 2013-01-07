@@ -35,6 +35,9 @@ namespace Simple.SAMS.Contracts.Competitions
         public string MainRefereePhone { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
+        public string PlayersFileUrl { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
         public string ReferenceId { get; set; }
 
     }

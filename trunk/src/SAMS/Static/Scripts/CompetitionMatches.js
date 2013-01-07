@@ -1,8 +1,10 @@
 ﻿(function ($) {
-    function prepareTournament(host, resources) {
+    var matchesPerRound = [32, 16, 8, 4, 2, 2];
+    function prepareTournament(host, resources, maxRound) {
         var container = $("<div/>").addClass("t-container").appendTo(host);
         var rounds = 6;
-        var matchesPerRound = [32, 16, 8, 4, 2, 2];
+        
+        
         host.addClass("ms" + matchesPerRound[6 - rounds]);
         function addTeam(toContainer) {
             var t = $("<div/>").addClass("t-team").appendTo(toContainer);
@@ -29,7 +31,7 @@
             return result;
         }
         var matchPosition = 0;
-        for (var r = 0; r < rounds ; r++) {
+        for (var r = 0; r < maxRound ; r++) {
             var roundContainer = $("<div/>").addClass("t-round r" + r).appendTo(container);
 
             $("<h3/>").text(roundName(r)).appendTo(roundContainer);
@@ -43,7 +45,7 @@
 
                 var team1 = addTeam(matchContainer);
                 var team2 = addTeam(matchContainer);
-                if (sep) {
+                if (sep && r < (maxRound-1)) {
                     if (m % 2 == 0) {
                         var msep = $("<div/>").addClass("t-msep").appendTo(sep);
                         $("<div/>").addClass("t-msep-right").appendTo(msep);
@@ -59,12 +61,19 @@
         return this.each(function () {
             var target = $(this);
             var rounds = target.data("rounds");
+            var playersCount = target.data("players-count");
             var maxMatches = target.data("matches");
+            var startRound = matchesPerRound.indexOf(playersCount / 2);
+            var maxRound = startRound + rounds;
+            /*for (var i = startRound + rounds; i <= 5; i++) {
+                $("div.r" + (i - 1) + ".t-sep", target).hide();
+                $("div.r" + i, target).hide();
+            }*/
 
             if (!target.data("tournament-attached")) {
                 target.data("tournament-attached", true);
                 target.html("");
-                prepareTournament(target, options.resources);
+                prepareTournament(target, options.resources, maxRound);
             } else {
                 if ($.isArray(options)) {
 
@@ -95,7 +104,11 @@
                         }
                     }
 
-                    var offset = 64 - maxMatches;
+                    var offset = matchesPerRound.sum(function (index, value) {
+                        return (index < startRound) ? value : 0;
+                    });
+                    
+
                     for (var i = 0; i < matches.length; i++) {
                         var matchId = "#match" + String(i + offset);
 
@@ -106,6 +119,7 @@
                         match.Player4 = match.Player2;*/
                         var player1 = players(match.Player1, match.Player3, match.Player1, match.Player2);
                         var player2 = players(match.Player2, match.Player3, match.Player3, match.Player4);
+                        matchContainer.attr("title", match.RoundRelativePosition + ", " + match.Position);
                         var team1 = $(".t-team:first-child", matchContainer);
                         var team2 = $(".t-team:last-child", matchContainer);
                         $(".t-players", team1).html(player1);

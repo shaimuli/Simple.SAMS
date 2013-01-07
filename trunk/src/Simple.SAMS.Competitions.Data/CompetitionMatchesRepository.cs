@@ -49,6 +49,7 @@ namespace Simple.SAMS.Competitions.Data
             dataMatch.SectionId = (int)match.Section;
             dataMatch.Position = match.Position;
             dataMatch.Round = match.Round;
+            dataMatch.RoundRelativePosition = match.RoundRelativePosition;
             dataMatch.Status = (int)match.Status;
             dataMatch.StartTimeType = (int)match.StartTimeType;
         }
@@ -105,14 +106,18 @@ namespace Simple.SAMS.Competitions.Data
                 dataContext =>
                     {
                         var match = dataContext.Matches.FirstOrDefault(m=>m.Id == startTimeUpdateInfo.MatchId);
-                        if (match.Status < (int)MatchStatus.Planned)
+                        if (match.IsNotNull())
                         {
-                            match.Status = (int) MatchStatus.Planned;
-                        }
-                        match.StartTime = startTimeUpdateInfo.StartTime.ToUniversalTime();
-                        match.StartTimeType = (int) startTimeUpdateInfo.StartTimeType;
+                            // !!!!
+                            if (match.Status < (int) MatchStatus.Planned)
+                            {
+                                match.Status = (int) MatchStatus.Planned;
+                            }
+                            match.StartTime = startTimeUpdateInfo.StartTime.ToUniversalTime();
+                            match.StartTimeType = (int) startTimeUpdateInfo.StartTimeType;
 
-                        dataContext.SubmitChanges();
+                            dataContext.SubmitChanges();
+                        }
                     });
         }
 
@@ -239,6 +244,39 @@ namespace Simple.SAMS.Competitions.Data
 
                         dataContext.SubmitChanges();
                     });
+        }
+
+
+        public MatchHeaderInfo GetMatch(int matchId)
+        {
+            var result = default(MatchHeaderInfo);
+
+            UseDataContext(
+                dataContext =>
+                    {
+                        var match = dataContext.Matches.FirstOrDefault(m => m.Id == matchId);
+                        if (match.IsNull())
+                        {
+                            throw new ArgumentException("Match '{0}' could not be found.".ParseTemplate(matchId));
+                        }
+
+                        result = match.MapFromData();
+                    });
+
+            return result;
+        }
+
+        public MatchHeaderInfo GetMatchByRelativePosition(int competitionId, int round, int relativePosition)
+        {
+            var result = default(MatchHeaderInfo);
+            UseDataContext(
+                dataContext =>
+                {
+                    var match = dataContext.Matches.FirstOrDefault(m => m.CompetitionId == competitionId && m.Round == round && m.RoundRelativePosition == relativePosition);
+                    
+                    result = match.MapFromData();
+                });
+            return result;
         }
     }
 }

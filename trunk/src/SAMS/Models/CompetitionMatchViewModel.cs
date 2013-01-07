@@ -11,7 +11,7 @@ namespace SAMS.Models
     public class CompetitionMatchViewModel
     {
         public int Id { get; set; }
-
+        public int RoundRelativePosition { get; set; }
         public MatchStatus Status { get; set; }
         public CompetitionSection Section { get; set; }
         public int? Position { get; set; }

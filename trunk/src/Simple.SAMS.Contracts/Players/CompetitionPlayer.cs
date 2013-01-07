@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using Simple.SAMS.Contracts.Competitions;
 
 namespace Simple.SAMS.Contracts.Players
 {
@@ -15,5 +16,12 @@ namespace Simple.SAMS.Contracts.Players
 
         [DataMember(EmitDefaultValue = false)]
         public int CompetitionRank { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
+        public CompetitionPlayerSource Source { get; set; }
+        
+        [DataMember(EmitDefaultValue = false)]
+        public CompetitionSection Section { get; set; }
+
     }
 }

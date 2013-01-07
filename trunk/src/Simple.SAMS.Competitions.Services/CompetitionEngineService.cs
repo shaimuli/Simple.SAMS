@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using FileHelpers;
 using Rhino.Etl.Core.Files;
 using Simple.ComponentModel;
-using Simple.Data;
 using Simple.SAMS.Contracts.Competitions;
 using Simple.SAMS.Contracts.Players;
 using Simple.SAMS.Contracts.Positioning;
@@ -18,6 +15,34 @@ namespace Simple.SAMS.Competitions.Services
 {
     public class CompetitionEngineService : ICompetitionsEngine
     {
+
+        public void QualifyMatchWinner(int matchId)
+        {
+            var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
+            var match = competitionMatchesRepository.GetMatch(matchId);
+            var competitionId = match.CompetitionId;
+            if (match.StartTime.HasValue &&
+                match.Result.HasValue && match.Result.Value != MatchResult.Pause &&
+                match.Winner != MatchWinner.None && !match.IsFinal)
+            {
+                var winner = match.Winner == MatchWinner.Player1 ? match.Player1 : match.Player2;
+                var qualifyToMatch = competitionMatchesRepository.GetMatchByRelativePosition(competitionId, match.Round + 1, match.RoundRelativePosition / 2);
+                if (qualifyToMatch.IsNotNull())
+                {
+                    competitionMatchesRepository.UpdatePlayersPosition(competitionId, 
+                        new[]
+                            {
+                                new UpdatePlayerPositionInfo
+                                    {
+                                        MatchId = qualifyToMatch.Id, 
+                                        PlayerId = winner.Id, 
+                                        Position = match.RoundRelativePosition %2==0 ? 0 : 1
+                                    }
+                            });
+                }
+            }
+
+        }
 
         public void CreateCompetitionsMatches(CompetitionHeaderInfo[] competitions)
         {
@@ -44,10 +69,8 @@ namespace Simple.SAMS.Competitions.Services
 
         }
 
-        public void AddPlayersToCompetition(int competitionId, Contracts.Players.Player[] players)
+        public void AddPlayersToCompetition(int competitionId, AddCompetitionPlayerInfo[] players)
         {
-
-            var playersRepository = ServiceProvider.Get<IPlayersRepository>();
             var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
             var competitionTypesRepository = ServiceProvider.Get<ICompetitionTypeRepository>();
             var competition = competitionsRepository.GetCompetition(competitionId);
@@ -56,26 +79,37 @@ namespace Simple.SAMS.Competitions.Services
                 throw new ArgumentException("Competition '{0}' could not be found.".ParseTemplate(competitionId));
             }
             var competitionType = competitionTypesRepository.Get(competition.Type.Id);
-            var playersToMatch = players.ToArray();
-            var playerIds = playersRepository.MatchPlayerByIdNumber(playersToMatch);
             var competitionPlayers = new List<PlayerInCompetition>();
             for (var i = 0; i < players.Length; i++)
             {
                 var player = players[i];
-                var rank = competitionType.RankPlayer(player);
-                var playerInCompetition = new PlayerInCompetition() { PlayerId = playerIds[i], Rank = rank };
+                var rank = competitionType.RankPlayer(player.Player);
+                var playerInCompetition = new PlayerInCompetition()
+                                              {
+                                                  PlayerId = player.Player.Id, 
+                                                  Rank = rank, 
+                                                  Source = player.Source,
+                                                  Section = CompetitionSection.Final
+                                              };
                 competitionPlayers.Add(playerInCompetition);
             }
-            
+
+            if (competitionType.QualifyingPlayersCount > 0)
+            {
+                var qualifyingPlayers =
+                    competitionPlayers.OrderByDescending(p => p.Rank).Take(competitionType.QualifyingPlayersCount);
+                qualifyingPlayers.ForEach(cp=>cp.Section = CompetitionSection.Qualifying);
+            }
+
             competitionsRepository.AddPlayersToCompetition(competitionId, competitionPlayers.ToArray());
         }
 
-        public Player[] GetCompetitionPlayers(string playersFileUrl)
+        public CompetitionPlayer[] GetCompetitionPlayers(string playersFileUrl)
         {
             var fileName = DownloadFile(playersFileUrl);
             var players = LoadPlayersFromFile(fileName);
 
-            return players.Select(p => new Player
+            return players.Select(p => new CompetitionPlayer
                                            {
                                                IdNumber = p.IdNumber,
                                                LocalFirstName = p.LocalFirstName,
@@ -90,6 +124,7 @@ namespace Simple.SAMS.Competitions.Services
                                                NationalRank = p.NationalRank,
                                                EuropeInternationalRank = p.EuropeInternationalRank,
                                                YouthInternationalRank = p.YouthInternationalRank,
+                                               Source = p.Source == "WC" ? CompetitionPlayerSource.Wildcard : CompetitionPlayerSource.Regular
                                            }).ToArray();
         }
 
@@ -167,6 +202,7 @@ namespace Simple.SAMS.Competitions.Services
             public int? YouthInternationalRank;
             public string IPIN;
             public string Country;
+            public string Source { get; set; }
         }
 
 
@@ -205,19 +241,16 @@ namespace Simple.SAMS.Competitions.Services
 
         private void UpdateCompetitionPlayersPosition(int competitionId)
         {
-            var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
-            var competitionTypesRepository = ServiceProvider.Get<ICompetitionTypeRepository>();
-            var competitionDetails = competitionsRepository.GetCompetitionDetails(competitionId);
-            var competitionType = competitionTypesRepository.Get(competitionDetails.Type.Id);
+            var competitionDetails = GetCompetitionDetails(competitionId);
 
             var positioningEngineFactory = ServiceProvider.Get<IPositioningEngineFactory>();
-            var positioningEngine = positioningEngineFactory.Create(competitionType.Method);
+            var positioningEngine = positioningEngineFactory.Create(competitionDetails.Type.Method);
             if (positioningEngine.IsNull())
             {
                 throw new ApplicationException("Positioning engine factory '{0}' returned null, instance of {1} is expected.".ParseTemplate(positioningEngineFactory.GetType().FullName, typeof(IPositioningEngine).FullName));
             }
 
-            var positions = positioningEngine.PositionPlayers(competitionDetails, competitionType);
+            var positions = positioningEngine.PositionPlayers(competitionDetails);
 
             var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
             
@@ -232,6 +265,16 @@ namespace Simple.SAMS.Competitions.Services
             //    File.Delete(file);
             //}
             //File.WriteAllText(file, json);
+        }
+
+        public CompetitionDetails GetCompetitionDetails(int competitionId)
+        {
+            var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
+            var competitionsTypeRepository = ServiceProvider.Get<ICompetitionTypeRepository>();
+
+            var competitionDetails = competitionsRepository.GetCompetitionDetails(competitionId);
+            competitionDetails.Type = competitionsTypeRepository.Get(competitionDetails.Type.Id);
+            return competitionDetails;
         }
 
         public void UpdatePlayersPosition(int[] competitionIds)

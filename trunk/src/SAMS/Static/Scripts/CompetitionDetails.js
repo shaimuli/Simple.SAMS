@@ -75,15 +75,29 @@
     });
     
     S.CompetitionDetails = Class.extend({
+        updateMatchesResults: function() {
+            var competitionId = this.getCompetitionId();
+            var url = this.config.getMatchesUrl + "/" + competitionId;
+            
+            $(".t-host").each(function () {
+                var target = $(this);
+                var section = target.data("section");
+                $.getJSON(
+                    url , { section: section }, function (items) {
+                        target.tournament(items);
+                    });
+            });
+        },
         initTournament: function () {
             $(".t-host").tournament({ resources: this.config.resources });
-
+            this.updateMatchesResults();
+            /*
             var items = [];
             var itemsJson = $("#matchesInfo").val();
             if (itemsJson && itemsJson.length) {
                 items = JSON.parse(itemsJson);
             }
-            $(".t-host").tournament(items);
+            $(".t-host").tournament(items);*/
         },
         initPrint: function () {
             var model = this.config.mdel;

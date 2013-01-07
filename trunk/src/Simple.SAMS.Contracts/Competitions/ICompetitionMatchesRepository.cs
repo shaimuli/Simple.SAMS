@@ -24,5 +24,11 @@ namespace Simple.SAMS.Contracts.Competitions
 
         [OperationContract]
         void RemovePlayerFromUnplayedMatches(int competitionId, int playerId);
+
+        [OperationContract]
+        MatchHeaderInfo GetMatch(int matchId);
+        
+        [OperationContract]
+        MatchHeaderInfo GetMatchByRelativePosition(int competitionId, int round, int relativePosition);
     }
 }

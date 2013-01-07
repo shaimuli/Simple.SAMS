@@ -107,6 +107,17 @@ Simple = {
     })
 };
 
+if (typeof Array.prototype.sum === "undefined") {
+    Array.prototype.sum = function(calc) {
+        var sum = 0;
+        for (var i = 0; i < this.length; i++) {
+            sum += calc(i, this[i]);
+        }
+        
+        return sum;
+    };
+}
+
 (function () {
     var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
                                 window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;

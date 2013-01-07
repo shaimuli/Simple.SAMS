@@ -1,9 +1,9 @@
-﻿@model SAMS.Models.CompetitionDetailsModel
+﻿@using Simple.SAMS.Contracts.Competitions
+@model SAMS.Models.CompetitionDetailsModel
            <input id="matchesInfo" type="hidden" value="@Newtonsoft.Json.JsonConvert.SerializeObject(Model.Matches)"/>
-            <button type="button" class="btn PrintMatchesDraw">@Html.Resource("PrintMatchesDraw")</button>
             @if (Model.Matches.GroupBy(m => m.Section).Count() > 1)
             {
-                <ul id="sections" class="nav nav-tabs">
+                <ul id="sections" class="nav nav-pills">
                     @foreach (var section in Model.Matches.GroupBy(m => m.Section))
                     {
                         <li class=" @(Model.Matches.GroupBy(m => m.Section).First().Key == section.Key ? "active" : "")">
@@ -17,8 +17,11 @@
                 @foreach (var section in Model.Matches.GroupBy(m => m.Section))
                 {
                     <div class="tab-pane @(Model.Matches.GroupBy(m => m.Section).First().Key == section.Key ? "active" : "")" id="section-@(section.Key)">
+                        <div>
+                            <button type="button" class="btn PrintMatchesDraw">@Html.Resource("PrintMatchesDraw")</button>
+                        </div>
                         <div class="competitionHost">
-                            <div class="t-host t-@(Html.RoundMatchesCount(Model.Type.PlayersCount))p" data-rounds="@(section.GroupBy(m => m.Round).Count())" data-matches="@(Html.RoundMatchesCount(section.Count()))" data-section="@((int)section.Key)">
+                            <div class="t-host t-@(Html.RoundMatchesCount(section.Key == CompetitionSection.Qualifying ? Model.Type.QualifyingPlayersCount : Model.Type.PlayersCount))p" data-rounds="@(section.GroupBy(m => m.Round).Count())" data-matches="@(Html.RoundMatchesCount(section.Count()))" data-section="@((int)section.Key)" data-players-count="@(Html.RoundMatchesCount(section.Key == CompetitionSection.Qualifying ? Model.Type.QualifyingPlayersCount : Model.Type.PlayersCount))">
                             </div>
                         </div>
                     </div>

@@ -16,7 +16,7 @@ namespace Simple.SAMS.Contracts.Competitions
         void FinishCompetition(int id);
 
         [OperationContract(IsOneWay = true)]
-        void Create(CreateCompetitionInfo competitionCreateInfo, string playersFile, string qualifyingPlayersFile);
+        void Create(CreateCompetitionInfo competitionCreateInfo);
         
         [OperationContract(IsOneWay = true)]
         void UpdateCompetitionPlayers(int competitionId, string playersFileUrl);
@@ -37,9 +37,9 @@ namespace Simple.SAMS.Contracts.Competitions
         void RemovePlayer(int competitionId, int playerId);
 
         [OperationContract]
-        void ReplacePlayer(int competitionId, int replacedPlayerId, int replacingPlayerId);
+        void ReplacePlayer(int competitionId, int replacedPlayerId, int replacingPlayerId, CompetitionPlayerSource source);
 
         [OperationContract]
-        void AddPlayerToCompetition(int competitionId, int playerId);
+        void AddPlayerToCompetition(int competitionId, int playerId, CompetitionPlayerSource source);
     }
 }

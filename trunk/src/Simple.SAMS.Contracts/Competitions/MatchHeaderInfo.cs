@@ -20,7 +20,13 @@ namespace Simple.SAMS.Contracts.Competitions
         }
 
         [DataMember(EmitDefaultValue = false)]
+        public int RoundRelativePosition { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
         public CompetitionSection Section { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
+        public int CompetitionId { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
         public int Id { get; set; }
@@ -38,7 +44,7 @@ namespace Simple.SAMS.Contracts.Competitions
         public MatchResult? Result { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        public int? Position { get; set; }
+        public int Position { get; set; }
         
         [DataMember(EmitDefaultValue = false)]
         public int Round { get; set; }
@@ -64,6 +70,10 @@ namespace Simple.SAMS.Contracts.Competitions
         [DataMember(EmitDefaultValue = false)]
         public MatchPlayer Player4 { get; set; }
 
+        public MatchPlayer[] Players
+        {
+            get { return new[] {Player1, Player2, Player3, Player4}; }
+        }
 
     }
 }

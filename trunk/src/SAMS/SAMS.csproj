@@ -366,7 +366,9 @@
     <Content Include="Static\Scripts\Date\date-he-IL.js" />
     <Content Include="Static\Scripts\Date\date.js" />
     <Content Include="Static\Scripts\Date\DateTime.1.1.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -436,6 +438,7 @@
     <Content Include="Views\Players\Create.cshtml" />
     <Content Include="Views\Players\_CreatePlayerNotification.cshtml" />
     <Content Include="Views\Competitions\MatchesFilters.cshtml" />
+    <Content Include="Views\Competitions\_MoreInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\img\" />

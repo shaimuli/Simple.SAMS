@@ -22,7 +22,7 @@ namespace SAMS.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(int? competitionId, int? replacedPlayerId, Player player)
+        public ActionResult Create(int? competitionId, int? replacedPlayerId, Player player, CompetitionPlayerSource source)
         {
             var playersRepository = ServiceProvider.Get<IPlayersRepository>();
             var newPlayerId = playersRepository.Add(player);
@@ -32,11 +32,11 @@ namespace SAMS.Controllers
                 var manager = ServiceProvider.Get<ICompetitionsManager>();
                 if (replacedPlayerId.HasValue)
                 {
-                    manager.ReplacePlayer(competitionId.Value, replacedPlayerId.Value, newPlayerId);
+                    manager.ReplacePlayer(competitionId.Value, replacedPlayerId.Value, newPlayerId, source);
                 }
                 else
                 {
-                    manager.AddPlayerToCompetition(competitionId.Value, newPlayerId);
+                    manager.AddPlayerToCompetition(competitionId.Value, newPlayerId, source);
                 }
                 return RedirectToAction("Details", "Competitions", new { id = competitionId.Value });
             }

@@ -131,6 +131,12 @@ namespace Simple.SAMS.Competitions.Data
                     {
                         result = new CompetitionDetails();
                         MapCompetitionDataToHeader(competitionData, result);
+                        
+                        result.MainRefereeName = competitionData.MainReferee;
+                        result.MainRefereePhone = competitionData.MainRefereePhone;
+                        result.Site = competitionData.Site;
+                        result.SitePhone = competitionData.SitePhone;
+
                         var players =
                             dataContext.CompetitionPlayers.Where(cp => cp.CompetitionId == competitionData.Id && cp.Player.RowStatus == 0).ToArray();
                         result.Players = players.Select(dataEntity =>
@@ -140,7 +146,8 @@ namespace Simple.SAMS.Competitions.Data
                             entity.CompetitionRank = dataEntity.Rank.GetValueOrDefault();
                             entity.Replaceable =
                                 dataEntity.Player.Matches.Count(m => m.CompetitionId == competitionData.Id && m.Status >= (int) MatchStatus.Playing) == 0;
-
+                            entity.Source = (CompetitionPlayerSource) dataEntity.Source;
+                            entity.Section = (CompetitionSection) dataEntity.Section;
                             return entity;
                         }).ToArray();
                         var matches = dataContext.Matches.Where(m => m.CompetitionId == competitionData.Id && m.RowStatus == 0);
@@ -151,69 +158,13 @@ namespace Simple.SAMS.Competitions.Data
                         }
 
                         result.Matches =
-                            matches.Select(m => CreateMatchFromData(m)).ToArray();
+                            matches.Select(m => m.MapFromData()).ToArray();
                     }
                 });
 
             return result;
 
         }
-
-        private MatchHeaderInfo CreateMatchFromData(Match match)
-        {
-            var result = new MatchHeaderInfo()
-                       {
-                           Id = match.Id,
-                           StartTime = match.StartTime.HasValue? DateTime.SpecifyKind( match.StartTime.Value, DateTimeKind.Utc).ToLocalTime() : default(DateTime?),
-                           Status = (MatchStatus)match.Status,
-                           Section = (CompetitionSection)match.SectionId,
-                           StartTimeType = (StartTimeType)match.StartTimeType,
-                           Round = match.Round,
-                           Position = match.Position
-                       };
-            if (match.Winner.HasValue)
-            {
-                result.Winner = (MatchWinner) match.Winner.Value;
-            }
-            if (match.Result.HasValue)
-            {
-                result.Result = (MatchResult)match.Result.Value;
-            }
-
-            result.Player1 = CreateMatchPlayerFromData(match.Player);
-            result.Player2 = CreateMatchPlayerFromData(match.Player5);
-            result.Player3 = CreateMatchPlayerFromData(match.Player6);
-            result.Player4 = CreateMatchPlayerFromData(match.Player7);
-            result.SetScores =
-                match.MatchScores.Select(ms => new SetScore()
-                                                   {
-                                                       Number = ms.SetNumber,
-                                                       Player1Points = ms.Player1Points,
-                                                       Player2Points = ms.Player2Points,
-                                                       BreakPoints = ms.BreakPoints
-                                                   }).ToArray();
-
-            return result;
-        }
-
-        private Contracts.Competitions.MatchPlayer CreateMatchPlayerFromData(Player player)
-        {
-            var result = default(Contracts.Competitions.MatchPlayer);
-            if (player.IsNotNull())
-            {
-                result = new Contracts.Competitions.MatchPlayer();
-
-                result.Id = player.Id;
-                result.IdNumber = player.IdNumber;
-
-                result.LocalFirstName = player.LocalFirstName;
-                result.LocalLastName = player.LocalLastName;
-                result.EnglishFirstName = player.EnglishFirstName;
-                result.EnglishLastName = player.EnglishLastName;
-            }
-            return result;
-        }
-
 
         public CompetitionDetails GetCompetitionDetails(int id)
         {
@@ -263,7 +214,15 @@ namespace Simple.SAMS.Competitions.Data
                                 player.PlayerId == playerInCompetition.PlayerId);
                         if (!playerAlreadyInCompetition)
                         {
-                            dataContext.CompetitionPlayers.InsertOnSubmit(new CompetitionPlayer() { CompetitionId = competitionId, PlayerId = playerInCompetition.PlayerId, Rank = playerInCompetition.Rank });
+                            dataContext.CompetitionPlayers.InsertOnSubmit(
+                                new CompetitionPlayer()
+                                    {
+                                        CompetitionId = competitionId, 
+                                        PlayerId = playerInCompetition.PlayerId, 
+                                        Rank = playerInCompetition.Rank, 
+                                        Source = (int)playerInCompetition.Source,
+                                        Section = (int)playerInCompetition.Section
+                                    });
                         }
                     }
                     dataContext.SubmitChanges();

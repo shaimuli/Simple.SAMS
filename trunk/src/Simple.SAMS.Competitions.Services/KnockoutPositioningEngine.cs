@@ -1,60 +1,119 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Simple;
 using Simple.SAMS.CompetitionEngine;
 using Simple.SAMS.Contracts.Competitions;
 using Simple.SAMS.Contracts.Players;
 using Simple.SAMS.Contracts.Positioning;
 
-namespace Simple.SAMS.Competitions.Services
+public class KnockoutPositioningEngine : IPositioningEngine
 {
-    public class KnockoutPositioningEngine : IPositioningEngine
+
+    // Methods
+    private UpdatePlayerPositionInfo[] GetFinalPlayersPositions(CompetitionDetails details)
     {
-        private Random m_randomizer = new Random();
-        private int GetRandomPosition(int minValue, int maxValue)
+        IEnumerable<UpdatePlayerPositionInfo> items = Enumerable.Empty<UpdatePlayerPositionInfo>();
+        MatchHeaderInfo[] orderedMatches = (from m in details.Matches
+            where m.Section == CompetitionSection.Qualifying
+            orderby m.Position
+            select m).Take<MatchHeaderInfo>((details.Type.QualifyingPlayersCount / 2)).ToArray<MatchHeaderInfo>();
+        CompetitionPlayer[] finalPlayers = (from p in details.Players
+            where p.Section == CompetitionSection.Final
+            select p).ToArray<CompetitionPlayer>();
+        if (finalPlayers.Length > 0)
         {
-            return m_randomizer.Next(minValue, maxValue);
+            items = GetUpdatePlayerPositionInfos(PositionQualifyingPlayers(details, finalPlayers), orderedMatches);
         }
+        return items.ToArray<UpdatePlayerPositionInfo>();
+    }
 
-        public Contracts.Competitions.UpdatePlayerPositionInfo[] PositionPlayers(Contracts.Competitions.CompetitionDetails details, Contracts.Competitions.CompetitionType competitionType)
+    private UpdatePlayerPositionInfo[] GetQualifyingPlayersPositions(CompetitionDetails details)
+    {
+        IEnumerable<UpdatePlayerPositionInfo> items = Enumerable.Empty<UpdatePlayerPositionInfo>();
+        MatchHeaderInfo[] orderedMatches = (from m in details.Matches
+            where m.Section == CompetitionSection.Qualifying
+            orderby m.Position
+            select m).Take<MatchHeaderInfo>((details.Type.QualifyingPlayersCount / 2)).ToArray<MatchHeaderInfo>();
+        CompetitionPlayer[] qualifyingPlayers = (from p in details.Players
+            where p.Section == CompetitionSection.Qualifying
+            select p).ToArray<CompetitionPlayer>();
+        if (qualifyingPlayers.Length > 0)
         {
-            var orderedMatches =
-                details.Matches.OrderBy(m => m.Position).Take(competitionType.PlayersCount/2).ToArray();
-            var positioningEngine = new FinalPositioningEngine();
-            var positioningParameters = new FinalPositioningParameters
-                                            {
-                                                PlayersCount = details.Type.PlayersCount,
-                                                RankedPlayersCount = 2,
-                                                Players = details.Players.Take(details.Type.PlayersCount).Select(p => new Simple.SAMS.CompetitionEngine.Player() { Id = p.Id, Rank = p.CompetitionRank }).ToArray()
-                                            };
-            var positioningResults = positioningEngine.Evaluate(positioningParameters);
-            var matchIndex = 0;
-            var positionIndex = 0;
-            var items = positioningResults.Select(
-                position =>
-                    {
-                        var result = default(UpdatePlayerPositionInfo);
-                        if (position.PlayerId.HasValue)
-                        {
-                            result = new UpdatePlayerPositionInfo();
-                            result.PlayerId = position.PlayerId.Value;
-                            result.MatchId = orderedMatches[matchIndex].Id;
-                            result.Position = positionIndex%2;
-                        }
-                        positionIndex++;
-                        if (positionIndex%2 == 0)
-                        {
-                            matchIndex++;
-                        }
-                        
-                        return result;
-                    });
-            
-            var results = items.Where(item => item.IsNotNull()).ToArray();
-
-            return results;
+            items = GetUpdatePlayerPositionInfos(PositionQualifyingPlayers(details, qualifyingPlayers), orderedMatches);
         }
+        return items.ToArray<UpdatePlayerPositionInfo>();
+    }
+    private static IEnumerable<UpdatePlayerPositionInfo> GetUpdatePlayerPositionInfos(CompetitionPosition[] qualifyingPlayersPositions, MatchHeaderInfo[] orderedMatches)
+    {
+        int matchIndex = 0;
+        int positionIndex = 0;
+        return qualifyingPlayersPositions.Select<CompetitionPosition, UpdatePlayerPositionInfo>(delegate (CompetitionPosition position) {
+            UpdatePlayerPositionInfo result = null;
+            if (position.PlayerId.HasValue)
+            {
+                result = new UpdatePlayerPositionInfo {
+                    PlayerId = position.PlayerId.Value,
+                    MatchId = orderedMatches[matchIndex].Id,
+                    Position = positionIndex % 2
+                };
+            }
+            positionIndex++;
+            if ((positionIndex % 2) == 0)
+            {
+                matchIndex++;
+            }
+            return result;
+        });
+    }
+
+    private CompetitionPosition[] PositionFinalPlayersInCompetition(CompetitionDetails details)
+    {
+        var positioningEngine = new FinalPositioningEngine();
+        var positioningParameters = new FinalPositioningParameters
+        {
+            PlayersCount = details.Type.PlayersCount,
+            RankedPlayersCount = 2,
+            Players = (from p in details.Players.Take<CompetitionPlayer>(details.Type.PlayersCount) select new Simple.SAMS.CompetitionEngine.Player { Id = p.Id, Rank = p.CompetitionRank }).ToArray<Simple.SAMS.CompetitionEngine.Player>()
+        };
+        
+        return positioningEngine.Evaluate(positioningParameters);
+    }
+
+    public UpdatePlayerPositionInfo[] PositionPlayers(CompetitionDetails details)
+    {
+        CompetitionType competitionType = details.Type;
+        MatchHeaderInfo[] orderedMatches = (from m in details.Matches
+            orderby m.Position
+            select m).Take<MatchHeaderInfo>((competitionType.PlayersCount / 2)).ToArray<MatchHeaderInfo>();
+        List<UpdatePlayerPositionInfo> items = new List<UpdatePlayerPositionInfo>();
+        if (details.Type.QualifyingPlayersCount > 0)
+        {
+            items.AddRange(this.GetQualifyingPlayersPositions(details));
+        }
+        items.AddRange(this.GetFinalPlayersPositions(details));
+        return (from item in items
+            where item.IsNotNull<UpdatePlayerPositionInfo>()
+            select item).ToArray<UpdatePlayerPositionInfo>();
+    }
+
+    private static CompetitionPosition[] PositionQualifyingPlayers(CompetitionDetails details, CompetitionPlayer[] qualifyingPlayers)
+    {
+        var qualifyingPositioningEngine = new QualifyingPositioningEngine();
+        var qualifyingPositioningParameters = new QualifyingPositionParameters
+        {
+            PlayersCount = details.Type.QualifyingPlayersCount,
+            QualifyingCount = details.Type.QualifyingToFinalPlayersCount,
+            Players = (from p in qualifyingPlayers.Take<CompetitionPlayer>(details.Type.QualifyingPlayersCount) select new Simple.SAMS.CompetitionEngine.Player { Id = p.Id, Rank = p.CompetitionRank }).ToArray<Simple.SAMS.CompetitionEngine.Player>()
+        };
+        
+        return qualifyingPositioningEngine.Evaluate(qualifyingPositioningParameters);
+    }
+
+
+    public UpdatePlayerPositionInfo AddPlayer(PlayerInCompetition player, CompetitionSection section, CompetitionDetails details)
+    {
+        var result = default(UpdatePlayerPositionInfo);
+        return result;
     }
 }
+

@@ -348,11 +348,8 @@
   <data name="CompetitionName" xml:space="preserve">
     <value>שם</value>
   </data>
-  <data name="CompetitionQualifyingPlayers" xml:space="preserve">
-    <value>שחקנים במודמות</value>
-  </data>
   <data name="CompetitionPlayers" xml:space="preserve">
-    <value>שחקנים בגמר</value>
+    <value>שחקנים בתחרות</value>
   </data>
   <data name="CompetitionSite" xml:space="preserve">
     <value>מועדון</value>
@@ -668,5 +665,26 @@
   </data>
   <data name="QualifyingWildcardPlayersCount" xml:space="preserve">
     <value>כרטיסים חופשיים מוקדמות</value>
+  </data>
+  <data name="CompetitionPlayerSource.Regular" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="CompetitionPlayerSource.Wildcard" xml:space="preserve">
+    <value>WC</value>
+  </data>
+  <data name="CompetitionPlayerSource.OnSiteAlternate" xml:space="preserve">
+    <value>OSA</value>
+  </data>
+  <data name="CompetitionPlayerSource.LuckyLooser" xml:space="preserve">
+    <value>Q/LL</value>
+  </data>
+  <data name="MainReferee" xml:space="preserve">
+    <value>שופט ראשי</value>
+  </data>
+  <data name="Site" xml:space="preserve">
+    <value>מועדון</value>
+  </data>
+  <data name="MoreInfoTab" xml:space="preserve">
+    <value>פרטים נוספים</value>
   </data>
 </root>

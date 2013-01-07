@@ -15,5 +15,11 @@ namespace Simple.SAMS.Contracts.Competitions
         
         [DataMember(EmitDefaultValue = false)]
         public int? Rank { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
+        public CompetitionPlayerSource Source { get; set; }
+        
+        [DataMember(EmitDefaultValue = false)]
+        public CompetitionSection Section { get; set; }
     }
 }

@@ -7,16 +7,19 @@ namespace Simple.SAMS.Contracts.Competitions
     public interface ICompetitionsEngine
     {
         [OperationContract]
+        CompetitionDetails GetCompetitionDetails(int competitionId);
+
+        [OperationContract]
         void CreateCompetitionsMatches(CompetitionHeaderInfo[] competitions);
 
         [OperationContract]
         int CreateCompetition(CreateCompetitionInfo competitionCreateInfo);
 
         [OperationContract]
-        void AddPlayersToCompetition(int competitionId, Player[] players);
+        void AddPlayersToCompetition(int competitionId, AddCompetitionPlayerInfo[] players);
 
         [OperationContract]
-        Player[] GetCompetitionPlayers(string playersFileUrl);
+        CompetitionPlayer[] GetCompetitionPlayers(string playersFileUrl);
 
         [OperationContract]
         CreateCompetitionInfo[] GetCompetitions(string competitionsFileUrl);
@@ -38,5 +41,8 @@ namespace Simple.SAMS.Contracts.Competitions
 
         [OperationContract]
         void RemovePlayerFromCompetition(int competitionId, int playerId);
+
+        [OperationContract]
+        void QualifyMatchWinner(int matchId);
     }
 }

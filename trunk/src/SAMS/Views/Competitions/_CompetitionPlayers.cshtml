@@ -13,13 +13,14 @@
             <button type="button" class="btn AddCompetitionPlayer">@Html.Resource("AddNewPlayer")</button>
         </div>
         <div class="span2">
-            <button type="button" class="btn PrintPlayersList">@Html.Resource("PrintMatchesDraw")</button>
+            <button style="display:none" type="button" class="btn PrintPlayersList">@Html.Resource("PrintMatchesDraw")</button>
         </div>
     </div>
     <table class="table sortable">
 
         <thead>
             <tr>
+                <th class="span1" data-sort-type="text"></th>
                 <th class="span2" data-sort-type="text">@Html.Resource("PlayerLocalNameHeader")</th>
                 <th class="span2" data-sort-type="text">@Html.Resource("PlayerEnglishNameHeader")</th>
                 <th class="span2" data-sort-type="text">@Html.Resource("PlayerBirthDateHeader")</th>
@@ -39,6 +40,9 @@
             @foreach (var item in Model)
             {
                 <tr class="player item@(index++ % 2 == 0 ? "" : " alternate")" data-key="@item.Id">
+                    <td>
+                        @Html.Resource("CompetitionPlayerSource." + item.Source.ToString())
+                    </td>
                     <td>
                         @*Html.ActionLink(item.LocalLastName + " " + (item.LocalFirstName ?? string.Empty), "Details", new { id = item.Id })*@
 

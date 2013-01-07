@@ -8,7 +8,7 @@
 }
 @Html.Hidden("CompetitionId", Model.Id)
  @Html.Partial("_CompetitionHeaderView", Model)
-<i>@Model.StartTime @Model.EndTime</i>
+
 
 <div class="tabbable">
     <ul id="tabs" class="nav nav-tabs">
@@ -24,6 +24,10 @@
         </li>
         <li><a href="#matchesList" data-toggle="tab">
             @Html.Resource("CompetitionMatchesListTab")
+        </a>
+        </li>        
+        <li><a href="#moreInfo" data-toggle="tab">
+            @Html.Resource("MoreInfoTab")
         </a>
         </li>
     </ul>
@@ -49,7 +53,10 @@
                 @Html.Partial("_MatchesList", Model.Matches)
             </div>
         </div>
-    </div>
+        <div class="tab-pane" id="moreInfo">
+            @Html.Partial("_MoreInfo", Model)
+        </div>
+        </div>
 </div>
 @section scripts{
     <script type="text/javascript">
@@ -91,6 +98,7 @@
                 replacePlayerUrl: "@Url.Action("ReplaceCompetitionPlayer", "Competitions")",
                 addPlayerUrl: "@Url.Action("AddCompetitionPlayer", "Competitions")",
                 createPlayerUrl: "@Url.Action("Create", "Players")",
+                getMatchesUrl: "@Url.Action("GetSectionMatches", "Competitions")",
                 resources: resources
             };
             

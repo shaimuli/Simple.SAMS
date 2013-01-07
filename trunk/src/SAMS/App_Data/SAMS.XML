@@ -557,17 +557,32 @@
         </member>
         <member name="P:SAMS.Resources.Texts.CompetitionPlayers">
             <summary>
-              Looks up a localized string similar to שחקנים בגמר.
+              Looks up a localized string similar to שחקנים בתחרות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionPlayerSource_LuckyLooser">
+            <summary>
+              Looks up a localized string similar to Q/LL.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionPlayerSource_OnSiteAlternate">
+            <summary>
+              Looks up a localized string similar to OSA.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionPlayerSource_Regular">
+            <summary>
+              Looks up a localized string similar to .
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionPlayerSource_Wildcard">
+            <summary>
+              Looks up a localized string similar to WC.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.CompetitionPlayersTab">
             <summary>
               Looks up a localized string similar to שחקנים.
-            </summary>
-        </member>
-        <member name="P:SAMS.Resources.Texts.CompetitionQualifyingPlayers">
-            <summary>
-              Looks up a localized string similar to שחקנים במודמות.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.CompetitionReferenceId">
@@ -860,6 +875,11 @@
               Looks up a localized string similar to יציאה.
             </summary>
         </member>
+        <member name="P:SAMS.Resources.Texts.MainReferee">
+            <summary>
+              Looks up a localized string similar to שופט ראשי.
+            </summary>
+        </member>
         <member name="P:SAMS.Resources.Texts.MaleAbbr">
             <summary>
               Looks up a localized string similar to זכר.
@@ -993,6 +1013,11 @@
         <member name="P:SAMS.Resources.Texts.Method">
             <summary>
               Looks up a localized string similar to שיטה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.MoreInfoTab">
+            <summary>
+              Looks up a localized string similar to פרטים נוספים.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.Name">
@@ -1248,6 +1273,11 @@
         <member name="P:SAMS.Resources.Texts.SemiFinal">
             <summary>
               Looks up a localized string similar to חצי גמר.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.Site">
+            <summary>
+              Looks up a localized string similar to מועדון.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.StartCompetition">
