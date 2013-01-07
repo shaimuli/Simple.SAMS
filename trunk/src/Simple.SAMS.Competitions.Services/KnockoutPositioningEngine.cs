@@ -113,6 +113,17 @@ public class KnockoutPositioningEngine : IPositioningEngine
     public UpdatePlayerPositionInfo AddPlayer(PlayerInCompetition player, CompetitionSection section, CompetitionDetails details)
     {
         var result = default(UpdatePlayerPositionInfo);
+        var maxRound = details.Matches.Where(m => m.Section == section).Max(m => m.Round);
+        var match =
+            details.Matches.FirstOrDefault(
+                m => m.Section == section && m.Round == maxRound && (m.Player1.IsNull() || m.Player2.IsNull()));
+        if (match.IsNotNull())
+        {
+            result = new UpdatePlayerPositionInfo();
+            result.MatchId = match.Id;
+            result.PlayerId = player.PlayerId;
+            result.Position = match.Player1.IsNull() ? 0 : 1;
+        }
         return result;
     }
 }
