@@ -164,7 +164,9 @@
                 logicalItemContainerSelector: "tbody tr",
                 storageRootKey: "Matches:Results",
                 sendUrl: this.config.sendUpdatesUrl,
-                resources: this.config.resources
+                resources: this.config.resources,
+                autoCommit: false,
+                onSuccessfullUpdate: _.bind(this.updateMatchesResults, this)
             };
 
             this.matchesEditor = new Simple.MatchResultsContinuesEdit(matchesContinuesEditConfig);
@@ -306,8 +308,8 @@
                 idNumberName: "AddPlayerIdNumber",
                 confirmText: this.config.resources.AddCompetitionPlayerConfirm,
                 titleText: this.config.resources.AddCompetitionPlayerConfirmTitle,
-                dialogName: "addPlayerDialog",
-                actionName: "addPlayer"
+                dialogName: "AddPlayerToSectionDialog",
+                actionName: "AddPlayerToSection"
             };
             this.initPlayerDialog(config);
             $(".AddCompetitionPlayer").click(_.bind(this.onAddCompetitionPlayer, this));

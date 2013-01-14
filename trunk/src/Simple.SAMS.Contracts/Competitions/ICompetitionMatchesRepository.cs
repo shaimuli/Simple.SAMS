@@ -29,6 +29,6 @@ namespace Simple.SAMS.Contracts.Competitions
         MatchHeaderInfo GetMatch(int matchId);
         
         [OperationContract]
-        MatchHeaderInfo GetMatchByRelativePosition(int competitionId, int round, int relativePosition);
+        MatchHeaderInfo GetMatchByRelativePosition(int competitionId, CompetitionSection section, int round, int relativePosition);
     }
 }

@@ -2466,6 +2466,10 @@ namespace Simple.SAMS.Competitions.Data
 		
 		private int _RoundRelativePosition;
 		
+		private bool _IsFinal;
+		
+		private bool _IsSemiFinal;
+		
 		private EntitySet<MatchScore> _MatchScores;
 		
 		private EntityRef<Competition> _Competition;
@@ -2528,6 +2532,10 @@ namespace Simple.SAMS.Competitions.Data
     partial void OnWinnerChanged();
     partial void OnRoundRelativePositionChanging(int value);
     partial void OnRoundRelativePositionChanged();
+    partial void OnIsFinalChanging(bool value);
+    partial void OnIsFinalChanged();
+    partial void OnIsSemiFinalChanging(bool value);
+    partial void OnIsSemiFinalChanged();
     #endregion
 		
 		public Match()
@@ -3002,6 +3010,46 @@ namespace Simple.SAMS.Competitions.Data
 					this._RoundRelativePosition = value;
 					this.SendPropertyChanged("RoundRelativePosition");
 					this.OnRoundRelativePositionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsFinal", DbType="Bit NOT NULL")]
+		public bool IsFinal
+		{
+			get
+			{
+				return this._IsFinal;
+			}
+			set
+			{
+				if ((this._IsFinal != value))
+				{
+					this.OnIsFinalChanging(value);
+					this.SendPropertyChanging();
+					this._IsFinal = value;
+					this.SendPropertyChanged("IsFinal");
+					this.OnIsFinalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsSemiFinal", DbType="Bit NOT NULL")]
+		public bool IsSemiFinal
+		{
+			get
+			{
+				return this._IsSemiFinal;
+			}
+			set
+			{
+				if ((this._IsSemiFinal != value))
+				{
+					this.OnIsSemiFinalChanging(value);
+					this.SendPropertyChanging();
+					this._IsSemiFinal = value;
+					this.SendPropertyChanged("IsSemiFinal");
+					this.OnIsSemiFinalChanged();
 				}
 			}
 		}

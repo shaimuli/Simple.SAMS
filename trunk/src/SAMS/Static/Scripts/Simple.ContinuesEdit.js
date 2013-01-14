@@ -12,6 +12,7 @@
     };
     S.ContinuesEdit = Class.extend({
         init: function (config) {
+            this.config = config;
             this.storageRootKey = config.storageRootKey;
             this.sendUrl = config.sendUrl;
             this.container = $(config.containerSelector);
@@ -21,6 +22,7 @@
             this.inputs.focus(_.bind(this.onFieldFocus, this));
             this.inputs.keyup(_.bind(this.onFieldKeyUp, this));
             this.inputs.keypress(_.bind(this.onFieldKeyPress, this));
+            console.log("AUTOCOMMIT", this.config.autoCommit);
             $("input[type=radio]", this.inputs).change(_.bind(this.onRadioFieldChanged, this));
             this.rxQueued = /.*?\:Q/gi;
             
@@ -30,10 +32,14 @@
             $(".sendUpdatesNow", this.container).click(_.bind(function () {
                 this.saveNow();
             }, this));
+            
             this.scheduleUpdates();
+            
         },
         scheduleUpdates: function () {
-            this.timeout = setTimeout(_.bind(this.onSave, this), this.interval || 15 * 1000);
+            if (this.config.autoCommit) {
+                this.timeout = setTimeout(_.bind(this.onSave, this), this.interval || 15 * 1000);
+            }
         },
         cancelSchedule:function () {
             if (this.timeout) {
@@ -87,21 +93,30 @@
         translate: function (item) {
             return item;
         },
-        send: function () {
+        send: function (updates) {
             var items = [];
-            for (var i = 0; i < localStorage.length; i++) {
-                var key = localStorage.key(i).toString();
-                if (this.rxQueued.test(key)) {
-                    var item = this.getByKey(key);
+            if (updates && updates.length) {
+                for (var j = 0; j < updates.length; j++) {
+                    var row = $(this.logicalItemContainerSelector + "[data-key='" + updates[j].Id + "']", this.container);
+                    row.removeClass("waiting").addClass("sending");
+                    items.push({ item: this.translate(updates[j]), row: row });
+                }
+            } else {
 
-                    if (item) {
-                        var row = $(this.logicalItemContainerSelector + "[data-key='" + item.Id + "']", this.container);
-                        row.removeClass("waiting").addClass("sending");
-                        items.push({ item: item, row: row });
-                    } 
+                for (var i = 0; i < localStorage.length; i++) {
+                    var key = localStorage.key(i).toString();
+                    if (this.rxQueued.test(key)) {
+                        var item = this.getByKey(key);
+
+                        if (item) {
+                            var row = $(this.logicalItemContainerSelector + "[data-key='" + item.Id + "']", this.container);
+                            row.removeClass("waiting").addClass("sending");
+                            items.push({ item: item, row: row });
+                        }
+                    }
                 }
             }
-            
+            console.log(items);
             if (items.length > 0) {
                 $.ajax({
                         url: this.sendUrl,
@@ -111,24 +126,25 @@
                             return singleItem.item;
                         })),
                         success: _.bind(function () {
-                            _.each(items, _.bind(function(it) {
-                                this.setByKey(it.Id + ":Q", null);
-                            }, this));
-                            
+                            if (this.config.autoCommit) {
+                                _.each(items, _.bind(function(it) {
+                                    this.setByKey(it.Id + ":Q", null);
+                                }, this));
+                            }
                             $.each(items, function(index, singleItem) {
                                 singleItem.row.removeClass("sending").addClass("success");
                             });
                             var now = new Date();
                             $(".lastSaveTime", this.container).text(String(now.getHours()).padLeft(2, '0') + ":" + String(now.getMinutes()).padLeft(2, '0') + ":" + String(now.getSeconds()).padLeft(2, '0'));
-
+                            if (this.config.onSuccessfullUpdate) {
+                                this.config.onSuccessfullUpdate();
+                            }
                         }, this),
                         failure: _.bind(function () {
                             console.log("Send failure: ", items);
                         }, this),
                         complete: _.bind(function () {
                             this.scheduleUpdates();
-                            //console.log("Send complete: ", items);
-                            
                         }, this)
                     });
 
@@ -157,12 +173,29 @@
             }*/
         },
         onSave: function () {
+            var updates = [];
             var items = $(this.logicalItemContainerSelector, this.container);
             _.each(items, function (item) {
-                this.queueSave($(item));
+                if (this.config.autoCommit) {
+                    this.queueSave($(item));
+                } else {
+                    var row = $(item);
+                    var key = row.attr("data-key");
+                    var rowItem = { key: key };
+                    if (row.attr("data-changed")) {
+                        $(":input", row).each(function(index, input) {
+                            input = $(input);
+                            rowItem[input.attr("name")] = input.val();
+                        });
+                        row.attr("data-changed", false);
+                        updates.push(rowItem);
+                    }
+                }
             }, this);
 
-            this.send();
+            
+            this.send(updates);
+            
         },
         storeValue: function (input) {
             input = $(input);

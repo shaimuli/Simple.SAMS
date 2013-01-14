@@ -135,6 +135,8 @@
       <Column Name="Result" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Winner" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="RoundRelativePosition" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsFinal" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsSemiFinal" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="Match_MatchScore" Member="MatchScores" ThisKey="Id" OtherKey="MatchId" Type="MatchScore" />
       <Association Name="Competition_Match" Member="Competition" ThisKey="CompetitionId" OtherKey="Id" Type="Competition" IsForeignKey="true" />
       <Association Name="Player_Match" Member="Player" ThisKey="Player1" OtherKey="Id" Type="Player" IsForeignKey="true" />

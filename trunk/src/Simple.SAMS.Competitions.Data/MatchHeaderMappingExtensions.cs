@@ -21,7 +21,9 @@ namespace Simple.SAMS.Competitions.Data
                 StartTimeType = (StartTimeType)match.StartTimeType,
                 Round = match.Round,
                 RoundRelativePosition = match.RoundRelativePosition,
-                Position = match.Position
+                Position = match.Position,
+                IsFinal = match.IsFinal,
+                IsSemiFinal = match.IsSemiFinal
             };
             if (match.Winner.HasValue)
             {

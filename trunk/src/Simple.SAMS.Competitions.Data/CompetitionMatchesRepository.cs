@@ -52,6 +52,8 @@ namespace Simple.SAMS.Competitions.Data
             dataMatch.RoundRelativePosition = match.RoundRelativePosition;
             dataMatch.Status = (int)match.Status;
             dataMatch.StartTimeType = (int)match.StartTimeType;
+            dataMatch.IsFinal = match.IsFinal;
+            dataMatch.IsSemiFinal = match.IsSemiFinal;
         }
 
 
@@ -266,13 +268,13 @@ namespace Simple.SAMS.Competitions.Data
             return result;
         }
 
-        public MatchHeaderInfo GetMatchByRelativePosition(int competitionId, int round, int relativePosition)
+        public MatchHeaderInfo GetMatchByRelativePosition(int competitionId, CompetitionSection section, int round, int relativePosition)
         {
             var result = default(MatchHeaderInfo);
             UseDataContext(
                 dataContext =>
                 {
-                    var match = dataContext.Matches.FirstOrDefault(m => m.CompetitionId == competitionId && m.Round == round && m.RoundRelativePosition == relativePosition);
+                    var match = dataContext.Matches.FirstOrDefault(m => m.CompetitionId == competitionId && m.SectionId == (int)section && m.Round == round && m.RoundRelativePosition == relativePosition);
                     
                     result = match.MapFromData();
                 });

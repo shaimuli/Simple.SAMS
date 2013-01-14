@@ -20,26 +20,88 @@ namespace Simple.SAMS.Competitions.Services
         {
             var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
             var match = competitionMatchesRepository.GetMatch(matchId);
-            var competitionId = match.CompetitionId;
+            
             if (match.StartTime.HasValue &&
                 match.Result.HasValue && match.Result.Value != MatchResult.Pause &&
-                match.Winner != MatchWinner.None && !match.IsFinal)
+                match.Winner != MatchWinner.None &&
+                match.Player1 != null && match.Player2 != null)
             {
-                var winner = match.Winner == MatchWinner.Player1 ? match.Player1 : match.Player2;
-                var qualifyToMatch = competitionMatchesRepository.GetMatchByRelativePosition(competitionId, match.Round + 1, match.RoundRelativePosition / 2);
-                if (qualifyToMatch.IsNotNull())
+                if (match.IsFinal)
                 {
-                    competitionMatchesRepository.UpdatePlayersPosition(competitionId, 
-                        new[]
-                            {
-                                new UpdatePlayerPositionInfo
-                                    {
-                                        MatchId = qualifyToMatch.Id, 
-                                        PlayerId = winner.Id, 
-                                        Position = match.RoundRelativePosition %2==0 ? 0 : 1
-                                    }
-                            });
+                    if (match.Section == CompetitionSection.Qualifying)
+                    {
+                        QualifyToFinal(match);
+                    }
                 }
+                else
+                {
+                    QualifySameSection(match);
+                }
+            }
+
+        }
+
+        private void QualifyToThirdPlace(MatchHeaderInfo match)
+        {
+            var positioningEngine = GetPositioningEngine(CompetitionMethod.Knockout);
+            var competitionRepository = ServiceProvider.Get<ICompetitionRepository>();
+
+            var competitionDetails = competitionRepository.GetCompetitionDetails(match.CompetitionId);
+            var looserId = (match.Winner == MatchWinner.Player1 ? match.Player2 : match.Player1).Id;
+            var thirdPlaceMatch = competitionDetails.Matches.Last();
+            var updateInfo = new UpdatePlayerPositionInfo()
+                                 {
+                                     PlayerId = looserId,
+                                     Position = thirdPlaceMatch.Player1.IsNull() ?0:1,
+                                     MatchId = thirdPlaceMatch.Id
+                                 };
+            var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
+            competitionMatchesRepository.UpdatePlayersPosition(match.CompetitionId, new[] { updateInfo });
+
+        }
+
+        private void QualifyToFinal(MatchHeaderInfo match)
+        {
+            var positioningEngine = GetPositioningEngine(CompetitionMethod.Knockout);
+            var competitionRepository = ServiceProvider.Get<ICompetitionRepository>();
+            
+            var competitionDetails = competitionRepository.GetCompetitionDetails(match.CompetitionId);
+            var winnerId = (match.Winner == MatchWinner.Player1 ? match.Player1 : match.Player2).Id;
+            var updatePlayerInfo = positioningEngine.AddPlayerToSection(winnerId, CompetitionSection.Final, competitionDetails);
+            if (updatePlayerInfo.IsNotNull())
+            {
+                var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
+                competitionMatchesRepository.UpdatePlayersPosition(match.CompetitionId, new[] {updatePlayerInfo});
+            }
+        }
+
+        private  void QualifySameSection(MatchHeaderInfo match)
+        {
+            var competitionId = match.CompetitionId;
+            var winner = match.Winner == MatchWinner.Player1 ? match.Player1 : match.Player2;
+            var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
+            var qualifyToMatch = competitionMatchesRepository.GetMatchByRelativePosition(competitionId, match.Section, match.Round + 1,
+                                                                                         match.RoundRelativePosition/2);
+            if (qualifyToMatch.IsNotNull())
+            {
+                competitionMatchesRepository.UpdatePlayersPosition(competitionId,
+                                                                   new[]
+                                                                       {
+                                                                           new UpdatePlayerPositionInfo
+                                                                               {
+                                                                                   MatchId = qualifyToMatch.Id,
+                                                                                   PlayerId = winner.Id,
+                                                                                   Position =
+                                                                                       match.RoundRelativePosition%2 == 0
+                                                                                           ? 0
+                                                                                           : 1
+                                                                               }
+                                                                       });
+            }
+
+            if (match.IsSemiFinal)
+            {
+                QualifyToThirdPlace(match);
             }
 
         }
@@ -243,12 +305,7 @@ namespace Simple.SAMS.Competitions.Services
         {
             var competitionDetails = GetCompetitionDetails(competitionId);
 
-            var positioningEngineFactory = ServiceProvider.Get<IPositioningEngineFactory>();
-            var positioningEngine = positioningEngineFactory.Create(competitionDetails.Type.Method);
-            if (positioningEngine.IsNull())
-            {
-                throw new ApplicationException("Positioning engine factory '{0}' returned null, instance of {1} is expected.".ParseTemplate(positioningEngineFactory.GetType().FullName, typeof(IPositioningEngine).FullName));
-            }
+            var positioningEngine = GetPositioningEngine(competitionDetails.Type.Method);
 
             var positions = positioningEngine.PositionPlayers(competitionDetails);
 
@@ -265,6 +322,19 @@ namespace Simple.SAMS.Competitions.Services
             //    File.Delete(file);
             //}
             //File.WriteAllText(file, json);
+        }
+
+        private static IPositioningEngine GetPositioningEngine(CompetitionMethod competitionMethod)
+        {
+            var positioningEngineFactory = ServiceProvider.Get<IPositioningEngineFactory>();
+            var positioningEngine = positioningEngineFactory.Create(competitionMethod);
+            if (positioningEngine.IsNull())
+            {
+                throw new ApplicationException(
+                    "Positioning engine factory '{0}' returned null, instance of {1} is expected.".ParseTemplate(
+                        positioningEngineFactory.GetType().FullName, typeof (IPositioningEngine).FullName));
+            }
+            return positioningEngine;
         }
 
         public CompetitionDetails GetCompetitionDetails(int competitionId)

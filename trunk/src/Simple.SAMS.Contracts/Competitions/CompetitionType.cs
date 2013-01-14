@@ -10,6 +10,10 @@ namespace Simple.SAMS.Contracts.Competitions
     [DataContract(Namespace = Namespaces.Data)]
     public class CompetitionType : Entity
     {
+        public CompetitionType()
+        {
+            FinalRankedPlayersCount = 2;
+        }
         [DataMember(EmitDefaultValue = false)]
         public Ranking Ranking { get; set; }
 
@@ -47,7 +51,10 @@ namespace Simple.SAMS.Contracts.Competitions
         [DataMember(EmitDefaultValue = false)]
         public int QualifyingToFinalPlayersCount { get; set; }
         [DataMember(EmitDefaultValue = false)]
-        public int QualifyingToFinalPaisCount { get; set; }
+        public int QualifyingToFinalPaisCount { get; set; }        
+        
+        [DataMember(EmitDefaultValue = false)]
+        public int FinalRankedPlayersCount { get; set; }
 
     }
 }
