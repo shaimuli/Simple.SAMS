@@ -106,7 +106,7 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to להוספת שחקן הקלד את מספר תעודת הזהות של השחקן החדש:.
+        ///   Looks up a localized string similar to להוספת שחקן הקלד את פרטי השחקן החדש:.
         /// </summary>
         internal static string AddCompetitionPlayerConfirmText {
             get {
@@ -133,7 +133,7 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to הוסף שחקן חדש לתחרות.
+        ///   Looks up a localized string similar to הוספת שחקן חדש לתחרות.
         /// </summary>
         internal static string AddNewPlayerToCompetition {
             get {
@@ -300,6 +300,15 @@ namespace SAMS.Resources {
         internal static string CompetitionPlayers {
             get {
                 return ResourceManager.GetString("CompetitionPlayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to סוג הכרטיס.
+        /// </summary>
+        internal static string CompetitionPlayerSource {
+            get {
+                return ResourceManager.GetString("CompetitionPlayerSource", resourceCulture);
             }
         }
         
@@ -817,6 +826,15 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ת.ז..
+        /// </summary>
+        internal static string IdNumber {
+            get {
+                return ResourceManager.GetString("IdNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to טעינה.
         /// </summary>
         internal static string Import {
@@ -1195,6 +1213,15 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to פרטים.
+        /// </summary>
+        internal static string PlayerDetails {
+            get {
+                return ResourceManager.GetString("PlayerDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to שם פרטי אנגלית.
         /// </summary>
         internal static string PlayerEnglishFirstName {
@@ -1308,6 +1335,15 @@ namespace SAMS.Resources {
         internal static string PlayerPhone {
             get {
                 return ResourceManager.GetString("PlayerPhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to דירוג.
+        /// </summary>
+        internal static string PlayerRanking {
+            get {
+                return ResourceManager.GetString("PlayerRanking", resourceCulture);
             }
         }
         
@@ -1501,7 +1537,7 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to להחלפת שחקן הקלד את מספר תעודת הזהות של השחקן החדש:.
+        ///   Looks up a localized string similar to להחלפת שחקן הקלד את פרטי השחקן החדש:.
         /// </summary>
         internal static string ReplaceCompetitionPlayerConfirmText {
             get {

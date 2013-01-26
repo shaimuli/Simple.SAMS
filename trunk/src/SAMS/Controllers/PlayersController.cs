@@ -22,7 +22,7 @@ namespace SAMS.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(int? competitionId, int? replacedPlayerId, Player player, CompetitionPlayerSource source)
+        public ActionResult Create(int? competitionId, int? replacedPlayerId, Player player, CompetitionPlayerSource competitionPlayerSource)
         {
             var playersRepository = ServiceProvider.Get<IPlayersRepository>();
             var newPlayerId = playersRepository.Add(player);
@@ -32,11 +32,11 @@ namespace SAMS.Controllers
                 var manager = ServiceProvider.Get<ICompetitionsManager>();
                 if (replacedPlayerId.HasValue)
                 {
-                    manager.ReplacePlayer(competitionId.Value, replacedPlayerId.Value, newPlayerId, source);
+                    manager.ReplacePlayer(competitionId.Value, replacedPlayerId.Value, newPlayerId, competitionPlayerSource);
                 }
                 else
                 {
-                    manager.AddPlayerToCompetition(competitionId.Value, newPlayerId, source);
+                    manager.AddPlayerToCompetition(competitionId.Value, newPlayerId, competitionPlayerSource);
                 }
                 return RedirectToAction("Details", "Competitions", new { id = competitionId.Value });
             }
@@ -46,7 +46,7 @@ namespace SAMS.Controllers
             }
         }
 
-        public ActionResult Create(int? competitionId, int? replacePlayerId, string idNumber)
+        public ActionResult Create(int? competitionId, int? replacePlayerId, string idNumber, int source)
         {
             var player = new Player();
             var model = new CreatePlayerModel { Player = player };
@@ -55,7 +55,7 @@ namespace SAMS.Controllers
             {
                 var competitionRepository = ServiceProvider.Get<ICompetitionRepository>();
                 model.Competition = competitionRepository.GetCompetition(competitionId.Value);
-
+                model.Source = (CompetitionPlayerSource)source;
                 if (replacePlayerId.HasValue)
                 {
                     var playersRepository = ServiceProvider.Get<IPlayersRepository>();

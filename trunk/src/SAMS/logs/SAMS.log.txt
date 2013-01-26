@@ -1355,3 +1355,95 @@ ClientConnectionId:bd274ca0-e37a-4fe9-9cff-99c21c4b7e12
 2013-01-14 14:31:39.4385 SimpleSite|Info| SAMS Application initialization completed.
 2013-01-14 14:47:12.1458 SimpleSite|Info| SAMS Application started... 
 2013-01-14 14:47:12.8969 SimpleSite|Info| SAMS Application initialization completed.
+2013-01-16 00:42:03.0737 SimpleSite|Info| SAMS Application started... 
+2013-01-16 00:42:04.2458 SimpleSite|Info| SAMS Application initialization completed.
+2013-01-25 14:34:51.0385 SimpleSite|Info| SAMS Application started... 
+2013-01-25 14:34:51.8325 SimpleSite|Info| SAMS Application initialization completed.
+2013-01-25 14:42:20.5612 SimpleSite|Error| Error executing request.
+Details:
+System.ArgumentException: The parameters dictionary contains a null entry for parameter 'source' of non-nullable type 'Simple.SAMS.Contracts.Competitions.CompetitionPlayerSource' for method 'System.Web.Mvc.ActionResult Create(System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], Simple.SAMS.Contracts.Players.Player, Simple.SAMS.Contracts.Competitions.CompetitionPlayerSource)' in 'SAMS.Controllers.PlayersController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+   at System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   at System.Web.Mvc.ReflectedActionDescriptor.<>c__DisplayClass1.<Execute>b__0(ParameterInfo parameterInfo)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-01-25 14:42:45.5986 SimpleSite|Info| SAMS Application started... 
+2013-01-25 14:42:46.4787 SimpleSite|Info| SAMS Application initialization completed.
+2013-01-25 14:43:52.5954 SimpleSite|Error| Error executing request.
+Details:
+System.ArgumentException: The parameters dictionary contains a null entry for parameter 'source' of non-nullable type 'Simple.SAMS.Contracts.Competitions.CompetitionPlayerSource' for method 'System.Web.Mvc.ActionResult Create(System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], Simple.SAMS.Contracts.Players.Player, Simple.SAMS.Contracts.Competitions.CompetitionPlayerSource)' in 'SAMS.Controllers.PlayersController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+   at System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   at System.Web.Mvc.ReflectedActionDescriptor.<>c__DisplayClass1.<Execute>b__0(ParameterInfo parameterInfo)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-01-26 18:02:26.1616 SimpleSite|Info| SAMS Application started... 
+2013-01-26 18:02:26.9787 SimpleSite|Info| SAMS Application initialization completed.
+2013-01-26 18:14:00.4714 SimpleSite|Info| SAMS Application started... 
+2013-01-26 18:14:01.0994 SimpleSite|Info| SAMS Application initialization completed.
+2013-01-26 18:32:05.4174 SimpleSite|Info| SAMS Application started... 
+2013-01-26 18:32:06.0855 SimpleSite|Info| SAMS Application initialization completed.
+2013-01-26 18:50:27.3514 SimpleSite|Info| SAMS Application started... 
+2013-01-26 18:50:28.0245 SimpleSite|Info| SAMS Application initialization completed.
+2013-01-26 18:55:01.4541 SimpleSite|Info| SAMS Application started... 
+2013-01-26 18:55:02.1152 SimpleSite|Info| SAMS Application initialization completed.
+2013-01-26 19:05:15.8513 SimpleSite|Info| SAMS Application started... 
+2013-01-26 19:05:16.5173 SimpleSite|Info| SAMS Application initialization completed.
+2013-01-26 19:09:19.5562 SimpleSite|Info| SAMS Application started... 
+2013-01-26 19:09:20.5673 SimpleSite|Info| SAMS Application initialization completed.
+2013-01-26 19:21:37.4064 SimpleSite|Info| SAMS Application started... 
+2013-01-26 19:21:38.1514 SimpleSite|Info| SAMS Application initialization completed.
+2013-01-26 19:23:08.5086 SimpleSite|Error| Error executing request.
+Details:
+System.ArgumentException: The parameters dictionary contains a null entry for parameter 'source' of non-nullable type 'Simple.SAMS.Contracts.Competitions.CompetitionPlayerSource' for method 'System.Web.Mvc.ActionResult Create(System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], Simple.SAMS.Contracts.Players.Player, Simple.SAMS.Contracts.Competitions.CompetitionPlayerSource)' in 'SAMS.Controllers.PlayersController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+   at System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   at System.Web.Mvc.ReflectedActionDescriptor.<>c__DisplayClass1.<Execute>b__0(ParameterInfo parameterInfo)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-01-26 19:25:47.4857 SimpleSite|Info| SAMS Application started... 
+2013-01-26 19:25:48.2227 SimpleSite|Info| SAMS Application initialization completed.
+2013-01-26 19:29:06.0621 SimpleSite|Info| SAMS Application started... 
+2013-01-26 19:29:06.7581 SimpleSite|Info| SAMS Application initialization completed.

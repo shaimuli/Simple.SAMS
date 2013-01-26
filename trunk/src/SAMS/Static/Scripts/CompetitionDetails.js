@@ -277,20 +277,35 @@
                 }, this),
                 onConfirm: _.bind(function (parameters, dialogContainer) {
                     var idNumber = $("input[name='" + config.idNumberName + "']", dialogContainer).val();
-                    this[config.actionName](idNumber, parameters);
+                    var source = $("select[name='source']", dialogContainer).val();
+                    this[config.actionName](idNumber, source, parameters);
                 }, this),
                 applyTemplate: function (dialogContainer) {
                     $("<span/>").text(config.text).appendTo(dialogContainer);
                     $("<hr class='space'/>").appendTo(dialogContainer);
-                    var row = $("<div class='row-fluid'/>").appendTo(dialogContainer);
-                    $("<div class='span3'/>").appendTo(row);
-                    var host = $("<div class='span6'/>").appendTo(row);
+                    var form = $("<form/>").appendTo(dialogContainer);
+                    //var row = $("<div class='row-fluid'/>").appendTo(form);
+                    //$("<div class='span3'/>").appendTo(row);
+                    //$("<div class='span6'/>").appendTo(row);
+
+                    var host = $("<div class='control-group'/>").appendTo(form);
+                    $("<label/>").text(config.resources.IdNumber).appendTo(host);
+                    host = $("<div class='controls'/>").appendTo(host);
                     var idNumberInput = $("<input type='text' name='" + config.idNumberName + "' maxlength='9'/>").appendTo($("<div/>").appendTo(host));
-                    $("<hr class='space'/>").appendTo(dialogContainer);
+                    //$("<hr class='space'/>").appendTo(dialogContainer);
                     idNumberInput.keypress(function (event) {
                         var result = S.Utils.isNumberKey(event);
                         return result;
                     });
+                    
+                    host = $("<div class='control-group'/>").appendTo(form);
+                    $("<label/>").text(config.resources.CompetitionPlayerSource).appendTo(host);
+                    host = $("<div class='controls'/>").appendTo(host);
+                    var sourceSelect = $("<select/>").attr("name", "source").appendTo(host);
+                    $.each(config.competitionPlayerSources, function (index, item) {
+                        $("<option/>").val(index).text(item).appendTo(sourceSelect);
+                    });
+
                 },
                 resources: {
                     Cancel: this.config.resources.Cancel,
@@ -308,8 +323,10 @@
                 idNumberName: "AddPlayerIdNumber",
                 confirmText: this.config.resources.AddCompetitionPlayerConfirm,
                 titleText: this.config.resources.AddCompetitionPlayerConfirmTitle,
-                dialogName: "AddPlayerToSectionDialog",
-                actionName: "AddPlayerToSection"
+                dialogName: "addPlayerDialog",
+                actionName: "addPlayer",
+                competitionPlayerSources: this.config.competitionPlayerSources,
+                resources: this.config.resources
             };
             this.initPlayerDialog(config);
             $(".AddCompetitionPlayer").click(_.bind(this.onAddCompetitionPlayer, this));
@@ -322,12 +339,14 @@
                 confirmText: this.config.resources.ReplaceCompetitionPlayerConfirm,
                 titleText: this.config.resources.ReplaceCompetitionPlayerConfirmTitle,
                 dialogName: "replacePlayerDialog",
-                actionName: "replacePlayer"
+                actionName: "replacePlayer",
+                competitionPlayerSources: this.config.competitionPlayerSources,
+                resources: this.config.resources
             };
             this.initPlayerDialog(config);
             $("a.ReplaceCompetitionPlayer").click(_.bind(this.onReplaceCompetitionPlayer, this));
         },
-        addPlayer: function (idNumber) {
+        addPlayer: function (idNumber, source) {
             var competitionId = this.getCompetitionId();
             var playerFound = _.bind(function (result) {
                 if (result) {
@@ -343,7 +362,7 @@
                         }, this)
                     });
                 } else {
-                    location.href = this.config.createPlayerUrl + "?competitionId=" + String(competitionId) + "&idNumber=" + String(idNumber);
+                    location.href = this.config.createPlayerUrl + "?competitionId=" + String(competitionId) + "&idNumber=" + String(idNumber) + "&source=" + String(source);
                 }
             }, this);
             $.getJSON(this.config.getPlayerIdByIdNumberUrl, playerFound);
@@ -364,7 +383,7 @@
                         }, this)
                     });
                 } else {
-                    location.href = this.config.createPlayerUrl + "?competitionId=" + String(competitionId) + "&replacePlayerId=" + String(replacedPlayerId) +"&idNumber=" + String(idNumber);
+                    location.href = this.config.createPlayerUrl + "?competitionId=" + String(competitionId) + "&replacePlayerId=" + String(replacedPlayerId) + "&idNumber=" + String(idNumber) + "&source=" + String(source);
                 }
             }, this);
             $.getJSON(this.config.getPlayerIdByIdNumberUrl, playerFound);

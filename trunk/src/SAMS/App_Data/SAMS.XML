@@ -452,7 +452,7 @@
         </member>
         <member name="P:SAMS.Resources.Texts.AddCompetitionPlayerConfirmText">
             <summary>
-              Looks up a localized string similar to להוספת שחקן הקלד את מספר תעודת הזהות של השחקן החדש:.
+              Looks up a localized string similar to להוספת שחקן הקלד את פרטי השחקן החדש:.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.AddCompetitionPlayerConfirmTitle">
@@ -467,7 +467,7 @@
         </member>
         <member name="P:SAMS.Resources.Texts.AddNewPlayerToCompetition">
             <summary>
-              Looks up a localized string similar to הוסף שחקן חדש לתחרות.
+              Looks up a localized string similar to הוספת שחקן חדש לתחרות.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.Admin">
@@ -558,6 +558,11 @@
         <member name="P:SAMS.Resources.Texts.CompetitionPlayers">
             <summary>
               Looks up a localized string similar to שחקנים בתחרות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionPlayerSource">
+            <summary>
+              Looks up a localized string similar to סוג הכרטיס.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.CompetitionPlayerSource_LuckyLooser">
@@ -845,6 +850,11 @@
               Looks up a localized string similar to ראשי.
             </summary>
         </member>
+        <member name="P:SAMS.Resources.Texts.IdNumber">
+            <summary>
+              Looks up a localized string similar to ת.ז..
+            </summary>
+        </member>
         <member name="P:SAMS.Resources.Texts.Import">
             <summary>
               Looks up a localized string similar to טעינה.
@@ -1055,6 +1065,11 @@
               Looks up a localized string similar to מדינה.
             </summary>
         </member>
+        <member name="P:SAMS.Resources.Texts.PlayerDetails">
+            <summary>
+              Looks up a localized string similar to פרטים.
+            </summary>
+        </member>
         <member name="P:SAMS.Resources.Texts.PlayerEnglishFirstName">
             <summary>
               Looks up a localized string similar to שם פרטי אנגלית.
@@ -1118,6 +1133,11 @@
         <member name="P:SAMS.Resources.Texts.PlayerPhone">
             <summary>
               Looks up a localized string similar to טלפון.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.PlayerRanking">
+            <summary>
+              Looks up a localized string similar to דירוג.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.PlayersCount">
@@ -1227,7 +1247,7 @@
         </member>
         <member name="P:SAMS.Resources.Texts.ReplaceCompetitionPlayerConfirmText">
             <summary>
-              Looks up a localized string similar to להחלפת שחקן הקלד את מספר תעודת הזהות של השחקן החדש:.
+              Looks up a localized string similar to להחלפת שחקן הקלד את פרטי השחקן החדש:.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.ReplaceCompetitionPlayerConfirmTitle">

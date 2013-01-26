@@ -69,6 +69,8 @@
                 ThirdPlace: "@Html.ResourceText("ThirdPlace")",
                 Round: "@Html.ResourceText("Round")",
                 Cancel: "@Html.ResourceText("Cancel")",
+                IdNumber: "@Html.ResourceText("IdNumber")",
+                CompetitionPlayerSource: "@Html.ResourceText("CompetitionPlayerSource")",
                 RemoveCompetitionPlayerConfirm: "@Html.ResourceText("RemoveCompetitionPlayerConfirm")",
                 RemoveCompetitionPlayerConfirmText: "@Html.ResourceText("RemoveCompetitionPlayerConfirmText")",
                 RemoveCompetitionPlayerConfirmTitle: "@Html.ResourceText("RemoveCompetitionPlayerConfirmTitle")",
@@ -99,7 +101,13 @@
                 addPlayerUrl: "@Url.Action("AddCompetitionPlayer", "Competitions")",
                 createPlayerUrl: "@Url.Action("Create", "Players")",
                 getMatchesUrl: "@Url.Action("GetSectionMatches", "Competitions")",
-                resources: resources
+                resources: resources,
+                competitionPlayerSources: [
+                    "@Html.ResourceText("CompetitionPlayerSource.Regular")",
+                    "@Html.ResourceText("CompetitionPlayerSource.Wildcard")",
+                    "@Html.ResourceText("CompetitionPlayerSource.OnSiteAlternate")",
+                    "@Html.ResourceText("CompetitionPlayerSource.LuckyLooser")"
+                ]
             };
             
             var competitionDetails = new Simple.CompetitionDetails(competitionDetailsConfig);

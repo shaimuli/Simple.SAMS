@@ -589,7 +589,7 @@
     <value>החלף שחקן</value>
   </data>
   <data name="ReplaceCompetitionPlayerConfirmText" xml:space="preserve">
-    <value>להחלפת שחקן הקלד את מספר תעודת הזהות של השחקן החדש:</value>
+    <value>להחלפת שחקן הקלד את פרטי השחקן החדש:</value>
   </data>
   <data name="ReplaceCompetitionPlayerConfirmTitle" xml:space="preserve">
     <value>החלפת שחקן</value>
@@ -598,7 +598,7 @@
     <value>הוסף שחקן</value>
   </data>
   <data name="AddCompetitionPlayerConfirmText" xml:space="preserve">
-    <value>להוספת שחקן הקלד את מספר תעודת הזהות של השחקן החדש:</value>
+    <value>להוספת שחקן הקלד את פרטי השחקן החדש:</value>
   </data>
   <data name="AddCompetitionPlayerConfirmTitle" xml:space="preserve">
     <value>הוספת שחקן</value>
@@ -646,7 +646,7 @@
     <value>הוסף שחקן</value>
   </data>
   <data name="AddNewPlayerToCompetition" xml:space="preserve">
-    <value>הוסף שחקן חדש לתחרות</value>
+    <value>הוספת שחקן חדש לתחרות</value>
   </data>
   <data name="AllSections" xml:space="preserve">
     <value>כל הבתים</value>
@@ -667,7 +667,7 @@
     <value>כרטיסים חופשיים מוקדמות</value>
   </data>
   <data name="CompetitionPlayerSource.Regular" xml:space="preserve">
-    <value></value>
+    <value />
   </data>
   <data name="CompetitionPlayerSource.Wildcard" xml:space="preserve">
     <value>WC</value>
@@ -686,5 +686,17 @@
   </data>
   <data name="MoreInfoTab" xml:space="preserve">
     <value>פרטים נוספים</value>
+  </data>
+  <data name="PlayerDetails" xml:space="preserve">
+    <value>פרטים</value>
+  </data>
+  <data name="PlayerRanking" xml:space="preserve">
+    <value>דירוג</value>
+  </data>
+  <data name="CompetitionPlayerSource" xml:space="preserve">
+    <value>סוג הכרטיס</value>
+  </data>
+  <data name="IdNumber" xml:space="preserve">
+    <value>ת.ז.</value>
   </data>
 </root>

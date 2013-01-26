@@ -1,6 +1,7 @@
 ﻿@model Simple.SAMS.Contracts.Players.Player
-
-
+<div class="row-fluid">
+    <div class="span6">
+        <h3>@Html.Resource("PlayerDetails")</h3>
         <div class="control-group">
             @Html.LabelFor(m => m.IdNumber, Html.ResourceText("PlayerIdNumber"), new { @class = "control-label" })
             <div class="controls">
@@ -49,4 +50,28 @@
                 @Html.TextBox("IPIN", Model.IPIN)
             </div>
         </div>
+    </div>
+    <div class="span6">
+        <h3>@Html.Resource("PlayerRanking")</h3>
+        <div class="control-group">
+            @Html.LabelFor(m => m.IPIN, Html.ResourceText("PlayerNationalRankHeader"), new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBox("NationalRank", Model.NationalRank)
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.LabelFor(m => m.IPIN, Html.ResourceText("PlayerEuropeInternationalRankHeader"), new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBox("EuropeInternationalRank", Model.EuropeInternationalRank)
+            </div>
+        </div>
+        <div class="control-group">
+            @Html.LabelFor(m => m.IPIN, Html.ResourceText("PlayerYouthInternationalRankHeader"), new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBox("YouthInternationalRank", Model.YouthInternationalRank)
+            </div>
+        </div>
+
+    </div>
+</div>
 

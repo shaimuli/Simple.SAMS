@@ -12,5 +12,6 @@ namespace SAMS.Models
         public CompetitionHeaderInfo Competition { get; set; }
         public Player ReplacedPlayer { get; set; }
         public Player Player { get; set; }
+        public CompetitionPlayerSource Source { get; set; }
     }
 }
