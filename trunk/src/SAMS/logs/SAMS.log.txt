@@ -1447,3 +1447,68 @@ Parameter name: parameters
 2013-01-26 19:25:48.2227 SimpleSite|Info| SAMS Application initialization completed.
 2013-01-26 19:29:06.0621 SimpleSite|Info| SAMS Application started... 
 2013-01-26 19:29:06.7581 SimpleSite|Info| SAMS Application initialization completed.
+2013-01-28 07:11:45.4411 SimpleSite|Info| SAMS Application started... 
+2013-01-28 07:11:46.3011 SimpleSite|Info| SAMS Application initialization completed.
+2013-01-28 07:13:04.8796 SimpleSite|Info| SAMS Application started... 
+2013-01-28 07:13:05.5146 SimpleSite|Info| SAMS Application initialization completed.
+2013-01-28 07:21:32.6966 SimpleSite|Info| SAMS Application started... 
+2013-01-28 07:21:33.3197 SimpleSite|Info| SAMS Application initialization completed.
+2013-01-28 07:25:20.4577 SimpleSite|Info| SAMS Application started... 
+2013-01-28 07:25:21.6947 SimpleSite|Info| SAMS Application initialization completed.
+2013-01-28 07:25:58.8699 SimpleSite|Info| SAMS Application started... 
+2013-01-28 07:25:59.8219 SimpleSite|Info| SAMS Application initialization completed.
+2013-01-28 07:28:20.4770 SimpleSite|Info| SAMS Application started... 
+2013-01-28 07:28:21.2350 SimpleSite|Info| SAMS Application initialization completed.
+2013-01-30 00:03:31.4570 SimpleSite|Info| SAMS Application started... 
+2013-01-30 00:03:32.5181 SimpleSite|Info| SAMS Application initialization completed.
+2013-01-30 00:04:04.1619 SimpleSite|Info| SAMS Application started... 
+2013-01-30 00:04:04.8809 SimpleSite|Info| SAMS Application initialization completed.
+2013-01-30 00:04:44.8892 SimpleSite|Info| SAMS Application started... 
+2013-01-30 00:04:45.5823 SimpleSite|Info| SAMS Application initialization completed.
+2013-01-31 19:23:12.4306 SimpleSite|Info| SAMS Application started... 
+2013-01-31 19:23:13.5857 SimpleSite|Info| SAMS Application initialization completed.
+2013-01-31 19:29:51.3115 SimpleSite|Error| Error executing request.
+Details:
+System.ArgumentException: Competition '1128' qualifying section is already full.
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.AddPlayersToCompetition(Int32 competitionId, AddCompetitionPlayerInfo[] players) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 173
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.AddPlayerToCompetition(Int32 competitionId, Int32 playerId, CompetitionPlayerSource source, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 154
+   at SAMS.Controllers.PlayersController.Create(Nullable`1 competitionId, Nullable`1 replacedPlayerId, Player player, CompetitionPlayerSource competitionPlayerSource, CompetitionSection competitionSection) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\PlayersController.cs:line 52
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-01-31 19:33:55.7034 SimpleSite|Error| Error executing request.
+Details:
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Max(IEnumerable`1 source)
+   at System.Linq.Enumerable.Max[TSource](IEnumerable`1 source, Func`2 selector)
+   at KnockoutPositioningEngine.AddPlayerToSection(Int32 playerId, CompetitionSection section, CompetitionDetails details) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\KnockoutPositioningEngine.cs:line 116
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.PositionPlayerInSection(Int32 competitionId, Int32 playerId, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 78
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.AddPlayerToCompetition(Int32 competitionId, Int32 playerId, CompetitionPlayerSource source, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 164
+   at SAMS.Controllers.PlayersController.Create(Nullable`1 competitionId, Nullable`1 replacedPlayerId, Player player, CompetitionPlayerSource competitionPlayerSource, CompetitionSection competitionSection) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\PlayersController.cs:line 52
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)

@@ -13,5 +13,6 @@ namespace SAMS.Models
         public Player ReplacedPlayer { get; set; }
         public Player Player { get; set; }
         public CompetitionPlayerSource Source { get; set; }
+        public CompetitionSection Section { get; set; }
     }
 }

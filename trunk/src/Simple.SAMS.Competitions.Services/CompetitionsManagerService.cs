@@ -25,7 +25,7 @@ namespace Simple.SAMS.Competitions.Services
            
         }
 
-        private static AddCompetitionPlayerInfo[] GetCompetitionPlayersToAdd(string playersFile, ICompetitionsEngine competitionsEngine)
+        private AddCompetitionPlayerInfo[] GetCompetitionPlayersToAdd(string playersFile, ICompetitionsEngine competitionsEngine)
         {
             var players = competitionsEngine.GetCompetitionPlayers(playersFile);
             var playersRepository = ServiceProvider.Get<IPlayersRepository>();
@@ -139,19 +139,29 @@ namespace Simple.SAMS.Competitions.Services
             competitionsEngine.RemovePlayerFromCompetition(competitionId, playerId);
         }
 
-        public void ReplacePlayer(int competitionId, int replacedPlayerId, int replacingPlayerId, CompetitionPlayerSource source)
+        public void ReplacePlayer(int competitionId, int replacedPlayerId, int replacingPlayerId, CompetitionPlayerSource source, CompetitionSection section)
         {
             RemovePlayer(competitionId, replacedPlayerId);
-            AddPlayerToCompetition(competitionId, replacingPlayerId, source);
+            AddPlayerToCompetition(competitionId, replacingPlayerId, source, section);
         }
 
-        public void AddPlayerToCompetition(int competitionId, int playerId, CompetitionPlayerSource source)
+        public void AddPlayerToCompetition(int competitionId, int playerId, CompetitionPlayerSource source, CompetitionSection section)
         {
             var competitionsEngine = ServiceProvider.Get<ICompetitionsEngine>();
             var playersRepository = ServiceProvider.Get<IPlayersRepository>();
             var player = playersRepository.Get(playerId);
             
-            competitionsEngine.AddPlayersToCompetition(competitionId, new[]{ new AddCompetitionPlayerInfo(){ Player = player, Source = source }});
+            competitionsEngine.AddPlayersToCompetition(competitionId, 
+                new[]
+                    {
+                        new AddCompetitionPlayerInfo()
+                            {
+                                Player = player, 
+                                Source = source,
+                                Section = section
+                            }
+                    });
+            competitionsEngine.PositionPlayerInSection(competitionId, playerId, section);
         }
 
         public void UpdateMatchStartTime(MatchStartTimeUpdateInfo[] updates)

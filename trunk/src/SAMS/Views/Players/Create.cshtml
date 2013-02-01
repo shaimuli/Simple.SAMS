@@ -19,6 +19,7 @@
         {
             @Html.Hidden("CompetitionId", Model.Competition.Id)
             @Html.Hidden("CompetitionPlayerSource", (int)Model.Source)
+            @Html.Hidden("CompetitionSection", (int)Model.Section)
             if (Model.ReplacedPlayer.IsNotNull())
             {
                 @Html.Hidden("ReplacedPlayerId", Model.ReplacedPlayer.Id)

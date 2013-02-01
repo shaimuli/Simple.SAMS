@@ -21,8 +21,21 @@ namespace SAMS.Controllers
             return View();
         }
 
+        public ActionResult GetPlayerByIdNumber(string idNumber)
+        {
+            var playersRepository = ServiceProvider.Get<IPlayersRepository>();
+            var playerId = playersRepository.GetPlayerIdByIdNumber(idNumber);
+            var result = default(Player);
+            if (playerId.HasValue)
+            {
+                result = playersRepository.Get(playerId.Value);
+            }
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpPost]
-        public ActionResult Create(int? competitionId, int? replacedPlayerId, Player player, CompetitionPlayerSource competitionPlayerSource)
+        public ActionResult Create(int? competitionId, int? replacedPlayerId, Player player, CompetitionPlayerSource competitionPlayerSource, CompetitionSection competitionSection)
         {
             var playersRepository = ServiceProvider.Get<IPlayersRepository>();
             var newPlayerId = playersRepository.Add(player);
@@ -32,11 +45,11 @@ namespace SAMS.Controllers
                 var manager = ServiceProvider.Get<ICompetitionsManager>();
                 if (replacedPlayerId.HasValue)
                 {
-                    manager.ReplacePlayer(competitionId.Value, replacedPlayerId.Value, newPlayerId, competitionPlayerSource);
+                    manager.ReplacePlayer(competitionId.Value, replacedPlayerId.Value, newPlayerId, competitionPlayerSource, competitionSection);
                 }
                 else
                 {
-                    manager.AddPlayerToCompetition(competitionId.Value, newPlayerId, competitionPlayerSource);
+                    manager.AddPlayerToCompetition(competitionId.Value, newPlayerId, competitionPlayerSource, competitionSection);
                 }
                 return RedirectToAction("Details", "Competitions", new { id = competitionId.Value });
             }
@@ -46,7 +59,7 @@ namespace SAMS.Controllers
             }
         }
 
-        public ActionResult Create(int? competitionId, int? replacePlayerId, string idNumber, int source)
+        public ActionResult Create(int? competitionId, int? replacePlayerId, string idNumber, CompetitionPlayerSource source, CompetitionSection section)
         {
             var player = new Player();
             var model = new CreatePlayerModel { Player = player };
@@ -55,7 +68,9 @@ namespace SAMS.Controllers
             {
                 var competitionRepository = ServiceProvider.Get<ICompetitionRepository>();
                 model.Competition = competitionRepository.GetCompetition(competitionId.Value);
-                model.Source = (CompetitionPlayerSource)source;
+                model.Source = source;
+                model.Section = section;
+
                 if (replacePlayerId.HasValue)
                 {
                     var playersRepository = ServiceProvider.Get<IPlayersRepository>();

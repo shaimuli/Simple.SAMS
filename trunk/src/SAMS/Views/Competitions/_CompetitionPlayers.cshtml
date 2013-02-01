@@ -23,12 +23,13 @@
                 <th class="span1" data-sort-type="text"></th>
                 <th class="span2" data-sort-type="text">@Html.Resource("PlayerLocalNameHeader")</th>
                 <th class="span2" data-sort-type="text">@Html.Resource("PlayerEnglishNameHeader")</th>
+                <th class="span2" data-sort-type="text">@Html.Resource("PlayerIdNumber")</th>
                 <th class="span2" data-sort-type="text">@Html.Resource("PlayerBirthDateHeader")</th>
                 <th class="span2" data-sort-type="text">@Html.Resource("PlayerCountryHeader")</th>
                 <th class="span1" data-sort-type="text">@Html.Resource("PlayerGenderHeader")</th>
-                <th class="span2" data-sort-type="numeric">@Html.Resource("PlayerNationalRankHeader")</th>
-                <th class="span2" data-sort-type="numeric">@Html.Resource("PlayerEuropeInternationalRankHeader")</th>
-                <th class="span2" data-sort-type="numeric">@Html.Resource("PlayerYouthInternationalRankHeader")</th>
+                <th class="span1" data-sort-type="numeric">@Html.Resource("PlayerNationalRankHeader")</th>
+                <th class="span1" data-sort-type="numeric">@Html.Resource("PlayerEuropeInternationalRankHeader")</th>
+                <th class="span1" data-sort-type="numeric">@Html.Resource("PlayerYouthInternationalRankHeader")</th>
                 <th></th>
             </tr>
         </thead>
@@ -49,6 +50,7 @@
                         @(item.LocalFirstName + " " + item.LocalLastName)
                     </td>
                     <td>@(item.EnglishFirstName + " " + item.EnglishLastName)</td>
+                    <td>@item.IdNumber</td>
                     <td>@(item.BirthDate.HasValue ? item.BirthDate.Value.ToShortDateString() : string.Empty)</td>
                     <td>@item.Country</td>
                     <td>@(item.IsFemale ? Html.Resource("FemaleAbbr") : Html.Resource("MaleAbbr"))</td>

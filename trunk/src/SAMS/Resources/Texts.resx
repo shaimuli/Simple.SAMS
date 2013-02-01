@@ -387,6 +387,9 @@
   <data name="CompetitionSection.Consolation" xml:space="preserve">
     <value>בית התנחומים</value>
   </data>
+  <data name="CompetitionSection.None" xml:space="preserve">
+    <value></value>
+  </data>
   <data name="CompetitionSection.Final" xml:space="preserve">
     <value>בית הגמר</value>
   </data>
@@ -398,6 +401,9 @@
   </data>
   <data name="CompetitionSection.Qualifying" xml:space="preserve">
     <value>מוקדמות</value>
+  </data>
+  <data name="CompetitionSection" xml:space="preserve">
+    <value>בית</value>
   </data>
   <data name="CompetitionStatus.Finished" xml:space="preserve">
     <value>התחרות הסתיימה</value>

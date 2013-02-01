@@ -600,6 +600,11 @@
               Looks up a localized string similar to תחרויות.
             </summary>
         </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionSection">
+            <summary>
+              Looks up a localized string similar to בית.
+            </summary>
+        </member>
         <member name="P:SAMS.Resources.Texts.CompetitionSection_Consolation">
             <summary>
               Looks up a localized string similar to בית התנחומים.
@@ -608,6 +613,11 @@
         <member name="P:SAMS.Resources.Texts.CompetitionSection_Final">
             <summary>
               Looks up a localized string similar to בית הגמר.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionSection_None">
+            <summary>
+              Looks up a localized string similar to .
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.CompetitionSection_PairsFinal">

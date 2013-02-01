@@ -20,7 +20,7 @@ namespace Simple.SAMS.Competitions.Services
         {
             var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
             var match = competitionMatchesRepository.GetMatch(matchId);
-            
+
             if (match.StartTime.HasValue &&
                 match.Result.HasValue && match.Result.Value != MatchResult.Pause &&
                 match.Winner != MatchWinner.None &&
@@ -52,7 +52,7 @@ namespace Simple.SAMS.Competitions.Services
             var updateInfo = new UpdatePlayerPositionInfo()
                                  {
                                      PlayerId = looserId,
-                                     Position = thirdPlaceMatch.Player1.IsNull() ?0:1,
+                                     Position = thirdPlaceMatch.Player1.IsNull() ? 0 : 1,
                                      MatchId = thirdPlaceMatch.Id
                                  };
             var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
@@ -62,26 +62,34 @@ namespace Simple.SAMS.Competitions.Services
 
         private void QualifyToFinal(MatchHeaderInfo match)
         {
+            var winnerId = (match.Winner == MatchWinner.Player1 ? match.Player1 : match.Player2).Id;
+
+            PositionPlayerInSection(match.CompetitionId, winnerId, CompetitionSection.Final);
+        }
+
+        public void PositionPlayerInSection(int competitionId, int playerId, CompetitionSection section)
+        {
             var positioningEngine = GetPositioningEngine(CompetitionMethod.Knockout);
             var competitionRepository = ServiceProvider.Get<ICompetitionRepository>();
-            
-            var competitionDetails = competitionRepository.GetCompetitionDetails(match.CompetitionId);
-            var winnerId = (match.Winner == MatchWinner.Player1 ? match.Player1 : match.Player2).Id;
-            var updatePlayerInfo = positioningEngine.AddPlayerToSection(winnerId, CompetitionSection.Final, competitionDetails);
+
+            var competitionDetails = competitionRepository.GetCompetitionDetails(competitionId);
+
+
+            var updatePlayerInfo = positioningEngine.AddPlayerToSection(playerId, section, competitionDetails);
             if (updatePlayerInfo.IsNotNull())
             {
                 var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
-                competitionMatchesRepository.UpdatePlayersPosition(match.CompetitionId, new[] {updatePlayerInfo});
+                competitionMatchesRepository.UpdatePlayersPosition(competitionId, new[] {updatePlayerInfo});
             }
         }
 
-        private  void QualifySameSection(MatchHeaderInfo match)
+        private void QualifySameSection(MatchHeaderInfo match)
         {
             var competitionId = match.CompetitionId;
             var winner = match.Winner == MatchWinner.Player1 ? match.Player1 : match.Player2;
             var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
             var qualifyToMatch = competitionMatchesRepository.GetMatchByRelativePosition(competitionId, match.Section, match.Round + 1,
-                                                                                         match.RoundRelativePosition/2);
+                                                                                         match.RoundRelativePosition / 2);
             if (qualifyToMatch.IsNotNull())
             {
                 competitionMatchesRepository.UpdatePlayersPosition(competitionId,
@@ -135,23 +143,51 @@ namespace Simple.SAMS.Competitions.Services
         {
             var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
             var competitionTypesRepository = ServiceProvider.Get<ICompetitionTypeRepository>();
-            var competition = competitionsRepository.GetCompetition(competitionId);
+            var competition = competitionsRepository.GetCompetitionDetails(competitionId);
             if (competition.IsNull())
             {
                 throw new ArgumentException("Competition '{0}' could not be found.".ParseTemplate(competitionId));
             }
             var competitionType = competitionTypesRepository.Get(competition.Type.Id);
+            if (competition.Players.Length == competitionType.PlayersCount)
+            {
+                throw new ArgumentException("Competition '{0}' is already full.".ParseTemplate(competitionId));
+            }
+            var qualifyingPlayersCount = players.Count(p => p.Section == CompetitionSection.Qualifying);
+            if (qualifyingPlayersCount > 0)
+            {
+                if (competitionType.QualifyingPlayersCount == 0)
+                {
+                    throw new ArgumentException(
+                        "Competition '{0}' does not have qualifying section.".ParseTemplate(competitionId));
+                }
+                if (qualifyingPlayersCount > competitionType.QualifyingPlayersCount)
+                {
+                    throw new ArgumentException(
+                        "Competition '{0}' has only {1} players in qualifying section but more players designated to that section.".ParseTemplate(competitionId, competitionType.QualifyingPlayersCount));
+                }
+                var competitionQualifyingPlayersCount =
+                    competition.Players.Count(p => p.Section == CompetitionSection.Qualifying);
+                if (competitionQualifyingPlayersCount == competitionType.QualifyingPlayersCount)
+                {
+                    throw new ArgumentException(
+                        "Competition '{0}' qualifying section is already full.".ParseTemplate(competitionId));
+                }
+
+            }
             var competitionPlayers = new List<PlayerInCompetition>();
             for (var i = 0; i < players.Length; i++)
             {
                 var player = players[i];
                 var rank = competitionType.RankPlayer(player.Player);
+                var section = player.Section ?? CompetitionSection.Final;
+
                 var playerInCompetition = new PlayerInCompetition()
                                               {
-                                                  PlayerId = player.Player.Id, 
-                                                  Rank = rank, 
+                                                  PlayerId = player.Player.Id,
+                                                  Rank = rank,
                                                   Source = player.Source,
-                                                  Section = CompetitionSection.Final
+                                                  Section = section
                                               };
                 competitionPlayers.Add(playerInCompetition);
             }
@@ -159,8 +195,8 @@ namespace Simple.SAMS.Competitions.Services
             if (competitionType.QualifyingPlayersCount > 0)
             {
                 var qualifyingPlayers =
-                    competitionPlayers.OrderByDescending(p => p.Rank).Take(competitionType.QualifyingPlayersCount);
-                qualifyingPlayers.ForEach(cp=>cp.Section = CompetitionSection.Qualifying);
+                    competitionPlayers.OrderByDescending(p => p.Rank).Take(competitionType.QualifyingPlayersCount - qualifyingPlayersCount);
+                qualifyingPlayers.ForEach(cp => cp.Section = CompetitionSection.Qualifying);
             }
 
             competitionsRepository.AddPlayersToCompetition(competitionId, competitionPlayers.ToArray());
@@ -310,10 +346,10 @@ namespace Simple.SAMS.Competitions.Services
             var positions = positioningEngine.PositionPlayers(competitionDetails);
 
             var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
-            
+
             competitionMatchesRepository.UpdatePlayersPosition(competitionId, positions);
 
-            
+
             // TRACE
             //var json = positions.ToJson();
             //var file = "E:\\temp\\positions.json.txt";
@@ -332,7 +368,7 @@ namespace Simple.SAMS.Competitions.Services
             {
                 throw new ApplicationException(
                     "Positioning engine factory '{0}' returned null, instance of {1} is expected.".ParseTemplate(
-                        positioningEngineFactory.GetType().FullName, typeof (IPositioningEngine).FullName));
+                        positioningEngineFactory.GetType().FullName, typeof(IPositioningEngine).FullName));
             }
             return positioningEngine;
         }

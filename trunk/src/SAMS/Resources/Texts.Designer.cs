@@ -376,6 +376,15 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to בית.
+        /// </summary>
+        internal static string CompetitionSection {
+            get {
+                return ResourceManager.GetString("CompetitionSection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to בית התנחומים.
         /// </summary>
         internal static string CompetitionSection_Consolation {
@@ -390,6 +399,15 @@ namespace SAMS.Resources {
         internal static string CompetitionSection_Final {
             get {
                 return ResourceManager.GetString("CompetitionSection.Final", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string CompetitionSection_None {
+            get {
+                return ResourceManager.GetString("CompetitionSection.None", resourceCulture);
             }
         }
         

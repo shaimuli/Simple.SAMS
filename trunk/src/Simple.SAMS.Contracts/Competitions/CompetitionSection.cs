@@ -11,6 +11,8 @@ namespace Simple.SAMS.Contracts.Competitions
     public enum CompetitionSection
     {
         [EnumMember]
+        None,
+        [EnumMember]
         Final = 1,
         [EnumMember]
         Qualifying = 2,

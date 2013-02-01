@@ -37,9 +37,9 @@ namespace Simple.SAMS.Contracts.Competitions
         void RemovePlayer(int competitionId, int playerId);
 
         [OperationContract]
-        void ReplacePlayer(int competitionId, int replacedPlayerId, int replacingPlayerId, CompetitionPlayerSource source);
+        void ReplacePlayer(int competitionId, int replacedPlayerId, int replacingPlayerId, CompetitionPlayerSource source, CompetitionSection section);
 
         [OperationContract]
-        void AddPlayerToCompetition(int competitionId, int playerId, CompetitionPlayerSource source);
+        void AddPlayerToCompetition(int competitionId, int playerId, CompetitionPlayerSource source, CompetitionSection section);
     }
 }

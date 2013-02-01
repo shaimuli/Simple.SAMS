@@ -34,9 +34,9 @@ namespace SAMS.Controllers
         }
 
         [HttpPost]
-        public ActionResult ReplaceCompetitionPlayer(int competitionId, int replacedPlayerId, int replacementPlayerId)
+        public ActionResult ReplaceCompetitionPlayer(int competitionId, int replacedPlayerId, int replacementPlayerId, int source, int section)
         {
-            SystemMonitor.Info("Replaceing {0} with {1}", replacedPlayerId, replacementPlayerId);
+            SystemMonitor.Info("Replaceing {0} with {1}, source:{2}, section:{3}", replacedPlayerId, replacementPlayerId, source, section);
             return new HttpStatusCodeResult(200);
         }
 

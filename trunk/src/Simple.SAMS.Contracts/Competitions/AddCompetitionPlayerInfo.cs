@@ -12,6 +12,9 @@ namespace Simple.SAMS.Contracts.Competitions
     public class AddCompetitionPlayerInfo
     {
         [DataMember(EmitDefaultValue = false)]
+        public CompetitionSection? Section { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
         public CompetitionPlayerSource Source { get; set; }
 
         [DataMember(EmitDefaultValue = false)]

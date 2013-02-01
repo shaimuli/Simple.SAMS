@@ -278,7 +278,8 @@
                 onConfirm: _.bind(function (parameters, dialogContainer) {
                     var idNumber = $("input[name='" + config.idNumberName + "']", dialogContainer).val();
                     var source = $("select[name='source']", dialogContainer).val();
-                    this[config.actionName](idNumber, source, parameters);
+                    var section = $("select[name='section']", dialogContainer).val();
+                    this[config.actionName](idNumber, parameters, source, section);
                 }, this),
                 applyTemplate: function (dialogContainer) {
                     $("<span/>").text(config.text).appendTo(dialogContainer);
@@ -305,6 +306,15 @@
                     $.each(config.competitionPlayerSources, function (index, item) {
                         $("<option/>").val(index).text(item).appendTo(sourceSelect);
                     });
+                    host = $("<div class='control-group'/>").appendTo(form);
+                    $("<label/>").text(config.resources.CompetitionSection).appendTo(host);
+                    host = $("<div class='controls'/>").appendTo(host);
+                    var sectionSelect = $("<select/>").attr("name", "section").appendTo(host);
+                    $.each(config.competitionSections, function (index, item) {
+                        if (index > 0) {
+                            $("<option/>").val(index).text(item).appendTo(sectionSelect);
+                        }
+                    });
 
                 },
                 resources: {
@@ -326,6 +336,7 @@
                 dialogName: "addPlayerDialog",
                 actionName: "addPlayer",
                 competitionPlayerSources: this.config.competitionPlayerSources,
+                competitionSections: this.config.competitionSections,
                 resources: this.config.resources
             };
             this.initPlayerDialog(config);
@@ -341,19 +352,20 @@
                 dialogName: "replacePlayerDialog",
                 actionName: "replacePlayer",
                 competitionPlayerSources: this.config.competitionPlayerSources,
+                competitionSections: this.config.competitionSections,
                 resources: this.config.resources
             };
             this.initPlayerDialog(config);
             $("a.ReplaceCompetitionPlayer").click(_.bind(this.onReplaceCompetitionPlayer, this));
         },
-        addPlayer: function (idNumber, source) {
+        addPlayer: function (idNumber,parameters, source, section) {
             var competitionId = this.getCompetitionId();
             var playerFound = _.bind(function (result) {
                 if (result) {
                     $.ajax({
                         url: this.config.addPlayerUrl,
                         type: "POST",
-                        data: { competitionId: competitionId, playerId: result },
+                        data: { competitionId: competitionId, playerId: result, source: source, section: section },
                         success: function () {
                             location.reload();
                         },
@@ -362,19 +374,19 @@
                         }, this)
                     });
                 } else {
-                    location.href = this.config.createPlayerUrl + "?competitionId=" + String(competitionId) + "&idNumber=" + String(idNumber) + "&source=" + String(source);
+                    location.href = this.config.createPlayerUrl + "?competitionId=" + String(competitionId) + "&idNumber=" + String(idNumber) + "&source=" + String(source) + "&section=" + String(section);
                 }
             }, this);
-            $.getJSON(this.config.getPlayerIdByIdNumberUrl, playerFound);
+            $.getJSON(this.config.getPlayerIdByIdNumberUrl, { idNumber: idNumber }, playerFound);
         },
-        replacePlayer: function(idNumber, replacedPlayerId) {
+        replacePlayer: function(idNumber, replacedPlayerId, source, section) {
             var competitionId = this.getCompetitionId();
             var playerFound = _.bind(function (result) {
                 if (result) {
                     $.ajax({
                         url: this.config.replacePlayerUrl,
                         type: "POST",
-                        data: { competitionId: competitionId, replacedPlayerId: replacedPlayerId, replacementPlayerId: result },
+                        data: { competitionId: competitionId, replacedPlayerId: replacedPlayerId, replacementPlayerId: result, source:source, section:section },
                         success: function () {
                             location.reload();
                         },
@@ -383,10 +395,10 @@
                         }, this)
                     });
                 } else {
-                    location.href = this.config.createPlayerUrl + "?competitionId=" + String(competitionId) + "&replacePlayerId=" + String(replacedPlayerId) + "&idNumber=" + String(idNumber) + "&source=" + String(source);
+                    location.href = this.config.createPlayerUrl + "?competitionId=" + String(competitionId) + "&replacePlayerId=" + String(replacedPlayerId) + "&idNumber=" + String(idNumber) + "&source=" + String(source) + "&section=" + String(section);
                 }
             }, this);
-            $.getJSON(this.config.getPlayerIdByIdNumberUrl, playerFound);
+            $.getJSON(this.config.getPlayerIdByIdNumberUrl, { idNumber: idNumber }, playerFound);
         },
         initRemovePlayerDialog: function () {
             var dialogConfig = {
