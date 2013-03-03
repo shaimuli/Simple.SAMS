@@ -12,7 +12,7 @@
 
 <div class="tabbable">
     <ul id="tabs" class="nav nav-tabs">
-        <li class="active">
+        <li class="@((int)Model.Status >= (int)CompetitionStatus.Positioned ? "active":"")">
             <a href="#matches" data-toggle="tab">@Html.Resource("CompetitionMatchesTab")</a>
         </li>
         <li><a href="#updateResults" data-toggle="tab">
@@ -26,13 +26,14 @@
             @Html.Resource("CompetitionMatchesListTab")
         </a>
         </li>        
-        <li><a href="#moreInfo" data-toggle="tab">
-            @Html.Resource("MoreInfoTab")
-        </a>
+        <li class="@((int)Model.Status < (int)CompetitionStatus.Positioned ? "active":"")">
+            <a href="#moreInfo" data-toggle="tab">
+                      @Html.Resource("MoreInfoTab")
+                  </a>
         </li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane active" id="matches">
+        <div class="tab-pane @((int)Model.Status >= (int)CompetitionStatus.Positioned ? "active":"")" id="matches">
             @if (Model.Type.Method == CompetitionMethod.Knockout)
             {
                 @Html.Partial("_KnockoutMatches", Model);
@@ -45,7 +46,7 @@
         </div>
         <div class="tab-pane" id="players">
             <div class="competitionPlayersContainer">
-                @Html.Partial("_CompetitionPlayers", Model.Players)
+                @Html.Partial("_CompetitionPlayers", Model)
             </div>
         </div>
         <div class="tab-pane" id="matchesList">
@@ -53,7 +54,7 @@
                 @Html.Partial("_MatchesList", Model.Matches)
             </div>
         </div>
-        <div class="tab-pane" id="moreInfo">
+        <div class="tab-pane @((int)Model.Status < (int)CompetitionStatus.Positioned ? "active":"")" id="moreInfo">
             @Html.Partial("_MoreInfo", Model)
         </div>
         </div>
@@ -113,7 +114,9 @@
                     "@Html.ResourceText("CompetitionSection.None")",
                     "@Html.ResourceText("CompetitionSection.Final")",
                     "@Html.ResourceText("CompetitionSection.Qualifying")"
-                ]
+                ],
+                canAddToFinal: @(Model.CanAddToFinal.ToString().ToLower()),
+                canAddToQualifying: @(Model.CanAddToQualifying.ToString().ToLower())
             };
             
             var competitionDetails = new Simple.CompetitionDetails(competitionDetailsConfig);

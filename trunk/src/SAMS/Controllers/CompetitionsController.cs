@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Reporting.WebForms;
 using Newtonsoft.Json;
 using SAMS.Models;
 using Simple;
@@ -19,6 +22,46 @@ namespace SAMS.Controllers
 {
     public class CompetitionsController : Controller
     {
+        public ActionResult TournamentBracket(int id)
+        {
+            var path = Path.GetTempFileName();
+
+            var model = GetCompetitionDetailsModel(id);
+
+            var playersCount = model.Type.PlayersCount;
+            var rounds = 6;
+            var table = new StringBuilder();
+            table.Append("<table width='100%' border=1>");
+            for (var i = 0; i < playersCount; i++)
+            {
+                table.Append("<tr>");
+                for (var r = 0; r < rounds; r++)
+                {
+                    var key = Math.Pow(2, (r ));
+                    if (r%key == i)
+                    {
+                        table.Append("<td ");
+                        if (r == 0)
+                        {
+                            table.Append(">");
+                        }
+                        else
+                        {
+                            table.Append(" rowspan='");
+                            table.Append(key);
+                            table.Append("'>");
+                        }
+                        table.AppendFormat("{0}, {1}, {2}", i, r, key);
+                        table.Append("</td>");
+                    }
+                }
+                table.Append("</tr>");
+            }
+            table.Append("</table>");
+            System.IO.File.WriteAllText(path, table.ToString());
+            return File(path, "text/html");
+        }
+
         protected override void OnException(ExceptionContext filterContext)
         {
             SystemMonitor.Error(filterContext.Exception, "Unhandled exception");
@@ -31,6 +74,68 @@ namespace SAMS.Controllers
             {
                 base.OnException(filterContext);
             }
+        }
+
+        public void Render(string reportDesign, ReportDataSource[] dataSources, string destFile, IEnumerable<ReportParameter> parameters = null)
+        {
+            var localReport = new LocalReport();
+
+            using (var reportDesignStream = System.IO.File.OpenRead(reportDesign))
+            {
+                localReport.LoadReportDefinition(reportDesignStream);
+            }
+            localReport.EnableExternalImages = true;
+            localReport.EnableHyperlinks = true;
+
+            if (parameters != null)
+            {
+                localReport.SetParameters(parameters);
+            }
+            foreach (var reportDataSource in dataSources)
+            {
+                localReport.DataSources.Add(reportDataSource);
+            }
+
+            //Export to PDF
+            string mimeType;
+            string encoding;
+            string fileNameExtension;
+            string[] streams;
+            Warning[] warnings;
+            var content = localReport.Render("PDF", null, out mimeType, out encoding, out fileNameExtension, out streams, out warnings);
+
+            System.IO.File.WriteAllBytes(destFile, content);
+        }
+
+        private DataTable CreatePrintDataSet(int competitionId)
+        {
+            var dataTable = new DataTable("Comp");
+            var model = GetCompetitionDetailsModel(competitionId);
+            dataTable.Columns.Add("Index", typeof (int));
+            var index = 1;
+            model.Players.ForEach(p=>
+                                      {
+                                          var row = dataTable.NewRow();
+                                          row["Index"] = index++;
+                                          dataTable.Rows.Add(row);
+                                      });
+            return dataTable;
+        }
+
+        public ActionResult Print(int id)
+        {
+            var rdlcPath = Server.MapPath("~/Static/Reports/Tournament.rdlc");
+            var outputPath = Server.MapPath("~/Output");
+            outputPath = Path.Combine(outputPath, "Competition.{0}.[{1}].pdf".ParseTemplate(id, Guid.NewGuid()));
+
+            var dataSet = CreatePrintDataSet(id);
+            
+            var dataSources = new ReportDataSource[] { new ReportDataSource("ItemsDataset", dataSet), };
+
+
+            Render(rdlcPath, dataSources, outputPath);
+
+            return File(outputPath, "application/pdf");
         }
 
         [HttpPost]
@@ -187,7 +292,8 @@ namespace SAMS.Controllers
             model.Site = competition.Site;
             model.SitePhone = competition.SitePhone;
             model.Players = competition.Players;
-
+            model.CanAddToFinal = competition.CanAddToFinal;
+            model.CanAddToQualifying = competition.CanAddToQualifying;
             model.Matches =
                 competition.Matches.Select(
                     m => new CompetitionMatchViewModel()
@@ -261,9 +367,13 @@ namespace SAMS.Controllers
         [HttpPost]
         public ActionResult UpdatePlayers(int competitionId, HttpPostedFileBase playersFile)
         {
-            var manager = ServiceProvider.Get<ICompetitionsManager>();
-            var url = AcceptCsvFile(playersFile, "CompetitionPlayers");
-            manager.UpdateCompetitionPlayers(competitionId, url.ToString());
+            if (playersFile.IsNotNull() && playersFile.ContentLength > 0)
+            {
+                var manager = ServiceProvider.Get<ICompetitionsManager>();
+                var url = AcceptCsvFile(playersFile, "CompetitionPlayers");
+                manager.UpdateCompetitionPlayers(competitionId, url.ToString());
+            }
+
             return RedirectToAction("Details", new { id = competitionId });
         }
 
@@ -275,10 +385,12 @@ namespace SAMS.Controllers
         [HttpPost]
         public ActionResult Import(HttpPostedFileBase competitionsFile)
         {
-            var url = AcceptCsvFile(competitionsFile, "CompetitionPlayers");
-            var manager = ServiceProvider.Get<ICompetitionsManager>();
-            manager.LoadCompetitions(url.ToString());
-
+            if (competitionsFile.IsNotNull() && competitionsFile.ContentLength > 0)
+            {
+                var url = AcceptCsvFile(competitionsFile, "CompetitionPlayers");
+                var manager = ServiceProvider.Get<ICompetitionsManager>();
+                manager.LoadCompetitions(url.ToString());
+            }
             return RedirectToAction("Index");
         }
 

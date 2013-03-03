@@ -20,6 +20,10 @@ public class KnockoutPositioningEngine : IPositioningEngine
         var finalPlayers = (from p in details.Players
             where p.Section == CompetitionSection.Final
             select p).ToArray<CompetitionPlayer>();
+        if (details.Type.QualifyingPlayersCount > 0)
+        {
+            finalPlayers = finalPlayers.Take(details.Type.PlayersCount - details.Type.QualifyingToFinalPlayersCount).ToArray();
+        }
         if (finalPlayers.Length > 0)
         {
             var finalPositions = PositionFinalPlayersInCompetition(details, finalPlayers);

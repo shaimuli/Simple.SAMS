@@ -485,6 +485,16 @@
               Looks up a localized string similar to כל הבתים.
             </summary>
         </member>
+        <member name="P:SAMS.Resources.Texts.Boolean_False">
+            <summary>
+              Looks up a localized string similar to לא.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.Boolean_True">
+            <summary>
+              Looks up a localized string similar to כן.
+            </summary>
+        </member>
         <member name="P:SAMS.Resources.Texts.Cancel">
             <summary>
               Looks up a localized string similar to ביטול.
@@ -562,7 +572,7 @@
         </member>
         <member name="P:SAMS.Resources.Texts.CompetitionPlayerSource">
             <summary>
-              Looks up a localized string similar to סוג הכרטיס.
+              Looks up a localized string similar to סוג רישום.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.CompetitionPlayerSource_LuckyLooser">
@@ -802,7 +812,7 @@
         </member>
         <member name="P:SAMS.Resources.Texts.EliminationTournament">
             <summary>
-              Looks up a localized string similar to טורניר.
+              Looks up a localized string similar to נוקאאוט.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.FemaleAbbr">
@@ -873,6 +883,11 @@
         <member name="P:SAMS.Resources.Texts.ImportCompetitions">
             <summary>
               Looks up a localized string similar to טעינת קובץ תחרויות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.League">
+            <summary>
+              Looks up a localized string similar to בתים.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.LoadCompetitionPlayersHeader">
@@ -1293,6 +1308,11 @@
         <member name="P:SAMS.Resources.Texts.Round">
             <summary>
               Looks up a localized string similar to סיבוב.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.RoundRobin">
+            <summary>
+              Looks up a localized string similar to ראונד רובין.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.SAMS">

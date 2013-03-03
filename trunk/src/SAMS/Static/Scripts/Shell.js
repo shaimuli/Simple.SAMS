@@ -64,7 +64,7 @@
                     event.preventDefault();
                     var target = $(this);
                     $("<div/>").load(target.attr("href"), function () {
-                        $(this).dialog({title:target.text(), modal: true });
+                        $(this).dialog({title:target.text(), modal: true, width: 600, resizable: false});
                    
                     });
                     return false;

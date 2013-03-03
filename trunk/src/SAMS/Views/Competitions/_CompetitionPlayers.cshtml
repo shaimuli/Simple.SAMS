@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Simple.SAMS.Contracts.Players.CompetitionPlayer>
+﻿@model SAMS.Models.CompetitionDetailsModel
 <div class="competitionPlayersContainer">
     <div class="row-fluid">
 
@@ -10,7 +10,10 @@
         </div>
         <div class="span2"></div>
         <div class="span4">
-            <button type="button" class="btn AddCompetitionPlayer">@Html.Resource("AddNewPlayer")</button>
+            @if (Model.CanAddToQualifying || Model.CanAddToFinal)
+            {
+                <button type="button" class="btn AddCompetitionPlayer">@Html.Resource("AddNewPlayer")</button>
+            }
         </div>
         <div class="span2">
             <button style="display:none" type="button" class="btn PrintPlayersList">@Html.Resource("PrintMatchesDraw")</button>
@@ -38,7 +41,7 @@
             @{
                 var index = 0;
             }
-            @foreach (var item in Model)
+            @foreach (var item in Model.Players)
             {
                 <tr class="player item@(index++ % 2 == 0 ? "" : " alternate")" data-key="@item.Id">
                     <td>

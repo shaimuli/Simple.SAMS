@@ -10,6 +10,8 @@ namespace SAMS.Models
 {
     public class CompetitionDetailsModel
     {
+        public bool CanAddToQualifying { get; set; }
+        public bool CanAddToFinal { get; set; }
         public int Id { get; set; }
         public string Name { get; set; }
         public string ReferenceId { get; set; }

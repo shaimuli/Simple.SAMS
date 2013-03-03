@@ -78,7 +78,12 @@
 <div class="control-group">
     @Html.Label("Method", Html.ResourceText("Method"), new { @class = "control-label" })
     <div class="controls">
-        @Html.DropDownList("Method", new SelectListItem[] { new SelectListItem() { Value = "0", Text = Html.ResourceText("EliminationTournament") }, })
+        @Html.DropDownList("Method", new SelectListItem[]
+                                         {
+                                             new SelectListItem() { Value = "0", Text = Html.ResourceText("EliminationTournament") },
+                                             new SelectListItem() { Value = "1", Text = Html.ResourceText("RoundRobin") },
+                                             new SelectListItem() { Value = "2", Text = Html.ResourceText("League") }
+                                         })
     </div>
 </div>
 <div class="control-group">

@@ -14,36 +14,35 @@
         <dt>@Html.Resource("CompetitionReferenceId")</dt>
         <dd>@Model.ReferenceId</dd>
     </dl>
-    
-    @if ((int)Model.Status < (int)CompetitionStatus.Started)
-    {
-        <div>
-            @Html.ActionLink(Html.ResourceText("UpdateCompetitionPlayers"), "UpdatePlayers", new { id = Model.Id })
-        </div>
-            
-        if (Model.Status == CompetitionStatus.Positioned)
+
+    <div class="competition_status">
+        @if ((int)Model.Status < (int)CompetitionStatus.Started)
         {
-                
+        
+            <div>
+                @Html.ActionLink(Html.ResourceText("UpdateCompetitionPlayers"), "UpdatePlayers", new { id = Model.Id })
+            </div>
+            <hr class="space" />
             <div>
                 @using (Html.BeginForm("StartCompetition", "Competitions", FormMethod.Post))
                 {
                     @Html.Hidden("CompetitionId", Model.Id)
                     <button class="btn btn-primary">@Html.Resource("StartCompetition")</button>
                 }
+            </div>
+        }
+        else if (Model.Status == CompetitionStatus.Started)
+        {
+            <div>
+                @using (Html.BeginForm("FinishCompetition", "Competitions", FormMethod.Post))
+                {
+                    @Html.Hidden("CompetitionId", Model.Id)
+                    <button class="btn btn-primary">@Html.Resource("FinishCompetition")</button>
+                }
 
             </div>
         }
-    }
-    else if (Model.Status == CompetitionStatus.Started)
-    {
-        <div>
-            @using (Html.BeginForm("FinishCompetition", "Competitions", FormMethod.Post))
-            {
-                @Html.Hidden("CompetitionId", Model.Id)
-                <button class="btn btn-primary">@Html.Resource("FinishCompetition")</button>
-            }
 
-        </div>
-    }
+    </div>
 </div>
 

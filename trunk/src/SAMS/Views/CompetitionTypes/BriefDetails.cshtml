@@ -4,24 +4,30 @@
 }
 <dl class="dl-horizontal">
    <dt>@Html.Resource("CompetitionMethod")</dt>
-    <dd>@Html.Resource("CompetitionMethod."+ Model.Method)
-    </dd>
-   <dt>@Html.Resource("Ranking")</dt>
-    <dd>@Html.Resource("Ranking."+ Model.Ranking)
-    </dd>
-    
+    <dd>@Html.Resource("CompetitionMethod."+ Model.Method)</dd>
+    <dt class="sep">@Html.Resource("Ranking")</dt>
+    <dd class="sep">@Html.Resource("Ranking."+ Model.Ranking)</dd>
     <dt>@Html.Resource("PlayersCount")</dt>
     <dd>@Model.PlayersCount</dd>
-    <dt>@Html.Resource("WildcardPlayersCount")</dt>
-    <dd>@Model.WildcardPlayersCount</dd>
     <dt>@Html.Resource("QualifyingPlayersCount")</dt>
     <dd>@Model.QualifyingPlayersCount</dd>
+    <dt class="sep">@Html.Resource("QualifyingToFinalPlayersCount")</dt>
+    <dd class="sep">@Model.QualifyingToFinalPlayersCount</dd>
+    <dt>@Html.Resource("WildcardPlayersCount")</dt>
+    <dd>@Model.WildcardPlayersCount</dd>
+    <dt class="sep">@Html.Resource("QualifyingWildcardPlayersCount")</dt>
+    <dd class="sep">@Model.QualifyingWildcardPlayersCount</dd>
+    <dd><br/><br/></dd>
     <dt>@Html.Resource("PairsCount")</dt>
     <dd>@Model.PairsCount</dd>
-    <dt>@Html.Resource("WildcardPairsCount")</dt>
-    <dd>@Model.WildcardPairsCount</dd>
     <dt>@Html.Resource("QualifyingPairsCount")</dt>
     <dd>@Model.QualifyingPairsCount</dd>
-
-
+    <dt class="sep">@Html.Resource("QualifyingToFinalPaisCount")</dt>
+    <dd class="sep">@Model.QualifyingToFinalPaisCount</dd>
+    <dt>@Html.Resource("WildcardPairsCount")</dt>
+    <dd>@Model.WildcardPairsCount</dd>
+    <dt class="sep">@Html.Resource("QualifyingWildcardPairsCount")</dt>
+    <dd class="sep">@Model.QualifyingWildcardPairsCount</dd>
+    <dt>@Html.Resource("HasConsolation")</dt>
+    <dd>@Html.Resource("Boolean." + Model.HasConsolation.ToString())</dd>
 </dl>

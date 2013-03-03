@@ -7,7 +7,7 @@
             if (this.dialogContainer.length == 0) {
                 this.dialogContainer = $("<div id='" + config.id + "'/>");
             }
-
+            
             var buttons = [
                 {
                     text: this.config.resources.Cancel,
@@ -87,6 +87,7 @@
                         target.tournament(items);
                     });
             });
+            
         },
         initTournament: function () {
             $(".t-host").tournament({ resources: this.config.resources });
@@ -100,7 +101,8 @@
             $(".t-host").tournament(items);*/
         },
         initPrint: function () {
-            var model = this.config.mdel;
+            var model = this.config.model;
+            var tournamentPrinntCss = this.config.tournamentPrinntCss;
             function addPrintPageHeaders(html) {
                 html.push("<h1>");
                 html.push(model.Name);
@@ -123,7 +125,7 @@
                 html.push(model.Name);
                 html.push("</title>");
                 html.push("<link type='text/css' rel='stylesheet' href='");
-                html.push(this.config.tournamentPrinntCss);
+                html.push(tournamentPrinntCss);
                 html.push("'/></head><body class='t-print rtl'>");
                 addPrintPageHeaders(html);
                 html.push(content);
@@ -152,7 +154,7 @@
             $(".PrintMatchesDraw").click(function () {
                 var html = [];
                 html.push("<div class='t-host t-@(Model.Type.PlayersCount)p'>");
-                html.push($(".t-host").html());
+                html.push($("#section-Final .t-host").html());
                 html.push("</div>");
                 printPage(html.join(""));
             });
@@ -166,7 +168,10 @@
                 sendUrl: this.config.sendUpdatesUrl,
                 resources: this.config.resources,
                 autoCommit: false,
-                onSuccessfullUpdate: _.bind(this.updateMatchesResults, this)
+                onSuccessfullUpdate: _.bind(function() {
+                    $(".competition_status").hide();
+                    this.updateMatchesResults();
+                }, this)
             };
 
             this.matchesEditor = new Simple.MatchResultsContinuesEdit(matchesContinuesEditConfig);
@@ -249,7 +254,8 @@
         },
         init: function(config) {
             this.config = config;
-
+            
+            this.initPrint();
             this.initMatchesEdit();
             this.initCompetitionPlayers();
             this.initTournament();
@@ -309,13 +315,21 @@
                     host = $("<div class='control-group'/>").appendTo(form);
                     $("<label/>").text(config.resources.CompetitionSection).appendTo(host);
                     host = $("<div class='controls'/>").appendTo(host);
-                    var sectionSelect = $("<select/>").attr("name", "section").appendTo(host);
-                    $.each(config.competitionSections, function (index, item) {
-                        if (index > 0) {
-                            $("<option/>").val(index).text(item).appendTo(sectionSelect);
-                        }
-                    });
+                    var hasSections = false;
+                    var sectionSelect = $("<select/>").attr("name", "section");
+                    if (config.canAddToFinal) {
+                        $("<option/>").val(1).text(config.competitionSections[1]).appendTo(sectionSelect);
+                        hasSections = true;
+                    }
 
+                    if (config.canAddToQualifying) {
+                        $("<option/>").val(2).text(config.competitionSections[2]).appendTo(sectionSelect);
+                        hasSections = true;
+                    }
+                    if (hasSections) {
+                        sectionSelect.appendTo(host);
+                    }
+                    
                 },
                 resources: {
                     Cancel: this.config.resources.Cancel,
@@ -337,6 +351,8 @@
                 actionName: "addPlayer",
                 competitionPlayerSources: this.config.competitionPlayerSources,
                 competitionSections: this.config.competitionSections,
+                canAddToFinal: this.config.canAddToFinal,
+                canAddToQualifying: this.config.canAddToQualifying,
                 resources: this.config.resources
             };
             this.initPlayerDialog(config);
@@ -353,6 +369,8 @@
                 actionName: "replacePlayer",
                 competitionPlayerSources: this.config.competitionPlayerSources,
                 competitionSections: this.config.competitionSections,
+                canAddToFinal: this.config.canAddToFinal,
+                canAddToQualifying: this.config.canAddToQualifying,
                 resources: this.config.resources
             };
             this.initPlayerDialog(config);

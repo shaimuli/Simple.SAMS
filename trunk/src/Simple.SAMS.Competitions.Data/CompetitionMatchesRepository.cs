@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Simple.ComponentModel;
 using Simple.Data;
 using Simple.SAMS.Contracts.Competitions;
 using Simple.SimplyLog.Data;
@@ -13,6 +14,25 @@ namespace Simple.SAMS.Competitions.Data
 {
     public class CompetitionMatchesRepository : DataRepositoryBase<CompetitionsDataContext>, ICompetitionMatchesRepository
     {
+        public int GetMatchCompetitionId(int matchId)
+        {
+            var competitionId = default(int);
+
+            UseDataContext(
+                dataContext =>
+                    {
+
+                        var match = dataContext.Matches.SingleOrDefault(m => m.Id == matchId);
+                        if (match == null)
+                        {
+                             throw new ArgumentException("Invalid match id");
+                        }
+
+                        competitionId = match.CompetitionId;
+                    });
+
+            return competitionId;
+        }
         public void AddCompetitionMatches(int competitionId, MatchHeaderInfo[] matches)
         {
             UseDataContext(

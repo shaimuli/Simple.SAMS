@@ -304,3 +304,21 @@ table.sortable thead tr .headerSortDown {
 .rtl .lastSaved {
     text-align: left;
 }
+
+.dl-horizontal dt {
+    width: 40%;
+}
+.dl-horizontal dd {
+    margin-right: 41%;
+}
+
+.dl-horizontal dt,
+.dl-horizontal dd {
+    line-height: 24px;    
+}
+
+.dl-horizontal dd.sep,
+.dl-horizontal dt.sep {
+    border-bottom: solid 1px #069;
+    margin-bottom: 4px;
+}

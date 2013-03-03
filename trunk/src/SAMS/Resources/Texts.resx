@@ -268,7 +268,13 @@
     <value>עריכת פרטי סוג תחרות</value>
   </data>
   <data name="EliminationTournament" xml:space="preserve">
-    <value>טורניר</value>
+    <value>נוקאאוט</value>
+  </data>
+  <data name="RoundRobin" xml:space="preserve">
+    <value>ראונד רובין</value>
+  </data>
+  <data name="League" xml:space="preserve">
+    <value>בתים</value>
   </data>
   <data name="Method" xml:space="preserve">
     <value>שיטה</value>
@@ -700,9 +706,15 @@
     <value>דירוג</value>
   </data>
   <data name="CompetitionPlayerSource" xml:space="preserve">
-    <value>סוג הכרטיס</value>
+    <value>סוג רישום</value>
   </data>
   <data name="IdNumber" xml:space="preserve">
     <value>ת.ז.</value>
+  </data>
+  <data name="Boolean.True" xml:space="preserve">
+    <value>כן</value>
+  </data>
+  <data name="Boolean.False" xml:space="preserve">
+    <value>לא</value>
   </data>
 </root>

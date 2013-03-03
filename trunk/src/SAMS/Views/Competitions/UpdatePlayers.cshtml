@@ -1,6 +1,6 @@
 ﻿@model Simple.SAMS.Contracts.Competitions.CompetitionHeaderInfo
 @{
-    ViewBag.GroupTitle =  @Model.Name;
+    ViewBag.GroupTitle = @Model.Name;
     ViewBag.Title = Html.ResourceText("UpdateCompetitionPlayersHeader");
 }
 
@@ -14,13 +14,35 @@
         <legend>@Html.Resource("LoadCompetitionPlayersHeader")</legend>
         <label for="playersFile">@Html.Resource("PlayersFileLabel")</label>
         <div>
-        <input type="file" name="playersFile" id="playersFile"/>    
+            <input type="file" name="playersFile" id="playersFile"/>
         </div>
-        <hr class="space"/>
+        <hr class="space" />
         <div class="row-fluid">
             <div class="span3">
                 <input type="submit" class="btn btn-primary stretch" value="@Html.ResourceText("UpdateCompetitionPlayers")" />
-                </div>
+            </div>
         </div>
     </fieldset>
+}
+
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(function() {
+            $("form").submit(function(e) {
+                var file = $("#playersFile").val();
+                if (file == "") {
+                    $("#playersFile").css("color", "red");
+                    return false;
+                } else {
+                    return true;
+                }
+            });
+
+            $("#playersFile").change(function() {
+                $(this).css("color", "black");
+            });
+        });
+    </script>
 }

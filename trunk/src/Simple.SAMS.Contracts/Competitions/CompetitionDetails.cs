@@ -12,6 +12,12 @@ namespace Simple.SAMS.Contracts.Competitions
     public class CompetitionDetails : CompetitionHeaderInfo
     {
         [DataMember(EmitDefaultValue = false)]
+        public bool CanAddToQualifying { get; set; }
+        
+        [DataMember(EmitDefaultValue = false)]
+        public bool CanAddToFinal { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
         public string MainRefereeName { get; set; }
 
         [DataMember(EmitDefaultValue = false)]

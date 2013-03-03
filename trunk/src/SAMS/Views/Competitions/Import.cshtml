@@ -21,3 +21,26 @@
         </div>
     </fieldset>
 }
+
+
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(function() {
+            $("form").submit(function(e) {
+                var file = $("#competitionsFile").val();
+                if (file == "") {
+                    $("#competitionsFile").css("color", "red");
+                    return false;
+                } else {
+                    return true;
+                }
+            });
+
+            $("#competitionsFile").change(function () {
+                $(this).css("color", "black");
+            });
+        });
+    </script>
+}

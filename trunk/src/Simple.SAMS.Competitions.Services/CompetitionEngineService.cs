@@ -215,7 +215,7 @@ namespace Simple.SAMS.Competitions.Services
                                                EnglishFirstName = p.EnglishFirstName,
                                                EnglishLastName = p.EnglishLastName,
                                                BirthDate = p.BirthDate,
-                                               IsFemale = p.IsFemale,
+                                               IsFemale = p.IsFemale.GetValueOrDefault(),
                                                Phone = p.Phone,
                                                IPIN = p.IPIN,
                                                Country = p.Country,
@@ -245,9 +245,11 @@ namespace Simple.SAMS.Competitions.Services
 
         private IEnumerable<PlayerRecord> LoadPlayersFromFile(string fileName)
         {
-            using (var file = FluentFile.For<PlayerRecord>().From(fileName))
+            var engine = FluentFile.For<PlayerRecord>();
+            
+            using (var file = engine.From(fileName))
             {
-                foreach (var player in file.Cast<PlayerRecord>())
+                foreach (var player in file.Cast<PlayerRecord>().Where(p=>p.LocalFirstName.NotNullOrEmpty() && p.EnglishFirstName.NotNullOrEmpty() && p.IdNumber.NotNullOrEmpty()))
                 {
                     yield return player;
                 }
@@ -260,7 +262,7 @@ namespace Simple.SAMS.Competitions.Services
             using (var file = engine.From(fileName))
             {
 
-                foreach (var player in file.Cast<CompetitionRecord>())
+                foreach (var player in file.Cast<CompetitionRecord>().Where(c=>c.ReferenceId.NotNullOrEmpty() && c.Name.NotNullOrEmpty()))
                 {
                     yield return player;
                 }
@@ -294,7 +296,7 @@ namespace Simple.SAMS.Competitions.Services
             public string Phone;
             [FieldConverter(ConverterKind.Date, "yyyy-MM-dd")]
             public DateTime? BirthDate;
-            public bool IsFemale;
+            public bool? IsFemale;
             public int? NationalRank;
             public int? EuropeInternationalRank;
             public int? YouthInternationalRank;
@@ -379,7 +381,26 @@ namespace Simple.SAMS.Competitions.Services
             var competitionsTypeRepository = ServiceProvider.Get<ICompetitionTypeRepository>();
 
             var competitionDetails = competitionsRepository.GetCompetitionDetails(competitionId);
-            competitionDetails.Type = competitionsTypeRepository.Get(competitionDetails.Type.Id);
+            var competitionType = competitionsTypeRepository.Get(competitionDetails.Type.Id);
+            competitionDetails.Type = competitionType;
+            if (competitionType.QualifyingPlayersCount > 0)
+            {
+                var actualQualifyingPlayersCount =
+                    competitionDetails.Players.Count(p => p.Section == CompetitionSection.Qualifying);
+                competitionDetails.CanAddToQualifying =
+                    actualQualifyingPlayersCount <
+                    competitionType.QualifyingPlayersCount;
+            }
+
+            var actualFinalPlayers = competitionDetails.Players.Count(p => p.Section == CompetitionSection.Final);
+            var spotsInFinal = competitionType.PlayersCount - actualFinalPlayers;
+            if (competitionType.QualifyingPlayersCount > 0)
+            {
+                spotsInFinal -= competitionType.QualifyingToFinalPlayersCount;
+            }
+
+            competitionDetails.CanAddToFinal = spotsInFinal > 0;
+
             return competitionDetails;
         }
 
@@ -413,5 +434,7 @@ namespace Simple.SAMS.Competitions.Services
             var competitionRepository = ServiceProvider.Get<ICompetitionRepository>();
             competitionRepository.RemovePlayerFromCompetition(competitionId, playerId);
         }
+
+
     }
 }
