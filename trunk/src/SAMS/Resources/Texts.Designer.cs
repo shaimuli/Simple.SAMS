@@ -1429,6 +1429,24 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to בצע הגרלת גמר.
+        /// </summary>
+        internal static string PositionFinalPlayers {
+            get {
+                return ResourceManager.GetString("PositionFinalPlayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to בצע הגרלת מוקדמות.
+        /// </summary>
+        internal static string PositionQualifyingPlayers {
+            get {
+                return ResourceManager.GetString("PositionQualifyingPlayers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to תצוגת הדפסה.
         /// </summary>
         internal static string PrintMatchesDraw {

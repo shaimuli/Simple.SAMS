@@ -45,6 +45,8 @@ namespace Simple.SAMS.Competitions.Data
             competition.EndTime = createCompetitionInfo.EndTime;
         }
 
+        
+
         public int Create(CreateCompetitionInfo createCompetitionInfo)
         {
             Requires.ArgumentNotNull(createCompetitionInfo, "headerInfo");
@@ -116,6 +118,26 @@ namespace Simple.SAMS.Competitions.Data
             return result;
         }
 
+        public Simple.SAMS.Contracts.Players.CompetitionPlayer GetCompetitionPlayer(int competitionId, int playerId)
+        {
+            var result = default(Simple.SAMS.Contracts.Players.CompetitionPlayer);
+            UseDataContext(
+                dataContext =>
+                    {
+                        dataContext.ObjectTrackingEnabled = false;
+                        dataContext.LoadOptions = GetCompetitionsLoadOptions();
+                        var player =
+                            dataContext.CompetitionPlayers.FirstOrDefault(
+                                cp => cp.CompetitionId == competitionId && cp.Player.Id == playerId);
+
+                        if (player.IsNotNull())
+                        {
+                            result = MapDataCompetitionPlayer(player, competitionId);
+                        }
+                    });
+            return result;
+        }
+
         private CompetitionDetails GetCompetitionDetails(Func<CompetitionsDataContext, Competition> queryCompetitionDetails, Func<IQueryable<Match>, IQueryable<Match>> filterMatches = null)
         {
             var result = default(CompetitionDetails);
@@ -139,17 +161,7 @@ namespace Simple.SAMS.Competitions.Data
 
                         var players =
                             dataContext.CompetitionPlayers.Where(cp => cp.CompetitionId == competitionData.Id && cp.Player.RowStatus == 0).ToArray();
-                        result.Players = players.Select(dataEntity =>
-                        {
-                            var entity = new Contracts.Players.CompetitionPlayer();
-                            AutoMapper.Mapper.DynamicMap(dataEntity.Player, entity);
-                            entity.CompetitionRank = dataEntity.Rank.GetValueOrDefault();
-                            entity.Replaceable =
-                                dataEntity.Player.Matches.Count(m => m.CompetitionId == competitionData.Id && m.Status >= (int) MatchStatus.Playing) == 0;
-                            entity.Source = (CompetitionPlayerSource) dataEntity.Source;
-                            entity.Section = (CompetitionSection) dataEntity.Section;
-                            return entity;
-                        }).ToArray();
+                        result.Players = players.Select(dataEntity => MapDataCompetitionPlayer(dataEntity, competitionData.Id)).ToArray();
                         var matches = dataContext.Matches.Where(m => m.CompetitionId == competitionData.Id && m.RowStatus == 0);
 
                         if (filterMatches.IsNotNull())
@@ -164,6 +176,19 @@ namespace Simple.SAMS.Competitions.Data
 
             return result;
 
+        }
+
+        private static Contracts.Players.CompetitionPlayer MapDataCompetitionPlayer(CompetitionPlayer dataEntity, int competitionId)
+        {
+            var entity = new Contracts.Players.CompetitionPlayer();
+            AutoMapper.Mapper.DynamicMap(dataEntity.Player, entity);
+            entity.CompetitionRank = dataEntity.Rank.GetValueOrDefault();
+            entity.Replaceable =
+                dataEntity.Player.Matches.Count(
+                    m => m.CompetitionId == competitionId && m.Status >= (int) MatchStatus.Playing) == 0;
+            entity.Source = (CompetitionPlayerSource) dataEntity.Source;
+            entity.Section = (CompetitionSection) dataEntity.Section;
+            return entity;
         }
 
         public CompetitionDetails GetCompetitionDetails(int id)

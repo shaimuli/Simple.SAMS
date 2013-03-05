@@ -86,14 +86,17 @@ public class KnockoutPositioningEngine : IPositioningEngine
         return positioningEngine.Evaluate(positioningParameters);
     }
 
-    public UpdatePlayerPositionInfo[] PositionPlayers(CompetitionDetails details)
+    public UpdatePlayerPositionInfo[] PositionPlayers(CompetitionDetails details, CompetitionSection section)
     {
         var items = new List<UpdatePlayerPositionInfo>();
-        if (details.Type.QualifyingPlayersCount > 0)
+        if (details.Type.QualifyingPlayersCount > 0 && section == CompetitionSection.Qualifying)
         {
             items.AddRange(this.GetQualifyingPlayersPositions(details));
         }
-        items.AddRange(this.GetFinalPlayersPositions(details));
+        if (section == CompetitionSection.Final)
+        {
+            items.AddRange(this.GetFinalPlayersPositions(details));
+        }
         return (from item in items
             where item.IsNotNull<UpdatePlayerPositionInfo>()
             select item).ToArray<UpdatePlayerPositionInfo>();

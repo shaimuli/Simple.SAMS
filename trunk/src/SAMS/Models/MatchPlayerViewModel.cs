@@ -11,12 +11,15 @@ namespace SAMS.Models
     {
         public MatchPlayerViewModel(MatchPlayer matchPlayer)
         {
+            
             Id = matchPlayer.Id;
             LocalFirstName = matchPlayer.LocalFirstName;
             LocalLastName = matchPlayer.LocalLastName;
             EnglishFirstName = matchPlayer.EnglishFirstName;
             EnglishLastName = matchPlayer.EnglishLastName;
         }
+
+        public int? Rank { get; set; }
         public string LocalFirstName { get; set; }
         public string LocalLastName { get; set; }
         public string EnglishFirstName { get; set; }

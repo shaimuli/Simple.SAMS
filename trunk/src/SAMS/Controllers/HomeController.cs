@@ -14,7 +14,7 @@ namespace SAMS.Controllers
         {
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
 
-            return View();
+            return RedirectToAction("Index", "Competitions");
         }
 
         public ActionResult About()

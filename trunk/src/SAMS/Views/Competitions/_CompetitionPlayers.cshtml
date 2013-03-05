@@ -1,4 +1,5 @@
-﻿@model SAMS.Models.CompetitionDetailsModel
+﻿@using Simple.SAMS.Contracts.Competitions
+@model SAMS.Models.CompetitionDetailsModel
 <div class="competitionPlayersContainer">
     <div class="row-fluid">
 
@@ -10,7 +11,7 @@
         </div>
         <div class="span2"></div>
         <div class="span4">
-            @if (Model.CanAddToQualifying || Model.CanAddToFinal)
+            @if (((int)Model.Status <= (int)CompetitionStatus.Finished) && (Model.CanAddToQualifying || Model.CanAddToFinal))
             {
                 <button type="button" class="btn AddCompetitionPlayer">@Html.Resource("AddNewPlayer")</button>
             }
@@ -33,7 +34,11 @@
                 <th class="span1" data-sort-type="numeric">@Html.Resource("PlayerNationalRankHeader")</th>
                 <th class="span1" data-sort-type="numeric">@Html.Resource("PlayerEuropeInternationalRankHeader")</th>
                 <th class="span1" data-sort-type="numeric">@Html.Resource("PlayerYouthInternationalRankHeader")</th>
-                <th></th>
+                @if ((int) Model.Status < (int) CompetitionStatus.Finished)
+                {
+                    <th></th>
+                    <th></th>
+                }
             </tr>
         </thead>
         <tbody>
@@ -60,15 +65,18 @@
                     <td>@item.NationalRank</td>
                     <td>@item.EuropeInternationalRank</td>
                     <td>@item.YouthInternationalRank</td>
-                    <td>
-                        @if (item.Replaceable)
-                        {
-                            <a href="#" class="ReplaceCompetitionPlayer">@Html.Resource("ReplaceCompetitionPlayer")</a>
-                        }
-                    </td>
-                    <td>
-                        <a href="#" class="RemoveCompetitionPlayer">@Html.Resource("DeleteCompetitionPlayer")</a>
-                    </td>
+                    @if ((int) Model.Status < (int) CompetitionStatus.Finished)
+                    {
+                        <td>
+                            @if (item.Replaceable)
+                            {
+                                <a href="#" class="ReplaceCompetitionPlayer">@Html.Resource("ReplaceCompetitionPlayer")</a>
+                            }
+                        </td>
+                        <td>
+                            <a href="#" class="RemoveCompetitionPlayer">@Html.Resource("DeleteCompetitionPlayer")</a>
+                        </td>
+                    }
                 </tr>
             }
         </tbody>

@@ -91,6 +91,7 @@
         },
         initTournament: function () {
             $(".t-host").tournament({ resources: this.config.resources });
+            $(".t-host").overscroll();
             this.updateMatchesResults();
             /*
             var items = [];
@@ -176,12 +177,12 @@
 
             this.matchesEditor = new Simple.MatchResultsContinuesEdit(matchesContinuesEditConfig);
             this.initFilters($(".competitionUpdateResultsContainer"), function (container,value) {
-                return $(".matchRow:has(" + "input[name='Date'][value='" + value + "']" + ")", container);
+                return $(".matchRow:has(" + "input[name='Date'][value='" + value.trim() + "']" + ")", container);
             });
             this.initFilters($(".competitionMatchesList"), function (container,value) {
                 return $("tr", container).filter(function (index) {
                     var text = $(".matchDate", this).text();
-                     return  text == value;
+                     return  text.trim() == value.trim();
                  });
             });
         },
@@ -215,7 +216,7 @@
                 })
                 .change(function (event) {
                     var value = $(this).val();
-
+                    console.log(value);
                     if (value.length > 0) {
                         $(".matchRow", container).hide();
                         var items = filter(container, value);
@@ -313,8 +314,6 @@
                         $("<option/>").val(index).text(item).appendTo(sourceSelect);
                     });
                     host = $("<div class='control-group'/>").appendTo(form);
-                    $("<label/>").text(config.resources.CompetitionSection).appendTo(host);
-                    host = $("<div class='controls'/>").appendTo(host);
                     var hasSections = false;
                     var sectionSelect = $("<select/>").attr("name", "section");
                     if (config.canAddToFinal) {
@@ -327,6 +326,8 @@
                         hasSections = true;
                     }
                     if (hasSections) {
+                        $("<label/>").text(config.resources.CompetitionSection).appendTo(host);
+                        host = $("<div class='controls'/>").appendTo(host);
                         sectionSelect.appendTo(host);
                     }
                     
@@ -369,8 +370,8 @@
                 actionName: "replacePlayer",
                 competitionPlayerSources: this.config.competitionPlayerSources,
                 competitionSections: this.config.competitionSections,
-                canAddToFinal: this.config.canAddToFinal,
-                canAddToQualifying: this.config.canAddToQualifying,
+                canAddToFinal: false,
+                canAddToQualifying: false,
                 resources: this.config.resources
             };
             this.initPlayerDialog(config);
@@ -404,7 +405,7 @@
                     $.ajax({
                         url: this.config.replacePlayerUrl,
                         type: "POST",
-                        data: { competitionId: competitionId, replacedPlayerId: replacedPlayerId, replacementPlayerId: result, source:source, section:section },
+                        data: { competitionId: competitionId, replacedPlayerId: replacedPlayerId, replacementPlayerId: result },
                         success: function () {
                             location.reload();
                         },
@@ -413,7 +414,7 @@
                         }, this)
                     });
                 } else {
-                    location.href = this.config.createPlayerUrl + "?competitionId=" + String(competitionId) + "&replacePlayerId=" + String(replacedPlayerId) + "&idNumber=" + String(idNumber) + "&source=" + String(source) + "&section=" + String(section);
+                    location.href = this.config.createPlayerUrl + "?competitionId=" + String(competitionId) + "&replacePlayerId=" + String(replacedPlayerId) + "&idNumber=" + String(idNumber);
                 }
             }, this);
             $.getJSON(this.config.getPlayerIdByIdNumberUrl, { idNumber: idNumber }, playerFound);

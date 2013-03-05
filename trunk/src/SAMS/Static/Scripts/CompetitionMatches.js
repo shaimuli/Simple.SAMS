@@ -6,13 +6,18 @@
         
         
         host.addClass("ms" + matchesPerRound[6 - rounds]);
-        function addTeam(toContainer) {
+        function addTeam(toContainer, index) {
             var t = $("<div/>").addClass("t-team").appendTo(toContainer);
             $("<div/>").addClass("t-icon").appendTo(t);
+
             var ps = $("<div/>").addClass("t-players").appendTo(t);
-            $("<div/>").addClass("t-icon t-stats").appendTo(t);
-            $("<div/>").addClass("t-icon t-scorecard").appendTo(t);
             var sc = $("<div/>").addClass("t-score").appendTo(t);
+
+            if (index == 0) {
+                $("<div/>").addClass("t-icon t-stats").appendTo(t);
+            } else {
+                $("<div/>").addClass("t-icon t-scorecard").appendTo(t);
+            }
 
             return t;
         }
@@ -43,8 +48,8 @@
                 }
                 var matchContainer = $("<div/>").addClass("t-match m" + m).attr("id", "match" + (matchPosition++)).appendTo(roundContainer);
 
-                var team1 = addTeam(matchContainer);
-                var team2 = addTeam(matchContainer);
+                var team1 = addTeam(matchContainer,0);
+                var team2 = addTeam(matchContainer,1);
                 if (sep && r < (maxRound-1)) {
                     if (m % 2 == 0) {
                         var msep = $("<div/>").addClass("t-msep").appendTo(sep);
@@ -54,7 +59,7 @@
                 }
             }
         }
-        host.overscroll();
+        
 
     }
     $.fn.tournament = function (options) {
@@ -76,7 +81,7 @@
                 prepareTournament(target, options.resources, maxRound);
             } else {
                 if ($.isArray(options)) {
-
+                    
                     var matches = options;
                     function getScore(playerNumber, setScores) {
                         var scores = [];
@@ -87,7 +92,7 @@
                         return scores.join(" ");
                     }
                     function playerName(p) {
-                        var text = p.LocalFirstName + (p.LocalLastName ? " " + p.LocalLastName : "");
+                        var text = (p.Rank ? "(" + p.Rank + ") " : "") + p.LocalFirstName + (p.LocalLastName ? " " + p.LocalLastName : "") ;
                         var html = "<a href='#' data-id='" + p.Id + "'>" + text + "</a>";
 
                         return html;

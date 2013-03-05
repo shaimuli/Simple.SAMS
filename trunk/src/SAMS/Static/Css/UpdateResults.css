@@ -67,3 +67,12 @@ tr.success td.status .statusIndicator
     direction: ltr;
     display: inline-block;
 }
+
+tr.matchStatus_Created .updateMatchScoreContainer,
+tr.matchStatus_Planned .updateMatchScoreContainer,
+.competitionStatus_Created .updateMatchScoreContainer,
+.competitionStatus_MatchesCreated .updateMatchScoreContainer,
+.competitionStatus_Positioned .updateMatchScoreContainer
+{
+    display: none;
+}

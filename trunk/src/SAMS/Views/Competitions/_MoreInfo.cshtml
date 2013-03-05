@@ -18,10 +18,35 @@
     <div class="competition_status">
         @if ((int)Model.Status < (int)CompetitionStatus.Started)
         {
-        
+
             <div>
                 @Html.ActionLink(Html.ResourceText("UpdateCompetitionPlayers"), "UpdatePlayers", new { id = Model.Id })
             </div>
+            <hr class="space" />
+            if (Model.Players.Length > 0 && !Model.PlayingStarted)
+            {
+            <div class="row-fluid">
+                @if (Model.Type.QualifyingPlayersCount > 0)
+                {
+                    <div class="span4">
+                        @using (Html.BeginForm("PositionCompetitionPlayers", "Competitions", FormMethod.Post))
+                        {
+                            @Html.Hidden("CompetitionId", Model.Id)
+                            @Html.Hidden("section", CompetitionSection.Qualifying)
+                            <button class="btn btn-primary">@Html.Resource("PositionQualifyingPlayers")</button>
+                        }
+                    </div>
+                }
+                <div class="span4">
+                    @using (Html.BeginForm("PositionCompetitionPlayers", "Competitions", FormMethod.Post))
+                    {
+                        @Html.Hidden("CompetitionId", Model.Id)
+                        @Html.Hidden("section", CompetitionSection.Final)
+                        <button class="btn btn-primary">@Html.Resource("PositionFinalPlayers")</button>
+                    }
+                </div>
+            </div>
+            }
             <hr class="space" />
             <div>
                 @using (Html.BeginForm("StartCompetition", "Competitions", FormMethod.Post))
@@ -30,6 +55,7 @@
                     <button class="btn btn-primary">@Html.Resource("StartCompetition")</button>
                 }
             </div>
+
         }
         else if (Model.Status == CompetitionStatus.Started)
         {

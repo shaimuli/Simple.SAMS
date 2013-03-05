@@ -4,6 +4,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using Simple.SAMS.Contracts.Players;
 
 namespace Simple.SAMS.Contracts.Competitions
 {
@@ -28,6 +29,9 @@ namespace Simple.SAMS.Contracts.Competitions
 
         [OperationContract]
         CompetitionHeaderInfo GetCompetition(int id);
+
+        [OperationContract]
+        CompetitionPlayer GetCompetitionPlayer(int competitionId, int playerId);
 
         [OperationContract]
         CompetitionDetails GetCompetitionDetails(int id);

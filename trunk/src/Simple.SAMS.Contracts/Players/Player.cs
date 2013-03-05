@@ -12,6 +12,11 @@ namespace Simple.SAMS.Contracts.Players
     public class Player : Entity
     {
         [DataMember(EmitDefaultValue = false)]
+        public int? AverageScore { get; set; }
+        [DataMember(EmitDefaultValue = false)]
+        public int? AccumulatedScore { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
         public string IdNumber { get; set; }
 
         [DataMember(EmitDefaultValue = false)]

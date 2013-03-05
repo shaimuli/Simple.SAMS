@@ -169,21 +169,26 @@ namespace Simple.SAMS.Competitions.Data
                                 dataSetScore.SetNumber = setScore.Number;
                                 dataSetScore.MatchId = matchId;
                                 dataContext.MatchScores.InsertOnSubmit(dataSetScore);
+                                
                                 dataSetScores[setScore.Number] = dataSetScore;
                             }
-                        }
-                        dataSetScore.SetNumber = setScore.Number;
-                        if (setScore.Player1Points.HasValue)
-                        {
-                            dataSetScore.Player1Points = setScore.Player1Points.Value;
-                        }
-                        if (setScore.Player2Points.HasValue)
-                        {
-                            dataSetScore.Player2Points = setScore.Player2Points.Value;
-                        }
-                        if (setScore.BreakPoints.HasValue)
-                        {
-                            dataSetScore.BreakPoints = setScore.BreakPoints.Value;
+                            dataSetScore.SetNumber = setScore.Number;
+                            if (setScore.Player1Points.HasValue)
+                            {
+                                dataSetScore.Player1Points = setScore.Player1Points.Value;
+                            }
+                            if (setScore.Player2Points.HasValue)
+                            {
+                                dataSetScore.Player2Points = setScore.Player2Points.Value;
+                            }
+                            if (setScore.BreakPoints.HasValue)
+                            {
+                                dataSetScore.BreakPoints = setScore.BreakPoints.Value;
+                            }
+                            if (dataSetScore.Match.Status < (int) MatchStatus.Playing)
+                            {
+                                dataSetScore.Match.Status = (int) MatchStatus.Playing;
+                            }
                         }
 
                     });

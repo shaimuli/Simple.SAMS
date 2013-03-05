@@ -22,7 +22,7 @@
             this.inputs.focus(_.bind(this.onFieldFocus, this));
             this.inputs.keyup(_.bind(this.onFieldKeyUp, this));
             this.inputs.keypress(_.bind(this.onFieldKeyPress, this));
-            console.log("AUTOCOMMIT", this.config.autoCommit);
+            
             $("input[type=radio]", this.inputs).change(_.bind(this.onRadioFieldChanged, this));
             this.rxQueued = /.*?\:Q/gi;
             
@@ -116,7 +116,7 @@
                     }
                 }
             }
-            console.log(items);
+            
             if (items.length > 0) {
                 $.ajax({
                         url: this.sendUrl,
@@ -141,7 +141,7 @@
                             }
                         }, this),
                         failure: _.bind(function () {
-                            console.log("Send failure: ", items);
+                            console.log("Send failure: ");
                         }, this),
                         complete: _.bind(function () {
                             this.scheduleUpdates();
@@ -265,7 +265,7 @@
             var rxSetScore = /\bp(\d)s(\d)\b/;
             var rxBreakPoint = /\bbp(\d)\b/;
             var setScores = [];
-            console.log("ITEM", item);
+            
             function getSetScore(setNumber) {
                 var score = _.find(setScores, function(scoreItem) {
                     return scoreItem.Number == setNumber;
@@ -316,7 +316,7 @@
                 });
             updateInfo.SetScores = setScores;
             
-            console.log("UPD", updateInfo);
+            
             return updateInfo;
         }
     });

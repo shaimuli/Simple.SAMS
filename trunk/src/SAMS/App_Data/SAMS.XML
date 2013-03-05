@@ -1185,6 +1185,16 @@
               Looks up a localized string similar to דירוג נוער.
             </summary>
         </member>
+        <member name="P:SAMS.Resources.Texts.PositionFinalPlayers">
+            <summary>
+              Looks up a localized string similar to בצע הגרלת גמר.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.PositionQualifyingPlayers">
+            <summary>
+              Looks up a localized string similar to בצע הגרלת מוקדמות.
+            </summary>
+        </member>
         <member name="P:SAMS.Resources.Texts.PrintMatchesDraw">
             <summary>
               Looks up a localized string similar to תצוגת הדפסה.

@@ -222,7 +222,9 @@ namespace Simple.SAMS.Competitions.Services
                                                NationalRank = p.NationalRank,
                                                EuropeInternationalRank = p.EuropeInternationalRank,
                                                YouthInternationalRank = p.YouthInternationalRank,
-                                               Source = p.Source == "WC" ? CompetitionPlayerSource.Wildcard : CompetitionPlayerSource.Regular
+                                               Source = p.Source == "WC" ? CompetitionPlayerSource.Wildcard : CompetitionPlayerSource.Regular,
+                                               AverageScore = p.AverageScore,
+                                               AccumulatedScore = p.AccumulatedScore
                                            }).ToArray();
         }
 
@@ -303,6 +305,8 @@ namespace Simple.SAMS.Competitions.Services
             public string IPIN;
             public string Country;
             public string Source { get; set; }
+            public int? AverageScore { get; set; }
+            public int? AccumulatedScore { get; set; }
         }
 
 
@@ -339,27 +343,17 @@ namespace Simple.SAMS.Competitions.Services
         }
 
 
-        private void UpdateCompetitionPlayersPosition(int competitionId)
+        public void UpdatePlayersPosition(int competitionId, CompetitionSection section)
         {
             var competitionDetails = GetCompetitionDetails(competitionId);
 
             var positioningEngine = GetPositioningEngine(competitionDetails.Type.Method);
 
-            var positions = positioningEngine.PositionPlayers(competitionDetails);
+            var positions = positioningEngine.PositionPlayers(competitionDetails, section);
 
             var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
 
             competitionMatchesRepository.UpdatePlayersPosition(competitionId, positions);
-
-
-            // TRACE
-            //var json = positions.ToJson();
-            //var file = "E:\\temp\\positions.json.txt";
-            //if (File.Exists(file))
-            //{
-            //    File.Delete(file);
-            //}
-            //File.WriteAllText(file, json);
         }
 
         private static IPositioningEngine GetPositioningEngine(CompetitionMethod competitionMethod)
@@ -404,14 +398,8 @@ namespace Simple.SAMS.Competitions.Services
             return competitionDetails;
         }
 
-        public void UpdatePlayersPosition(int[] competitionIds)
-        {
-            competitionIds.ForEach(UpdateCompetitionPlayersPosition);
-        }
-
         public void UpdateMatchScore(MatchScoreUpdateInfo scoreUpdateInfo)
         {
-
             var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
             competitionMatchesRepository.UpdateMatchScore(scoreUpdateInfo);
         }

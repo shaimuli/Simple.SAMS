@@ -1,6 +1,6 @@
 ﻿.t-host
 {
-    width: 960px;
+    width: 1024px;
     /*width: 6000px;*/
     height: 640px;
     overflow: auto;
@@ -11,6 +11,7 @@
 -ms-user-select: none;
 user-select: none;
     /*background-image: url(@Url.Content("~/Images/grey-grid20x20.png"));*/
+
 }
 
 .t-print
@@ -27,14 +28,14 @@ user-select: none;
 
 .t-container
 {
-    height: 2440px;
-    width: 1640px;
+    height: 1440px;
+    width: 1240px;
 }
 
 .t-host.t-32p .t-container
 {
     height: 800px;
-    width: 1440px;
+    width: 1000px;
 }
 .t-host.t-8p .t-container {
     height: 320px;
@@ -57,14 +58,14 @@ user-select: none;
 .t-round, .t-sep
 {
     float: right;
-    width: 240px;
+    width: 180px;
     overflow: hidden;
 }
 
 .t-sep
 {
     margin-top: 2em;
-    width: 40px;
+    width: 20px;
 }
 
 .t-msep
@@ -78,7 +79,7 @@ user-select: none;
     border-top: solid 1px black;
     border-bottom: solid 1px black;
     border-left: solid 1px black;
-    width: 19px;
+    width: 9px;
     float: right;
     border-radius: 8px 0 0 8px;
 }
@@ -88,20 +89,21 @@ user-select: none;
     height: 1px;
     font-size: 1px;
     background-color: black;
-    width: 20px;
+    width: 10px;
     float: left;
 }
 
 .t-match
 {
     background-color: #B8D0E8;
-    height: 60px;
-    margin-bottom: 20px;
+    height: 48px;
+    margin-bottom: 10px;
     border-radius: 8px;
-    padding-left: 2px;
-    padding-right: 2px;
+    /*padding-left: 2px;
+    padding-right: 2px;*/
     font-size: 10pt;
-    line-height: 28px;
+    font-size: 8pt;
+    line-height: 22px;
 
 }
 
@@ -114,7 +116,7 @@ user-select: none;
 
 .t-team
 {
-    height: 28px;
+    height: 24px;
     padding-left: 2px;
     padding-right: 2px;
 }
@@ -122,16 +124,16 @@ user-select: none;
 
 .t-score
 {
-    float: left;
-    width: 60px;
+    float: right;
+    /*width: 60px;*/
     text-align: center;
     text-overflow: clip;
-    font-size: 8pt;
+    
 }
 
 .t-players
 {
-    width: 100px;
+    width: 98px;
     float: right;
 }
 
@@ -143,7 +145,7 @@ user-select: none;
 .t-icon
 {
     float: right;
-    width: 20px;
+    width: 16px;
     height: 20px;
     margin-top: 2px;
     overflow: hidden;
@@ -185,12 +187,14 @@ user-select: none;
 
 .t-stats {
     cursor: pointer;
-    background-image: url(../Images/stats.png)
+    background-image: url(../Images/stats.png);
+    float:left;
 }
 
 .t-scorecard {
     cursor: pointer;
-    background-image: url(../Images/scorecard.png)
+    background-image: url(../Images/scorecard.png);
+    float:left;
 }
 
 
@@ -200,7 +204,7 @@ user-select: none;
 .t-16p .r2 .t-msep,
 .t-8p .r3 .t-msep
 {
-    height: 80px;
+    height: 58px;
 }
 
 .r1 .t-msep,
@@ -208,25 +212,25 @@ user-select: none;
 .t-16p .r3 .t-msep,
 .t-8p .r4 .t-msep
 {
-    height: 160px;
+    height: 116px;
 }
 
 .r2 .t-msep ,
 .t-32p .r3 .t-msep,
 .t-16p .r4 .t-msep
 {
-    height: 320px;
+    height: 232px;
 }
 
 .r3 .t-msep,
  .t-32p .r4 .t-msep
 {
-    height: 640px;
+    height: 464px;
 }
 
 .r4 .t-msep
 {
-    height: 1280px;
+    height: 928px;
 }
 
 .r0 .t-msep-left,
@@ -234,7 +238,7 @@ user-select: none;
 .t-16p .r2 .t-msep-left,
 .t-8p .r3 .t-msep-left
 {
-    margin-top: 40px;
+    margin-top: 29px;
 }
 
 .r1 .t-msep-left,
@@ -242,25 +246,25 @@ user-select: none;
 .t-16p .r3 .t-msep-left,
 .t-8p .r4 .t-msep-left
 {
-    margin-top: 80px;
+    margin-top: 58px;
 }
 
 .r2 .t-msep-left,
 .t-32p .r3 .t-msep-left,
 .t-16p .r4 .t-msep-left
 {
-    margin-top: 160px;
+    margin-top: 116px;
 }
 
 .r3 .t-msep-left,
 .t-32p .r4 .t-msep-left
 {
-    margin-top: 320px;
+    margin-top: 232px;
 }
 
 .r4 .t-msep-left
 {
-    margin-top: 640px;
+    margin-top: 464px;
 }
 
 .r0 .t-msep,
@@ -268,7 +272,7 @@ user-select: none;
 .t-16p .r2 .t-msep,
 .t-8p .r3 .t-msep
 {
-    margin-top: 80px;
+    margin-top: 58px;
 }
 
 .r1 .t-msep,
@@ -276,33 +280,34 @@ user-select: none;
 .t-16p .r3 .t-msep,
 .t-8p .r4 .t-msep
 {
-    margin-top: 160px;
+    margin-top: 116px;
 }
 
 .r2 .t-msep,
 .t-32p .r3 .t-msep,
 .t-16p .r4 .t-msep
 {
-    margin-top: 320px;
+    margin-top: 232px;
 }
 
 .r3 .t-msep,
 .t-32p .r4 .t-msep
 {
-    margin-top: 640px;
+    margin-top: 464px;
 }
-
+/*
 .r4 .t-msep
 {
-    margin-top: 630px;
+    margin-top: 928px;
+    margin-top: 879px;
 }
-
+    */
 .r0 .t-msep:first-child,
 .t-32p .r1 .t-msep:first-child,
 .t-16p .r2 .t-msep:first-child,
 .t-8p .r3 .t-msep:first-child
 {
-    margin-top: 30px;
+    margin-top: 24px;
 }
 
 
@@ -311,23 +316,26 @@ user-select: none;
 .t-16p .r3 .t-msep:first-child,
 .t-8p .r4 .t-msep:first-child
 {
-    margin-top: 70px;
+    margin-top: 53px;
 }
 
 .r2 .t-msep:first-child,
 .t-32p .r3 .t-msep:first-child,
 .t-16p .r4 .t-msep:first-child
 {
-    margin-top: 150px;
+    margin-top: 111px;
 }
 
 
 .r3 .t-msep:first-child,
 .t-32p .r4 .t-msep:first-child
 {
-    margin-top: 310px;
+    margin-top: 227px;
 }
 
+.r4 .t-msep:first-child {
+    margin-top: 458px;
+}
 
 /* Matches */
 .t-32p .r1 .t-match,
@@ -341,7 +349,7 @@ user-select: none;
 .t-16p .r3 .t-match,
 .t-8p .r4 .t-match
 {
-    margin-top: 100px;
+    margin-top: 68px;
 }
 
 .r1 .m1,
@@ -349,7 +357,7 @@ user-select: none;
 .t-16p .r3 .m1,
 .t-8p .r4 .m1
 {
-    margin-top: 40px;
+    margin-top: 29px;
 }
 
 .t-32p .r1 .m1, 
@@ -361,14 +369,14 @@ user-select: none;
 
 .r5 .m1
 {
-    margin-top: 1240px;
+    margin-top: 896px;
 }
 
 .r2 .t-match,
 .t-32p .r3 .t-match,
 .t-16p .r4 .t-match
 {
-    margin-top: 260px;
+    margin-top: 183px;
 }
 
 .r2 .m1,
@@ -376,29 +384,29 @@ user-select: none;
 .t-16p .r4 .m1,
 .t-8p .r5 .m1
 {
-    margin-top: 120px;
+    margin-top: 87px;
 }
 
 .r3 .t-match,
 .t-32p .r4 .t-match
 {
-    margin-top: 580px;
+    margin-top: 418px;
 }
 
 .r4 .t-match
 {
-    margin-top: 1220px;
+    margin-top: 879px;
 }
 
 .r3 .m1,
 .t-32p .r4 .m1,
 .t-16p .r5 .m1
 {
-    margin-top: 280px;
+    margin-top: 200px;
 }
 
 .r4 .m1,
 .t-32p .r5 .m1
 {
-    margin-top: 600px;
+    margin-top: 434px;
 }

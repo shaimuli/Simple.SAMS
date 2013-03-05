@@ -139,9 +139,19 @@ namespace SAMS.Controllers
         }
 
         [HttpPost]
-        public ActionResult ReplaceCompetitionPlayer(int competitionId, int replacedPlayerId, int replacementPlayerId, int source, int section)
+        public ActionResult ReplaceCompetitionPlayer(int competitionId, int replacedPlayerId, int replacementPlayerId)
         {
-            SystemMonitor.Info("Replaceing {0} with {1}, source:{2}, section:{3}", replacedPlayerId, replacementPlayerId, source, section);
+            SystemMonitor.Info("Replaceing {0} with {1}", replacedPlayerId, replacementPlayerId);
+            var manager = ServiceProvider.Get<ICompetitionsManager>();
+            manager.ReplacePlayer(competitionId, replacedPlayerId, replacementPlayerId);
+            return new HttpStatusCodeResult(200);
+        }
+        [HttpPost]
+        public ActionResult AddCompetitionPlayer(int competitionId, int playerId, int source, int section)
+        {
+            SystemMonitor.Info("Adding Player {0}, source:{1}, section:{2}", playerId, source, section);
+            var manager = ServiceProvider.Get<ICompetitionsManager>();
+            manager.AddPlayerToCompetition(competitionId, playerId, (CompetitionPlayerSource)source, (CompetitionSection)section);
             return new HttpStatusCodeResult(200);
         }
 
@@ -245,6 +255,14 @@ namespace SAMS.Controllers
         // GET: /Competitions/
 
         [HttpPost]
+        public ActionResult PositionCompetitionPlayers(int competitionId, CompetitionSection section)
+        {
+            var competitionManager = ServiceProvider.Get<ICompetitionsManager>();
+            competitionManager.PositionCompetitionPlayers(competitionId, section);
+            return RedirectToAction("Details", new { id = competitionId });
+        }
+
+        [HttpPost]
         public ActionResult StartCompetition(int competitionId)
         {
             var competitionManager = ServiceProvider.Get<ICompetitionsManager>();
@@ -294,6 +312,7 @@ namespace SAMS.Controllers
             model.Players = competition.Players;
             model.CanAddToFinal = competition.CanAddToFinal;
             model.CanAddToQualifying = competition.CanAddToQualifying;
+            
             model.Matches =
                 competition.Matches.Select(
                     m => new CompetitionMatchViewModel()
@@ -308,14 +327,15 @@ namespace SAMS.Controllers
                                  Position = m.Position,
                                  Winner = m.Winner,
                                  Result = m.Result.HasValue ? m.Result.Value : MatchResult.Win,
-                                 Player1 = m.Player1.IsNotNull() ? new MatchPlayerViewModel(m.Player1) : null,
-                                 Player2 = m.Player2.IsNotNull() ? new MatchPlayerViewModel(m.Player2) : null,
-                                 Player3 = m.Player3.IsNotNull() ? new MatchPlayerViewModel(m.Player3) : null,
-                                 Player4 = m.Player4.IsNotNull() ? new MatchPlayerViewModel(m.Player4) : null,
+                                 Player1 = m.Player1.IsNotNull() ? new MatchPlayerViewModel(m.Player1) { Rank = competition.Players.First(cp=>cp.Id == m.Player1.Id).CompetitionRank } : null,
+                                 Player2 = m.Player2.IsNotNull() ? new MatchPlayerViewModel(m.Player2) { Rank = competition.Players.First(cp => cp.Id == m.Player2.Id).CompetitionRank } : null,
+                                 Player3 = m.Player3.IsNotNull() ? new MatchPlayerViewModel(m.Player3) { Rank = competition.Players.First(cp => cp.Id == m.Player3.Id).CompetitionRank } : null,
+                                 Player4 = m.Player4.IsNotNull() ? new MatchPlayerViewModel(m.Player4) { Rank = competition.Players.First(cp => cp.Id == m.Player4.Id).CompetitionRank } : null,
                                  SetScores = m.SetScores,
                                  StartTimeHours = new[] {new SelectListItem(),}.Concat(GetStartTimeHours(m.StartTime)),
                                  StartTimeMinutes = new[] {new SelectListItem(),}.Concat(GetStartTimeMinutes(m.StartTime))
                              }).ToArray();
+            model.PlayingStarted = model.Matches.Any(m => (int)m.Status >= (int)MatchStatus.Playing);
             return model;
         }
 

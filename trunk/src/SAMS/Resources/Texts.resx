@@ -717,4 +717,10 @@
   <data name="Boolean.False" xml:space="preserve">
     <value>לא</value>
   </data>
+  <data name="PositionQualifyingPlayers" xml:space="preserve">
+    <value>בצע הגרלת מוקדמות</value>
+  </data>
+  <data name="PositionFinalPlayers" xml:space="preserve">
+    <value>בצע הגרלת גמר</value>
+  </data>
 </root>
