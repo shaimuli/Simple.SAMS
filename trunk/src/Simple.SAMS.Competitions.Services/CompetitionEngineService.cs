@@ -175,7 +175,9 @@ namespace Simple.SAMS.Competitions.Services
                 }
 
             }
+
             var competitionPlayers = new List<PlayerInCompetition>();
+            var finalPlayersCount = competitionType.PlayersCount - competitionType.QualifyingToFinalPlayersCount;
             for (var i = 0; i < players.Length; i++)
             {
                 var player = players[i];
@@ -192,10 +194,12 @@ namespace Simple.SAMS.Competitions.Services
                 competitionPlayers.Add(playerInCompetition);
             }
 
-            if (competitionType.QualifyingPlayersCount > 0)
+            var playersToTake = Math.Min(players.Length - finalPlayersCount, competitionType.QualifyingPlayersCount);
+            if (competitionType.QualifyingPlayersCount > 0 && playersToTake > competitionType.QualifyingToFinalPlayersCount)
             {
+                
                 var qualifyingPlayers =
-                    competitionPlayers.OrderByDescending(p => p.Rank).Take(competitionType.QualifyingPlayersCount - qualifyingPlayersCount);
+                    competitionPlayers.OrderByDescending(p => p.Rank).Take(playersToTake - qualifyingPlayersCount);
                 qualifyingPlayers.ForEach(cp => cp.Section = CompetitionSection.Qualifying);
             }
 
@@ -279,11 +283,18 @@ namespace Simple.SAMS.Competitions.Services
             public int TypeId;
             [FieldConverter(ConverterKind.Date, "yyyy-MM-dd")]
             public DateTime StartTime;
+            [FieldOptional] 
             [FieldConverter(ConverterKind.Date, "yyyy-MM-dd")]
             public DateTime? EndTime;
+            [FieldOptional]
             public string Site;
+            
+            [FieldOptional]
             public string SitePhone;
+
+            [FieldOptional]
             public string MainReferee;
+            [FieldOptional] 
             public string MainRefereePhone;
         }
 
@@ -292,21 +303,35 @@ namespace Simple.SAMS.Competitions.Services
         {
             public string IdNumber;
             public string LocalFirstName;
+            [FieldOptional]
             public string LocalLastName;
+            [FieldOptional]
             public string EnglishFirstName;
+            [FieldOptional]
             public string EnglishLastName;
+            [FieldOptional]
             public string Phone;
+            [FieldOptional] 
             [FieldConverter(ConverterKind.Date, "yyyy-MM-dd")]
             public DateTime? BirthDate;
+            [FieldOptional]
             public bool? IsFemale;
+            [FieldOptional]
             public int? NationalRank;
+            [FieldOptional]
             public int? EuropeInternationalRank;
+            [FieldOptional] 
             public int? YouthInternationalRank;
+            [FieldOptional]
             public string IPIN;
+            [FieldOptional] 
             public string Country;
-            public string Source { get; set; }
-            public int? AverageScore { get; set; }
-            public int? AccumulatedScore { get; set; }
+            [FieldOptional()] 
+            public string Source;
+            [FieldOptional] 
+            public int? AverageScore;
+
+            [FieldOptional] public int? AccumulatedScore;
         }
 
 

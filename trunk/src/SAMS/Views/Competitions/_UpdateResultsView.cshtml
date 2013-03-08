@@ -61,7 +61,7 @@
 
                                         <div class="input-append date">
                                             <div class="row-fluid">
-                                                <input  class="span6" type="text" name="Date" value="@(match.StartTime.HasValue ? match.StartTime.Value.ToShortDateString() : string.Empty)">
+                                                <input  class="span6" type="text" name="Date" value="@(match.StartTime.HasValue ? match.StartTime.Value.ToString("dd/MM/yyyy") : string.Empty)">
                                                 <span class="add-on trigger"><i class="icon-th"></i></span>
                                             </div>
                                         </div>

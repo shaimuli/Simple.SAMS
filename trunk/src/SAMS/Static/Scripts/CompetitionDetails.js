@@ -405,7 +405,7 @@
                     $.ajax({
                         url: this.config.replacePlayerUrl,
                         type: "POST",
-                        data: { competitionId: competitionId, replacedPlayerId: replacedPlayerId, replacementPlayerId: result },
+                        data: { competitionId: competitionId, replacedPlayerId: replacedPlayerId, replacementPlayerId: result, source: source },
                         success: function () {
                             location.reload();
                         },
@@ -414,7 +414,7 @@
                         }, this)
                     });
                 } else {
-                    location.href = this.config.createPlayerUrl + "?competitionId=" + String(competitionId) + "&replacePlayerId=" + String(replacedPlayerId) + "&idNumber=" + String(idNumber);
+                    location.href = this.config.createPlayerUrl + "?competitionId=" + String(competitionId) + "&replacePlayerId=" + String(replacedPlayerId) + "&idNumber=" + String(idNumber) + "&source=" + String(source);
                 }
             }, this);
             $.getJSON(this.config.getPlayerIdByIdNumberUrl, { idNumber: idNumber }, playerFound);

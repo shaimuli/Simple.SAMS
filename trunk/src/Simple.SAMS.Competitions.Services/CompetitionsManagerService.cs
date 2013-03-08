@@ -142,7 +142,7 @@ namespace Simple.SAMS.Competitions.Services
                 throw new ArgumentException("Competition '{0}' does not exist.".ParseTemplate(id));
             }
 
-            if ((int)competition.Status != (int)CompetitionStatus.MatchesCreated)
+            if ((int)competition.Status > (int)CompetitionStatus.Positioned)
             {
                 throw new ArgumentException("Invalid status transition from '{1}' to Positioned, Competition Id: {0}.".ParseTemplate(id, competition.Status));
             }
@@ -174,7 +174,7 @@ namespace Simple.SAMS.Competitions.Services
             competitionsEngine.RemovePlayerFromCompetition(competitionId, playerId);
         }
 
-        public void ReplacePlayer(int competitionId, int replacedPlayerId, int replacingPlayerId)
+        public void ReplacePlayer(int competitionId, int replacedPlayerId, int replacingPlayerId, CompetitionPlayerSource source)
         {
             var competitionRepository = ServiceProvider.Get<ICompetitionRepository>();
             var player = competitionRepository.GetCompetitionPlayer(competitionId, replacedPlayerId);
@@ -184,15 +184,20 @@ namespace Simple.SAMS.Competitions.Services
             }
 
             RemovePlayer(competitionId, replacedPlayerId);
-            AddPlayerToCompetition(competitionId, replacingPlayerId, player.Source, player.Section);
+            AddPlayerToCompetition(competitionId, replacingPlayerId, source, player.Section);
         }
 
         public void AddPlayerToCompetition(int competitionId, int playerId, CompetitionPlayerSource source, CompetitionSection section)
         {
             var competitionsEngine = ServiceProvider.Get<ICompetitionsEngine>();
+            var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
             var playersRepository = ServiceProvider.Get<IPlayersRepository>();
             var player = playersRepository.Get(playerId);
-
+            var competition = competitionsRepository.GetCompetition(competitionId);
+            if (competition == null)
+            {
+                throw new ArgumentException("Invalid competition id");
+            }
             competitionsEngine.AddPlayersToCompetition(competitionId,
                 new[]
                     {
@@ -203,7 +208,12 @@ namespace Simple.SAMS.Competitions.Services
                                 Section = section
                             }
                     });
-            competitionsEngine.PositionPlayerInSection(competitionId, playerId, section);
+
+            if ((int) competition.Status >= (int) CompetitionStatus.Positioned)
+            {
+                competitionsEngine.PositionPlayerInSection(competitionId, playerId, section);
+            }
+            
         }
 
         public void UpdateMatchStartTime(MatchStartTimeUpdateInfo[] updates)

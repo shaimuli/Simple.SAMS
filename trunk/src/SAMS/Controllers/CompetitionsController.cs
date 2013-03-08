@@ -139,11 +139,11 @@ namespace SAMS.Controllers
         }
 
         [HttpPost]
-        public ActionResult ReplaceCompetitionPlayer(int competitionId, int replacedPlayerId, int replacementPlayerId)
+        public ActionResult ReplaceCompetitionPlayer(int competitionId, int replacedPlayerId, int replacementPlayerId, CompetitionPlayerSource source)
         {
             SystemMonitor.Info("Replaceing {0} with {1}", replacedPlayerId, replacementPlayerId);
             var manager = ServiceProvider.Get<ICompetitionsManager>();
-            manager.ReplacePlayer(competitionId, replacedPlayerId, replacementPlayerId);
+            manager.ReplacePlayer(competitionId, replacedPlayerId, replacementPlayerId, source);
             return new HttpStatusCodeResult(200);
         }
         [HttpPost]

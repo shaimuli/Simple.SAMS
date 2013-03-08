@@ -48,7 +48,7 @@
                             {
                                 <tr data-key="@match.Id" class="matchRow success">
                                     <td>@match.Id</td>
-                                    <td><span class="matchDate">@(match.StartTime.HasValue ? match.StartTime.Value.ToShortDateString() : string.Empty)</span></td>
+                                    <td><span class="matchDate">@(match.StartTime.HasValue ? match.StartTime.Value.ToString("dd/MM/yyyy") : string.Empty)</span></td>
                                     <td>@(match.StartTime.HasValue ? match.StartTime.Value.Hour.ToString().PadLeft(2, '0') : string.Empty):@(match.StartTime.HasValue ? match.StartTime.Value.Minute.ToString().PadLeft(2, '0') : string.Empty) @Html.Resource("StartTimeType." + match.StartTimeType)</td>
                                     <td>
                                         <div>
