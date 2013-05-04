@@ -13,5 +13,7 @@ namespace Simple.SAMS.Contracts.Competitions
         [OperationContract]
         CompetitionType[] GetCompetitionTypes();
 
+        [OperationContract]
+        bool AreCompetitionTypesExist(int[] ids);
     }
 }

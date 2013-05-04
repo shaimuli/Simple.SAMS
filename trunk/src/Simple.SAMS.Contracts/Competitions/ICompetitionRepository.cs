@@ -45,8 +45,8 @@ namespace Simple.SAMS.Contracts.Competitions
         [OperationContract]
         void UpdateCompetitionsByReferenceId(CreateCompetitionInfo[] competitions);
 
-
-        void RemovePlayerFromCompetition(int competitionId, int playerId);
+        [OperationContract]
+        void RemovePlayerFromCompetition(int competitionId, int playerId,CompetitionPlayerStatus status, string reason);
     } 
 
 }

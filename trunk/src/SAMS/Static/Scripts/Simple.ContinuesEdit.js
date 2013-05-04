@@ -1,6 +1,6 @@
 ﻿(function ($, _, S) {
     S.Utils = {
-        isNumberKey: function(event) {
+        isNumberKey: function (event) {
             var charCode = (event.which) ? event.which : event.keyCode;
             if (charCode > 31 && (charCode < 48 || charCode > 57)) {
                 return false;
@@ -22,26 +22,26 @@
             this.inputs.focus(_.bind(this.onFieldFocus, this));
             this.inputs.keyup(_.bind(this.onFieldKeyUp, this));
             this.inputs.keypress(_.bind(this.onFieldKeyPress, this));
-            
+
             $("input[type=radio]", this.inputs).change(_.bind(this.onRadioFieldChanged, this));
             this.rxQueued = /.*?\:Q/gi;
-            
+
             this.version = this.get("Version") || 1;
             this.updateInterval = config.interval;
-            
+
             $(".sendUpdatesNow", this.container).click(_.bind(function () {
                 this.saveNow();
             }, this));
-            
+
             this.scheduleUpdates();
-            
+
         },
         scheduleUpdates: function () {
             if (this.config.autoCommit) {
                 this.timeout = setTimeout(_.bind(this.onSave, this), this.interval || 15 * 1000);
             }
         },
-        cancelSchedule:function () {
+        cancelSchedule: function () {
             if (this.timeout) {
                 clearTimeout(this.timeout);
             }
@@ -116,48 +116,48 @@
                     }
                 }
             }
-            
+
             if (items.length > 0) {
                 $.ajax({
-                        url: this.sendUrl,
-                        type: "POST",
-                        contentType: "application/json",
-                        data: JSON.stringify($.map(items, function (singleItem) {
-                            return singleItem.item;
-                        })),
-                        success: _.bind(function () {
-                            if (this.config.autoCommit) {
-                                _.each(items, _.bind(function(it) {
-                                    this.setByKey(it.Id + ":Q", null);
-                                }, this));
-                            }
-                            $.each(items, function(index, singleItem) {
-                                singleItem.row.removeClass("sending").addClass("success");
-                            });
-                            var now = new Date();
-                            $(".lastSaveTime", this.container).text(String(now.getHours()).padLeft(2, '0') + ":" + String(now.getMinutes()).padLeft(2, '0') + ":" + String(now.getSeconds()).padLeft(2, '0'));
-                            if (this.config.onSuccessfullUpdate) {
-                                this.config.onSuccessfullUpdate();
-                            }
-                        }, this),
-                        failure: _.bind(function () {
-                            console.log("Send failure: ");
-                        }, this),
-                        complete: _.bind(function () {
-                            this.scheduleUpdates();
-                        }, this)
-                    });
+                    url: this.sendUrl,
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify($.map(items, function (singleItem) {
+                        return singleItem.item;
+                    })),
+                    success: _.bind(function () {
+                        if (this.config.autoCommit) {
+                            _.each(items, _.bind(function (it) {
+                                this.setByKey(it.Id + ":Q", null);
+                            }, this));
+                        }
+                        $.each(items, function (index, singleItem) {
+                            singleItem.row.removeClass("sending").addClass("success");
+                        });
+                        var now = new Date();
+                        $(".lastSaveTime", this.container).text(String(now.getHours()).padLeft(2, '0') + ":" + String(now.getMinutes()).padLeft(2, '0') + ":" + String(now.getSeconds()).padLeft(2, '0'));
+                        if (this.config.onSuccessfullUpdate) {
+                            this.config.onSuccessfullUpdate();
+                        }
+                    }, this),
+                    failure: _.bind(function () {
+                        console.log("Send failure: ");
+                    }, this),
+                    complete: _.bind(function () {
+                        this.scheduleUpdates();
+                    }, this)
+                });
 
             }
-            
-            
+
+
         },
         queueSave: function (row) {
             var key = row.attr("data-key");
             var item = this.get(key);
             var rowItem = { key: key };
             if (row.attr("data-changed")) {
-                $(":input", row).each(function(index, input) {
+                $(":input", row).each(function (index, input) {
                     input = $(input);
                     rowItem[input.attr("name")] = input.val();
                 });
@@ -165,12 +165,12 @@
                 this.set(key + ":Q", this.translate(rowItem));
             }
 
-/*            if (item && !this.exists(key + ":Q")) {
-                item = this.translate(item);
-                
-                this.set(key + ":Q", item);
-                this.set(key, null);
-            }*/
+            /*            if (item && !this.exists(key + ":Q")) {
+                            item = this.translate(item);
+                            
+                            this.set(key + ":Q", item);
+                            this.set(key, null);
+                        }*/
         },
         onSave: function () {
             var updates = [];
@@ -183,7 +183,7 @@
                     var key = row.attr("data-key");
                     var rowItem = { key: key };
                     if (row.attr("data-changed")) {
-                        $(":input", row).each(function(index, input) {
+                        $(":input", row).each(function (index, input) {
                             input = $(input);
                             rowItem[input.attr("name")] = input.val();
                         });
@@ -193,9 +193,9 @@
                 }
             }, this);
 
-            
+
             this.send(updates);
-            
+
         },
         storeValue: function (input) {
             input = $(input);
@@ -258,6 +258,7 @@
 
     S.MatchResultsContinuesEdit = S.ContinuesEdit.extend({
         translate: function (item) {
+            console.log("TRANS", item);
             var updateInfo = {
                 Id: parseInt(item.key, 10),
                 Version: item.version
@@ -265,33 +266,33 @@
             var rxSetScore = /\bp(\d)s(\d)\b/;
             var rxBreakPoint = /\bbp(\d)\b/;
             var setScores = [];
-            
+
             function getSetScore(setNumber) {
-                var score = _.find(setScores, function(scoreItem) {
+                var score = _.find(setScores, function (scoreItem) {
                     return scoreItem.Number == setNumber;
                 });
                 if (!score) {
                     score = {
                         Number: setNumber
                     };
-                    
+
                     setScores.push(score);
                 }
-                
+
                 return score;
             }
             _.each(item,
                 function (value, name) {
                     var setMatch = rxSetScore.exec(name);
                     var bpMatch = rxBreakPoint.exec(name);
-                    
+
                     if (setMatch) {
-                        
+
                         var playerNumber = parseInt(setMatch[1], 10);
                         var setNumber = parseInt(setMatch[2], 10);
                         var score = getSetScore(setNumber);
-                        score["Player" + playerNumber + "Points"] =  value;
-                        
+                        score["Player" + playerNumber + "Points"] = value;
+
                     } else if (bpMatch) {
                         var setNumber = parseInt(bpMatch[1], 10);
                         var score = getSetScore(setNumber);
@@ -314,9 +315,18 @@
                         updateInfo.Result = value;
                     }
                 });
-            updateInfo.SetScores = setScores;
-            
-            
+            if (_.some(setScores, function (s) {
+                return s.Player1Points != "" ||
+                    s.Player2Points != "" ||
+                    s.BreakPoints != "";
+            })) {
+
+                updateInfo.SetScores = setScores;
+            } else {
+                updateInfo.SetScores = null;
+            }
+
+
             return updateInfo;
         }
     });

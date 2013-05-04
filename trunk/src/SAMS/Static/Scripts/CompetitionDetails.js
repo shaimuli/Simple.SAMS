@@ -7,7 +7,6 @@
             if (this.dialogContainer.length == 0) {
                 this.dialogContainer = $("<div id='" + config.id + "'/>");
             }
-            
             var buttons = [
                 {
                     text: this.config.resources.Cancel,
@@ -78,19 +77,20 @@
         updateMatchesResults: function() {
             var competitionId = this.getCompetitionId();
             var url = this.config.getMatchesUrl + "/" + competitionId;
-            
+            var self = this;
             $(".t-host").each(function () {
                 var target = $(this);
                 var section = target.data("section");
                 $.getJSON(
-                    url , { section: section }, function (items) {
+                    url, { section: section }, function (items) {
                         target.tournament(items);
+                        self.updateMatchesList(items);
                     });
             });
             
         },
         initTournament: function () {
-            $(".t-host").tournament({ resources: this.config.resources });
+            $(".t-host").tournament({ resources: this.config.resources, links:this.config.links });
             $(".t-host").overscroll();
             this.updateMatchesResults();
             /*
@@ -253,6 +253,69 @@
                         });
                 });
         },
+        updateMatchesList: function (items) {
+            var config = this.config;
+            var matchesMap = {};
+            for (var i = 0; i < items.length; i++) {
+                matchesMap[items[i].Id] = items[i];
+            }
+            $(".matchesListContainer tbody tr.matchRow").each(function() {
+                var tds = $(this).children("td");
+                var id = $(this).attr("data-key");
+                var match = matchesMap[id];
+
+                function playerName(p) {
+                    var text = (p.Rank ? "(" + p.Rank + ") " : "") + p.LocalFirstName + (p.LocalLastName ? " " + p.LocalLastName : "");
+                    var html = "<a href='#' data-id='" + p.Id + "'>" + text + "</a>";
+
+                    return html;
+                }
+                function getScore(playerNumber, setScores) {
+                    var scores = [];
+                    for (var setNumber = 0; setNumber < setScores.length; setNumber++) {
+                        var setPoints = setScores[setNumber];
+                        if (playerNumber == "BreakPoints") {
+                            scores.push(setPoints["BreakPoints"] || 0);
+                        } else {
+                            scores.push(setPoints["Player" + playerNumber + "Points"] || 0);
+                        }
+                    }
+                    return scores.join(" ");
+                }
+                
+                if (match) {
+                    if (match.StartTime) {
+                        var startTime = match.StartTime.toDate();
+                        $(tds[1]).text(startTime.toString("dd/MM/yyyy"));
+                        $(tds[2]).text(startTime.toString("HH:mm") + " " + config.startTimeType[match.StartTimeType]);
+                    }
+                    //for (var i = 0; i < tds.length; i++) {
+                    //    $(tds[i]).text(i);
+                    //}
+                    if (match.Id == 3515) {
+                        console.log("M", match, config.startTimeType[match.StartTimeType]);
+                    }
+                    var scoresHtml = [];
+                    scoresHtml.push(getScore(1, match.SetScores));
+                    scoresHtml.push(getScore(2, match.SetScores));
+                    scoresHtml.push(getScore("BreakPoints", match.SetScores));
+                    $(tds[4]).html(scoresHtml.join("<br/>"));
+                    if (typeof match.Result !== "undefined" && match.Result != null) {
+                        var winner = match.Winner == 0 ? match.Player1 : match.Player2;
+                        if (winner) {
+                            winner = playerName(winner);
+                        } else {
+                            winner = "";
+                        }
+                        $(tds[5]).html(winner);
+                        $(tds[6]).text(config.matchResult[match.Result]);
+                        
+                    }
+                    $(tds[7]).text(config.matchStatus[match.Status]);
+                    
+                }
+            });
+        },
         init: function(config) {
             this.config = config;
             
@@ -286,7 +349,9 @@
                     var idNumber = $("input[name='" + config.idNumberName + "']", dialogContainer).val();
                     var source = $("select[name='source']", dialogContainer).val();
                     var section = $("select[name='section']", dialogContainer).val();
-                    this[config.actionName](idNumber, parameters, source, section);
+                    var status = $("select[name='status']", dialogContainer).val();
+                    var reason = $("input[name='reason']", dialogContainer).val();
+                    this[config.actionName](idNumber, parameters, source, section, status, reason);
                 }, this),
                 applyTemplate: function (dialogContainer) {
                     $("<span/>").text(config.text).appendTo(dialogContainer);
@@ -331,6 +396,18 @@
                         sectionSelect.appendTo(host);
                     }
                     
+                    if (config.removeStatus) {
+                        host = $("<div class='control-group'/>").appendTo(form);
+                        $("<label/>").text(config.resources.CompetitionPlayerStatus).appendTo(host);
+                        var removeStatusSelect = $("<select/>").attr("name", "status").appendTo(host);
+                        $.each(config.removeStatus, function(index, item) {
+                            $("<option/>").val(index).text(item).appendTo(removeStatusSelect);
+                        });
+                        host = $("<div class='control-group'/>").appendTo(form);
+                        $("<label/>").text(config.resources.CompetitionPlayerStatusRemove).appendTo(host);
+                        $("<input/>").attr("name", "reason").appendTo(host);
+                    }
+                    
                 },
                 resources: {
                     Cancel: this.config.resources.Cancel,
@@ -370,6 +447,7 @@
                 actionName: "replacePlayer",
                 competitionPlayerSources: this.config.competitionPlayerSources,
                 competitionSections: this.config.competitionSections,
+                removeStatus: this.config.removeStatus,
                 canAddToFinal: false,
                 canAddToQualifying: false,
                 resources: this.config.resources
@@ -398,14 +476,14 @@
             }, this);
             $.getJSON(this.config.getPlayerIdByIdNumberUrl, { idNumber: idNumber }, playerFound);
         },
-        replacePlayer: function(idNumber, replacedPlayerId, source, section) {
+        replacePlayer: function(idNumber, replacedPlayerId, source, section, status, reason) {
             var competitionId = this.getCompetitionId();
             var playerFound = _.bind(function (result) {
                 if (result) {
                     $.ajax({
                         url: this.config.replacePlayerUrl,
                         type: "POST",
-                        data: { competitionId: competitionId, replacedPlayerId: replacedPlayerId, replacementPlayerId: result, source: source },
+                        data: { competitionId: competitionId, replacedPlayerId: replacedPlayerId, replacementPlayerId: result, source: source, status: status, reason: reason },
                         success: function () {
                             location.reload();
                         },
@@ -414,12 +492,13 @@
                         }, this)
                     });
                 } else {
-                    location.href = this.config.createPlayerUrl + "?competitionId=" + String(competitionId) + "&replacePlayerId=" + String(replacedPlayerId) + "&idNumber=" + String(idNumber) + "&source=" + String(source);
+                    location.href = this.config.createPlayerUrl + "?competitionId=" + String(competitionId) + "&replacePlayerId=" + String(replacedPlayerId) + "&idNumber=" + String(idNumber) + "&source=" + String(source) + "&status=" + String(status) + "&reason=" + String(reason);
                 }
             }, this);
             $.getJSON(this.config.getPlayerIdByIdNumberUrl, { idNumber: idNumber }, playerFound);
         },
         initRemovePlayerDialog: function () {
+            var config = this.config;
             var dialogConfig = {
                 id: "confirmRemoveCompetitionPlayer",
                 onConfirm: _.bind(function (parameters,dialogContainer) {
@@ -427,6 +506,21 @@
                 }, this),
                 defaultIsCancel: true,
                 text: this.config.resources.RemoveCompetitionPlayerConfirmText,
+                applyTemplate: function (dialogContainer) {
+                    $("<div/>").text(config.resources.RemoveCompetitionPlayerConfirmText).appendTo(dialogContainer);
+                    $("<hr class='space'/>").appendTo(dialogContainer);
+                    var form = $("<form/>").appendTo(dialogContainer);
+                    var host = $("<div class='control-group'/>").appendTo(form);
+                    $("<label/>").text(config.resources.CompetitionPlayerStatus).appendTo(host);
+                    var removeStatusSelect = $("<select/>").attr("name", "status").appendTo(host);
+                    $.each(config.removeStatus, function (index, item) {
+                        $("<option/>").val(index).text(item).appendTo(removeStatusSelect);
+                    });
+                    host = $("<div class='control-group'/>").appendTo(form);
+                    $("<label/>").text(config.resources.CompetitionPlayerStatusRemove).appendTo(host);
+                    $("<input/>").attr("name", "reason").appendTo(host);
+                    
+                },
                 resources: {
                     Cancel: this.config.resources.Cancel,
                     Confirm: this.config.resources.RemoveCompetitionPlayerConfirm,
@@ -443,10 +537,12 @@
         },
         removeCompetitionPlayer: function (target, dialogContainer) {
             var playerId = parseInt(target.closest("tr").data("key"));
+            var status = $("select[name=status]", dialogContainer).val();
+            var reason = $("input[name=reason]", dialogContainer).val();
             $.ajax({
                 url: this.config.removeCompetitionPlayerUrl,
                 type: "POST",
-                data: { competitionId: this.getCompetitionId(), playerId: playerId },
+                data: { competitionId: this.getCompetitionId(), playerId: playerId, status: status, reason: reason },
                 success: function() {
                     location.reload();
                 },

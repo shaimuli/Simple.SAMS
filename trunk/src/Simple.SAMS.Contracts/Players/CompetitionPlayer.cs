@@ -12,6 +12,9 @@ namespace Simple.SAMS.Contracts.Players
     public class CompetitionPlayer : Player
     {
         [DataMember(EmitDefaultValue = false)]
+        public CompetitionPlayerStatus Status { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
         public bool Replaceable { get; set; }
 
         [DataMember(EmitDefaultValue = false)]

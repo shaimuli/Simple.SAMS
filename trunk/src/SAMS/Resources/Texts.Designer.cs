@@ -376,6 +376,51 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to סוג הסרה.
+        /// </summary>
+        internal static string CompetitionPlayerStatus {
+            get {
+                return ResourceManager.GetString("CompetitionPlayerStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to פסילה.
+        /// </summary>
+        internal static string CompetitionPlayerStatus_Disqualified {
+            get {
+                return ResourceManager.GetString("CompetitionPlayerStatus.Disqualified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to הסרה.
+        /// </summary>
+        internal static string CompetitionPlayerStatus_Removed {
+            get {
+                return ResourceManager.GetString("CompetitionPlayerStatus.Removed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to פרישה.
+        /// </summary>
+        internal static string CompetitionPlayerStatus_Retired {
+            get {
+                return ResourceManager.GetString("CompetitionPlayerStatus.Retired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to סיבת פרישה.
+        /// </summary>
+        internal static string CompetitionPlayerStatusRemove {
+            get {
+                return ResourceManager.GetString("CompetitionPlayerStatusRemove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to אסמכתא.
         /// </summary>
         internal static string CompetitionReferenceId {
@@ -880,6 +925,33 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to סוג/י תחרות לא נמצא/ו.
+        /// </summary>
+        internal static string ImportCompetitionError_InvalidCompetitionType {
+            get {
+                return ResourceManager.GetString("ImportCompetitionError.InvalidCompetitionType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to קובץ התחרויות לא תקין, נא וודא ששדות החובה מלאים והתאריכים בפורמט yyyy-MM-dd.
+        /// </summary>
+        internal static string ImportCompetitionError_InvalidFile {
+            get {
+                return ResourceManager.GetString("ImportCompetitionError.InvalidFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to אירועו שגיאות בטעינת קובץ תחרויות, נא תקן את השגיאות וטען את הקובץ מחדש..
+        /// </summary>
+        internal static string ImportCompetitionErrorHeader {
+            get {
+                return ResourceManager.GetString("ImportCompetitionErrorHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to טעינת קובץ תחרויות.
         /// </summary>
         internal static string ImportCompetitions {
@@ -1101,6 +1173,15 @@ namespace SAMS.Resources {
         internal static string MatchStatus_PlayersAssigned {
             get {
                 return ResourceManager.GetString("MatchStatus.PlayersAssigned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to משוחק עכשיו.
+        /// </summary>
+        internal static string MatchStatus_Playing {
+            get {
+                return ResourceManager.GetString("MatchStatus.Playing", resourceCulture);
             }
         }
         

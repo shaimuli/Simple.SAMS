@@ -756,3 +756,1027 @@ System.ArgumentException: Invalid status transition from 'MatchesCreated' to Pos
 2013-03-08 11:48:02.4973 SimpleSite|Info| SAMS Application initialization completed.
 2013-03-08 11:51:56.5207 SimpleSite|Info| SAMS Application started... 
 2013-03-08 11:51:57.1237 SimpleSite|Info| SAMS Application initialization completed.
+2013-03-12 08:05:48.1514 SimpleSite|Info| SAMS Application started... 
+2013-03-12 08:05:49.3064 SimpleSite|Info| SAMS Application initialization completed.
+2013-03-12 08:07:05.0118 SimpleSite|Error| Error executing request.
+Details:
+System.ArgumentException: Invalid status transition from 'MatchesCreated' to Started, Competition Id: 1153.
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.StartCompetition(Int32 id) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 165
+   at SAMS.Controllers.CompetitionsController.StartCompetition(Int32 competitionId) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 269
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-03-12 08:07:05.0328 SimpleSite|Error| Unhandled exception
+Details:
+System.ArgumentException: Invalid status transition from 'MatchesCreated' to Started, Competition Id: 1153.
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.StartCompetition(Int32 id) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 165
+   at SAMS.Controllers.CompetitionsController.StartCompetition(Int32 competitionId) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 269
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-03-12 08:08:12.5496 SimpleSite|Info| SAMS Application started... 
+2013-03-12 08:08:13.2517 SimpleSite|Info| SAMS Application initialization completed.
+2013-03-27 08:12:18.0622 SimpleSite|Info| SAMS Application started... 
+2013-03-27 08:12:19.3813 SimpleSite|Info| SAMS Application initialization completed.
+2013-03-27 08:39:40.4982 SimpleSite|Error| Error executing request.
+Details:
+System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Competition_CompetitionType". The conflict occurred in database "SimpleITASAMS", table "dbo.CompetitionType", column 'Id'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at System.Data.Linq.SqlClient.SqlProvider.Execute(Expression query, QueryInfo queryInfo, IObjectReaderFactory factory, Object[] parentArgs, Object[] userArgs, ICompiledSubQuery[] subQueries, Object lastResult)
+   at System.Data.Linq.SqlClient.SqlProvider.ExecuteAll(Expression query, QueryInfo[] queryInfos, IObjectReaderFactory factory, Object[] userArguments, ICompiledSubQuery[] subQueries)
+   at System.Data.Linq.SqlClient.SqlProvider.System.Data.Linq.Provider.IProvider.Execute(Expression query)
+   at System.Data.Linq.ChangeDirector.StandardChangeDirector.DynamicInsert(TrackedObject item)
+   at System.Data.Linq.ChangeDirector.StandardChangeDirector.Insert(TrackedObject item)
+   at System.Data.Linq.ChangeProcessor.SubmitChanges(ConflictMode failureMode)
+   at System.Data.Linq.DataContext.SubmitChanges(ConflictMode failureMode)
+   at System.Data.Linq.DataContext.SubmitChanges()
+   at Simple.SAMS.Competitions.Data.CompetitionRepository.<>c__DisplayClass2a.<UpdateCompetitionsByReferenceId>b__28(CompetitionsDataContext dataContext) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionRepository.cs:line 294
+   at Simple.Utilities.DataRepositoryBase`1.UseDataContext(Action`1 action) in c:\Data\git\Simple.SAMS\trunk\src\Simple.Utilities\DataRepositoryBase.cs:line 25
+   at Simple.SAMS.Competitions.Data.CompetitionRepository.UpdateCompetitionsByReferenceId(CreateCompetitionInfo[] competitions) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionRepository.cs:line 271
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.ImportCompetitions(CreateCompetitionInfo[] competitions) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 367
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.LoadCompetitions(String competitionsFileUrl) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 75
+   at SAMS.Controllers.CompetitionsController.Import(HttpPostedFileBase competitionsFile) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 412
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+ClientConnectionId:cffb7f6f-b75f-4eea-b74a-36a8326562b4
+2013-03-27 08:39:40.5462 SimpleSite|Error| Unhandled exception
+Details:
+System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Competition_CompetitionType". The conflict occurred in database "SimpleITASAMS", table "dbo.CompetitionType", column 'Id'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at System.Data.Linq.SqlClient.SqlProvider.Execute(Expression query, QueryInfo queryInfo, IObjectReaderFactory factory, Object[] parentArgs, Object[] userArgs, ICompiledSubQuery[] subQueries, Object lastResult)
+   at System.Data.Linq.SqlClient.SqlProvider.ExecuteAll(Expression query, QueryInfo[] queryInfos, IObjectReaderFactory factory, Object[] userArguments, ICompiledSubQuery[] subQueries)
+   at System.Data.Linq.SqlClient.SqlProvider.System.Data.Linq.Provider.IProvider.Execute(Expression query)
+   at System.Data.Linq.ChangeDirector.StandardChangeDirector.DynamicInsert(TrackedObject item)
+   at System.Data.Linq.ChangeDirector.StandardChangeDirector.Insert(TrackedObject item)
+   at System.Data.Linq.ChangeProcessor.SubmitChanges(ConflictMode failureMode)
+   at System.Data.Linq.DataContext.SubmitChanges(ConflictMode failureMode)
+   at System.Data.Linq.DataContext.SubmitChanges()
+   at Simple.SAMS.Competitions.Data.CompetitionRepository.<>c__DisplayClass2a.<UpdateCompetitionsByReferenceId>b__28(CompetitionsDataContext dataContext) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionRepository.cs:line 294
+   at Simple.Utilities.DataRepositoryBase`1.UseDataContext(Action`1 action) in c:\Data\git\Simple.SAMS\trunk\src\Simple.Utilities\DataRepositoryBase.cs:line 25
+   at Simple.SAMS.Competitions.Data.CompetitionRepository.UpdateCompetitionsByReferenceId(CreateCompetitionInfo[] competitions) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionRepository.cs:line 271
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.ImportCompetitions(CreateCompetitionInfo[] competitions) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 367
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.LoadCompetitions(String competitionsFileUrl) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 75
+   at SAMS.Controllers.CompetitionsController.Import(HttpPostedFileBase competitionsFile) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 412
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+ClientConnectionId:cffb7f6f-b75f-4eea-b74a-36a8326562b4
+2013-03-27 19:53:19.7650 SimpleSite|Info| SAMS Application started... 
+2013-03-27 19:53:20.4401 SimpleSite|Info| SAMS Application initialization completed.
+2013-03-27 19:55:39.5760 SimpleSite|Error| Error executing request.
+Details:
+System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Competition_CompetitionType". The conflict occurred in database "SimpleITASAMS", table "dbo.CompetitionType", column 'Id'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at System.Data.Linq.SqlClient.SqlProvider.Execute(Expression query, QueryInfo queryInfo, IObjectReaderFactory factory, Object[] parentArgs, Object[] userArgs, ICompiledSubQuery[] subQueries, Object lastResult)
+   at System.Data.Linq.SqlClient.SqlProvider.ExecuteAll(Expression query, QueryInfo[] queryInfos, IObjectReaderFactory factory, Object[] userArguments, ICompiledSubQuery[] subQueries)
+   at System.Data.Linq.SqlClient.SqlProvider.System.Data.Linq.Provider.IProvider.Execute(Expression query)
+   at System.Data.Linq.ChangeDirector.StandardChangeDirector.DynamicInsert(TrackedObject item)
+   at System.Data.Linq.ChangeDirector.StandardChangeDirector.Insert(TrackedObject item)
+   at System.Data.Linq.ChangeProcessor.SubmitChanges(ConflictMode failureMode)
+   at System.Data.Linq.DataContext.SubmitChanges(ConflictMode failureMode)
+   at System.Data.Linq.DataContext.SubmitChanges()
+   at Simple.SAMS.Competitions.Data.CompetitionRepository.<>c__DisplayClass2a.<UpdateCompetitionsByReferenceId>b__28(CompetitionsDataContext dataContext) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionRepository.cs:line 294
+   at Simple.Utilities.DataRepositoryBase`1.UseDataContext(Action`1 action) in c:\Data\git\Simple.SAMS\trunk\src\Simple.Utilities\DataRepositoryBase.cs:line 25
+   at Simple.SAMS.Competitions.Data.CompetitionRepository.UpdateCompetitionsByReferenceId(CreateCompetitionInfo[] competitions) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionRepository.cs:line 271
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.ImportCompetitions(CreateCompetitionInfo[] competitions) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 367
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.LoadCompetitions(String competitionsFileUrl) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 104
+   at SAMS.Controllers.CompetitionsController.Import(HttpPostedFileBase competitionsFile) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 416
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+ClientConnectionId:60c441f8-83ab-49c4-a923-71dd9aca6156
+2013-03-27 19:55:39.5890 SimpleSite|Error| Unhandled exception
+Details:
+System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Competition_CompetitionType". The conflict occurred in database "SimpleITASAMS", table "dbo.CompetitionType", column 'Id'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at System.Data.Linq.SqlClient.SqlProvider.Execute(Expression query, QueryInfo queryInfo, IObjectReaderFactory factory, Object[] parentArgs, Object[] userArgs, ICompiledSubQuery[] subQueries, Object lastResult)
+   at System.Data.Linq.SqlClient.SqlProvider.ExecuteAll(Expression query, QueryInfo[] queryInfos, IObjectReaderFactory factory, Object[] userArguments, ICompiledSubQuery[] subQueries)
+   at System.Data.Linq.SqlClient.SqlProvider.System.Data.Linq.Provider.IProvider.Execute(Expression query)
+   at System.Data.Linq.ChangeDirector.StandardChangeDirector.DynamicInsert(TrackedObject item)
+   at System.Data.Linq.ChangeDirector.StandardChangeDirector.Insert(TrackedObject item)
+   at System.Data.Linq.ChangeProcessor.SubmitChanges(ConflictMode failureMode)
+   at System.Data.Linq.DataContext.SubmitChanges(ConflictMode failureMode)
+   at System.Data.Linq.DataContext.SubmitChanges()
+   at Simple.SAMS.Competitions.Data.CompetitionRepository.<>c__DisplayClass2a.<UpdateCompetitionsByReferenceId>b__28(CompetitionsDataContext dataContext) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionRepository.cs:line 294
+   at Simple.Utilities.DataRepositoryBase`1.UseDataContext(Action`1 action) in c:\Data\git\Simple.SAMS\trunk\src\Simple.Utilities\DataRepositoryBase.cs:line 25
+   at Simple.SAMS.Competitions.Data.CompetitionRepository.UpdateCompetitionsByReferenceId(CreateCompetitionInfo[] competitions) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionRepository.cs:line 271
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.ImportCompetitions(CreateCompetitionInfo[] competitions) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 367
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.LoadCompetitions(String competitionsFileUrl) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 104
+   at SAMS.Controllers.CompetitionsController.Import(HttpPostedFileBase competitionsFile) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 416
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+ClientConnectionId:60c441f8-83ab-49c4-a923-71dd9aca6156
+2013-03-27 19:56:21.5324 SimpleSite|Error| Error executing request.
+Details:
+System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Competition_CompetitionType". The conflict occurred in database "SimpleITASAMS", table "dbo.CompetitionType", column 'Id'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at System.Data.Linq.SqlClient.SqlProvider.Execute(Expression query, QueryInfo queryInfo, IObjectReaderFactory factory, Object[] parentArgs, Object[] userArgs, ICompiledSubQuery[] subQueries, Object lastResult)
+   at System.Data.Linq.SqlClient.SqlProvider.ExecuteAll(Expression query, QueryInfo[] queryInfos, IObjectReaderFactory factory, Object[] userArguments, ICompiledSubQuery[] subQueries)
+   at System.Data.Linq.SqlClient.SqlProvider.System.Data.Linq.Provider.IProvider.Execute(Expression query)
+   at System.Data.Linq.ChangeDirector.StandardChangeDirector.DynamicInsert(TrackedObject item)
+   at System.Data.Linq.ChangeDirector.StandardChangeDirector.Insert(TrackedObject item)
+   at System.Data.Linq.ChangeProcessor.SubmitChanges(ConflictMode failureMode)
+   at System.Data.Linq.DataContext.SubmitChanges(ConflictMode failureMode)
+   at System.Data.Linq.DataContext.SubmitChanges()
+   at Simple.SAMS.Competitions.Data.CompetitionRepository.<>c__DisplayClass2a.<UpdateCompetitionsByReferenceId>b__28(CompetitionsDataContext dataContext) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionRepository.cs:line 294
+   at Simple.Utilities.DataRepositoryBase`1.UseDataContext(Action`1 action) in c:\Data\git\Simple.SAMS\trunk\src\Simple.Utilities\DataRepositoryBase.cs:line 25
+   at Simple.SAMS.Competitions.Data.CompetitionRepository.UpdateCompetitionsByReferenceId(CreateCompetitionInfo[] competitions) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionRepository.cs:line 271
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.ImportCompetitions(CreateCompetitionInfo[] competitions) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 367
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.LoadCompetitions(String competitionsFileUrl) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 104
+   at SAMS.Controllers.CompetitionsController.Import(HttpPostedFileBase competitionsFile) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 416
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+ClientConnectionId:60c441f8-83ab-49c4-a923-71dd9aca6156
+2013-03-27 19:56:21.5374 SimpleSite|Error| Unhandled exception
+Details:
+System.Data.SqlClient.SqlException (0x80131904): The INSERT statement conflicted with the FOREIGN KEY constraint "FK_Competition_CompetitionType". The conflict occurred in database "SimpleITASAMS", table "dbo.CompetitionType", column 'Id'.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at System.Data.Linq.SqlClient.SqlProvider.Execute(Expression query, QueryInfo queryInfo, IObjectReaderFactory factory, Object[] parentArgs, Object[] userArgs, ICompiledSubQuery[] subQueries, Object lastResult)
+   at System.Data.Linq.SqlClient.SqlProvider.ExecuteAll(Expression query, QueryInfo[] queryInfos, IObjectReaderFactory factory, Object[] userArguments, ICompiledSubQuery[] subQueries)
+   at System.Data.Linq.SqlClient.SqlProvider.System.Data.Linq.Provider.IProvider.Execute(Expression query)
+   at System.Data.Linq.ChangeDirector.StandardChangeDirector.DynamicInsert(TrackedObject item)
+   at System.Data.Linq.ChangeDirector.StandardChangeDirector.Insert(TrackedObject item)
+   at System.Data.Linq.ChangeProcessor.SubmitChanges(ConflictMode failureMode)
+   at System.Data.Linq.DataContext.SubmitChanges(ConflictMode failureMode)
+   at System.Data.Linq.DataContext.SubmitChanges()
+   at Simple.SAMS.Competitions.Data.CompetitionRepository.<>c__DisplayClass2a.<UpdateCompetitionsByReferenceId>b__28(CompetitionsDataContext dataContext) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionRepository.cs:line 294
+   at Simple.Utilities.DataRepositoryBase`1.UseDataContext(Action`1 action) in c:\Data\git\Simple.SAMS\trunk\src\Simple.Utilities\DataRepositoryBase.cs:line 25
+   at Simple.SAMS.Competitions.Data.CompetitionRepository.UpdateCompetitionsByReferenceId(CreateCompetitionInfo[] competitions) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionRepository.cs:line 271
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.ImportCompetitions(CreateCompetitionInfo[] competitions) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 367
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.LoadCompetitions(String competitionsFileUrl) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 104
+   at SAMS.Controllers.CompetitionsController.Import(HttpPostedFileBase competitionsFile) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 416
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+ClientConnectionId:60c441f8-83ab-49c4-a923-71dd9aca6156
+2013-03-27 19:56:38.1194 SimpleSite|Info| SAMS Application started... 
+2013-03-27 19:56:38.8594 SimpleSite|Info| SAMS Application initialization completed.
+2013-03-27 19:58:30.2498 SimpleSite|Info| SAMS Application started... 
+2013-03-27 19:58:30.9458 SimpleSite|Info| SAMS Application initialization completed.
+2013-03-27 20:13:11.5832 SimpleSite|Info| SAMS Application started... 
+2013-03-27 20:13:12.2872 SimpleSite|Info| SAMS Application initialization completed.
+2013-03-27 20:14:59.7464 SimpleSite|Error| Error executing request.
+Details:
+System.ArgumentException: Invalid status transition from 'MatchesCreated' to Started, Competition Id: 1153.
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.StartCompetition(Int32 id) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 194
+   at SAMS.Controllers.CompetitionsController.StartCompetition(Int32 competitionId) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 270
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-03-27 20:14:59.7534 SimpleSite|Error| Unhandled exception
+Details:
+System.ArgumentException: Invalid status transition from 'MatchesCreated' to Started, Competition Id: 1153.
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.StartCompetition(Int32 id) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 194
+   at SAMS.Controllers.CompetitionsController.StartCompetition(Int32 competitionId) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 270
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-03-27 20:30:52.5139 SimpleSite|Info| SAMS Application started... 
+2013-03-27 20:30:53.2039 SimpleSite|Info| SAMS Application initialization completed.
+2013-03-27 20:44:52.5579 SimpleSite|Info| SAMS Application started... 
+2013-03-27 20:44:53.3080 SimpleSite|Info| SAMS Application initialization completed.
+2013-03-27 20:45:08.9119 SimpleSite|Info| SAMS Application started... 
+2013-03-27 20:45:09.3019 SimpleSite|Info| SAMS Application initialization completed.
+2013-03-27 23:53:19.5896 SimpleSite|Info| SAMS Application started... 
+2013-03-27 23:53:20.6187 SimpleSite|Info| SAMS Application initialization completed.
+2013-03-27 23:54:41.7523 SimpleSite|Info| SAMS Application started... 
+2013-03-27 23:54:42.5134 SimpleSite|Info| SAMS Application initialization completed.
+2013-03-28 00:01:14.6228 SimpleSite|Info| SAMS Application started... 
+2013-03-28 00:01:15.6929 SimpleSite|Info| SAMS Application initialization completed.
+2013-03-28 00:05:51.4587 SimpleSite|Info| SAMS Application started... 
+2013-03-28 00:05:52.0617 SimpleSite|Info| SAMS Application initialization completed.
+2013-03-28 00:05:52.3077 SimpleSite|Error| Error executing request.
+Details:
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Simple.SAMS.Competitions.Data.CompetitionMatchesRepository.<>c__DisplayClass18.<>c__DisplayClass1b.<UpdateMatchScore>b__15(SetScore setScore) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionMatchesRepository.cs:line 188
+   at Simple.CollectionExtensions.ForEach[T](IEnumerable`1 collection, Action`1 action)
+   at Simple.SAMS.Competitions.Data.CompetitionMatchesRepository.<>c__DisplayClass18.<UpdateMatchScore>b__14(CompetitionsDataContext dataContext) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionMatchesRepository.cs:line 159
+   at Simple.Utilities.DataRepositoryBase`1.UseDataContext(Action`1 action) in c:\Data\git\Simple.SAMS\trunk\src\Simple.Utilities\DataRepositoryBase.cs:line 25
+   at Simple.SAMS.Competitions.Data.CompetitionMatchesRepository.UpdateMatchScore(MatchScoreUpdateInfo scoreUpdateInfo) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionMatchesRepository.cs:line 154
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.UpdateMatchScore(MatchScoreUpdateInfo scoreUpdateInfo) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 429
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.<>c__DisplayClass3.<UpdateMatchScore>b__2(MatchScoreUpdateInfo scoreUpdateInfo) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 130
+   at Simple.CollectionExtensions.ForEach[T](IEnumerable`1 collection, Action`1 action)
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.UpdateMatchScore(MatchScoreUpdateInfo[] scoreUpdateInfoItems) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 122
+   at SAMS.Controllers.CompetitionsController.UpdateScores(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 251
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 172
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-03-28 00:05:52.3307 SimpleSite|Error| Unhandled exception
+Details:
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Simple.SAMS.Competitions.Data.CompetitionMatchesRepository.<>c__DisplayClass18.<>c__DisplayClass1b.<UpdateMatchScore>b__15(SetScore setScore) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionMatchesRepository.cs:line 188
+   at Simple.CollectionExtensions.ForEach[T](IEnumerable`1 collection, Action`1 action)
+   at Simple.SAMS.Competitions.Data.CompetitionMatchesRepository.<>c__DisplayClass18.<UpdateMatchScore>b__14(CompetitionsDataContext dataContext) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionMatchesRepository.cs:line 159
+   at Simple.Utilities.DataRepositoryBase`1.UseDataContext(Action`1 action) in c:\Data\git\Simple.SAMS\trunk\src\Simple.Utilities\DataRepositoryBase.cs:line 25
+   at Simple.SAMS.Competitions.Data.CompetitionMatchesRepository.UpdateMatchScore(MatchScoreUpdateInfo scoreUpdateInfo) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionMatchesRepository.cs:line 154
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.UpdateMatchScore(MatchScoreUpdateInfo scoreUpdateInfo) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 429
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.<>c__DisplayClass3.<UpdateMatchScore>b__2(MatchScoreUpdateInfo scoreUpdateInfo) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 130
+   at Simple.CollectionExtensions.ForEach[T](IEnumerable`1 collection, Action`1 action)
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.UpdateMatchScore(MatchScoreUpdateInfo[] scoreUpdateInfoItems) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 122
+   at SAMS.Controllers.CompetitionsController.UpdateScores(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 251
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 172
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-03-28 00:10:45.1264 SimpleSite|Error| Error executing request.
+Details:
+System.ArgumentException: Invalid status transition from 'Started' to Positioned, Competition Id: 1159.
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.PositionCompetitionPlayers(Int32 id, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 176
+   at SAMS.Controllers.CompetitionsController.PositionCompetitionPlayers(Int32 competitionId, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 262
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-03-28 00:10:45.1294 SimpleSite|Error| Unhandled exception
+Details:
+System.ArgumentException: Invalid status transition from 'Started' to Positioned, Competition Id: 1159.
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.PositionCompetitionPlayers(Int32 id, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 176
+   at SAMS.Controllers.CompetitionsController.PositionCompetitionPlayers(Int32 competitionId, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 262
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-03-28 00:13:14.2600 SimpleSite|Info| SAMS Application started... 
+2013-03-28 00:13:15.0920 SimpleSite|Info| SAMS Application initialization completed.
+2013-03-28 00:21:01.3467 SimpleSite|Error| Error executing request.
+Details:
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Simple.SAMS.Competitions.Data.CompetitionMatchesRepository.<>c__DisplayClass18.<>c__DisplayClass1b.<UpdateMatchScore>b__15(SetScore setScore) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionMatchesRepository.cs:line 188
+   at Simple.CollectionExtensions.ForEach[T](IEnumerable`1 collection, Action`1 action)
+   at Simple.SAMS.Competitions.Data.CompetitionMatchesRepository.<>c__DisplayClass18.<UpdateMatchScore>b__14(CompetitionsDataContext dataContext) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionMatchesRepository.cs:line 159
+   at Simple.Utilities.DataRepositoryBase`1.UseDataContext(Action`1 action) in c:\Data\git\Simple.SAMS\trunk\src\Simple.Utilities\DataRepositoryBase.cs:line 25
+   at Simple.SAMS.Competitions.Data.CompetitionMatchesRepository.UpdateMatchScore(MatchScoreUpdateInfo scoreUpdateInfo) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionMatchesRepository.cs:line 154
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.UpdateMatchScore(MatchScoreUpdateInfo scoreUpdateInfo) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 429
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.<>c__DisplayClass3.<UpdateMatchScore>b__2(MatchScoreUpdateInfo scoreUpdateInfo) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 130
+   at Simple.CollectionExtensions.ForEach[T](IEnumerable`1 collection, Action`1 action)
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.UpdateMatchScore(MatchScoreUpdateInfo[] scoreUpdateInfoItems) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 122
+   at SAMS.Controllers.CompetitionsController.UpdateScores(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 251
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 172
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-03-28 00:21:01.3667 SimpleSite|Error| Unhandled exception
+Details:
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Simple.SAMS.Competitions.Data.CompetitionMatchesRepository.<>c__DisplayClass18.<>c__DisplayClass1b.<UpdateMatchScore>b__15(SetScore setScore) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionMatchesRepository.cs:line 188
+   at Simple.CollectionExtensions.ForEach[T](IEnumerable`1 collection, Action`1 action)
+   at Simple.SAMS.Competitions.Data.CompetitionMatchesRepository.<>c__DisplayClass18.<UpdateMatchScore>b__14(CompetitionsDataContext dataContext) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionMatchesRepository.cs:line 159
+   at Simple.Utilities.DataRepositoryBase`1.UseDataContext(Action`1 action) in c:\Data\git\Simple.SAMS\trunk\src\Simple.Utilities\DataRepositoryBase.cs:line 25
+   at Simple.SAMS.Competitions.Data.CompetitionMatchesRepository.UpdateMatchScore(MatchScoreUpdateInfo scoreUpdateInfo) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionMatchesRepository.cs:line 154
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.UpdateMatchScore(MatchScoreUpdateInfo scoreUpdateInfo) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 429
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.<>c__DisplayClass3.<UpdateMatchScore>b__2(MatchScoreUpdateInfo scoreUpdateInfo) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 130
+   at Simple.CollectionExtensions.ForEach[T](IEnumerable`1 collection, Action`1 action)
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.UpdateMatchScore(MatchScoreUpdateInfo[] scoreUpdateInfoItems) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 122
+   at SAMS.Controllers.CompetitionsController.UpdateScores(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 251
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 172
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-03-28 00:24:48.6617 SimpleSite|Info| SAMS Application started... 
+2013-03-28 00:24:49.3877 SimpleSite|Info| SAMS Application initialization completed.
+2013-03-28 00:34:48.9550 SimpleSite|Info| SAMS Application started... 
+2013-03-28 00:34:49.3291 SimpleSite|Info| SAMS Application initialization completed.
+2013-03-28 08:09:44.7893 SimpleSite|Info| SAMS Application started... 
+2013-03-28 08:09:45.5483 SimpleSite|Info| SAMS Application initialization completed.
+2013-03-28 08:24:30.4259 SimpleSite|Info| SAMS Application started... 
+2013-03-28 08:24:31.2730 SimpleSite|Info| SAMS Application initialization completed.
+2013-03-28 08:29:29.3930 SimpleSite|Info| Replaceing 471 with 465
+2013-03-28 08:32:37.9728 SimpleSite|Info| SAMS Application started... 
+2013-03-28 08:32:38.6738 SimpleSite|Info| SAMS Application initialization completed.
+2013-03-28 08:34:37.4596 SimpleSite|Info| SAMS Application started... 
+2013-03-28 08:34:38.1467 SimpleSite|Info| SAMS Application initialization completed.
+2013-03-28 08:43:00.5784 SimpleSite|Error| Error executing request.
+Details:
+System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Where[TSource](IEnumerable`1 source, Func`2 predicate)
+   at SAMS.Controllers.CompetitionsController.<>c__DisplayClass8.<UpdateScores>b__6(MatchResultUpdateModel update) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 234
+   at Simple.CollectionExtensions.ForEach[T](IEnumerable`1 collection, Action`1 action)
+   at SAMS.Controllers.CompetitionsController.UpdateScores(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 232
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 169
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-03-28 08:43:00.5884 SimpleSite|Error| Unhandled exception
+Details:
+System.ArgumentNullException: Value cannot be null.
+Parameter name: source
+   at System.Linq.Enumerable.Where[TSource](IEnumerable`1 source, Func`2 predicate)
+   at SAMS.Controllers.CompetitionsController.<>c__DisplayClass8.<UpdateScores>b__6(MatchResultUpdateModel update) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 234
+   at Simple.CollectionExtensions.ForEach[T](IEnumerable`1 collection, Action`1 action)
+   at SAMS.Controllers.CompetitionsController.UpdateScores(MatchResultUpdateModel[] updates, ICompetitionsManager manager) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 232
+   at SAMS.Controllers.CompetitionsController.UpdateMatchResults(MatchResultUpdateModel[] updates) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 169
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-03-28 08:44:29.2335 SimpleSite|Info| SAMS Application started... 
+2013-03-28 08:44:29.9325 SimpleSite|Info| SAMS Application initialization completed.
+2013-04-01 23:52:41.6357 SimpleSite|Info| SAMS Application started... 
+2013-04-01 23:52:42.5187 SimpleSite|Info| SAMS Application initialization completed.
+2013-04-01 23:57:20.9987 SimpleSite|Info| SAMS Application started... 
+2013-04-01 23:57:21.6327 SimpleSite|Info| SAMS Application initialization completed.
+2013-04-02 00:14:06.8272 SimpleSite|Info| SAMS Application started... 
+2013-04-02 00:14:07.4682 SimpleSite|Info| SAMS Application initialization completed.
+2013-04-04 22:46:51.8070 SimpleSite|Info| SAMS Application started... 
+2013-04-04 22:46:52.4420 SimpleSite|Info| SAMS Application initialization completed.
+2013-04-05 10:22:58.9679 SimpleSite|Info| SAMS Application started... 
+2013-04-05 10:22:59.8230 SimpleSite|Info| SAMS Application initialization completed.
+2013-04-05 10:25:08.8983 SimpleSite|Error| Error executing request.
+Details:
+System.ArgumentException: The parameters dictionary contains a null entry for parameter 'status' of non-nullable type 'Simple.SAMS.Contracts.Players.CompetitionPlayerStatus' for method 'System.Web.Mvc.ActionResult Create(System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.String, System.Nullable`1[Simple.SAMS.Contracts.Competitions.CompetitionPlayerSource], System.Nullable`1[Simple.SAMS.Contracts.Competitions.CompetitionSection], Simple.SAMS.Contracts.Players.CompetitionPlayerStatus, System.String)' in 'SAMS.Controllers.PlayersController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+   at System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   at System.Web.Mvc.ReflectedActionDescriptor.<>c__DisplayClass1.<Execute>b__0(ParameterInfo parameterInfo)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-04-05 10:30:54.7651 SimpleSite|Info| SAMS Application started... 
+2013-04-05 10:30:55.4312 SimpleSite|Info| SAMS Application initialization completed.
+2013-04-05 10:31:40.5868 SimpleSite|Error| Error executing request.
+Details:
+System.ArgumentException: The parameters dictionary contains a null entry for parameter 'status' of non-nullable type 'Simple.SAMS.Contracts.Players.CompetitionPlayerStatus' for method 'System.Web.Mvc.ActionResult Create(System.Nullable`1[System.Int32], System.Nullable`1[System.Int32], System.String, System.Nullable`1[Simple.SAMS.Contracts.Competitions.CompetitionPlayerSource], System.Nullable`1[Simple.SAMS.Contracts.Competitions.CompetitionSection], Simple.SAMS.Contracts.Players.CompetitionPlayerStatus, System.String)' in 'SAMS.Controllers.PlayersController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+   at System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   at System.Web.Mvc.ReflectedActionDescriptor.<>c__DisplayClass1.<Execute>b__0(ParameterInfo parameterInfo)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-04-05 10:34:12.2504 SimpleSite|Info| SAMS Application started... 
+2013-04-05 10:34:12.8555 SimpleSite|Info| SAMS Application initialization completed.
+2013-04-05 10:41:31.4995 SimpleSite|Info| SAMS Application started... 
+2013-04-05 10:41:32.4826 SimpleSite|Info| SAMS Application initialization completed.
+2013-04-05 10:42:10.5358 SimpleSite|Info| Replaceing 484 with 465
+2013-04-05 10:59:02.2356 SimpleSite|Error| Error executing request.
+Details:
+System.ArgumentException: The parameters dictionary contains a null entry for parameter 'status' of non-nullable type 'Simple.SAMS.Contracts.Players.CompetitionPlayerStatus' for method 'System.Web.Mvc.ActionResult RemoveCompetitionPlayer(Int32, Int32, Simple.SAMS.Contracts.Players.CompetitionPlayerStatus, System.String)' in 'SAMS.Controllers.CompetitionsController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+   at System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   at System.Web.Mvc.ReflectedActionDescriptor.<>c__DisplayClass1.<Execute>b__0(ParameterInfo parameterInfo)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-04-05 10:59:02.2416 SimpleSite|Error| Unhandled exception
+Details:
+System.ArgumentException: The parameters dictionary contains a null entry for parameter 'status' of non-nullable type 'Simple.SAMS.Contracts.Players.CompetitionPlayerStatus' for method 'System.Web.Mvc.ActionResult RemoveCompetitionPlayer(Int32, Int32, Simple.SAMS.Contracts.Players.CompetitionPlayerStatus, System.String)' in 'SAMS.Controllers.CompetitionsController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+   at System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   at System.Web.Mvc.ReflectedActionDescriptor.<>c__DisplayClass1.<Execute>b__0(ParameterInfo parameterInfo)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-04-05 11:08:02.0195 SimpleSite|Error| Error executing request.
+Details:
+System.ArgumentException: The parameters dictionary contains a null entry for parameter 'status' of non-nullable type 'Simple.SAMS.Contracts.Players.CompetitionPlayerStatus' for method 'System.Web.Mvc.ActionResult RemoveCompetitionPlayer(Int32, Int32, Simple.SAMS.Contracts.Players.CompetitionPlayerStatus, System.String)' in 'SAMS.Controllers.CompetitionsController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+   at System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   at System.Web.Mvc.ReflectedActionDescriptor.<>c__DisplayClass1.<Execute>b__0(ParameterInfo parameterInfo)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-04-05 11:08:02.0195 SimpleSite|Error| Unhandled exception
+Details:
+System.ArgumentException: The parameters dictionary contains a null entry for parameter 'status' of non-nullable type 'Simple.SAMS.Contracts.Players.CompetitionPlayerStatus' for method 'System.Web.Mvc.ActionResult RemoveCompetitionPlayer(Int32, Int32, Simple.SAMS.Contracts.Players.CompetitionPlayerStatus, System.String)' in 'SAMS.Controllers.CompetitionsController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+   at System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   at System.Web.Mvc.ReflectedActionDescriptor.<>c__DisplayClass1.<Execute>b__0(ParameterInfo parameterInfo)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-04-05 11:10:43.4008 SimpleSite|Error| Error executing request.
+Details:
+System.ArgumentException: The parameters dictionary contains a null entry for parameter 'status' of non-nullable type 'Simple.SAMS.Contracts.Players.CompetitionPlayerStatus' for method 'System.Web.Mvc.ActionResult RemoveCompetitionPlayer(Int32, Int32, Simple.SAMS.Contracts.Players.CompetitionPlayerStatus, System.String)' in 'SAMS.Controllers.CompetitionsController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+   at System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   at System.Web.Mvc.ReflectedActionDescriptor.<>c__DisplayClass1.<Execute>b__0(ParameterInfo parameterInfo)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-04-05 11:10:43.4008 SimpleSite|Error| Unhandled exception
+Details:
+System.ArgumentException: The parameters dictionary contains a null entry for parameter 'status' of non-nullable type 'Simple.SAMS.Contracts.Players.CompetitionPlayerStatus' for method 'System.Web.Mvc.ActionResult RemoveCompetitionPlayer(Int32, Int32, Simple.SAMS.Contracts.Players.CompetitionPlayerStatus, System.String)' in 'SAMS.Controllers.CompetitionsController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+   at System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   at System.Web.Mvc.ReflectedActionDescriptor.<>c__DisplayClass1.<Execute>b__0(ParameterInfo parameterInfo)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-04-05 11:11:38.8179 SimpleSite|Error| Error executing request.
+Details:
+System.ArgumentException: The parameters dictionary contains a null entry for parameter 'status' of non-nullable type 'Simple.SAMS.Contracts.Players.CompetitionPlayerStatus' for method 'System.Web.Mvc.ActionResult RemoveCompetitionPlayer(Int32, Int32, Simple.SAMS.Contracts.Players.CompetitionPlayerStatus, System.String)' in 'SAMS.Controllers.CompetitionsController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+   at System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   at System.Web.Mvc.ReflectedActionDescriptor.<>c__DisplayClass1.<Execute>b__0(ParameterInfo parameterInfo)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-04-05 11:11:38.8309 SimpleSite|Error| Unhandled exception
+Details:
+System.ArgumentException: The parameters dictionary contains a null entry for parameter 'status' of non-nullable type 'Simple.SAMS.Contracts.Players.CompetitionPlayerStatus' for method 'System.Web.Mvc.ActionResult RemoveCompetitionPlayer(Int32, Int32, Simple.SAMS.Contracts.Players.CompetitionPlayerStatus, System.String)' in 'SAMS.Controllers.CompetitionsController'. An optional parameter must be a reference type, a nullable type, or be declared as an optional parameter.
+Parameter name: parameters
+   at System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)
+   at System.Web.Mvc.ReflectedActionDescriptor.<>c__DisplayClass1.<Execute>b__0(ParameterInfo parameterInfo)
+   at System.Linq.Enumerable.WhereSelectArrayIterator`2.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-04-08 19:47:37.2224 SimpleSite|Info| SAMS Application started... 
+2013-04-08 19:47:38.1135 SimpleSite|Info| SAMS Application initialization completed.
+2013-04-10 19:53:44.1670 SimpleSite|Info| SAMS Application started... 
+2013-04-10 19:53:44.8060 SimpleSite|Info| SAMS Application initialization completed.
+2013-04-10 19:55:09.4769 SimpleSite|Error| Error executing request.
+Details:
+System.Data.SqlTypes.SqlTypeException: SqlDateTime overflow. Must be between 1/1/1753 12:00:00 AM and 12/31/9999 11:59:59 PM.
+   at System.Data.SqlClient.TdsParser.TdsExecuteRPC(_SqlRPC[] rpcArray, Int32 timeout, Boolean inSchema, SqlNotificationRequest notificationRequest, TdsParserStateObject stateObj, Boolean isCommandProc, Boolean sync, TaskCompletionSource`1 completion, Int32 startRpc, Int32 startParam)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at System.Data.Linq.SqlClient.SqlProvider.Execute(Expression query, QueryInfo queryInfo, IObjectReaderFactory factory, Object[] parentArgs, Object[] userArgs, ICompiledSubQuery[] subQueries, Object lastResult)
+   at System.Data.Linq.SqlClient.SqlProvider.ExecuteAll(Expression query, QueryInfo[] queryInfos, IObjectReaderFactory factory, Object[] userArguments, ICompiledSubQuery[] subQueries)
+   at System.Data.Linq.SqlClient.SqlProvider.System.Data.Linq.Provider.IProvider.Execute(Expression query)
+   at System.Data.Linq.ChangeDirector.StandardChangeDirector.DynamicInsert(TrackedObject item)
+   at System.Data.Linq.ChangeDirector.StandardChangeDirector.Insert(TrackedObject item)
+   at System.Data.Linq.ChangeProcessor.SubmitChanges(ConflictMode failureMode)
+   at System.Data.Linq.DataContext.SubmitChanges(ConflictMode failureMode)
+   at System.Data.Linq.DataContext.SubmitChanges()
+   at Simple.SAMS.Competitions.Data.CompetitionRepository.<>c__DisplayClass2.<Create>b__1(CompetitionsDataContext dataContext) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionRepository.cs:line 65
+   at Simple.Utilities.DataRepositoryBase`1.UseDataContext(Action`1 action) in c:\Data\git\Simple.SAMS\trunk\src\Simple.Utilities\DataRepositoryBase.cs:line 25
+   at Simple.SAMS.Competitions.Data.CompetitionRepository.Create(CreateCompetitionInfo createCompetitionInfo) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionRepository.cs:line 58
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.CreateCompetition(CreateCompetitionInfo competitionCreateInfo) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 247
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.Create(CreateCompetitionInfo competitionCreateInfo) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 18
+   at SAMS.Controllers.CompetitionsController.Create(CreateCompetitionParameters parameters, HttpPostedFileBase playersFile, HttpPostedFileBase qualifyingPlayersFile) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 455
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-04-10 19:55:09.5449 SimpleSite|Error| Unhandled exception
+Details:
+System.Data.SqlTypes.SqlTypeException: SqlDateTime overflow. Must be between 1/1/1753 12:00:00 AM and 12/31/9999 11:59:59 PM.
+   at System.Data.SqlClient.TdsParser.TdsExecuteRPC(_SqlRPC[] rpcArray, Int32 timeout, Boolean inSchema, SqlNotificationRequest notificationRequest, TdsParserStateObject stateObj, Boolean isCommandProc, Boolean sync, TaskCompletionSource`1 completion, Int32 startRpc, Int32 startParam)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at System.Data.Linq.SqlClient.SqlProvider.Execute(Expression query, QueryInfo queryInfo, IObjectReaderFactory factory, Object[] parentArgs, Object[] userArgs, ICompiledSubQuery[] subQueries, Object lastResult)
+   at System.Data.Linq.SqlClient.SqlProvider.ExecuteAll(Expression query, QueryInfo[] queryInfos, IObjectReaderFactory factory, Object[] userArguments, ICompiledSubQuery[] subQueries)
+   at System.Data.Linq.SqlClient.SqlProvider.System.Data.Linq.Provider.IProvider.Execute(Expression query)
+   at System.Data.Linq.ChangeDirector.StandardChangeDirector.DynamicInsert(TrackedObject item)
+   at System.Data.Linq.ChangeDirector.StandardChangeDirector.Insert(TrackedObject item)
+   at System.Data.Linq.ChangeProcessor.SubmitChanges(ConflictMode failureMode)
+   at System.Data.Linq.DataContext.SubmitChanges(ConflictMode failureMode)
+   at System.Data.Linq.DataContext.SubmitChanges()
+   at Simple.SAMS.Competitions.Data.CompetitionRepository.<>c__DisplayClass2.<Create>b__1(CompetitionsDataContext dataContext) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionRepository.cs:line 65
+   at Simple.Utilities.DataRepositoryBase`1.UseDataContext(Action`1 action) in c:\Data\git\Simple.SAMS\trunk\src\Simple.Utilities\DataRepositoryBase.cs:line 25
+   at Simple.SAMS.Competitions.Data.CompetitionRepository.Create(CreateCompetitionInfo createCompetitionInfo) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionRepository.cs:line 58
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.CreateCompetition(CreateCompetitionInfo competitionCreateInfo) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 247
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.Create(CreateCompetitionInfo competitionCreateInfo) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 18
+   at SAMS.Controllers.CompetitionsController.Create(CreateCompetitionParameters parameters, HttpPostedFileBase playersFile, HttpPostedFileBase qualifyingPlayersFile) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 455
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-04-10 20:09:03.8076 SimpleSite|Info| SAMS Application started... 
+2013-04-10 20:09:04.1816 SimpleSite|Info| SAMS Application initialization completed.
+2013-04-10 22:32:05.6615 SimpleSite|Info| SAMS Application started... 
+2013-04-10 22:32:06.7445 SimpleSite|Info| SAMS Application initialization completed.
+2013-04-12 10:19:14.4994 SimpleSite|Info| SAMS Application started... 
+2013-04-12 10:19:15.2964 SimpleSite|Info| SAMS Application initialization completed.
+2013-04-12 10:25:25.3676 SimpleSite|Error| Error executing request.
+Details:
+System.ArgumentException: Invalid status transition from 'MatchesCreated' to Started, Competition Id: 1157.
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.StartCompetition(Int32 id) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 197
+   at SAMS.Controllers.CompetitionsController.StartCompetition(Int32 competitionId) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 279
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-04-12 10:25:25.3996 SimpleSite|Error| Unhandled exception
+Details:
+System.ArgumentException: Invalid status transition from 'MatchesCreated' to Started, Competition Id: 1157.
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.StartCompetition(Int32 id) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 197
+   at SAMS.Controllers.CompetitionsController.StartCompetition(Int32 competitionId) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 279
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-04-12 10:26:28.3792 SimpleSite|Error| Error executing request.
+Details:
+System.ArgumentException: Invalid status transition from 'MatchesCreated' to Started, Competition Id: 1164.
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.StartCompetition(Int32 id) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 197
+   at SAMS.Controllers.CompetitionsController.StartCompetition(Int32 competitionId) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 279
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-04-12 10:26:28.3862 SimpleSite|Error| Unhandled exception
+Details:
+System.ArgumentException: Invalid status transition from 'MatchesCreated' to Started, Competition Id: 1164.
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.StartCompetition(Int32 id) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 197
+   at SAMS.Controllers.CompetitionsController.StartCompetition(Int32 competitionId) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 279
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-04-13 21:17:47.7747 SimpleSite|Info| SAMS Application started... 
+2013-04-13 21:17:48.4518 SimpleSite|Info| SAMS Application initialization completed.
+2013-04-13 21:32:12.6782 SimpleSite|Info| SAMS Application started... 
+2013-04-13 21:32:13.5843 SimpleSite|Info| SAMS Application initialization completed.
+2013-04-13 21:46:24.9420 SimpleSite|Info| SAMS Application started... 
+2013-04-13 21:46:25.5600 SimpleSite|Info| SAMS Application initialization completed.
+2013-04-14 07:47:54.3872 SimpleSite|Info| SAMS Application started... 
+2013-04-14 07:47:55.0182 SimpleSite|Info| SAMS Application initialization completed.

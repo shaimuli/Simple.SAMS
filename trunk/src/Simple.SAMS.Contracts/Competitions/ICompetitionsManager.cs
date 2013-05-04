@@ -4,6 +4,8 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using Simple.SAMS.Competitions.Services;
+using Simple.SAMS.Contracts.Players;
 
 namespace Simple.SAMS.Contracts.Competitions
 {
@@ -34,13 +36,16 @@ namespace Simple.SAMS.Contracts.Competitions
         void UpdateMatchStartTime(MatchStartTimeUpdateInfo[] startTimeUpdateInfo);
 
         [OperationContract]
-        void RemovePlayer(int competitionId, int playerId);
+        void RemovePlayer(int competitionId, int playerId, CompetitionPlayerStatus status, string reason);
 
         [OperationContract]
-        void ReplacePlayer(int competitionId, int replacedPlayerId, int replacingPlayerId, CompetitionPlayerSource source);
+        void ReplacePlayer(int competitionId, int replacedPlayerId, int replacingPlayerId, CompetitionPlayerSource source, CompetitionPlayerStatus status, string reason);
 
         [OperationContract]
         void AddPlayerToCompetition(int competitionId, int playerId, CompetitionPlayerSource source, CompetitionSection section);
+
+        [OperationContract]
+        LoadCompetitionsValidationResult ValidateCompetitionsFile(string competitionsFileUrl);
 
         [OperationContract]
         void PositionCompetitionPlayers(int id, CompetitionSection section);

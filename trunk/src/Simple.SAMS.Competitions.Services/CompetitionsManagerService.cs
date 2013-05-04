@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using Simple.ComponentModel;
 using Simple.SAMS.Contracts.Competitions;
+using Simple.SAMS.Contracts.Players;
 
 namespace Simple.SAMS.Competitions.Services
 {
@@ -66,10 +67,39 @@ namespace Simple.SAMS.Competitions.Services
 
         }
 
+        public LoadCompetitionsValidationResult ValidateCompetitionsFile(string competitionsFileUrl)
+        {
+            Requires.ArgumentNotNullOrEmptyString(competitionsFileUrl, "competitionsFileUrl");
+            var result = LoadCompetitionsValidationResult.Valid;
+            var competitionsEngine = ServiceProvider.Get<ICompetitionsEngine>();
+            var competitions = default(CreateCompetitionInfo[]);
+            try
+            {
+                competitions = competitionsEngine.GetCompetitions(competitionsFileUrl);
+            }
+            catch (Exception exception)
+            {
+                result = LoadCompetitionsValidationResult.InvalidFile;
+            }
+            if (competitions.NotNullOrEmpty())
+            {
+                var competitionTypes = competitions.Select(c => c.TypeId).Distinct().ToArray();
+                if (!competitionsEngine.AreAllValidCompetitionTypes(competitionTypes))
+                {
+                    result = LoadCompetitionsValidationResult.InvalidCompetitionType;
+                }
+            }
+            return result;
+        }
 
         public void LoadCompetitions(string competitionsFileUrl)
         {
             Requires.ArgumentNotNullOrEmptyString(competitionsFileUrl, "competitionsFileUrl");
+            var validationResult = ValidateCompetitionsFile(competitionsFileUrl);
+            if (validationResult != LoadCompetitionsValidationResult.Valid)
+            {
+            throw new ArgumentException("Competitions file is invalid, please validate first.");
+            }
             var competitionsEngine = ServiceProvider.Get<ICompetitionsEngine>();
             var competitions = competitionsEngine.GetCompetitions(competitionsFileUrl);
             competitionsEngine.ImportCompetitions(competitions);
@@ -142,13 +172,15 @@ namespace Simple.SAMS.Competitions.Services
                 throw new ArgumentException("Competition '{0}' does not exist.".ParseTemplate(id));
             }
 
-            if ((int)competition.Status > (int)CompetitionStatus.Positioned)
+            if ((int)competition.Status > (int)CompetitionStatus.Started)
             {
                 throw new ArgumentException("Invalid status transition from '{1}' to Positioned, Competition Id: {0}.".ParseTemplate(id, competition.Status));
             }
 
             var competitionsEngine = ServiceProvider.Get<ICompetitionsEngine>();
             competitionsEngine.UpdatePlayersPosition(id, section);
+
+            competitionsEngine.QualifyByeMatches(id, section);
 
         }
 
@@ -167,14 +199,14 @@ namespace Simple.SAMS.Competitions.Services
 
             repository.UpdateCompetitionStatus(id, CompetitionStatus.Started);
         }
-        public void RemovePlayer(int competitionId, int playerId)
+        public void RemovePlayer(int competitionId, int playerId, CompetitionPlayerStatus status, string reason)
         {
             var competitionsEngine = ServiceProvider.Get<ICompetitionsEngine>();
             competitionsEngine.RemovePlayerFromUnplayedMatches(competitionId, playerId);
-            competitionsEngine.RemovePlayerFromCompetition(competitionId, playerId);
+            competitionsEngine.RemovePlayerFromCompetition(competitionId, playerId, status, reason);
         }
 
-        public void ReplacePlayer(int competitionId, int replacedPlayerId, int replacingPlayerId, CompetitionPlayerSource source)
+        public void ReplacePlayer(int competitionId, int replacedPlayerId, int replacingPlayerId, CompetitionPlayerSource source, CompetitionPlayerStatus status, string reason)
         {
             var competitionRepository = ServiceProvider.Get<ICompetitionRepository>();
             var player = competitionRepository.GetCompetitionPlayer(competitionId, replacedPlayerId);
@@ -183,7 +215,7 @@ namespace Simple.SAMS.Competitions.Services
                 throw new ArgumentException("Cannot replace player, player does not exist.");
             }
 
-            RemovePlayer(competitionId, replacedPlayerId);
+            RemovePlayer(competitionId, replacedPlayerId, status, reason);
             AddPlayerToCompetition(competitionId, replacingPlayerId, source, player.Section);
         }
 

@@ -442,12 +442,22 @@ namespace Simple.SAMS.Competitions.Services
             competitionMatchesRepository.RemovePlayerFromUnplayedMatches(competitionId, playerId);
         }
 
-        public void RemovePlayerFromCompetition(int competitionId, int playerId)
+        public void RemovePlayerFromCompetition(int competitionId, int playerId, CompetitionPlayerStatus status, string reason)
         {
             var competitionRepository = ServiceProvider.Get<ICompetitionRepository>();
-            competitionRepository.RemovePlayerFromCompetition(competitionId, playerId);
+            competitionRepository.RemovePlayerFromCompetition(competitionId, playerId, status, reason);
         }
 
 
+        public bool AreAllValidCompetitionTypes(int[] competitionTypes)
+        {
+            var competitionTypeRepository = ServiceProvider.Get<ICompetitionTypeRepository>();
+            return competitionTypeRepository.AreCompetitionTypesExist(competitionTypes);
+        }
+
+        public void QualifyByeMatches(int id, CompetitionSection section)
+        {
+            
+        }
     }
 }

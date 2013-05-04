@@ -3,6 +3,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Simple.SAMS.Contracts.Competitions;
+using Simple.SimplyLog.Data;
 
 namespace Simple.SAMS.Competitions.Data
 {
@@ -61,6 +62,17 @@ namespace Simple.SAMS.Competitions.Data
         protected override void InsertEntity(CompetitionsDataContext dataContext, CompetitionType dataEntity)
         {
             dataContext.CompetitionTypes.InsertOnSubmit(dataEntity);
+        }
+
+
+        public bool AreCompetitionTypesExist(int[] ids)
+        {
+            var result = false;
+            UseDataContext(dataContext =>
+                               {
+                                   result = dataContext.CompetitionTypes.Count(ct => ids.Contains(ct.Id)) == ids.Length;
+                               });
+            return result;
         }
     }
 }

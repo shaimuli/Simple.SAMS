@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Simple.SAMS.Contracts.Competitions;
+using Simple.SAMS.Contracts.Players;
 using Simple.Utilities;
 
 namespace Simple.SAMS.Competitions.Data
@@ -188,6 +189,8 @@ namespace Simple.SAMS.Competitions.Data
                     m => m.CompetitionId == competitionId && m.Status >= (int) MatchStatus.Playing) == 0;
             entity.Source = (CompetitionPlayerSource) dataEntity.Source;
             entity.Section = (CompetitionSection) dataEntity.Section;
+            entity.Status =
+                (CompetitionPlayerStatus) dataEntity.Status.GetValueOrDefault((int) CompetitionPlayerStatus.Active);
             return entity;
         }
 
@@ -246,7 +249,8 @@ namespace Simple.SAMS.Competitions.Data
                                         PlayerId = playerInCompetition.PlayerId, 
                                         Rank = playerInCompetition.Rank, 
                                         Source = (int)playerInCompetition.Source,
-                                        Section = (int)playerInCompetition.Section
+                                        Section = (int)playerInCompetition.Section,
+                                        Status = (int)playerInCompetition.Status
                                     });
                         }
                     }
@@ -336,7 +340,7 @@ namespace Simple.SAMS.Competitions.Data
             return competitions.ToArray();
         }
 
-        public void RemovePlayerFromCompetition(int competitionId, int playerId)
+        public void RemovePlayerFromCompetition(int competitionId, int playerId, CompetitionPlayerStatus status, string reason)
         {
             UseDataContext(dataContext =>
                                {
@@ -344,7 +348,12 @@ namespace Simple.SAMS.Competitions.Data
                                        dataContext.CompetitionPlayers.Where(
                                            cp => cp.CompetitionId == competitionId && cp.PlayerId == playerId);
 
-                                   dataContext.CompetitionPlayers.DeleteAllOnSubmit(relevantPlayers);
+                                   relevantPlayers.ForEach(
+                                       player =>
+                                           {
+                                               player.Status = (int) status;
+                                               player.Reason = reason;
+                                           });
                                    dataContext.SubmitChanges();
                                });
         }

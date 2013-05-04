@@ -1,27 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.Reporting.WebForms;
-using Newtonsoft.Json;
 using SAMS.Models;
 using Simple;
 using Simple.Common.Storage;
 using Simple.Common.Web;
 using Simple.ComponentModel;
-using Simple.Data;
+using Simple.SAMS.Competitions.Services;
 using Simple.SAMS.Contracts.Competitions;
+using Simple.SAMS.Contracts.Players;
 
 namespace SAMS.Controllers
 {
     public class CompetitionsController : Controller
     {
+        private string GetLinkTemplate(string name)
+        {
+            var result = ConfigurationManager.AppSettings["Links." + name];
+            if (string.IsNullOrEmpty(result))
+            {
+                result = null;
+            }
+            return result;
+        }
+
         public ActionResult TournamentBracket(int id)
         {
             var path = Path.GetTempFileName();
@@ -139,11 +149,11 @@ namespace SAMS.Controllers
         }
 
         [HttpPost]
-        public ActionResult ReplaceCompetitionPlayer(int competitionId, int replacedPlayerId, int replacementPlayerId, CompetitionPlayerSource source)
+        public ActionResult ReplaceCompetitionPlayer(int competitionId, int replacedPlayerId, int replacementPlayerId, CompetitionPlayerSource source, CompetitionPlayerStatus status, string reason)
         {
             SystemMonitor.Info("Replaceing {0} with {1}", replacedPlayerId, replacementPlayerId);
             var manager = ServiceProvider.Get<ICompetitionsManager>();
-            manager.ReplacePlayer(competitionId, replacedPlayerId, replacementPlayerId, source);
+            manager.ReplacePlayer(competitionId, replacedPlayerId, replacementPlayerId, source, status, reason);
             return new HttpStatusCodeResult(200);
         }
         [HttpPost]
@@ -156,10 +166,10 @@ namespace SAMS.Controllers
         }
 
         [HttpPost]
-        public ActionResult RemoveCompetitionPlayer(int competitionId, int playerId)
+        public ActionResult RemoveCompetitionPlayer(int competitionId, int playerId, CompetitionPlayerStatus? status, string reason)
         {
             var manager = ServiceProvider.Get<ICompetitionsManager>();
-            manager.RemovePlayer(competitionId, playerId);
+            manager.RemovePlayer(competitionId, playerId, status.GetValueOrDefault(CompetitionPlayerStatus.Removed), reason);
             return new HttpStatusCodeResult(200);
         }
 
@@ -231,7 +241,7 @@ namespace SAMS.Controllers
         private void UpdateScores(MatchResultUpdateModel[] updates, ICompetitionsManager manager)
         {
             var matchScoreUpdateInfoItems = new List<MatchScoreUpdateInfo>();
-            updates.ForEach(update =>
+            updates.Where(u => u.SetScores.NotNullOrEmpty()).ForEach(update =>
                                 {
                                     var scores = update.SetScores.Where(s=> !(s.Player1Points == 0 && s.Player2Points == 0));
                                     if ( scores.NotNullOrEmpty())
@@ -312,7 +322,8 @@ namespace SAMS.Controllers
             model.Players = competition.Players;
             model.CanAddToFinal = competition.CanAddToFinal;
             model.CanAddToQualifying = competition.CanAddToQualifying;
-            
+            model.ScoreCardLink= GetLinkTemplate("ScoreCard");
+            model.StatsLink= GetLinkTemplate("MatchStats");
             model.Matches =
                 competition.Matches.Select(
                     m => new CompetitionMatchViewModel()
@@ -333,9 +344,11 @@ namespace SAMS.Controllers
                                  Player4 = m.Player4.IsNotNull() ? new MatchPlayerViewModel(m.Player4) { Rank = competition.Players.First(cp => cp.Id == m.Player4.Id).CompetitionRank } : null,
                                  SetScores = m.SetScores,
                                  StartTimeHours = new[] {new SelectListItem(),}.Concat(GetStartTimeHours(m.StartTime)),
-                                 StartTimeMinutes = new[] {new SelectListItem(),}.Concat(GetStartTimeMinutes(m.StartTime))
+                                 StartTimeMinutes = new[] {new SelectListItem(),}.Concat(GetStartTimeMinutes(m.StartTime)),
+                                 
                              }).ToArray();
-            model.PlayingStarted = model.Matches.Any(m => (int)m.Status >= (int)MatchStatus.Playing);
+            model.PlayingStarted = model.Matches.Any(m => m.Section == CompetitionSection.Final && (int)m.Status >= (int)MatchStatus.Playing);
+            model.QualifyingPlayingStarted = model.Matches.Any(m => m.Section == CompetitionSection.Qualifying && (int)m.Status >= (int)MatchStatus.Playing);
             return model;
         }
 
@@ -409,9 +422,23 @@ namespace SAMS.Controllers
             {
                 var url = AcceptCsvFile(competitionsFile, "CompetitionPlayers");
                 var manager = ServiceProvider.Get<ICompetitionsManager>();
-                manager.LoadCompetitions(url.ToString());
+                var validationResult = manager.ValidateCompetitionsFile(url.ToString());
+                if (validationResult == LoadCompetitionsValidationResult.Valid)
+                {
+                    manager.LoadCompetitions(url.ToString());
+                }
+                else
+                {
+                    ModelState.AddModelError(validationResult.ToString(), TranslateValidationResult(validationResult));
+                    return View();
+                }
             }
             return RedirectToAction("Index");
+        }
+
+        private string TranslateValidationResult(LoadCompetitionsValidationResult validationResult)
+        {
+            return "[" + validationResult.ToString() + "]";
         }
 
 

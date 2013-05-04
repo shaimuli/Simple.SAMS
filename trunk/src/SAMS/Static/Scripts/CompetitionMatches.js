@@ -1,10 +1,26 @@
 ﻿(function ($) {
     var matchesPerRound = [32, 16, 8, 4, 2, 2];
-    function prepareTournament(host, resources, maxRound) {
+    function prepareTournament(config) {
+        var host = config.host, resources = config.resources, maxRound = config.maxRound;
         var container = $("<div/>").addClass("t-container").appendTo(host);
         var rounds = 6;
         
+        function openMatchLink(name, matchId) {
+            if (config.links[name]) {
+                window.open(config.links[name] + matchId);
+            }
+        }
+        function onStatsClick(event) {
+            var thisMatch = $(event.target).closest(".t-match");
+            openMatchLink("MatchStats", thisMatch.attr("data-id"));
+        }
         
+        function onScoreCardClick(event) {
+            var thisMatch = $(event.target).closest(".t-match");
+            openMatchLink("ScoreCard", thisMatch.attr("data-id"));
+            
+        }
+
         host.addClass("ms" + matchesPerRound[6 - rounds]);
         function addTeam(toContainer, index) {
             var t = $("<div/>").addClass("t-team").appendTo(toContainer);
@@ -14,9 +30,9 @@
             var sc = $("<div/>").addClass("t-score").appendTo(t);
 
             if (index == 0) {
-                $("<div/>").addClass("t-icon t-stats").appendTo(t);
+                $("<div/>").addClass("t-icon t-stats").click(onStatsClick).appendTo(t);
             } else {
-                $("<div/>").addClass("t-icon t-scorecard").appendTo(t);
+                $("<div/>").addClass("t-icon t-scorecard").click(onScoreCardClick).appendTo(t);
             }
 
             return t;
@@ -78,7 +94,7 @@
             if (!target.data("tournament-attached")) {
                 target.data("tournament-attached", true);
                 target.html("");
-                prepareTournament(target, options.resources, maxRound);
+                prepareTournament({ host: target, resources: options.resources, maxRound: maxRound, links: options.links });
             } else {
                 if ($.isArray(options)) {
                     
@@ -119,7 +135,7 @@
 
                         var matchContainer = $(matchId, target);
                         var match = matches[i];
-
+                        matchContainer.attr("data-id", match.Id);
                         /*match.Player3 = match.Player2;
                         match.Player4 = match.Player2;*/
                         var player1 = players(match.Player1, match.Player3, match.Player1, match.Player2);

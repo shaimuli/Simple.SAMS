@@ -14,5 +14,7 @@ namespace SAMS.Models
         public Player Player { get; set; }
         public CompetitionPlayerSource Source { get; set; }
         public CompetitionSection Section { get; set; }
+        public CompetitionPlayerStatus Status { get; set; }
+        public string Reason { get; set; }
     }
 }

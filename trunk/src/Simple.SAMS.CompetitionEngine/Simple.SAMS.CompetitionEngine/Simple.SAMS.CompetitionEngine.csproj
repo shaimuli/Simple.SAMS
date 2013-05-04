@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="CompetitionPosition.cs" />
     <Compile Include="CompetitionPositioningParameters.cs" />
+    <Compile Include="ConsolationPositionEngine.cs" />
     <Compile Include="FinalPositioningEngine.cs" />
     <Compile Include="FinalPositioningParameters.cs" />
     <Compile Include="Player.cs" />

@@ -35,7 +35,7 @@ namespace SAMS.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(int? competitionId, int? replacedPlayerId, Player player, CompetitionPlayerSource? competitionPlayerSource, CompetitionSection? competitionSection)
+        public ActionResult Create(int? competitionId, int? replacedPlayerId, Player player, CompetitionPlayerSource? competitionPlayerSource, CompetitionSection? competitionSection, CompetitionPlayerStatus? status, string reason)
         {
             var playersRepository = ServiceProvider.Get<IPlayersRepository>();
             var newPlayerId = playersRepository.Add(player);
@@ -45,7 +45,7 @@ namespace SAMS.Controllers
                 var manager = ServiceProvider.Get<ICompetitionsManager>();
                 if (replacedPlayerId.HasValue)
                 {
-                    manager.ReplacePlayer(competitionId.Value, replacedPlayerId.Value, newPlayerId, competitionPlayerSource.GetValueOrDefault(CompetitionPlayerSource.Regular));
+                    manager.ReplacePlayer(competitionId.Value, replacedPlayerId.Value, newPlayerId, competitionPlayerSource.GetValueOrDefault(CompetitionPlayerSource.Regular), status.GetValueOrDefault(CompetitionPlayerStatus.Active), reason);
                 }
                 else
                 {
@@ -59,7 +59,7 @@ namespace SAMS.Controllers
             }
         }
 
-        public ActionResult Create(int? competitionId, int? replacePlayerId, string idNumber, CompetitionPlayerSource? source, CompetitionSection? section)
+        public ActionResult Create(int? competitionId, int? replacePlayerId, string idNumber, CompetitionPlayerSource? source, CompetitionSection? section, CompetitionPlayerStatus? status, string reason)
         {
             var player = new Player();
             var model = new CreatePlayerModel { Player = player };
@@ -70,6 +70,8 @@ namespace SAMS.Controllers
                 model.Competition = competitionRepository.GetCompetition(competitionId.Value);
                 model.Source = source.GetValueOrDefault(CompetitionPlayerSource.Regular);
                 model.Section = section.GetValueOrDefault(CompetitionSection.Final);
+                model.Status = status.GetValueOrDefault(CompetitionPlayerStatus.Active);
+                model.Reason = reason;
 
                 if (replacePlayerId.HasValue)
                 {

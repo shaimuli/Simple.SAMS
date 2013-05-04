@@ -600,6 +600,31 @@
               Looks up a localized string similar to שחקנים.
             </summary>
         </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionPlayerStatus">
+            <summary>
+              Looks up a localized string similar to סוג הסרה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionPlayerStatus_Disqualified">
+            <summary>
+              Looks up a localized string similar to פסילה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionPlayerStatus_Removed">
+            <summary>
+              Looks up a localized string similar to הסרה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionPlayerStatus_Retired">
+            <summary>
+              Looks up a localized string similar to פרישה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionPlayerStatusRemove">
+            <summary>
+              Looks up a localized string similar to סיבת פרישה.
+            </summary>
+        </member>
         <member name="P:SAMS.Resources.Texts.CompetitionReferenceId">
             <summary>
               Looks up a localized string similar to אסמכתא.
@@ -880,6 +905,21 @@
               Looks up a localized string similar to טעינה.
             </summary>
         </member>
+        <member name="P:SAMS.Resources.Texts.ImportCompetitionError_InvalidCompetitionType">
+            <summary>
+              Looks up a localized string similar to סוג/י תחרות לא נמצא/ו.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.ImportCompetitionError_InvalidFile">
+            <summary>
+              Looks up a localized string similar to קובץ התחרויות לא תקין, נא וודא ששדות החובה מלאים והתאריכים בפורמט yyyy-MM-dd.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.ImportCompetitionErrorHeader">
+            <summary>
+              Looks up a localized string similar to אירועו שגיאות בטעינת קובץ תחרויות, נא תקן את השגיאות וטען את הקובץ מחדש..
+            </summary>
+        </member>
         <member name="P:SAMS.Resources.Texts.ImportCompetitions">
             <summary>
               Looks up a localized string similar to טעינת קובץ תחרויות.
@@ -1003,6 +1043,11 @@
         <member name="P:SAMS.Resources.Texts.MatchStatus_PlayersAssigned">
             <summary>
               Looks up a localized string similar to ממתין ללוז.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.MatchStatus_Playing">
+            <summary>
+              Looks up a localized string similar to משוחק עכשיו.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.MatchStatus_Started">

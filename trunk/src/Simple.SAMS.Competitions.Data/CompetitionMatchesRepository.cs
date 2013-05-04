@@ -168,6 +168,7 @@ namespace Simple.SAMS.Competitions.Data
                                 dataSetScore = new MatchScore();
                                 dataSetScore.SetNumber = setScore.Number;
                                 dataSetScore.MatchId = matchId;
+                                dataSetScore.Match = dataContext.Matches.First(m => m.Id == matchId);
                                 dataContext.MatchScores.InsertOnSubmit(dataSetScore);
                                 
                                 dataSetScores[setScore.Number] = dataSetScore;
@@ -185,7 +186,8 @@ namespace Simple.SAMS.Competitions.Data
                             {
                                 dataSetScore.BreakPoints = setScore.BreakPoints.Value;
                             }
-                            if (dataSetScore.Match.Status < (int) MatchStatus.Playing)
+                            if (
+                                dataSetScore.Match.Status < (int) MatchStatus.Playing)
                             {
                                 dataSetScore.Match.Status = (int) MatchStatus.Playing;
                             }
@@ -220,6 +222,11 @@ namespace Simple.SAMS.Competitions.Data
                     match.Winner = scoreUpdateInfo.Winner.Value == MatchWinner.None
                                        ? default(int?)
                                        : (int) scoreUpdateInfo.Winner.Value;
+
+                    if (match.Winner.HasValue)
+                    {
+                        match.Status = (int) MatchStatus.Completed;
+                    }
                 }
                 if (scoreUpdateInfo.Result.HasValue)
                 {

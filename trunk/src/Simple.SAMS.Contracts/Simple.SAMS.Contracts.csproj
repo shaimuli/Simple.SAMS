@@ -70,6 +70,7 @@
     <Compile Include="Competitions\IMatchProvisioningEngine.cs" />
     <Compile Include="Competitions\IMatchProvisioningEngineFactory.cs" />
     <Compile Include="Competitions\IPositioningEngineFactory.cs" />
+    <Compile Include="Competitions\LoadCompetitionsValidationResult.cs" />
     <Compile Include="Competitions\MatchDetails.cs" />
     <Compile Include="Competitions\MatchResult.cs" />
     <Compile Include="Competitions\MatchStartTimeUpdateInfo.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="DefaultMatchProvisioningEngineFactory.cs" />
     <Compile Include="KnockoutMatchProvisioningEngine.cs" />
     <Compile Include="Players\CompetitionPlayer.cs" />
+    <Compile Include="Players\CompetitionPlayerStatus.cs" />
     <Compile Include="Users\UserInfo.cs" />
     <Compile Include="Competitions\IPlayersRepository.cs" />
     <Compile Include="Users\IUsersRepository.cs" />

@@ -516,6 +516,9 @@
   <data name="MatchStatus.Completed" xml:space="preserve">
     <value>משחק הסתיים</value>
   </data>
+  <data name="MatchStatus.Playing" xml:space="preserve">
+    <value>משוחק עכשיו</value>
+  </data>
   <data name="MatchStatus.Started" xml:space="preserve">
     <value>משחק החל</value>
   </data>
@@ -707,6 +710,21 @@
   </data>
   <data name="CompetitionPlayerSource" xml:space="preserve">
     <value>סוג רישום</value>
+  </data>  
+  <data name="CompetitionPlayerStatus" xml:space="preserve">
+    <value>סוג הסרה</value>
+  </data>  
+  <data name="CompetitionPlayerStatusRemove" xml:space="preserve">
+    <value>סיבת פרישה</value>
+  </data>  
+  <data name="CompetitionPlayerStatus.Retired" xml:space="preserve">
+    <value>פרישה</value>
+  </data>
+  <data name="CompetitionPlayerStatus.Disqualified" xml:space="preserve">
+    <value>פסילה</value>
+  </data>
+  <data name="CompetitionPlayerStatus.Removed" xml:space="preserve">
+    <value>הסרה</value>
   </data>
   <data name="IdNumber" xml:space="preserve">
     <value>ת.ז.</value>
@@ -722,5 +740,14 @@
   </data>
   <data name="PositionFinalPlayers" xml:space="preserve">
     <value>בצע הגרלת גמר</value>
+  </data>
+  <data name="ImportCompetitionError.InvalidCompetitionType" xml:space="preserve">
+    <value>סוג/י תחרות לא נמצא/ו</value>
+  </data>
+  <data name="ImportCompetitionError.InvalidFile" xml:space="preserve">
+    <value>קובץ התחרויות לא תקין, נא וודא ששדות החובה מלאים והתאריכים בפורמט yyyy-MM-dd</value>
+  </data>
+  <data name="ImportCompetitionErrorHeader" xml:space="preserve">
+    <value>אירועו שגיאות בטעינת קובץ תחרויות, נא תקן את השגיאות וטען את הקובץ מחדש.</value>
   </data>
 </root>

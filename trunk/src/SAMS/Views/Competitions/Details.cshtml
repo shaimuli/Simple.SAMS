@@ -1,4 +1,5 @@
 ﻿@using Simple.SAMS.Contracts.Competitions
+@using Simple.SAMS.Contracts.Players
 @model SAMS.Models.CompetitionDetailsModel
 @{
     
@@ -62,7 +63,7 @@
 @section scripts{
     <script type="text/javascript">
 
-        $(function () {
+        $(function() {
             var resources = {
                 QuarterFinal: "@Html.ResourceText("QuarterFinal")",
                 SemiFinal: "@Html.ResourceText("SemiFinal")",
@@ -81,10 +82,13 @@
                 ReplaceCompetitionPlayerConfirmTitle: "@Html.ResourceText("ReplaceCompetitionPlayerConfirmTitle")",
                 AddCompetitionPlayerConfirm: "@Html.ResourceText("AddCompetitionPlayerConfirm")",
                 AddCompetitionPlayerConfirmText: "@Html.ResourceText("AddCompetitionPlayerConfirmText")",
-                AddCompetitionPlayerConfirmTitle: "@Html.ResourceText("AddCompetitionPlayerConfirmTitle")"
+                AddCompetitionPlayerConfirmTitle: "@Html.ResourceText("AddCompetitionPlayerConfirmTitle")",
+                CompetitionPlayerStatus: "@Html.ResourceText("CompetitionPlayerStatus")",
+                CompetitionPlayerStatusRemove: "@Html.ResourceText("CompetitionPlayerStatusRemove")"
             };
 
             var competitionDetailsConfig = {
+                links: { MatchStats: "@Model.StatsLink", ScoreCard: "@Model.ScoreCardLink" },
                 model: {
                     Name: "@Model.Name",
                     Type: {
@@ -95,30 +99,71 @@
                     StartTime: "@Model.StartTime",
                     EndTime: "@Model.EndTime"
                 },
-                tournamentPrinntCss: "@Url.Content("~/Static/CSS/tournament.css")",
-                sendUpdatesUrl: "@Url.Action("UpdateMatchResults", "Competitions")",
-                removeCompetitionPlayerUrl: "@Url.Action("RemoveCompetitionPlayer", "Competitions")",
-                getPlayerIdByIdNumberUrl: "@Url.Action("GetPlayerId", "Players")",
-                replacePlayerUrl: "@Url.Action("ReplaceCompetitionPlayer", "Competitions")",
-                addPlayerUrl: "@Url.Action("AddCompetitionPlayer", "Competitions")",
-                createPlayerUrl: "@Url.Action("Create", "Players")",
-                getMatchesUrl: "@Url.Action("GetSectionMatches", "Competitions")",
-                resources: resources,
-                competitionPlayerSources: [
+                tournamentPrinntCss:
+                    "@Url.Content("~/Static/CSS/tournament.css")",
+                sendUpdatesUrl:
+                    "@Url.Action("UpdateMatchResults", "Competitions")",
+                removeCompetitionPlayerUrl:
+                    "@Url.Action("RemoveCompetitionPlayer", "Competitions")",
+                getPlayerIdByIdNumberUrl:
+                    "@Url.Action("GetPlayerId", "Players")",
+                replacePlayerUrl:
+                    "@Url.Action("ReplaceCompetitionPlayer", "Competitions")",
+                addPlayerUrl:
+                    "@Url.Action("AddCompetitionPlayer", "Competitions")",
+                createPlayerUrl:
+                    "@Url.Action("Create", "Players")",
+                getMatchesUrl:
+                    "@Url.Action("GetSectionMatches", "Competitions")",
+                resources:
+                    resources,
+                competitionPlayerSources:
+                [
                     "@Html.ResourceText("CompetitionPlayerSource.Regular")",
                     "@Html.ResourceText("CompetitionPlayerSource.Wildcard")",
                     "@Html.ResourceText("CompetitionPlayerSource.OnSiteAlternate")",
                     "@Html.ResourceText("CompetitionPlayerSource.LuckyLooser")"
                 ],
-                competitionSections:[
+                competitionSections:
+                [
                     "@Html.ResourceText("CompetitionSection.None")",
                     "@Html.ResourceText("CompetitionSection.Final")",
                     "@Html.ResourceText("CompetitionSection.Qualifying")"
                 ],
-                canAddToFinal: @(Model.CanAddToFinal.ToString().ToLower()),
-                canAddToQualifying: @(Model.CanAddToQualifying.ToString().ToLower())
+                removeStatus: [
+                    "@Html.ResourceText("CompetitionPlayerStatus.Retired")",
+                    "@Html.ResourceText("CompetitionPlayerStatus.Disqualified")",
+                    "@Html.ResourceText("CompetitionPlayerStatus.Removed")"
+                ],
+                matchStatus: [
+                    "@Html.ResourceText("MatchStatus.Created")",
+                    "@Html.ResourceText("MatchStatus.PlayersAssigned")",
+                    "@Html.ResourceText("MatchStatus.Planned")",
+                    "@Html.ResourceText("MatchStatus.Playing")",
+                    "@Html.ResourceText("MatchStatus.Paused")",
+                    "@Html.ResourceText("MatchStatus.Completed")",
+                    "@Html.ResourceText("MatchStatus.Delayed")",
+                    "@Html.ResourceText("MatchStatus.Cancelled")"
+                ],
+                matchResult: [
+                    "@Html.ResourceText("MatchResult.Win")",
+                    "@Html.ResourceText("MatchResult.Pause")",
+                    "@Html.ResourceText("MatchResult.Retirement")",
+                    "@Html.ResourceText("MatchResult.Disqualification")",
+                ],
+                startTimeType: [
+                    "@Html.ResourceText("StartTimeType.AfterRest")",
+                    "@Html.ResourceText("StartTimeType.FollowedBy")",
+                    "@Html.ResourceText("StartTimeType.NotBefore")",
+                    "@Html.ResourceText("StartTimeType.NotDetermined")",
+                    "@Html.ResourceText("StartTimeType.StartTime")"
+                ],
+                canAddToFinal:
+                    @(Model.CanAddToFinal.ToString().ToLower()),
+                canAddToQualifying:
+                    @(Model.CanAddToQualifying.ToString().ToLower())
             };
-            
+
             var competitionDetails = new Simple.CompetitionDetails(competitionDetailsConfig);
 
 

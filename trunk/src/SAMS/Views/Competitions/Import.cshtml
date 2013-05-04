@@ -2,6 +2,19 @@
 }
 
 
+@if (!ViewData.ModelState.IsValid)
+{
+    <h4>@Html.Resource("ImportCompetitionErrorHeader")</h4>
+    <ul>
+    @foreach (var errorMessage in ViewData.ModelState.Keys)
+    {
+        <li>
+            @Html.Resource("ImportCompetitionError." + errorMessage);
+        </li>
+    }
+    </ul>
+}
+
 @using (Html.BeginForm("Import", "Competitions", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()

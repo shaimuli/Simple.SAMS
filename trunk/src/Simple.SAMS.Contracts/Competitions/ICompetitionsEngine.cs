@@ -43,9 +43,15 @@ namespace Simple.SAMS.Contracts.Competitions
         void RemovePlayerFromUnplayedMatches(int competitionId, int playerId);
 
         [OperationContract]
-        void RemovePlayerFromCompetition(int competitionId, int playerId);
+        void RemovePlayerFromCompetition(int competitionId, int playerId, CompetitionPlayerStatus status, string reason);
 
         [OperationContract]
         void QualifyMatchWinner(int matchId);
+
+        [OperationContract]
+        bool AreAllValidCompetitionTypes(int[] competitionTypes);
+
+        [OperationContract]
+        void QualifyByeMatches(int id, CompetitionSection section);
     }
 }

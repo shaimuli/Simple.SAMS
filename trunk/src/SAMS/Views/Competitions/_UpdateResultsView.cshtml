@@ -36,15 +36,15 @@
                                         <div class="span1">1</div>
                                         <div class="span1">2</div>
                                         <div class="span1">3</div>
-                                        <div class="span1">4</div>
-                                        <div class="span1">5</div>
+@*                                        <div class="span1">4</div>
+                                        <div class="span1">5</div>*@
 
                                     </div>
                                 </th>
                                 <th class="span2">
                                     @Html.Resource("MatchWinnerHeader")
                                 </th>
-                            <!--
+                                <!--
                                 <th class="span1">@Html.Resource("MatchUpdateStatusHeader")
                                 </th>
                                 -->
@@ -92,39 +92,40 @@
                                                     @Html.Resource("MatchBreakPoint")
                                                 </div>
                                             </div>
-                                                <div class="span1 updateMatchScoreContainer">
-                                                    <input type="text" class="setScore" maxlength="2" name="p1s1" data-numeric="true" value="@match.Score(1, 1)"/>
-                                                    <input type="text" class="setScore" maxlength="2" name="p2s1" data-numeric="true" value="@match.Score(2, 1)" />
-                                                    <input type="text" class="setScore" maxlength="2" name="bp1" data-numeric="true"  value="@match.Score(0, 1)"/>
-                                                </div>
-                                                <div class="span1 updateMatchScoreContainer">
-                                                    <input type="text" class="setScore" maxlength="2" name="p1s2" data-numeric="true" value="@match.Score(1, 2)"/>
-                                                    <input type="text" class="setScore" maxlength="2" name="p2s2" data-numeric="true" value="@match.Score(2, 2)"/>
-                                                    <input type="text" class="setScore" maxlength="2" name="bp2" data-numeric="true"  value="@match.Score(0, 2)"/>
-                                                </div>
-                                                <div class="span1 updateMatchScoreContainer">
-                                                    <input type="text" class="setScore" maxlength="2" name="p1s3" data-numeric="true"  value="@match.Score(1, 3)"/>
-                                                    <input type="text" class="setScore" maxlength="2" name="p2s3" data-numeric="true"  value="@match.Score(2, 3)"/>
-                                                    <input type="text" class="setScore" maxlength="2" name="bp3" data-numeric="true" value="@match.Score(0, 3)"/>
-                                                </div>
-                                                <div class="span1 updateMatchScoreContainer">
-                                                    <input type="text" class="setScore" maxlength="2" name="p1s4" data-numeric="true" value="@match.Score(1, 4)"/>
-                                                    <input type="text" class="setScore" maxlength="2" name="p2s4" data-numeric="true" value="@match.Score(2, 4)"/>
-                                                    <input type="text" class="setScore" maxlength="2" name="bp4" data-numeric="true" value="@match.Score(0, 4)"/>
-                                                </div>
-                                                <div class="span1 updateMatchScoreContainer">
-                                                    <input type="text" class="setScore" maxlength="2" name="p1s5" data-numeric="true" value="@match.Score(1, 5)"/>
-                                                    <input type="text" class="setScore" maxlength="2" name="p2s5" data-numeric="true" value="@match.Score(2, 5)"/>
-                                                    <input type="text" class="setScore" maxlength="2" name="bp5" data-numeric="true" value="@match.Score(0, 5)"/>
-                                                </div>
+                                            <div class="span1 updateMatchScoreContainer">
+                                                <input type="text" class="setScore" maxlength="2" name="p1s1" data-numeric="true" value="@match.Score(1, 1)"/>
+                                                <input type="text" class="setScore" maxlength="2" name="p2s1" data-numeric="true" value="@match.Score(2, 1)" />
+                                                <input type="text" class="setScore" maxlength="2" name="bp1" data-numeric="true"  value="@match.Score(0, 1)"/>
+                                            </div>
+                                            <div class="span1 updateMatchScoreContainer">
+                                                <input type="text" class="setScore" maxlength="2" name="p1s2" data-numeric="true" value="@match.Score(1, 2)"/>
+                                                <input type="text" class="setScore" maxlength="2" name="p2s2" data-numeric="true" value="@match.Score(2, 2)"/>
+                                                <input type="text" class="setScore" maxlength="2" name="bp2" data-numeric="true"  value="@match.Score(0, 2)"/>
+                                            </div>
+                                            <div class="span1 updateMatchScoreContainer">
+                                                <input type="text" class="setScore" maxlength="2" name="p1s3" data-numeric="true"  value="@match.Score(1, 3)"/>
+                                                <input type="text" class="setScore" maxlength="2" name="p2s3" data-numeric="true"  value="@match.Score(2, 3)"/>
+                                                <input type="text" class="setScore" maxlength="2" name="bp3" data-numeric="true" value="@match.Score(0, 3)"/>
+                                            </div>
+
+@*                                            <div class="span1 updateMatchScoreContainer" style="display:none">
+                                                <input type="text" class="setScore" maxlength="2" name="p1s4" data-numeric="true" value="@match.Score(1, 4)"/>
+                                                <input type="text" class="setScore" maxlength="2" name="p2s4" data-numeric="true" value="@match.Score(2, 4)"/>
+                                                <input type="text" class="setScore" maxlength="2" name="bp4" data-numeric="true" value="@match.Score(0, 4)"/>
+                                            </div>
+                                            <div class="span1 updateMatchScoreContainer" style="display:none">
+                                                <input type="text" class="setScore" maxlength="2" name="p1s5" data-numeric="true" value="@match.Score(1, 5)"/>
+                                                <input type="text" class="setScore" maxlength="2" name="p2s5" data-numeric="true" value="@match.Score(2, 5)"/>
+                                                <input type="text" class="setScore" maxlength="2" name="bp5" data-numeric="true" value="@match.Score(0, 5)"/>
+                                            </div>*@
                                         </div>
                                     </td>
                                     <td>
                                         <div class="updateMatchScoreContainer">
                                             <select class="matchWinnerSelect" name="matchWinner">
                                                 <option value="@MatchWinner.None" selected="@(match.Winner.HasValue && match.Winner.Value == MatchWinner.None)">@Html.Resource("MatchWinner.None")</option>
-                                                <option value="@MatchWinner.Player1" selected="@(match.Winner.HasValue && match.Winner.Value == MatchWinner.Player1)">@Html.Resource("MatchWinner.Player1")</option>
-                                                <option value="@MatchWinner.Player2" selected="@(match.Winner.HasValue && match.Winner.Value == MatchWinner.Player2)">@Html.Resource("MatchWinner.Player2")</option>
+                                                <option value="@MatchWinner.Player1" selected="@(match.Winner.HasValue && match.Winner.Value == MatchWinner.Player1)">@(match.Player1 != null ? new HtmlString(match.Player1.FullName) : Html.Resource("MatchWinner.Player1"))</option>
+                                                <option value="@MatchWinner.Player2" selected="@(match.Winner.HasValue && match.Winner.Value == MatchWinner.Player2)">@(match.Player2 != null ? new HtmlString(match.Player2.FullName) : Html.Resource("MatchWinner.Player2"))</option>
                                             </select>
                                             <select class="matchResultSelect" name="matchResult">
                                                 <option value="@MatchResult.Win" selected="@(match.Result == MatchResult.Win)">@Html.Resource("MatchResult.Win")</option>
@@ -134,7 +135,7 @@
                                             </select>
                                         </div>
                                     </td>
-                                <!--
+                                    <!--
                                     <td class="status">
                                         <div class="statusIndicator"></div>
                                     </td>
