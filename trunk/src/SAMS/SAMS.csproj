@@ -218,12 +218,14 @@
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\PageHeaderModel.cs" />
     <Compile Include="Models\ResetPasswordViewModel.cs" />
+    <Compile Include="PrintManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Texts.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Texts.resx</DependentUpon>
     </Compile>
+    <Compile Include="TournamentBracketGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\SAMS.XML" />
@@ -231,6 +233,8 @@
     <Content Include="Static\Css\bootstrap-rtl.min.css" />
     <Content Include="Content\bootstrap.blue.css" />
     <Content Include="Content\datepicker.css" />
+    <Content Include="Static\Css\bracket.css" />
+    <Content Include="Static\Css\ltr.bracket.css" />
     <Content Include="Static\Css\default.css" />
     <Content Include="Static\Css\jQueryUi\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
     <Content Include="Static\Css\jQueryUi\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -455,6 +459,7 @@
     <Content Include="Views\Players\_CreatePlayerNotification.cshtml" />
     <Content Include="Views\Competitions\MatchesFilters.cshtml" />
     <Content Include="Views\Competitions\_MoreInfo.cshtml" />
+    <Content Include="TournamentTemplate.xls" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\img\" />

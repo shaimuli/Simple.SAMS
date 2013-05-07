@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using Microsoft.Reporting.WebForms;
 using SAMS.Models;
 using Simple;
@@ -22,6 +23,7 @@ namespace SAMS.Controllers
 {
     public class CompetitionsController : Controller
     {
+
         private string GetLinkTemplate(string name)
         {
             var result = ConfigurationManager.AppSettings["Links." + name];
@@ -134,18 +136,26 @@ namespace SAMS.Controllers
 
         public ActionResult Print(int id)
         {
-            var rdlcPath = Server.MapPath("~/Static/Reports/Tournament.rdlc");
-            var outputPath = Server.MapPath("~/Output");
-            outputPath = Path.Combine(outputPath, "Competition.{0}.[{1}].pdf".ParseTemplate(id, Guid.NewGuid()));
+            var competitionEngine = ServiceProvider.Get<ICompetitionsEngine>();
 
-            var dataSet = CreatePrintDataSet(id);
+            var competition = competitionEngine.GetCompetitionDetails(id);
+            var generator = new TournamentBracketGenerator();
+            var result = generator.Generate(competition, CompetitionSection.Final);
+
+            return Content(result);
+
+            //var rdlcPath = Server.MapPath("~/Static/Reports/Tournament.rdlc");
+            //var outputPath = Server.MapPath("~/Output");
+            //outputPath = Path.Combine(outputPath, "Competition.{0}.[{1}].pdf".ParseTemplate(id, Guid.NewGuid()));
+
+            //var dataSet = CreatePrintDataSet(id);
             
-            var dataSources = new ReportDataSource[] { new ReportDataSource("ItemsDataset", dataSet), };
+            //var dataSources = new ReportDataSource[] { new ReportDataSource("ItemsDataset", dataSet), };
 
 
-            Render(rdlcPath, dataSources, outputPath);
+            //Render(rdlcPath, dataSources, outputPath);
 
-            return File(outputPath, "application/pdf");
+            //return File(outputPath, "application/pdf");
         }
 
         [HttpPost]
