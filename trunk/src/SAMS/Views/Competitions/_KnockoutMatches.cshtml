@@ -1,12 +1,6 @@
 ﻿@using Simple.SAMS.Contracts.Competitions
 @model SAMS.Models.CompetitionDetailsModel
 <input id="matchesInfo" type="hidden" value="@Newtonsoft.Json.JsonConvert.SerializeObject(Model.Matches)"/>
-<div>
-    <button type="button" class="btn PrintMatchesDraw">@Html.Resource("PrintMatchesDraw")</button>
-
-    @*<a href="@Url.Action("Print", "Competitions", new { id = Model.Id })" target="_blank">Print</a>*@
-
-</div>
 
 @if (Model.Matches.GroupBy(m => m.Section).Count() > 1)
 {
@@ -23,6 +17,9 @@
     @foreach (var section in Model.Matches.GroupBy(m => m.Section))
     {
         <div class="tab-pane @(Model.Matches.GroupBy(m => m.Section).First().Key == section.Key ? "active" : "")" id="section-@(section.Key)">
+            <div>
+                <a href="@Url.Action("Print", "Competitions", new { id = Model.Id, section = section.Key })" class="btn" target="_blank">הדפסה</a>
+            </div>
 
             <div class="competitionHost">
                 <div class="t-host t-@(Html.RoundMatchesCount(section.Key == CompetitionSection.Qualifying ? Model.Type.QualifyingPlayersCount : Model.Type.PlayersCount))p" data-rounds="@(section.GroupBy(m => m.Round).Count())" data-matches="@(Html.RoundMatchesCount(section.Count()))" data-section="@((int)section.Key)" data-players-count="@(Html.RoundMatchesCount(section.Key == CompetitionSection.Qualifying ? Model.Type.QualifyingPlayersCount : Model.Type.PlayersCount))">

@@ -134,28 +134,16 @@ namespace SAMS.Controllers
             return dataTable;
         }
 
-        public ActionResult Print(int id)
+        public ActionResult Print(int id, CompetitionSection section = CompetitionSection.Final)
         {
             var competitionEngine = ServiceProvider.Get<ICompetitionsEngine>();
 
             var competition = competitionEngine.GetCompetitionDetails(id);
             var generator = new TournamentBracketGenerator();
-            var result = generator.Generate(competition, CompetitionSection.Final);
+            var result = generator.Generate(competition, section);
 
             return Content(result);
 
-            //var rdlcPath = Server.MapPath("~/Static/Reports/Tournament.rdlc");
-            //var outputPath = Server.MapPath("~/Output");
-            //outputPath = Path.Combine(outputPath, "Competition.{0}.[{1}].pdf".ParseTemplate(id, Guid.NewGuid()));
-
-            //var dataSet = CreatePrintDataSet(id);
-            
-            //var dataSources = new ReportDataSource[] { new ReportDataSource("ItemsDataset", dataSet), };
-
-
-            //Render(rdlcPath, dataSources, outputPath);
-
-            //return File(outputPath, "application/pdf");
         }
 
         [HttpPost]

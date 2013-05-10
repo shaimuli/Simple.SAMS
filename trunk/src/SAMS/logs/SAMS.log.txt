@@ -1910,3 +1910,159 @@ System.NullReferenceException: Object reference not set to an instance of an obj
 2013-05-07 22:30:25.9994 SimpleSite|Info| SAMS Application initialization completed.
 2013-05-07 22:32:17.5588 SimpleSite|Info| SAMS Application started... 
 2013-05-07 22:32:18.1969 SimpleSite|Info| SAMS Application initialization completed.
+2013-05-08 08:06:02.2528 SimpleSite|Info| SAMS Application started... 
+2013-05-08 08:06:03.1549 SimpleSite|Info| SAMS Application initialization completed.
+2013-05-09 07:59:23.2207 SimpleSite|Info| SAMS Application started... 
+2013-05-09 07:59:24.2137 SimpleSite|Info| SAMS Application initialization completed.
+2013-05-09 08:01:19.4603 SimpleSite|Error| Error executing request.
+Details:
+System.Data.Linq.DuplicateKeyException: Cannot add an entity with a key that is already in use.
+   at System.Data.Linq.ChangeProcessor.TrackUntrackedObjects(MetaType type, Object item, Dictionary`2 visited)
+   at System.Data.Linq.ChangeProcessor.TrackUntrackedObjects()
+   at System.Data.Linq.ChangeProcessor.SubmitChanges(ConflictMode failureMode)
+   at System.Data.Linq.DataContext.SubmitChanges(ConflictMode failureMode)
+   at System.Data.Linq.DataContext.SubmitChanges()
+   at Simple.SAMS.Competitions.Data.CompetitionRepository.<>c__DisplayClass21.<AddPlayersToCompetition>b__20(CompetitionsDataContext dataContext) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionRepository.cs:line 257
+   at Simple.Utilities.DataRepositoryBase`1.UseDataContext(Action`1 action) in c:\Data\git\Simple.SAMS\trunk\src\Simple.Utilities\DataRepositoryBase.cs:line 25
+   at Simple.SAMS.Competitions.Data.CompetitionRepository.AddPlayersToCompetition(Int32 competitionId, PlayerInCompetition[] players) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionRepository.cs:line 233
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.AddPlayersToCompetition(Int32 competitionId, AddCompetitionPlayerInfo[] players) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 206
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.UpdateCompetitionPlayers(Int32 competitionId, String playersFileUrl) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 65
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.Create(CreateCompetitionInfo competitionCreateInfo) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 26
+   at SAMS.Controllers.CompetitionsController.Create(CreateCompetitionParameters parameters, HttpPostedFileBase playersFile, HttpPostedFileBase qualifyingPlayersFile) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 465
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-05-09 08:01:19.4793 SimpleSite|Error| Unhandled exception
+Details:
+System.Data.Linq.DuplicateKeyException: Cannot add an entity with a key that is already in use.
+   at System.Data.Linq.ChangeProcessor.TrackUntrackedObjects(MetaType type, Object item, Dictionary`2 visited)
+   at System.Data.Linq.ChangeProcessor.TrackUntrackedObjects()
+   at System.Data.Linq.ChangeProcessor.SubmitChanges(ConflictMode failureMode)
+   at System.Data.Linq.DataContext.SubmitChanges(ConflictMode failureMode)
+   at System.Data.Linq.DataContext.SubmitChanges()
+   at Simple.SAMS.Competitions.Data.CompetitionRepository.<>c__DisplayClass21.<AddPlayersToCompetition>b__20(CompetitionsDataContext dataContext) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionRepository.cs:line 257
+   at Simple.Utilities.DataRepositoryBase`1.UseDataContext(Action`1 action) in c:\Data\git\Simple.SAMS\trunk\src\Simple.Utilities\DataRepositoryBase.cs:line 25
+   at Simple.SAMS.Competitions.Data.CompetitionRepository.AddPlayersToCompetition(Int32 competitionId, PlayerInCompetition[] players) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Data\CompetitionRepository.cs:line 233
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.AddPlayersToCompetition(Int32 competitionId, AddCompetitionPlayerInfo[] players) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 206
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.UpdateCompetitionPlayers(Int32 competitionId, String playersFileUrl) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 65
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.Create(CreateCompetitionInfo competitionCreateInfo) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 26
+   at SAMS.Controllers.CompetitionsController.Create(CreateCompetitionParameters parameters, HttpPostedFileBase playersFile, HttpPostedFileBase qualifyingPlayersFile) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 465
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-05-09 08:04:55.2777 SimpleSite|Info| SAMS Application started... 
+2013-05-09 08:04:55.9137 SimpleSite|Info| SAMS Application initialization completed.
+2013-05-09 08:05:25.0084 SimpleSite|Error| Error executing request.
+Details:
+System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at SAMS.TournamentBracketGenerator.WriteRound(HtmlTextWriter htmlWriter, Int32 round, Int32 minRound, Dictionary`2 map) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\TournamentBracketGenerator.cs:line 21
+   at SAMS.TournamentBracketGenerator.Generate(CompetitionDetails competition, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\TournamentBracketGenerator.cs:line 170
+   at SAMS.Controllers.CompetitionsController.Print(Int32 id, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 143
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-05-09 08:05:25.0294 SimpleSite|Error| Unhandled exception
+Details:
+System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at SAMS.TournamentBracketGenerator.WriteRound(HtmlTextWriter htmlWriter, Int32 round, Int32 minRound, Dictionary`2 map) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\TournamentBracketGenerator.cs:line 21
+   at SAMS.TournamentBracketGenerator.Generate(CompetitionDetails competition, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\TournamentBracketGenerator.cs:line 170
+   at SAMS.Controllers.CompetitionsController.Print(Int32 id, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 143
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-05-09 08:06:14.8652 SimpleSite|Error| Error executing request.
+Details:
+System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at SAMS.TournamentBracketGenerator.WriteRound(HtmlTextWriter htmlWriter, Int32 round, Int32 minRound, Dictionary`2 map) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\TournamentBracketGenerator.cs:line 21
+   at SAMS.TournamentBracketGenerator.Generate(CompetitionDetails competition, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\TournamentBracketGenerator.cs:line 170
+   at SAMS.Controllers.CompetitionsController.Print(Int32 id, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 143
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-05-09 08:06:14.8652 SimpleSite|Error| Unhandled exception
+Details:
+System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at SAMS.TournamentBracketGenerator.WriteRound(HtmlTextWriter htmlWriter, Int32 round, Int32 minRound, Dictionary`2 map) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\TournamentBracketGenerator.cs:line 21
+   at SAMS.TournamentBracketGenerator.Generate(CompetitionDetails competition, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\TournamentBracketGenerator.cs:line 170
+   at SAMS.Controllers.CompetitionsController.Print(Int32 id, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 143
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-05-09 08:06:52.6724 SimpleSite|Info| SAMS Application started... 
+2013-05-09 08:06:53.2924 SimpleSite|Info| SAMS Application initialization completed.

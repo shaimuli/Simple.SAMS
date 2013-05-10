@@ -253,8 +253,10 @@ namespace Simple.SAMS.Competitions.Data
                                         Status = (int)playerInCompetition.Status
                                     });
                         }
+
+                        dataContext.SubmitChanges();
                     }
-                    dataContext.SubmitChanges();
+                   
                 });
         }
 

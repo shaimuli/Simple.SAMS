@@ -17,13 +17,15 @@ namespace SAMS
             {
                 return;
             }
+            if (map.ContainsKey(round))
+            {
+                var queue = map[round];
+                var match = queue.Dequeue();
 
-            var queue = map[round];
-            var match = queue.Dequeue();
 
-
-            RenderContainer(htmlWriter, round, minRound, map, match, 0);
-            RenderContainer(htmlWriter, round, minRound, map, match, 1);
+                RenderContainer(htmlWriter, round, minRound, map, match, 0);
+                RenderContainer(htmlWriter, round, minRound, map, match, 1);
+            }
 
         }
 
@@ -129,10 +131,10 @@ namespace SAMS
                     htmlWriter.AddAttribute(HtmlTextWriterAttribute.Class, "referee");
                     htmlWriter.RenderBeginTag(HtmlTextWriterTag.Div);
                     htmlWriter.Write(competition.MainRefereeName);
-                    if (competition.MainRefereeName.NotNullOrEmpty())
+                    if (competition.MainRefereePhone.NotNullOrEmpty())
                     {
                         htmlWriter.Write(", ");
-                        htmlWriter.Write(competition.MainRefereeName);
+                        htmlWriter.Write(competition.MainRefereePhone);
                     }
                     htmlWriter.RenderEndTag();
                 }
