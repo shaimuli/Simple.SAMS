@@ -17,15 +17,18 @@ namespace SAMS
             {
                 return;
             }
+            var match = default(MatchHeaderInfo);
             if (map.ContainsKey(round))
             {
                 var queue = map[round];
-                var match = queue.Dequeue();
+                match = queue.Dequeue();
 
 
-                RenderContainer(htmlWriter, round, minRound, map, match, 0);
-                RenderContainer(htmlWriter, round, minRound, map, match, 1);
             }
+
+            RenderContainer(htmlWriter, round, minRound, map, match, 0);
+            RenderContainer(htmlWriter, round, minRound, map, match, 1);
+
 
         }
 
@@ -34,14 +37,14 @@ namespace SAMS
             var side = player == 0 ? "top" : "bottom";
             htmlWriter.AddAttribute(HtmlTextWriterAttribute.Class, "round" + round + "-" + side + "wrap");
             htmlWriter.RenderBeginTag(HtmlTextWriterTag.Div);
-
-            htmlWriter.AddAttribute(HtmlTextWriterAttribute.Class, "round" + round + "-" + side);
-            htmlWriter.RenderBeginTag(HtmlTextWriterTag.Div);
-            RenderPlayer(htmlWriter, match, side == "top" ? match.Player1 : match.Player2);
-            RenderScores(htmlWriter, match, player);
-            htmlWriter.RenderEndTag();
-
-
+            if (match.IsNotNull())
+            {
+                htmlWriter.AddAttribute(HtmlTextWriterAttribute.Class, "round" + round + "-" + side);
+                htmlWriter.RenderBeginTag(HtmlTextWriterTag.Div);
+                RenderPlayer(htmlWriter, match, side == "top" ? match.Player1 : match.Player2);
+                RenderScores(htmlWriter, match, player);
+                htmlWriter.RenderEndTag();
+            }
 
             WriteRound(htmlWriter, round - 1, minRound, map);
 
@@ -52,12 +55,26 @@ namespace SAMS
         {
             htmlWriter.AddAttribute(HtmlTextWriterAttribute.Class, "scores");
             htmlWriter.RenderBeginTag(HtmlTextWriterTag.Div);
-            if (match.SetScores != null)
+            if (match.SetScores.IsNullOrEmpty() && (int)match.Status < (int)MatchStatus.Completed)
+            {
+                if (player == 0)
+                {
+
+                    htmlWriter.Write(match.Date);
+                }
+                else if (match.StartTime.HasValue)
+                {
+                    htmlWriter.Write(match.StartTime.Value.ToString("HH:mm"));
+                }
+            }
+            else
             {
                 foreach (var setScore in match.SetScores)
                 {
+                    
                     htmlWriter.RenderBeginTag(HtmlTextWriterTag.Span);
-                    htmlWriter.Write(player == 0 ? setScore.Player1Points : setScore.Player2Points);
+                    var points = (player == 0 ? setScore.Player1Points : setScore.Player2Points);
+                    htmlWriter.Write(points == 0 ? " " : points.ToString());
                     htmlWriter.RenderEndTag();
                 }
             }
@@ -79,7 +96,6 @@ namespace SAMS
             }
             else
             {
-
                 htmlWriter.Write(match.Status == MatchStatus.Completed ? "BYE" : "&nbsp;");
             }
             htmlWriter.RenderEndTag();
@@ -105,7 +121,7 @@ namespace SAMS
                     map[match.Round] = matches;
                 }
             }
-            var rounds = 5 - map.Keys.Max();
+            var rounds = map.Keys.Max();
             using (var stringWriter = new StringWriter())
             using (var htmlWriter = new HtmlTextWriter(stringWriter))
             {
@@ -162,14 +178,18 @@ namespace SAMS
                     htmlWriter.RenderEndTag();
                 }
                 htmlWriter.RenderEndTag();
-
-                htmlWriter.AddAttribute(HtmlTextWriterAttribute.Class, "tournament" + sectionMatches.Count() + "-wrap");
+                var tournamentMatches = sectionMatches.Count();
+                if (tournamentMatches > 8)
+                {
+                    tournamentMatches = ((tournamentMatches/16) + 1)*16;
+                }
+                htmlWriter.AddAttribute(HtmlTextWriterAttribute.Class, "tournament" + tournamentMatches + "-wrap");
                 htmlWriter.RenderBeginTag(HtmlTextWriterTag.Div);
                 htmlWriter.AddAttribute(HtmlTextWriterAttribute.Class, "round6-top winner6");
                 htmlWriter.RenderBeginTag(HtmlTextWriterTag.Div);
                 htmlWriter.RenderEndTag();
 
-                WriteRound(htmlWriter, 5, rounds, map);
+                WriteRound(htmlWriter, 6, 0, map);
 
                 htmlWriter.RenderEndTag();
                 htmlWriter.RenderEndTag();

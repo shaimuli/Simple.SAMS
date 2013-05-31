@@ -741,6 +741,9 @@
   <data name="PositionFinalPlayers" xml:space="preserve">
     <value>בצע הגרלת גמר</value>
   </data>
+  <data name="CompetitionPlayerRemoved" xml:space="preserve">
+    <value>הוסר</value>
+  </data>
   <data name="ImportCompetitionError.InvalidCompetitionType" xml:space="preserve">
     <value>סוג/י תחרות לא נמצא/ו</value>
   </data>
@@ -749,5 +752,26 @@
   </data>
   <data name="ImportCompetitionErrorHeader" xml:space="preserve">
     <value>אירועו שגיאות בטעינת קובץ תחרויות, נא תקן את השגיאות וטען את הקובץ מחדש.</value>
+  </data>
+  <data name="UpdateBatch" xml:space="preserve">
+    <value>עדכן הכל</value>
+  </data>
+  <data name="ImportCompetitionsPlayers" xml:space="preserve">
+    <value>טעינת קובץ שחקנים למספר תחרויות</value>
+  </data>
+  <data name="CompetitionsPlayersFileLabel" xml:space="preserve">
+    <value>קובץ שחקנים</value>
+  </data>
+  <data name="StartImportCompetitionsPlayers" xml:space="preserve">
+    <value>התחל טעינה</value>
+  </data>
+  <data name="PlayerPoints" xml:space="preserve">
+    <value>ניקוד</value>
+  </data>
+  <data name="PlayerPositions" xml:space="preserve">
+    <value>מיקום</value>
+  </data>
+  <data name="SavePoints" xml:space="preserve">
+    <value>שמור ניקוד ומיקום</value>
   </data>
 </root>

@@ -21,7 +21,7 @@
             
         }
 
-        host.addClass("ms" + matchesPerRound[6 - rounds]);
+        host.addClass("ms" + matchesPerRound[6 - maxRound]);
         function addTeam(toContainer, index) {
             var t = $("<div/>").addClass("t-team").appendTo(toContainer);
             $("<div/>").addClass("t-icon").appendTo(t);
@@ -38,7 +38,6 @@
             return t;
         }
         function roundName(round) {
-            round = round + 1;
             var result = resources["Round"] + " " + round;
             if (round == 3) {
                 result = resources["QuarterFinal"];
@@ -56,12 +55,12 @@
         for (var r = 0; r < maxRound ; r++) {
             var roundContainer = $("<div/>").addClass("t-round r" + r).appendTo(container);
 
-            if (host.attr("data-section") == 2) {
-                $("<h3/>").text(roundName(r + 1)).appendTo(roundContainer);
-            }
-            else {
+            //if (host.attr("data-section") == 2) {
+            //    $("<h3/>").text(roundName(r + 1)).appendTo(roundContainer);
+            //}
+            //else {
                 $("<h3/>").text(roundName(r)).appendTo(roundContainer);
-            }
+            //}
 
             var sep = r < rounds - 1 ? $("<div/>").addClass("t-sep r" + r).appendTo(container) : null;
             var matchesCount = matchesPerRound[r];

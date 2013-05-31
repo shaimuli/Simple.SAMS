@@ -565,6 +565,11 @@
               Looks up a localized string similar to שם.
             </summary>
         </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionPlayerRemoved">
+            <summary>
+              Looks up a localized string similar to הוסר.
+            </summary>
+        </member>
         <member name="P:SAMS.Resources.Texts.CompetitionPlayers">
             <summary>
               Looks up a localized string similar to שחקנים בתחרות.
@@ -688,6 +693,11 @@
         <member name="P:SAMS.Resources.Texts.CompetitionsList">
             <summary>
               Looks up a localized string similar to רשימת תחרויות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.CompetitionsPlayersFileLabel">
+            <summary>
+              Looks up a localized string similar to קובץ שחקנים.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.CompetitionStartTime">
@@ -923,6 +933,11 @@
         <member name="P:SAMS.Resources.Texts.ImportCompetitions">
             <summary>
               Looks up a localized string similar to טעינת קובץ תחרויות.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.ImportCompetitionsPlayers">
+            <summary>
+              Looks up a localized string similar to טעינת קובץ שחקנים למספר תחרויות.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.League">
@@ -1205,6 +1220,16 @@
               Looks up a localized string similar to טלפון.
             </summary>
         </member>
+        <member name="P:SAMS.Resources.Texts.PlayerPoints">
+            <summary>
+              Looks up a localized string similar to ניקוד.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.PlayerPositions">
+            <summary>
+              Looks up a localized string similar to מיקום.
+            </summary>
+        </member>
         <member name="P:SAMS.Resources.Texts.PlayerRanking">
             <summary>
               Looks up a localized string similar to דירוג.
@@ -1375,6 +1400,11 @@
               Looks up a localized string similar to Simple. SAMS.
             </summary>
         </member>
+        <member name="P:SAMS.Resources.Texts.SavePoints">
+            <summary>
+              Looks up a localized string similar to שמור ניקוד ומיקום.
+            </summary>
+        </member>
         <member name="P:SAMS.Resources.Texts.SemiFinal">
             <summary>
               Looks up a localized string similar to חצי גמר.
@@ -1391,6 +1421,11 @@
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.StartImportCompetition">
+            <summary>
+              Looks up a localized string similar to התחל טעינה.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.StartImportCompetitionsPlayers">
             <summary>
               Looks up a localized string similar to התחל טעינה.
             </summary>
@@ -1428,6 +1463,11 @@
         <member name="P:SAMS.Resources.Texts.Update">
             <summary>
               Looks up a localized string similar to עדכן.
+            </summary>
+        </member>
+        <member name="P:SAMS.Resources.Texts.UpdateBatch">
+            <summary>
+              Looks up a localized string similar to עדכן הכל.
             </summary>
         </member>
         <member name="P:SAMS.Resources.Texts.UpdateCompetitionPlayers">

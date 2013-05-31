@@ -187,6 +187,8 @@
             });
         },
         initFilters:function (container, filter) {
+
+
             $("select[name=Round]", container).change(function (event) {
                 var round = $(this).val();
 
@@ -194,8 +196,16 @@
                     $(".roundContainer", container).show();
                 } else {
                     $(".roundContainer", container).hide();
-                    $(".roundContainer[data-key='" + round + "']", container).show();
+                    if (round == "1.5" || round == "1") {
+                        var roundContainer = $(".roundContainer[data-key='" + 1 + "']", container).show();
+                        $("tr", roundContainer).hide();
+                        $("tr[data-part='" + (round == "1.5" ? "2":"1") + "']", roundContainer).show();
+                    } else {
+                        $(".roundContainer[data-key='" + round + "']", container).show();
+                    }
                 }
+                
+                
             });
             $("select[name=Section]", container).change(function (event) {
                 var section = $(this).val();
@@ -229,7 +239,7 @@
                 });
         },
         initCompetitionPlayers: function () {
-
+            
             $("input[name='NameFilter']", ".competitionPlayersContainer")
                 .keyup(function (event) {
                     if ($(this).val() == "" || event.keyCode == 13) {
@@ -238,8 +248,13 @@
                 })
                 .change(function (event) {
                     var value = $(this).val();
-
+                    
                     var players = $(".item.player", ".competitionPlayersContainer");
+                    var altTable = $("#AlternateNameTable");
+                    if (altTable.length == 0) {
+                        altTable = $("<table id='AlternateTable'/>");
+                    }
+                    
                     $.each(players,
                         function (index, player) {
                             player = $(player);
@@ -247,6 +262,7 @@
                             if (texts[0].indexOf(value) >= 0 ||
                                 texts[1].indexOf(value) >= 0) {
                                 player.show();
+                                
                             } else {
                                 player.hide();
                             }
@@ -318,7 +334,7 @@
         },
         init: function(config) {
             this.config = config;
-            
+            this.initSave();
             this.initPrint();
             this.initMatchesEdit();
             this.initCompetitionPlayers();
@@ -326,7 +342,68 @@
             this.initRemovePlayerDialog();
             this.initReplacePlayerDialog();
             this.initAddPlayerDialog();
-            
+            this.initBatchUpdate();
+        },
+        initSave: function() {
+            var competitionId = this.getCompetitionId();
+            $("#SavePoints").click(function (e) {
+                function getValue(input) {
+                    var value = input.val();
+                    if (value.length) {
+                        value = parseInt(value, 10);
+                    } 
+                    if (!isNaN(value)) {
+                        return value;
+                    } else {
+                        return null;
+                    }
+                }
+                var items = $.map($(".playersTable tbody tr"), function (item, index) {
+                    var result = {
+                         Id: parseInt($(item).data("key"), 10) 
+                    };
+                    result.Points = getValue($("input[name=points]", item));
+                    result.Position = getValue($("input[name=position]", item));
+                    return result;
+                });
+                items = _.filter(items, function (item) {
+                    return item.Points || item.Position;
+                });
+                $.ajax({ url: "../UpdatePlayersPoints/" + competitionId, type: "POST", data: JSON.stringify(items), contentType:"application/json" });
+            });
+        },
+        initBatchUpdate: function() {
+            $(".batchUpdateButton").click(function (event) {
+                var date = $(".batchUpdate input.hasDatepicker").val();
+                $(".updateResultsMatches input.hasDatepicker:visible").each(function() {
+                    if ($(this).val() == "") {
+                        $(this).val(date);
+                        $(this).closest("tr").attr("data-changed", true);
+                    }
+                });
+                var hours = $(".batchUpdate select.startTimeSelect.hours").val();
+                $(".updateResultsMatches select.startTimeSelect.hours:visible").each(function () {
+                    if ($(this).val() == "") {
+                        $(this).val(hours);
+                        $(this).closest("tr").attr("data-changed", true);
+                    }
+                });
+                var minutes = $(".batchUpdate select.startTimeSelect.minutes").val();
+                $(".updateResultsMatches select.startTimeSelect.minutes:visible").each(function () {
+                    if ($(this).val() == "") {
+                        $(this).val(minutes);
+                        $(this).closest("tr").attr("data-changed", true);
+                    }
+                });
+                var type = $(".batchUpdate select.startTimeSelect.type").val();
+                
+                $(".updateResultsMatches select.startTimeSelect.type:visible").each(function () {
+                    if ($(this).val() == "NotDetermined") {
+                        $(this).val(type);
+                        $(this).closest("tr").attr("data-changed", true);
+                    }
+                });
+            });
         },
         initPlayerDialog: function (config) {
             

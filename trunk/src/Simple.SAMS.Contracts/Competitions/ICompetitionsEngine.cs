@@ -34,6 +34,9 @@ namespace Simple.SAMS.Contracts.Competitions
         void PositionPlayerInSection(int competitionId, int playerId, CompetitionSection section);
 
         [OperationContract]
+        void UpdateMatchResult(MatchScoreUpdateInfo scoreUpdateInfo);
+
+        [OperationContract]
         void UpdateMatchScore(MatchScoreUpdateInfo scoreUpdateInfo);
 
         [OperationContract]

@@ -313,6 +313,15 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to הוסר.
+        /// </summary>
+        internal static string CompetitionPlayerRemoved {
+            get {
+                return ResourceManager.GetString("CompetitionPlayerRemoved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to שחקנים בתחרות.
         /// </summary>
         internal static string CompetitionPlayers {
@@ -534,6 +543,15 @@ namespace SAMS.Resources {
         internal static string CompetitionsList {
             get {
                 return ResourceManager.GetString("CompetitionsList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to קובץ שחקנים.
+        /// </summary>
+        internal static string CompetitionsPlayersFileLabel {
+            get {
+                return ResourceManager.GetString("CompetitionsPlayersFileLabel", resourceCulture);
             }
         }
         
@@ -957,6 +975,15 @@ namespace SAMS.Resources {
         internal static string ImportCompetitions {
             get {
                 return ResourceManager.GetString("ImportCompetitions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to טעינת קובץ שחקנים למספר תחרויות.
+        /// </summary>
+        internal static string ImportCompetitionsPlayers {
+            get {
+                return ResourceManager.GetString("ImportCompetitionsPlayers", resourceCulture);
             }
         }
         
@@ -1465,6 +1492,24 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ניקוד.
+        /// </summary>
+        internal static string PlayerPoints {
+            get {
+                return ResourceManager.GetString("PlayerPoints", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to מיקום.
+        /// </summary>
+        internal static string PlayerPositions {
+            get {
+                return ResourceManager.GetString("PlayerPositions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to דירוג.
         /// </summary>
         internal static string PlayerRanking {
@@ -1771,6 +1816,15 @@ namespace SAMS.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to שמור ניקוד ומיקום.
+        /// </summary>
+        internal static string SavePoints {
+            get {
+                return ResourceManager.GetString("SavePoints", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to חצי גמר.
         /// </summary>
         internal static string SemiFinal {
@@ -1803,6 +1857,15 @@ namespace SAMS.Resources {
         internal static string StartImportCompetition {
             get {
                 return ResourceManager.GetString("StartImportCompetition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to התחל טעינה.
+        /// </summary>
+        internal static string StartImportCompetitionsPlayers {
+            get {
+                return ResourceManager.GetString("StartImportCompetitionsPlayers", resourceCulture);
             }
         }
         
@@ -1866,6 +1929,15 @@ namespace SAMS.Resources {
         internal static string Update {
             get {
                 return ResourceManager.GetString("Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to עדכן הכל.
+        /// </summary>
+        internal static string UpdateBatch {
+            get {
+                return ResourceManager.GetString("UpdateBatch", resourceCulture);
             }
         }
         

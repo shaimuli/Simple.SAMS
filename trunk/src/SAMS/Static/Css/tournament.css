@@ -1,8 +1,8 @@
 ﻿.t-host
 {
     width: 1024px;
-    /*width: 6000px;*/
-    height: 640px;
+    /*width: 6000px;
+    height: 640px;*/
     overflow: auto;
 -webkit-touch-callout: none;
 -webkit-user-select: none;

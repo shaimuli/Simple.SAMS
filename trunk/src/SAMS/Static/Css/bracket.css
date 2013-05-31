@@ -10,7 +10,7 @@
 /****** round 1 ******/
 .round1-top, .round1-bottom {
 	float: right;
-	width: 160px;
+	width: 200px;
 	height: 2em;
 }
 
@@ -20,13 +20,13 @@
 }
 
 .round2-topwrap .round1-bottom {
-	width: 159px;
+	width: 199px;
 	border-top: 1px solid #000;
 	border-left: 1px solid #000;
 }
 
 .round2-bottomwrap .round1-top {
-	width: 159px;
+	width: 199px;
 	border-bottom: 1px solid #000;
 	border-left: 1px solid #000;
 }
@@ -35,7 +35,7 @@
 
 .round2-top, .round2-bottom {
 	float: left;
-	width: 160px;
+	width: 200px;
 	height: 4em;
 }
 
@@ -45,13 +45,13 @@
 
 
 .round3-topwrap .round2-bottom {
-	width: 159px;
+	width: 199px;
 	border-top: 1px solid #000;
 	border-left: 1px solid #000;
 }
 
 .round3-bottomwrap .round2-top {
-	width: 159px;
+	width: 199px;
 	border-bottom: 1px solid #000;
 	border-left: 1px solid #000;
 }
@@ -62,7 +62,7 @@
 
 .round2-topwrap, .round2-bottomwrap {
 	float: right;
-	width: 320px;
+	width: 400px;
 	height: 4em;
 }
 
@@ -70,7 +70,7 @@
 
 .round3-top, .round3-bottom {
 	float: left;
-	width: 160px;
+	width: 200px;
 	height: 8em;
 }
 
@@ -79,13 +79,13 @@
 }
 
 .round4-topwrap .round3-bottom {
-	width: 159px;
+	width: 199px;
 	border-top: 1px solid #000;
 	border-left: 1px solid #000;
 }
 
 .round4-bottomwrap .round3-top {
-	width: 159px;
+	width: 199px;
 	border-bottom: 1px solid #000;
 	border-left: 1px solid #000;
 }
@@ -96,7 +96,7 @@
 
 .round3-topwrap, .round3-bottomwrap, .tournament4-wrap {
 	float: right;
-	width: 480px;
+	width: 600px;
 	height: 8em;
 }
 
@@ -104,7 +104,7 @@
 
 .round4-top, .round4-bottom {
 	float: left;
-	width: 160px;
+	width: 200px;
 	height: 16em;
 }
 
@@ -114,20 +114,20 @@
 
 
 .round5-topwrap .round4-bottom {
-	width: 159px;
+	width: 199px;
 	border-top: 1px solid #000;
 	border-left: 1px solid #000;
 }
 
 .round5-bottomwrap .round4-top {
-	width: 159px;
+	width: 199px;
 	border-bottom: 1px solid #000;
 	border-left: 1px solid #000;
 }
 
 .round4-topwrap, .round4-bottomwrap, .tournament8-wrap {
 	float: right;
-	width: 640px;
+	width: 800px;
 }
 
 .tournament16-wrap .round4-top {
@@ -138,7 +138,7 @@
 
 .round5-top, .round5-bottom {
 	float: left;
-	width: 160px;
+	width: 200px;
 	height: 32em;
 }
 
@@ -152,20 +152,20 @@
 
 .round5-topwrap, .round5-bottomwrap, .tournament16-wrap {
 	float: right;
-	width: 800px;
+	width: 1000px;
 }
 
 /****** round 6 ******/
 
 .round6-top, .round6-bottom {
 	float: left;
-	width: 160px;
+	width: 200px;
 	height: 32em;
 }
 
 .tournament32-wrap {
 	float: right;
-	width: 960px;
+	width: 1200px;
 }
 
 /****** styles for the winner column ******/
@@ -193,8 +193,8 @@
 .player {
     display: inline-block;
     font-size: 8pt;
-    width: 108px;
-
+    width: 95px;
+    overflow: hidden;
 
     padding-right: 2px;
 
@@ -203,7 +203,7 @@
 .scores {
     display: inline-block;
     font-size: 8pt;
-    width: 49px;
+    width: 100px;
 }
 .scores span {
     padding-left: 2px;
@@ -220,7 +220,7 @@
 }
 
 .round {
-    width: 160px;
+    width: 200px;
     float: right;
     text-align: center;
     border-bottom: solid 1px black;

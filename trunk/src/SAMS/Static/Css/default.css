@@ -322,3 +322,9 @@ table.sortable thead tr .headerSortDown {
     border-bottom: solid 1px #069;
     margin-bottom: 4px;
 }
+
+.playerstatus_disqualified,
+.playerstatus_retired,
+.playerstatus_removed {
+    color: red;
+}

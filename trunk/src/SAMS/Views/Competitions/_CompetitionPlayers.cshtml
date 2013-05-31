@@ -1,6 +1,9 @@
-﻿@using Simple.SAMS.Contracts.Competitions
+﻿@using Simple.SAMS.Contracts
+@using Simple.SAMS.Contracts.Competitions
+@using Simple.SAMS.Contracts.Players
 @model SAMS.Models.CompetitionDetailsModel
 <div class="competitionPlayersContainer">
+
     <div class="row-fluid">
 
         <div class="span2">
@@ -17,24 +20,32 @@
             }
         </div>
         <div class="span2">
-            <button style="display:none" type="button" class="btn PrintPlayersList">@Html.Resource("PrintMatchesDraw")</button>
+            <button style="display: none" type="button" class="btn PrintPlayersList">@Html.Resource("PrintMatchesDraw")</button>
+        </div>
+        <div class="span2">
+            <button id="SavePoints" type="button" class="btn btn-primary">@Html.Resource("SavePoints")</button>
         </div>
     </div>
-    <table class="table sortable">
+
+    <table class="table table-striped table-hover sortable playersTable">
+
+        @*        <th class="span2" data-sort-type="text">@Html.Resource("PlayerEnglishNameHeader")</th>
+        <th class="span2" data-sort-type="text">@Html.Resource("PlayerCountryHeader")</th>*@
+
 
         <thead>
-            <tr>
+            <tr >
                 <th class="span1" data-sort-type="text"></th>
                 <th class="span2" data-sort-type="text">@Html.Resource("PlayerLocalNameHeader")</th>
-                <th class="span2" data-sort-type="text">@Html.Resource("PlayerEnglishNameHeader")</th>
                 <th class="span2" data-sort-type="text">@Html.Resource("PlayerIdNumber")</th>
                 <th class="span2" data-sort-type="text">@Html.Resource("PlayerBirthDateHeader")</th>
-                <th class="span2" data-sort-type="text">@Html.Resource("PlayerCountryHeader")</th>
                 <th class="span1" data-sort-type="text">@Html.Resource("PlayerGenderHeader")</th>
                 <th class="span1" data-sort-type="numeric">@Html.Resource("PlayerNationalRankHeader")</th>
                 <th class="span1" data-sort-type="numeric">@Html.Resource("PlayerEuropeInternationalRankHeader")</th>
                 <th class="span1" data-sort-type="numeric">@Html.Resource("PlayerYouthInternationalRankHeader")</th>
-                @if ((int) Model.Status < (int) CompetitionStatus.Finished)
+                <th class="span1">@Html.Resource("PlayerPoints")</th>
+                <th class="span1">@Html.Resource("PlayerPositions")</th>
+                @if ((int)Model.Status < (int)CompetitionStatus.Finished)
                 {
                     <th></th>
                     <th></th>
@@ -46,9 +57,9 @@
             @{
                 var index = 0;
             }
-            @foreach (var item in Model.Players)
+            @foreach (var item in Model.Players.Where(i => i.Status == CompetitionPlayerStatus.Active && i.ItemStatus == EntityItemStatus.Active))
             {
-                <tr class="player item@(index++ % 2 == 0 ? "" : " alternate")" data-key="@item.Id">
+                <tr class="item player playerstatus_@(item.Status.ToString().ToLower())" data-key="@item.Id">
                     <td>
                         @Html.Resource("CompetitionPlayerSource." + item.Source.ToString())
                     </td>
@@ -57,15 +68,19 @@
 
                         @(item.LocalFirstName + " " + item.LocalLastName)
                     </td>
-                    <td>@(item.EnglishFirstName + " " + item.EnglishLastName)</td>
+
                     <td>@item.IdNumber</td>
                     <td>@(item.BirthDate.HasValue ? item.BirthDate.Value.ToShortDateString() : string.Empty)</td>
-                    <td>@item.Country</td>
+
                     <td>@(item.IsFemale ? Html.Resource("FemaleAbbr") : Html.Resource("MaleAbbr"))</td>
                     <td>@item.NationalRank</td>
                     <td>@item.EuropeInternationalRank</td>
                     <td>@item.YouthInternationalRank</td>
-                    @if ((int) Model.Status < (int) CompetitionStatus.Finished)
+                    <td>
+                        <input class="span1" name="points" type="text" maxlength="3" value="@(item.Points.HasValue? item.Points.Value.ToString() : "")"/></td>
+                    <td>
+                        <input class="span1" name="position" type="text" maxlength="3"  value="@(item.Points.HasValue? item.Points.Value.ToString() : "")"/></td>
+                    @if ((int)Model.Status < (int)CompetitionStatus.Finished && item.Status == CompetitionPlayerStatus.Active)
                     {
                         <td>
                             @if (item.Replaceable)
@@ -77,11 +92,15 @@
                             <a href="#" class="RemoveCompetitionPlayer">@Html.Resource("DeleteCompetitionPlayer")</a>
                         </td>
                     }
+                    else
+                    {
+                        <td>@Html.Resource("CompetitionPlayerRemoved")</td>
+                        <td>@Html.Resource("CompetitionPlayerStatus." + item.Status.ToString())</td>
+                    }
                 </tr>
             }
         </tbody>
     </table>
-
 
 
 </div>

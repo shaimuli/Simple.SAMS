@@ -11,7 +11,10 @@ namespace Simple.SAMS.Contracts.Competitions
     [ServiceContract(Namespace = Namespaces.Services)]
     public interface ICompetitionRepository
     {
-        
+
+        [OperationContract]
+        void UpdateCompetitionPlayersPoints(int competitionId, UpdatePlayerPointsInfo[] players);
+
         [OperationContract]
         CompetitionHeaderInfo[] GetCompetitionsByStatus(CompetitionStatus status);
 
@@ -47,6 +50,9 @@ namespace Simple.SAMS.Contracts.Competitions
 
         [OperationContract]
         void RemovePlayerFromCompetition(int competitionId, int playerId,CompetitionPlayerStatus status, string reason);
+
+        [OperationContract]
+        int? GetCompetitionIdByReferenceId(string referenceId);
     } 
 
 }

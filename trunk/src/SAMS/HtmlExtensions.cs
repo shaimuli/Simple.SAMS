@@ -4,12 +4,41 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
+using Simple;
 using Simple.SAMS.Contracts.Competitions;
 
 namespace SAMS
 {
     public static class HtmlExtensions
     {
+        public static IEnumerable<SelectListItem> TimeHours(this HtmlHelper htmlHelper, DateTime? time = default(DateTime?))
+        {
+            var items = Enumerable.Range(0, 24).Select(i => new SelectListItem() { Value = i.ToString(), Text = i.ToString().PadLeft(2, '0') }).ToArray();
+            if (time.HasValue)
+            {
+                var selected = items.FirstOrDefault(i => int.Parse(i.Value) >= time.Value.ToLocalTime().Hour);
+                if (selected.IsNotNull())
+                {
+                    selected.Selected = true;
+                }
+            }
+            return new[] {new SelectListItem() }.Concat(items);
+        }
+        public static IEnumerable<SelectListItem> TimeMinutes(this HtmlHelper htmlHelper, DateTime? time = default(DateTime?))
+        {
+            var items = Enumerable.Range(0, 59).Where(i => i % 15 == 0).Select(
+                    i => new SelectListItem() { Value = i.ToString(), Text = i.ToString().PadLeft(2, '0') }).ToArray();
+            if (time.HasValue)
+            {
+                var selected = items.FirstOrDefault(i => int.Parse(i.Value) >= time.Value.ToLocalTime().Minute);
+                if (selected.IsNotNull())
+                {
+                    selected.Selected = true;
+                }
+            }
+            return new[] {new SelectListItem() }.Concat(items);
+        }
+
         public static IHtmlString MatchStatuses(this HtmlHelper htmlHelper, string name="",MatchStatus? selected=default(MatchStatus))
         {
             return htmlHelper.DropDownList(name, Enumerable.Range(-1, 5).Cast<MatchStatus>().Select(s => new SelectListItem()
@@ -31,13 +60,21 @@ namespace SAMS
         }
         public static IHtmlString RoundSelect(this HtmlHelper htmlHelper, string name = "Round", int selected = 0)
         {
-            return htmlHelper.DropDownList(name, Enumerable.Range(0,7).Select(r=> 
-                                                         new SelectListItem()
-                                                             {
-                                                                 Value = r.ToString(),
-                                                                 Text = htmlHelper.RoundName(r),
-                                                                 Selected = r == selected
-                                                             }));
+            var items = Enumerable.Range(0, 7).Select(r =>
+                                          new SelectListItem()
+                                              {
+                                                  Value = r.ToString(),
+                                                  Text = htmlHelper.RoundName(r),
+                                                  Selected = r == selected
+                                              }).ToList();
+            items.Insert(2, new SelectListItem()
+                                {
+                                    Value = "1.5",
+                                    Text = htmlHelper.RoundName(1,2),
+                                    Selected = false
+                                });
+            items[1].Text = htmlHelper.RoundName(1, 1);
+            return htmlHelper.DropDownList(name, items);
         }
 
         public static string SectionName(this HtmlHelper helper, int section)
@@ -51,10 +88,13 @@ namespace SAMS
         }
 
 
-        public static string RoundName(this HtmlHelper helper, int round)
+        public static string RoundName(this HtmlHelper helper, int round, int part=0)
         {
             var result = helper.ResourceText("Round") + " " + round;
-
+            if (part > 0)
+            {
+                result += " - " + part;
+            }
             if (round == 3)
             {
                 result = helper.ResourceText("QuarterFinal");

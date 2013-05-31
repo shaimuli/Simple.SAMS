@@ -5,6 +5,7 @@ using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
@@ -34,46 +35,6 @@ namespace SAMS.Controllers
             return result;
         }
 
-        public ActionResult TournamentBracket(int id)
-        {
-            var path = Path.GetTempFileName();
-
-            var model = GetCompetitionDetailsModel(id);
-
-            var playersCount = model.Type.PlayersCount;
-            var rounds = 6;
-            var table = new StringBuilder();
-            table.Append("<table width='100%' border=1>");
-            for (var i = 0; i < playersCount; i++)
-            {
-                table.Append("<tr>");
-                for (var r = 0; r < rounds; r++)
-                {
-                    var key = Math.Pow(2, (r ));
-                    if (r%key == i)
-                    {
-                        table.Append("<td ");
-                        if (r == 0)
-                        {
-                            table.Append(">");
-                        }
-                        else
-                        {
-                            table.Append(" rowspan='");
-                            table.Append(key);
-                            table.Append("'>");
-                        }
-                        table.AppendFormat("{0}, {1}, {2}", i, r, key);
-                        table.Append("</td>");
-                    }
-                }
-                table.Append("</tr>");
-            }
-            table.Append("</table>");
-            System.IO.File.WriteAllText(path, table.ToString());
-            return File(path, "text/html");
-        }
-
         protected override void OnException(ExceptionContext filterContext)
         {
             SystemMonitor.Error(filterContext.Exception, "Unhandled exception");
@@ -86,52 +47,6 @@ namespace SAMS.Controllers
             {
                 base.OnException(filterContext);
             }
-        }
-
-        public void Render(string reportDesign, ReportDataSource[] dataSources, string destFile, IEnumerable<ReportParameter> parameters = null)
-        {
-            var localReport = new LocalReport();
-
-            using (var reportDesignStream = System.IO.File.OpenRead(reportDesign))
-            {
-                localReport.LoadReportDefinition(reportDesignStream);
-            }
-            localReport.EnableExternalImages = true;
-            localReport.EnableHyperlinks = true;
-
-            if (parameters != null)
-            {
-                localReport.SetParameters(parameters);
-            }
-            foreach (var reportDataSource in dataSources)
-            {
-                localReport.DataSources.Add(reportDataSource);
-            }
-
-            //Export to PDF
-            string mimeType;
-            string encoding;
-            string fileNameExtension;
-            string[] streams;
-            Warning[] warnings;
-            var content = localReport.Render("PDF", null, out mimeType, out encoding, out fileNameExtension, out streams, out warnings);
-
-            System.IO.File.WriteAllBytes(destFile, content);
-        }
-
-        private DataTable CreatePrintDataSet(int competitionId)
-        {
-            var dataTable = new DataTable("Comp");
-            var model = GetCompetitionDetailsModel(competitionId);
-            dataTable.Columns.Add("Index", typeof (int));
-            var index = 1;
-            model.Players.ForEach(p=>
-                                      {
-                                          var row = dataTable.NewRow();
-                                          row["Index"] = index++;
-                                          dataTable.Rows.Add(row);
-                                      });
-            return dataTable;
         }
 
         public ActionResult Print(int id, CompetitionSection section = CompetitionSection.Final)
@@ -239,18 +154,23 @@ namespace SAMS.Controllers
         private void UpdateScores(MatchResultUpdateModel[] updates, ICompetitionsManager manager)
         {
             var matchScoreUpdateInfoItems = new List<MatchScoreUpdateInfo>();
-            updates.Where(u => u.SetScores.NotNullOrEmpty()).ForEach(update =>
+            updates.ForEach(update =>
                                 {
-                                    var scores = update.SetScores.Where(s=> !(s.Player1Points == 0 && s.Player2Points == 0));
-                                    if ( scores.NotNullOrEmpty())
-                                    {
-                                        var matchScoreUpdateInfo = new MatchScoreUpdateInfo();
-                                        matchScoreUpdateInfo.SetScores = update.SetScores;
-                                        matchScoreUpdateInfo.MatchId = update.Id;
-                                        matchScoreUpdateInfo.Result = update.Result;
-                                        matchScoreUpdateInfo.Winner = update.Winner;
+                                    var matchScoreUpdateInfo = new MatchScoreUpdateInfo();
 
-                                        matchScoreUpdateInfoItems.Add(matchScoreUpdateInfo);
+                                    matchScoreUpdateInfo.MatchId = update.Id;
+                                    matchScoreUpdateInfo.Result = update.Result;
+                                    matchScoreUpdateInfo.Winner = update.Winner;
+
+                                    matchScoreUpdateInfoItems.Add(matchScoreUpdateInfo);
+                                    if (update.SetScores.NotNullOrEmpty())
+                                    {
+                                        var scores =
+                                            update.SetScores.Where(s => !(s.Player1Points == 0 && s.Player2Points == 0));
+                                        if (scores.NotNullOrEmpty())
+                                        {
+                                            matchScoreUpdateInfo.SetScores = update.SetScores;
+                                        }
                                     }
                                 });
             if (matchScoreUpdateInfoItems.NotNullOrEmpty())
@@ -411,6 +331,35 @@ namespace SAMS.Controllers
         public ActionResult Import()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult UpdatePlayersPoints(int id, UpdatePlayerPointsModel[] updates)
+        {
+            var repository = ServiceProvider.Get<ICompetitionRepository>();
+            repository.UpdateCompetitionPlayersPoints(id, updates.Select(u=>new UpdatePlayerPointsInfo(){PlayerId = u.Id, Points = u.Points, Position = u.Position}).ToArray());
+            return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
+
+        [HttpPost]
+        public ActionResult ImportPlayers(HttpPostedFileBase competitionsPlayersFile)
+        {
+            if (competitionsPlayersFile.IsNotNull() && competitionsPlayersFile.ContentLength > 0)
+            {
+                var url = AcceptCsvFile(competitionsPlayersFile, "CompetitionPlayers");
+                var manager = ServiceProvider.Get<ICompetitionsManager>();
+                try
+                {
+                    manager.LoadCompetitionsPlayers(url.ToString());
+                }
+                catch (Exception anyException)
+                {
+                    ModelState.AddModelError("LoadingCompetitionsFile", anyException.ToString());
+                    return Import();
+                }
+
+            }
+            return RedirectToAction("Index");            
         }
 
         [HttpPost]

@@ -25,6 +25,9 @@ namespace Simple.SAMS.Contracts.Competitions
 
         [OperationContract(IsOneWay = true)]
         void LoadCompetitions(string competitionsFileUrl);
+        
+        [OperationContract(IsOneWay = true)]
+        void LoadCompetitionsPlayers(string competitionsPlayersFileUrl);
 
         [OperationContract]
         MatchHeaderInfo[] GetCompetitionMatches(CompetitionMatchesQuery matchesQuery);

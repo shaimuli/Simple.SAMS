@@ -36,6 +36,9 @@
     <Reference Include="Boo.Lang">
       <HintPath>..\..\lib\Boo.Lang.dll</HintPath>
     </Reference>
+    <Reference Include="DocumentFormat.OpenXml">
+      <HintPath>..\..\..\..\..\wc\dev\Products\SimplyLog4\v4base\trunk\lib\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
     <Reference Include="FileHelpers">
       <HintPath>..\..\lib\FileHelpers.dll</HintPath>
     </Reference>
@@ -53,11 +56,13 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompetitionEngineService.cs" />
     <Compile Include="DefaultPositioningEngineFactory.cs" />
     <Compile Include="CompetitionsManagerService.cs" />
+    <Compile Include="ExcelDocumentHelper.cs" />
     <Compile Include="KnockoutPositioningEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

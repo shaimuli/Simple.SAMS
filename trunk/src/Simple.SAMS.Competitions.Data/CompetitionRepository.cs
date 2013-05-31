@@ -12,6 +12,36 @@ namespace Simple.SAMS.Competitions.Data
 {
     public class CompetitionRepository : DataRepositoryBase<CompetitionsDataContext>, ICompetitionRepository
     {
+        public void UpdateCompetitionPlayersPoints(int competitionId, UpdatePlayerPointsInfo[] players)
+        {
+            UseDataContext(dataContext =>
+                               {
+                                   var competitionPlayers =
+                                       dataContext.CompetitionPlayers.Where(cp => cp.CompetitionId == competitionId);
+                                   var competitionPlayersMap = new Dictionary<int, CompetitionPlayer>();
+                                   competitionPlayers.ForEach(cp =>
+                                                                  {
+                                                                      competitionPlayersMap[cp.PlayerId] = cp;
+                                                                  });
+                                   foreach (var updatePlayerPointsInfo in players)
+                                   {
+                                       CompetitionPlayer player;
+                                       if (competitionPlayersMap.TryGetValue(updatePlayerPointsInfo.PlayerId, out player))
+                                       {
+                                           if (updatePlayerPointsInfo.Points.HasValue)
+                                           {
+                                               player.Points = updatePlayerPointsInfo.Points.Value;
+                                           }
+                                           if (updatePlayerPointsInfo.Position.HasValue)
+                                           {
+                                               player.Position = updatePlayerPointsInfo.Position.Value;
+                                           }
+                                       }
+                                   }
+
+                                   dataContext.SubmitChanges();
+                               });
+        }
 
         private void MapCompetitionDataToHeader(Competition competition, CompetitionHeaderInfo competitionHeader)
         {
@@ -46,7 +76,7 @@ namespace Simple.SAMS.Competitions.Data
             competition.EndTime = createCompetitionInfo.EndTime;
         }
 
-        
+
 
         public int Create(CreateCompetitionInfo createCompetitionInfo)
         {
@@ -124,18 +154,18 @@ namespace Simple.SAMS.Competitions.Data
             var result = default(Simple.SAMS.Contracts.Players.CompetitionPlayer);
             UseDataContext(
                 dataContext =>
-                    {
-                        dataContext.ObjectTrackingEnabled = false;
-                        dataContext.LoadOptions = GetCompetitionsLoadOptions();
-                        var player =
-                            dataContext.CompetitionPlayers.FirstOrDefault(
-                                cp => cp.CompetitionId == competitionId && cp.Player.Id == playerId);
+                {
+                    dataContext.ObjectTrackingEnabled = false;
+                    dataContext.LoadOptions = GetCompetitionsLoadOptions();
+                    var player =
+                        dataContext.CompetitionPlayers.FirstOrDefault(
+                            cp => cp.CompetitionId == competitionId && cp.Player.Id == playerId);
 
-                        if (player.IsNotNull())
-                        {
-                            result = MapDataCompetitionPlayer(player, competitionId);
-                        }
-                    });
+                    if (player.IsNotNull())
+                    {
+                        result = MapDataCompetitionPlayer(player, competitionId);
+                    }
+                });
             return result;
         }
 
@@ -154,7 +184,7 @@ namespace Simple.SAMS.Competitions.Data
                     {
                         result = new CompetitionDetails();
                         MapCompetitionDataToHeader(competitionData, result);
-                        
+
                         result.MainRefereeName = competitionData.MainReferee;
                         result.MainRefereePhone = competitionData.MainRefereePhone;
                         result.Site = competitionData.Site;
@@ -186,11 +216,13 @@ namespace Simple.SAMS.Competitions.Data
             entity.CompetitionRank = dataEntity.Rank.GetValueOrDefault();
             entity.Replaceable =
                 dataEntity.Player.Matches.Count(
-                    m => m.CompetitionId == competitionId && m.Status >= (int) MatchStatus.Playing) == 0;
-            entity.Source = (CompetitionPlayerSource) dataEntity.Source;
-            entity.Section = (CompetitionSection) dataEntity.Section;
+                    m => m.CompetitionId == competitionId && m.Status >= (int)MatchStatus.Playing) == 0;
+            entity.Source = (CompetitionPlayerSource)dataEntity.Source;
+            entity.Section = (CompetitionSection)dataEntity.Section;
             entity.Status =
-                (CompetitionPlayerStatus) dataEntity.Status.GetValueOrDefault((int) CompetitionPlayerStatus.Active);
+                (CompetitionPlayerStatus)dataEntity.Status.GetValueOrDefault((int)CompetitionPlayerStatus.Active);
+            entity.Points = dataEntity.Points;
+            entity.Position = dataEntity.Position;
             return entity;
         }
 
@@ -245,9 +277,9 @@ namespace Simple.SAMS.Competitions.Data
                             dataContext.CompetitionPlayers.InsertOnSubmit(
                                 new CompetitionPlayer()
                                     {
-                                        CompetitionId = competitionId, 
-                                        PlayerId = playerInCompetition.PlayerId, 
-                                        Rank = playerInCompetition.Rank, 
+                                        CompetitionId = competitionId,
+                                        PlayerId = playerInCompetition.PlayerId,
+                                        Rank = playerInCompetition.Rank,
                                         Source = (int)playerInCompetition.Source,
                                         Section = (int)playerInCompetition.Section,
                                         Status = (int)playerInCompetition.Status
@@ -256,7 +288,7 @@ namespace Simple.SAMS.Competitions.Data
 
                         dataContext.SubmitChanges();
                     }
-                   
+
                 });
         }
 
@@ -352,12 +384,27 @@ namespace Simple.SAMS.Competitions.Data
 
                                    relevantPlayers.ForEach(
                                        player =>
-                                           {
-                                               player.Status = (int) status;
-                                               player.Reason = reason;
-                                           });
+                                       {
+                                           player.Status = (int)status;
+                                           player.Reason = reason;
+                                       });
                                    dataContext.SubmitChanges();
                                });
+        }
+
+
+        public int? GetCompetitionIdByReferenceId(string referenceId)
+        {
+            var result = default(int?);
+            UseDataContext(dataContext =>
+                               {
+                                   var competition = dataContext.Competitions.FirstOrDefault(c => c.ReferenceId == referenceId);
+                                   if (competition.IsNotNull())
+                                   {
+                                       result = competition.Id;
+                                   }
+                               });
+            return result;
         }
     }
 }

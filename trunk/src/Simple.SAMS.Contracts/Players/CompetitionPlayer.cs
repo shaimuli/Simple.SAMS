@@ -12,6 +12,14 @@ namespace Simple.SAMS.Contracts.Players
     public class CompetitionPlayer : Player
     {
         [DataMember(EmitDefaultValue = false)]
+        public int? Position { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
+        public int? Points { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
+        public string CompetitionReferenceId { get; set; }
+        [DataMember(EmitDefaultValue = false)]
         public CompetitionPlayerStatus Status { get; set; }
 
         [DataMember(EmitDefaultValue = false)]

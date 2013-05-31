@@ -217,25 +217,45 @@ namespace Simple.SAMS.Competitions.Data
                 {
                     match.BreakPoints = latest.BreakPoints.Value;
                 }
-                if (scoreUpdateInfo.Winner.HasValue)
-                {
-                    match.Winner = scoreUpdateInfo.Winner.Value == MatchWinner.None
-                                       ? default(int?)
-                                       : (int) scoreUpdateInfo.Winner.Value;
-
-                    if (match.Winner.HasValue)
-                    {
-                        match.Status = (int) MatchStatus.Completed;
-                    }
-                }
-                if (scoreUpdateInfo.Result.HasValue)
-                {
-                    match.Result = (int)scoreUpdateInfo.Result.Value;
-                }
+ 
                 dataContext.SubmitChanges();
             });
                 
             }
+        }
+
+        public void UpdateMatchResult(MatchScoreUpdateInfo scoreUpdateInfo)
+        {
+            UseDataContext(
+                dataContext =>
+                    {
+
+                        var match = dataContext.Matches.FirstOrDefault(m => m.Id == scoreUpdateInfo.MatchId);
+                        if (match == null)
+                        {
+                            throw new ArgumentException(
+                                "Match '{0}' could not be found, could not update score.".ParseTemplate(
+                                    scoreUpdateInfo.MatchId));
+                        }
+
+                        if (scoreUpdateInfo.Winner.HasValue)
+                        {
+                            match.Winner = scoreUpdateInfo.Winner.Value == MatchWinner.None
+                                               ? default(int?)
+                                               : (int) scoreUpdateInfo.Winner.Value;
+
+                            if (match.Winner.HasValue)
+                            {
+                                match.Status = (int) MatchStatus.Completed;
+                            }
+                        }
+                        if (scoreUpdateInfo.Result.HasValue)
+                        {
+                            match.Result = (int) scoreUpdateInfo.Result.Value;
+                        }
+                        
+                        dataContext.SubmitChanges();
+                    });
         }
 
         public void RemovePlayerFromUnplayedMatches(int competitionId, int playerId)

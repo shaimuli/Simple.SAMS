@@ -15,7 +15,7 @@
     </ul>
 }
 
-@using (Html.BeginForm("Import", "Competitions", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Import", "Competitions", FormMethod.Post, new { enctype = "multipart/form-data",id="competitions" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
@@ -35,13 +35,33 @@
     </fieldset>
 }
 
+@using (Html.BeginForm("ImportPlayers", "Competitions", FormMethod.Post, new { enctype = "multipart/form-data",id="competitionsPlayers" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>@Html.Resource("ImportCompetitionsPlayers")</legend>
+        <label for="competitionsPlayersFile">@Html.Resource("CompetitionsPlayersFileLabel")</label>
+        <div>
+                <input type="file" name="competitionsPlayersFile" id="competitionsPlayersFile"/>
+        </div>
+        <hr class="space"/>
+        <div class="row-fluid">
+            <div class="span3">
+        <input type="submit" class="btn btn-primary stretch"  value="@Html.ResourceText("StartImportCompetitionsPlayers")" />
+                </div>
+        </div>
+    </fieldset>
+}
+
 
 
 @section Scripts
 {
     <script type="text/javascript">
         $(function() {
-            $("form").submit(function(e) {
+            $("form#competitions").submit(function(e) {
                 var file = $("#competitionsFile").val();
                 if (file == "") {
                     $("#competitionsFile").css("color", "red");
@@ -52,6 +72,20 @@
             });
 
             $("#competitionsFile").change(function () {
+                $(this).css("color", "black");
+            });
+
+            $("form#competitionsPlayers").submit(function (e) {
+                var file = $("#competitionsPlayersFile").val();
+                if (file == "") {
+                    $("#competitionsPlayersFile").css("color", "red");
+                    return false;
+                } else {
+                    return true;
+                }
+            });
+
+            $("#competitionsPlayersFile").change(function () {
                 $(this).css("color", "black");
             });
         });

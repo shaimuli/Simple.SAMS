@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using FileHelpers;
 using Rhino.Etl.Core.Files;
 using Simple.ComponentModel;
@@ -10,6 +13,7 @@ using Simple.SAMS.Contracts.Competitions;
 using Simple.SAMS.Contracts.Players;
 using Simple.SAMS.Contracts.Positioning;
 using Simple.SAMS.Utilities;
+using Simple.SimplyLog.ImportExport;
 
 namespace Simple.SAMS.Competitions.Services
 {
@@ -24,7 +28,7 @@ namespace Simple.SAMS.Competitions.Services
             if (match.StartTime.HasValue &&
                 match.Result.HasValue && match.Result.Value != MatchResult.Pause &&
                 match.Winner != MatchWinner.None &&
-                match.Player1 != null && match.Player2 != null)
+                (match.Player1 != null || match.Player2 != null))
             {
                 if (match.IsFinal)
                 {
@@ -62,9 +66,13 @@ namespace Simple.SAMS.Competitions.Services
 
         private void QualifyToFinal(MatchHeaderInfo match)
         {
-            var winnerId = (match.Winner == MatchWinner.Player1 ? match.Player1 : match.Player2).Id;
+            var winner = (match.Winner == MatchWinner.Player1 ? match.Player1 : match.Player2);
+            if (winner != null)
+            {
+                var winnerId = winner.Id;
 
-            PositionPlayerInSection(match.CompetitionId, winnerId, CompetitionSection.Final);
+                PositionPlayerInSection(match.CompetitionId, winnerId, CompetitionSection.Final);
+            }
         }
 
         public void PositionPlayerInSection(int competitionId, int playerId, CompetitionSection section)
@@ -228,7 +236,8 @@ namespace Simple.SAMS.Competitions.Services
                                                YouthInternationalRank = p.YouthInternationalRank,
                                                Source = p.Source == "WC" ? CompetitionPlayerSource.Wildcard : CompetitionPlayerSource.Regular,
                                                AverageScore = p.AverageScore,
-                                               AccumulatedScore = p.AccumulatedScore
+                                               AccumulatedScore = p.AccumulatedScore,
+                                               CompetitionReferenceId = p.CompetitionReferenceId
                                            }).ToArray();
         }
 
@@ -249,89 +258,104 @@ namespace Simple.SAMS.Competitions.Services
             return result;
         }
 
-        private IEnumerable<PlayerRecord> LoadPlayersFromFile(string fileName)
+        private IEnumerable<T> LoadRecords<T>(string fileName)
+            where T: new()
         {
-            var engine = FluentFile.For<PlayerRecord>();
-            
-            using (var file = engine.From(fileName))
+            var records = new List<T>();
+            using (var dataTable = new DataTable())
             {
-                foreach (var player in file.Cast<PlayerRecord>().Where(p=>p.LocalFirstName.NotNullOrEmpty() && p.EnglishFirstName.NotNullOrEmpty() && p.IdNumber.NotNullOrEmpty()))
+                ExcelDocumentHelper.LoadFromSheet(fileName, dataTable, inferColumns: true);
+                foreach (DataRow dataRow in dataTable.Rows)
                 {
-                    yield return player;
+                    var record = new T();
+                    foreach (DataColumn dataColumn in dataTable.Columns)
+                    {
+                        var value = dataRow[dataColumn.ColumnName];
+                        if (value != null && !Convert.IsDBNull(value))
+                        {
+
+                            var propertyInfo = dataColumn.ExtendedProperties["Property"] as PropertyInfo;
+                            if (propertyInfo == null)
+                            {
+                                propertyInfo = typeof(T).GetProperty(dataColumn.ColumnName);
+                                dataColumn.ExtendedProperties["Property"] = propertyInfo;
+                            }
+                            if (propertyInfo == null)
+                            {
+                                throw new ArgumentException("Column '{0}' is invalid".ParseTemplate(dataColumn.ColumnName));
+                            }
+                            if (propertyInfo.PropertyType == typeof(DateTime?) ||
+                                propertyInfo.PropertyType == typeof(DateTime))
+                            {
+                                value = DateTime.FromOADate(double.Parse(value.ToString()));
+                            }
+                            else if (propertyInfo.PropertyType == typeof(bool?) ||
+                                     propertyInfo.PropertyType == typeof(bool))
+                            {
+                                value = "true,TRUE,1".Contains(value.ToString());
+                            }
+                            else if (propertyInfo.PropertyType == typeof(int?) ||
+                                     propertyInfo.PropertyType == typeof(int))
+                            {
+                                value = int.Parse(value.ToString());
+                            }
+                            else
+                            {
+                                value = Convert.ChangeType(value, propertyInfo.PropertyType);
+                            }
+                            propertyInfo.SetValue(record, value);
+                        }
+                    }
+                    records.Add(record);
                 }
             }
+            return records.ToArray();        
+        }
+
+        private IEnumerable<PlayerRecord> LoadPlayersFromFile(string fileName)
+        {
+            return LoadRecords<PlayerRecord>(fileName);
         }
         private IEnumerable<CompetitionRecord> LoadCompetitionsFromFile(string fileName)
         {
-            var engine = FluentFile.For<CompetitionRecord>();
-
-            using (var file = engine.From(fileName))
-            {
-
-                foreach (var player in file.Cast<CompetitionRecord>().Where(c=>c.ReferenceId.NotNullOrEmpty() && c.Name.NotNullOrEmpty()))
-                {
-                    yield return player;
-                }
-            }
+            return LoadRecords<CompetitionRecord>(fileName);
         }
 
-        [DelimitedRecord(","), IgnoreFirst]
         private class CompetitionRecord
         {
-            public string ReferenceId;
-            public string Name;
-            public int TypeId;
-            [FieldConverter(ConverterKind.Date, "yyyy-MM-dd")]
-            public DateTime StartTime;
-            [FieldOptional] 
-            [FieldConverter(ConverterKind.Date, "yyyy-MM-dd")]
-            public DateTime? EndTime;
-            [FieldOptional]
-            public string Site;
-            
-            [FieldOptional]
-            public string SitePhone;
-
-            [FieldOptional]
-            public string MainReferee;
-            [FieldOptional] 
-            public string MainRefereePhone;
+            public string ReferenceId { get; set; }
+            public string Name { get; set; }
+            public int Type { get; set; }
+            public DateTime StartTime { get; set; }
+            public DateTime? EndTime { get; set; }
+            public string Site { get; set; }
+            public string SitePhone { get; set; }
+            public string MainReferee { get; set; }
+            public string MainRefereePhone { get; set; }
         }
 
-        [DelimitedRecord(","), IgnoreFirst]
         private class PlayerRecord
         {
-            public string IdNumber;
-            public string LocalFirstName;
-            [FieldOptional]
-            public string LocalLastName;
-            [FieldOptional]
-            public string EnglishFirstName;
-            [FieldOptional]
-            public string EnglishLastName;
-            [FieldOptional]
-            public string Phone;
-            [FieldOptional] 
-            [FieldConverter(ConverterKind.Date, "yyyy-MM-dd")]
-            public DateTime? BirthDate;
-            [FieldOptional]
-            public bool? IsFemale;
-            [FieldOptional]
-            public int? NationalRank;
-            [FieldOptional]
-            public int? EuropeInternationalRank;
-            [FieldOptional] 
-            public int? YouthInternationalRank;
-            [FieldOptional]
-            public string IPIN;
-            [FieldOptional] 
-            public string Country;
-            [FieldOptional()] 
-            public string Source;
-            [FieldOptional] 
-            public int? AverageScore;
+            public string IdNumber { get; set; }
+            public string LocalFirstName { get; set; }
+            public string LocalLastName { get; set; }
+            public string EnglishFirstName { get; set; }
+            public string EnglishLastName { get; set; }
+            public string Phone { get; set; }
+            public DateTime? BirthDate { get; set; }
+            public bool? IsFemale { get; set; }
 
-            [FieldOptional] public int? AccumulatedScore;
+            public int? NationalRank { get; set; }
+
+            public int? EuropeInternationalRank { get; set; }
+
+            public int? YouthInternationalRank { get; set; }
+            public string IPIN { get; set; }
+            public string Country { get; set; }
+            public string Source { get; set; }
+            public int? AverageScore { get; set; }
+            public int? AccumulatedScore { get; set; }
+            public string CompetitionReferenceId { get; set; }
         }
 
 
@@ -345,7 +369,7 @@ namespace Simple.SAMS.Competitions.Services
             {
                 Name = cr.Name,
                 StartTime = cr.StartTime,
-                TypeId = MapCompetitionTypeId(cr.TypeId),
+                TypeId = MapCompetitionTypeId(cr.Type),
                 ReferenceId = cr.ReferenceId,
                 EndTime = cr.EndTime,
                 Site = cr.Site,
@@ -423,6 +447,11 @@ namespace Simple.SAMS.Competitions.Services
             return competitionDetails;
         }
 
+        public void UpdateMatchResult(MatchScoreUpdateInfo scoreUpdateInfo)
+        {
+            var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
+            competitionMatchesRepository.UpdateMatchResult(scoreUpdateInfo);
+        }
         public void UpdateMatchScore(MatchScoreUpdateInfo scoreUpdateInfo)
         {
             var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();

@@ -3084,6 +3084,10 @@ namespace Simple.SAMS.Competitions.Data
 		
 		private string _Reason;
 		
+		private System.Nullable<int> _Points;
+		
+		private System.Nullable<int> _Position;
+		
 		private EntityRef<Competition> _Competition;
 		
 		private EntityRef<Player> _Player;
@@ -3106,6 +3110,10 @@ namespace Simple.SAMS.Competitions.Data
     partial void OnStatusChanged();
     partial void OnReasonChanging(string value);
     partial void OnReasonChanged();
+    partial void OnPointsChanging(System.Nullable<int> value);
+    partial void OnPointsChanged();
+    partial void OnPositionChanging(System.Nullable<int> value);
+    partial void OnPositionChanged();
     #endregion
 		
 		public CompetitionPlayer()
@@ -3259,6 +3267,46 @@ namespace Simple.SAMS.Competitions.Data
 					this._Reason = value;
 					this.SendPropertyChanged("Reason");
 					this.OnReasonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Points", DbType="Int")]
+		public System.Nullable<int> Points
+		{
+			get
+			{
+				return this._Points;
+			}
+			set
+			{
+				if ((this._Points != value))
+				{
+					this.OnPointsChanging(value);
+					this.SendPropertyChanging();
+					this._Points = value;
+					this.SendPropertyChanged("Points");
+					this.OnPointsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Position", DbType="Int")]
+		public System.Nullable<int> Position
+		{
+			get
+			{
+				return this._Position;
+			}
+			set
+			{
+				if ((this._Position != value))
+				{
+					this.OnPositionChanging(value);
+					this.SendPropertyChanging();
+					this._Position = value;
+					this.SendPropertyChanged("Position");
+					this.OnPositionChanged();
 				}
 			}
 		}

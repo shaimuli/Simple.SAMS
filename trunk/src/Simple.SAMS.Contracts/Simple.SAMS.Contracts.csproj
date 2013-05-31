@@ -78,6 +78,7 @@
     <Compile Include="Competitions\MatchWinner.cs" />
     <Compile Include="Competitions\Ranking.cs" />
     <Compile Include="Competitions\StartTimeType.cs" />
+    <Compile Include="Competitions\UpdatePlayerPointsInfo.cs" />
     <Compile Include="Competitions\UpdatePlayerPositionInfo.cs" />
     <Compile Include="DefaultMatchProvisioningEngineFactory.cs" />
     <Compile Include="KnockoutMatchProvisioningEngine.cs" />

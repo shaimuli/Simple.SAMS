@@ -144,6 +144,8 @@
       <Column Name="Source" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Status" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Reason" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Points" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Position" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Competition_CompetitionPlayer" Member="Competition" ThisKey="CompetitionId" OtherKey="Id" Type="Competition" IsForeignKey="true" />
       <Association Name="Player_CompetitionPlayer" Member="Player" ThisKey="PlayerId" OtherKey="Id" Type="Player" IsForeignKey="true" />
     </Type>
