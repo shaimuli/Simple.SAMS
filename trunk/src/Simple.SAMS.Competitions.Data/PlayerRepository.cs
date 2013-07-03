@@ -36,15 +36,28 @@ namespace Simple.SAMS.Competitions.Data
             dataContext.Players.InsertOnSubmit(dataEntity);
         }
 
-        public int[] MatchPlayerByIdNumber(Contracts.Players.Player[] players)
+        public class PlayerByIdNumberEqualityComparer : IEqualityComparer<Contracts.Players.Player>
         {
-            var matchedPlayers = new List<int>();
+            public bool Equals(Contracts.Players.Player x, Contracts.Players.Player y)
+            {
+                return x.IdNumber == y.IdNumber;
+            }
+
+            public int GetHashCode(Contracts.Players.Player obj)
+            {
+                return obj.IdNumber.GetHashCode();
+            }
+        }
+
+        public Dictionary<string, int> MatchPlayerByIdNumber(Contracts.Players.Player[] players)
+        {
+            var matchedPlayers = new Dictionary<string, int>();
 
             UseDataContext(
                 dataContext =>
                     {
                         var dataPlayers = new List<Player>();
-                        foreach (var player in players)
+                        foreach (var player in players.Distinct(new PlayerByIdNumberEqualityComparer()))
                         {
                             var dataPlayer = dataContext.Players.FirstOrDefault(p => p.IdNumber == player.IdNumber);
                             if (dataPlayer.IsNull())
@@ -60,10 +73,13 @@ namespace Simple.SAMS.Competitions.Data
                         
                         dataContext.SubmitChanges();
 
-                        matchedPlayers.AddRange(dataPlayers.Select(dp=>dp.Id));
+                        dataPlayers.ForEach(dp =>
+                                                {
+                                                    matchedPlayers[dp.IdNumber] = dp.Id;
+                                                });
                     });
 
-            return matchedPlayers.ToArray();
+            return matchedPlayers;
         }
 
 

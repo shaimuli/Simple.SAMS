@@ -12,7 +12,6 @@
         <div class="span2">
             @Html.TextBox("NameFilter")
         </div>
-        <div class="span2"></div>
         <div class="span4">
             @if (((int)Model.Status <= (int)CompetitionStatus.Finished) && (Model.CanAddToQualifying || Model.CanAddToFinal))
             {
@@ -20,13 +19,13 @@
             }
         </div>
         <div class="span2">
-            <button style="display: none" type="button" class="btn PrintPlayersList">@Html.Resource("PrintMatchesDraw")</button>
+            <button type="button" class="btn PrintPlayersList">@Html.Resource("PrintMatchesDraw")</button>
         </div>
         <div class="span2">
             <button id="SavePoints" type="button" class="btn btn-primary">@Html.Resource("SavePoints")</button>
-        </div>
+        </div>        
     </div>
-
+    <div class="printarea">
     <table class="table table-striped table-hover sortable playersTable">
 
         @*        <th class="span2" data-sort-type="text">@Html.Resource("PlayerEnglishNameHeader")</th>
@@ -47,8 +46,8 @@
                 <th class="span1">@Html.Resource("PlayerPositions")</th>
                 @if ((int)Model.Status < (int)CompetitionStatus.Finished)
                 {
-                    <th></th>
-                    <th></th>
+                    <th class="nonprintable"></th>
+                    <th class="nonprintable"></th>
                 }
             </tr>
         </thead>
@@ -82,13 +81,13 @@
                         <input class="span1" name="position" type="text" maxlength="3"  value="@(item.Points.HasValue? item.Points.Value.ToString() : "")"/></td>
                     @if ((int)Model.Status < (int)CompetitionStatus.Finished && item.Status == CompetitionPlayerStatus.Active)
                     {
-                        <td>
+                        <td class="nonprintable">
                             @if (item.Replaceable)
                             {
                                 <a href="#" class="ReplaceCompetitionPlayer">@Html.Resource("ReplaceCompetitionPlayer")</a>
                             }
                         </td>
-                        <td>
+                        <td class="nonprintable">
                             <a href="#" class="RemoveCompetitionPlayer">@Html.Resource("DeleteCompetitionPlayer")</a>
                         </td>
                     }
@@ -101,6 +100,6 @@
             }
         </tbody>
     </table>
-
+        </div>
 
 </div>

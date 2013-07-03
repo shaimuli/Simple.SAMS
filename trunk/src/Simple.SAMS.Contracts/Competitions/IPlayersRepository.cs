@@ -9,7 +9,7 @@ namespace Simple.SAMS.Contracts.Competitions
 {
     public interface IPlayersRepository: IEntityRepository<Player>
     {
-        int[] MatchPlayerByIdNumber(Player[] players);
+        Dictionary<string, int> MatchPlayerByIdNumber(Player[] players);
         int? GetPlayerIdByIdNumber(string idNumber);
     }
 }

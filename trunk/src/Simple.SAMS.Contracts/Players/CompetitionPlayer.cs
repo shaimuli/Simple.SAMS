@@ -11,6 +11,7 @@ namespace Simple.SAMS.Contracts.Players
     [DataContract(Namespace = Namespaces.Data)]
     public class CompetitionPlayer : Player
     {
+        
         [DataMember(EmitDefaultValue = false)]
         public int? Position { get; set; }
 

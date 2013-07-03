@@ -21,6 +21,10 @@ namespace SAMS
             if (map.ContainsKey(round))
             {
                 var queue = map[round];
+                if (queue.Count == 0)
+                {
+                    return;
+                }
                 match = queue.Dequeue();
 
 
@@ -60,7 +64,7 @@ namespace SAMS
                 if (player == 0)
                 {
 
-                    htmlWriter.Write(match.Date);
+                    htmlWriter.Write(match.Date.ToString("dd/MM/yyyy"));
                 }
                 else if (match.StartTime.HasValue)
                 {

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using Simple;
+using Simple.SAMS.CompetitionEngine;
 using Simple.SAMS.Contracts.Competitions;
 
 namespace SAMS
@@ -119,6 +120,7 @@ namespace SAMS
         }
         public static int RoundMatchesCount(this HtmlHelper helper,  int count)
         {
+            return PlayersCountCalculator.CalculatePlayersCount(count);
             if (count == 24)
             {
                 count = 32;

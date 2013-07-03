@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompetitionEngineService.cs" />
+    <Compile Include="ConsolationMap.cs" />
     <Compile Include="DefaultPositioningEngineFactory.cs" />
     <Compile Include="CompetitionsManagerService.cs" />
     <Compile Include="ExcelDocumentHelper.cs" />

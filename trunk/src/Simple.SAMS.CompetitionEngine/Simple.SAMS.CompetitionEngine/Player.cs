@@ -8,6 +8,8 @@ namespace Simple.SAMS.CompetitionEngine
 {
     public class Player
     {
+        public int AverageScore { get; set; }
+        public int AccumulatedScore { get; set; }
         public int Rank { get; set; }
         public int Id { get; set; }
         public override string ToString()

@@ -10,13 +10,9 @@ namespace Simple.SAMS.CompetitionEngine
     {
         public CompetitionPosition[] Evaluate(FinalPositioningParameters parameters)
         {
-
-            var playersCount = parameters.PlayersCount;
+            var playersCount = parameters.Players.Length;
             var positions = new List<CompetitionPosition>(playersCount);
-            positions.AddRange(Enumerable.Range(0, playersCount).Select(i => new CompetitionPosition()));
-
-
-
+            
             if (playersCount > 0)
             {
                 var players = parameters.Players.Take(playersCount).ToList();
@@ -40,67 +36,119 @@ namespace Simple.SAMS.CompetitionEngine
                     }
                     else
                     {
-                        return 0;
+                        if (p1.AverageScore > p2.AverageScore)
+                        {
+                            return 1;
+                        }
+                        else if (p2.AverageScore > p1.AverageScore)
+                        {
+                            return -1;
+                        }
+                        else
+                        {
+                            if (p1.AccumulatedScore > p2.AccumulatedScore)
+                            {
+                                return 1;
+                            }
+                            else if (p2.AccumulatedScore > p1.AccumulatedScore)
+                            {
+                                return -1;
+                            }
+                            else
+                            {
+                                return 0;
+                            }
+                        }
+
                     }
                 });
-                var availablePositions = Enumerable.Range(0, playersCount).ToList();
-                var rankGroups = new List<List<int>>()
-                                     {
-                                         new List<int>()
-                                     };
-                var rankedPositions = new List<int>();
-                var position = 0;
 
-                RankPlayer(positions, position, players, availablePositions, rankGroups[0]);
-
-                if (players.Count > 0)
+                var mdEngine = new MainDrawPositionEngine();
+                positions.AddRange(Enumerable.Range(0, PlayersCountCalculator.CalculatePlayersCount(players.Count)).Select(i => new CompetitionPosition()));
+                var ranks = mdEngine.Rank(players.Count, parameters.QualifyingToFinal);
+                var map = new Dictionary<string, Player>();
+                for (var i = 0; i < players.Count - parameters.QualifyingToFinal; i++)
                 {
-                    position = playersCount - 1;
-                    RankPlayer(positions, position, players, availablePositions, rankGroups[0]);
+                    map["MD" + (i + 1)] = players[i];
                 }
 
-                if (parameters.RankedPlayersCount > 2)
+                for (int i = players.Count - parameters.QualifyingToFinal; i < players.Count; i++)
                 {
-                    rankGroups.Add(new List<int>());
-                    RankPlayers(positions, new[] { parameters.RankedPlayersCount, (playersCount - parameters.RankedPlayersCount-1) }, players, availablePositions, rankGroups[1]);
+                    map["Q" + (i + 1)] = players[i];
                 }
 
-                if (parameters.RankedPlayersCount > 4)
+                foreach (var item in ranks)
                 {
-                    rankGroups.Add(new List<int>());
-                    var rndpositions = new[]
+                    Player player;
+                    if (map.TryGetValue(item.Code, out player))
+                    {
+                        var position = new CompetitionPosition
                                            {
-                                               parameters.RankedPlayersCount - 1,
-                                               parameters.RankedPlayersCount*2 - 1,
-                                               (playersCount - parameters.RankedPlayersCount*2),
-                                               playersCount - parameters.RankedPlayersCount
+                                               PlayerId = player.Id
                                            };
-                    RankPlayers(positions, rndpositions, players, availablePositions, rankGroups[2]);
+
+                        positions[item.Index] = position;
+                    }
                 }
 
-                if (parameters.RankedPlayersCount > 8)
-                {
-                    throw new NotSupportedException("Only up to 32->8");
-                    rankGroups.Add(new List<int>());
-                    var rndpositions = new[]
-                                           {
-                                               parameters.RankedPlayersCount - 1,
-                                               parameters.RankedPlayersCount*2 - 1,
-                                               (playersCount - parameters.RankedPlayersCount*2),
-                                               playersCount - parameters.RankedPlayersCount
-                                           };
-                    RankPlayers(positions, rndpositions, players, availablePositions, rankGroups[3]);
-                }
+                //var availablePositions = Enumerable.Range(0, playersCount).ToList();
+                //var rankGroups = new List<List<int>>()
+                //                     {
+                //                         new List<int>()
+                //                     };
+                //var rankedPositions = new List<int>();
+                //var position = 0;
 
-                var set1 = availablePositions.Except(rankGroups.SelectMany(i=>i.ToList())).ToList();
-                RankPlayers(positions, set1.ToArray(), players, availablePositions, null);
-                for(var groupIndex = rankGroups.Count - 1; groupIndex >=0; groupIndex--)
-                {
-                    var set = availablePositions.Except(rankGroups[groupIndex]).ToList();
-                    RankPlayers(positions, set1.ToArray(), players, availablePositions, null);
-                }
+                //RankPlayer(positions, position, players, availablePositions, rankGroups[0]);
 
-                RankPlayers(positions, availablePositions.ToArray(), players, availablePositions, null);
+                //if (players.Count > 0)
+                //{
+                //    position = playersCount - 1;
+                //    RankPlayer(positions, position, players, availablePositions, rankGroups[0]);
+                //}
+
+                //if (parameters.QualifyingToFinal > 2)
+                //{
+                //    rankGroups.Add(new List<int>());
+                //    RankPlayers(positions, new[] { parameters.QualifyingToFinal, (playersCount - parameters.QualifyingToFinal-1) }, players, availablePositions, rankGroups[1]);
+                //}
+
+                //if (parameters.QualifyingToFinal > 4)
+                //{
+                //    rankGroups.Add(new List<int>());
+                //    var rndpositions = new[]
+                //                           {
+                //                               parameters.QualifyingToFinal - 1,
+                //                               parameters.QualifyingToFinal*2 - 1,
+                //                               (playersCount - parameters.QualifyingToFinal*2),
+                //                               playersCount - parameters.QualifyingToFinal
+                //                           };
+                //    RankPlayers(positions, rndpositions, players, availablePositions, rankGroups[2]);
+                //}
+
+                //if (parameters.QualifyingToFinal > 8)
+                //{
+                //    throw new NotSupportedException("Only up to 32->8");
+                //    rankGroups.Add(new List<int>());
+                //    var rndpositions = new[]
+                //                           {
+                //                               parameters.QualifyingToFinal - 1,
+                //                               parameters.QualifyingToFinal*2 - 1,
+                //                               (playersCount - parameters.QualifyingToFinal*2),
+                //                               playersCount - parameters.QualifyingToFinal
+                //                           };
+                //    RankPlayers(positions, rndpositions, players, availablePositions, rankGroups[3]);
+                //}
+
+                //var set1 = availablePositions.Except(rankGroups.SelectMany(i=>i.ToList())).ToList();
+                //RankPlayers(positions, set1.ToArray(), players, availablePositions, null);
+                //for(var groupIndex = rankGroups.Count - 1; groupIndex >=0; groupIndex--)
+                //{
+                //    var set = availablePositions.Except(rankGroups[groupIndex]).ToList();
+                //    RankPlayers(positions, set1.ToArray(), players, availablePositions, null);
+                //}
+
+                //RankPlayers(positions, availablePositions.ToArray(), players, availablePositions, null);
 
             }
 

@@ -64,6 +64,7 @@
 
             var sep = r < rounds - 1 ? $("<div/>").addClass("t-sep r" + r).appendTo(container) : null;
             var matchesCount = matchesPerRound[r];
+            
             for (var m = 1; m <= matchesCount; m++) {
                 if (m == matchesCount && r == (rounds - 1)) {
                     $("<h3/>").text(roundName(6)).appendTo(roundContainer);
@@ -90,7 +91,8 @@
             var rounds = target.data("rounds");
             var playersCount = target.data("players-count");
             var maxMatches = target.data("matches");
-            var startRound = matchesPerRound.indexOf(playersCount / 2);
+            var startRound = matchesPerRound.indexOf(maxMatches);
+            console.log("PCP", playersCount, maxMatches, startRound);
             var maxRound = startRound + rounds;
             /*for (var i = startRound + rounds; i <= 5; i++) {
                 $("div.r" + (i - 1) + ".t-sep", target).hide();

@@ -9,7 +9,7 @@ using Simple.SAMS.Contracts.Players;
 namespace Simple.SAMS.Contracts.Competitions
 {
     [DataContract(Namespace = Namespaces.Data)]
-    public class AddCompetitionPlayerInfo
+    public class AddCompetitionPlayerInfo : IEquatable<AddCompetitionPlayerInfo>
     {
         [DataMember(EmitDefaultValue = false)]
         public string CompetitionReferenceId { get; set; }
@@ -23,5 +23,15 @@ namespace Simple.SAMS.Contracts.Competitions
         [DataMember(EmitDefaultValue = false)]
         public Player Player { get; set; }
 
+
+
+        public bool Equals(AddCompetitionPlayerInfo other)
+        {
+            return Player.Id == other.Player.Id;
+        }
+        public override int GetHashCode()
+        {
+            return Player.Id.GetHashCode();
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿@using Simple.SAMS.Contracts.Competitions
+﻿@using Simple.SAMS.CompetitionEngine
+@using Simple.SAMS.Contracts.Competitions
 @model SAMS.Models.CompetitionDetailsModel
 <input id="matchesInfo" type="hidden" value="@Newtonsoft.Json.JsonConvert.SerializeObject(Model.Matches)"/>
 
@@ -20,11 +21,26 @@
             <div>
                 <a href="@Url.Action("Print", "Competitions", new { id = Model.Id, section = section.Key })" class="btn" target="_blank">הדפסה</a>
             </div>
-
+            <div class="competitionHost">
+                @{
+                    var playersCount = PlayersCountCalculator.CalculatePlayersCount(Model.Players.Count(p => section.Key == CompetitionSection.Consolation ? p.Section == CompetitionSection.Final : p.Section == section.Key));
+                    
+                }
+                <div class="t-host t-@(playersCount)p" 
+                     data-rounds="@(section.GroupBy(m => m.Round).Count())" 
+                     data-matches="@(playersCount/ 2)" 
+                     data-section="@((int)section.Key)" 
+                    data-players-count="@(playersCount)">
+                </div>
+            </div>
+            @*  
+            @(Html.RoundMatchesCount(section.Key == CompetitionSection.Qualifying ? Model.Type.QualifyingPlayersCount : section.Key == CompetitionSection.Consolation ? Model.Type.ConsoltionPlayersCount :  Model.Type.PlayersCount))          
+            @(Html.RoundMatchesCount(section.Key == CompetitionSection.Qualifying ? Model.Type.QualifyingPlayersCount : section.Key == CompetitionSection.Consolation ? Model.Type.ConsoltionPlayersCount :  Model.Type.PlayersCount))
+            @(Html.RoundMatchesCount(section.Key == CompetitionSection.Qualifying ? Model.Type.QualifyingPlayersCount : section.Key == CompetitionSection.Consolation ? Model.Type.ConsoltionPlayersCount :  Model.Type.PlayersCount))
             <div class="competitionHost">
                 <div class="t-host t-@(Html.RoundMatchesCount(section.Key == CompetitionSection.Qualifying ? Model.Type.QualifyingPlayersCount : Model.Type.PlayersCount))p" data-rounds="@(section.GroupBy(m => m.Round).Count())" data-matches="@(Html.RoundMatchesCount(section.Count()))" data-section="@((int)section.Key)" data-players-count="@(Html.RoundMatchesCount(section.Key == CompetitionSection.Qualifying ? Model.Type.QualifyingPlayersCount : Model.Type.PlayersCount))">
                 </div>
-            </div>
+            </div>*@
         </div>
     }
 </div>

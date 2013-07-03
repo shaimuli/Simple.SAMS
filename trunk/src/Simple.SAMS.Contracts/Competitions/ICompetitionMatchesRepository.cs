@@ -11,6 +11,9 @@ namespace Simple.SAMS.Contracts.Competitions
     public interface ICompetitionMatchesRepository
     {
         [OperationContract]
+        int GetCompetitionSectionRounds(int competitionId, CompetitionSection section);
+
+        [OperationContract]
         void UpdateMatchResult(MatchScoreUpdateInfo scoreUpdateInfo);
 
         [OperationContract]
@@ -33,8 +36,14 @@ namespace Simple.SAMS.Contracts.Competitions
 
         [OperationContract]
         MatchHeaderInfo GetMatch(int matchId);
-        
+
+        [OperationContract]
+        int GetRoundMatchesCount(int competitionId, CompetitionSection section, int round);
+
         [OperationContract]
         MatchHeaderInfo GetMatchByRelativePosition(int competitionId, CompetitionSection section, int round, int relativePosition);
+        
+        [OperationContract]
+        MatchHeaderInfo GetMatchByPosition(int competitionId, CompetitionSection section, int position);
     }
 }

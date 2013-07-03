@@ -55,6 +55,19 @@ namespace Simple.SAMS.Contracts.Competitions
         
         [DataMember(EmitDefaultValue = false)]
         public int FinalRankedPlayersCount { get; set; }
+        private int m_consoltionPlayers;
+        [DataMember(EmitDefaultValue = false)]
+        public int ConsoltionPlayersCount
+        {
+            get
+            {
+                if (PlayersCount > 4)
+                {
+                    m_consoltionPlayers = PlayersCount - 4;
+                }
 
+                return m_consoltionPlayers;
+            }
+        }
     }
 }

@@ -77,11 +77,15 @@
     <Compile Include="Competitions\MatchStatus.cs" />
     <Compile Include="Competitions\MatchWinner.cs" />
     <Compile Include="Competitions\Ranking.cs" />
+    <Compile Include="Competitions\SlotType.cs" />
     <Compile Include="Competitions\StartTimeType.cs" />
     <Compile Include="Competitions\UpdatePlayerPointsInfo.cs" />
     <Compile Include="Competitions\UpdatePlayerPositionInfo.cs" />
     <Compile Include="DefaultMatchProvisioningEngineFactory.cs" />
+    <Compile Include="KnockoutCalculationEngine.cs" />
     <Compile Include="KnockoutMatchProvisioningEngine.cs" />
+    <Compile Include="KnockoutMatchProvisioningEngineHelper.cs" />
+    <Compile Include="MatchInfo.cs" />
     <Compile Include="Players\CompetitionPlayer.cs" />
     <Compile Include="Players\CompetitionPlayerStatus.cs" />
     <Compile Include="Users\UserInfo.cs" />
@@ -104,6 +108,12 @@
   <ItemGroup>
     <None Include="Competitions\CSV Samples\Players.csv" />
     <None Include="Competitions\CSV Samples\Competitions.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Simple.SAMS.CompetitionEngine\Simple.SAMS.CompetitionEngine\Simple.SAMS.CompetitionEngine.csproj">
+      <Project>{85A56A53-CC12-482D-A825-8A4F8EB221D5}</Project>
+      <Name>Simple.SAMS.CompetitionEngine</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

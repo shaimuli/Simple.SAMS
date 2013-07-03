@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using FileHelpers;
+using KnockoutEngine;
 using Rhino.Etl.Core.Files;
 using Simple.ComponentModel;
 using Simple.SAMS.Contracts.Competitions;
@@ -30,19 +31,104 @@ namespace Simple.SAMS.Competitions.Services
                 match.Winner != MatchWinner.None &&
                 (match.Player1 != null || match.Player2 != null))
             {
-                if (match.IsFinal)
+                if (match.Section == CompetitionSection.Final  && match.Round < 4)
                 {
-                    if (match.Section == CompetitionSection.Qualifying)
-                    {
-                        QualifyToFinal(match);
-                    }
+                    QualifyToConsolation(match);
+                }
+                if (match.Section == CompetitionSection.Consolation && !match.IsSemiFinal && !match.IsFinal)
+                {
+                    QualifyInConsolation(match);
+                }
+                else
+                {
+                    Qualify(match);
+                }
+            }
+
+        }
+
+        private void QualifyInConsolation(MatchHeaderInfo match)
+        {
+            var competitionId = match.CompetitionId;
+            var winner = match.Winner == MatchWinner.Player1 ? match.Player1 : match.Player2;
+            var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
+            var qualifyToMatch = default(MatchHeaderInfo);
+            var targetPosition = default(int?);
+            if (match.Round == 0)
+            {
+                qualifyToMatch = competitionMatchesRepository.GetMatchByRelativePosition(competitionId, match.Section,
+                                                                                         match.Round + 1,
+                                                                                         match.RoundRelativePosition);
+            }
+            else if (match.Round == 1)
+            {
+                qualifyToMatch = competitionMatchesRepository.GetMatchByRelativePosition(competitionId, match.Section,
+                                                                                         match.Round + 1,
+                                                                                         match.RoundRelativePosition /2);
+                targetPosition = qualifyToMatch.Player1 == null ? 0 : 1;
+            }
+            else if (match.Round == 2)
+            {
+                QualifySameSection(match);
+            }
+            else if (match.Round == 3)
+            {
+                if (match.Position > 32)
+                {
+                    qualifyToMatch = competitionMatchesRepository.GetMatchByRelativePosition(competitionId,
+                                                                                             match.Section,
+                                                                                             match.Round + 1,
+                                                                                             match.RoundRelativePosition);
+
                 }
                 else
                 {
                     QualifySameSection(match);
                 }
             }
+            else
+            {
+                QualifySameSection(match);
+            }
 
+            if (qualifyToMatch != null)
+            {
+                var roundMatchesCount = competitionMatchesRepository.GetRoundMatchesCount(match.CompetitionId,
+                                                                                              CompetitionSection.Consolation,
+                                                                                              qualifyToMatch.Round);
+                var position = targetPosition.HasValue
+                                   ? targetPosition.Value
+                                   : qualifyToMatch.RoundRelativePosition < roundMatchesCount/2 ? 0 : 1;
+                if (qualifyToMatch.IsNotNull() && winner != null)
+                {
+                    competitionMatchesRepository.UpdatePlayersPosition(competitionId,
+                                                                       new[]
+                                                                           {
+                                                                               new UpdatePlayerPositionInfo
+                                                                                   {
+                                                                                       MatchId = qualifyToMatch.Id,
+                                                                                       PlayerId = winner.Id,
+                                                                                       Position = position
+                                                                                           
+                                                                                   }
+                                                                           });
+                }
+            }
+        }
+
+        private void Qualify(MatchHeaderInfo match)
+        {
+            if (match.IsFinal)
+            {
+                if (match.Section == CompetitionSection.Qualifying)
+                {
+                    QualifyToFinal(match);
+                }
+            }
+            else
+            {
+                QualifySameSection(match);
+            }        
         }
 
         private void QualifyToThirdPlace(MatchHeaderInfo match)
@@ -52,7 +138,7 @@ namespace Simple.SAMS.Competitions.Services
 
             var competitionDetails = competitionRepository.GetCompetitionDetails(match.CompetitionId);
             var looserId = (match.Winner == MatchWinner.Player1 ? match.Player2 : match.Player1).Id;
-            var thirdPlaceMatch = competitionDetails.Matches.Last();
+            var thirdPlaceMatch = competitionDetails.Matches.Where(m=>m.Section == CompetitionSection.Final).OrderBy(m=>m.Position).Last();
             var updateInfo = new UpdatePlayerPositionInfo()
                                  {
                                      PlayerId = looserId,
@@ -64,26 +150,92 @@ namespace Simple.SAMS.Competitions.Services
 
         }
 
+        private void QualifyToConsolation(MatchHeaderInfo match)
+        {
+            var playersCount = 32;
+            var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
+            var round = 0;
+            var rounds = competitionMatchesRepository.GetCompetitionSectionRounds(match.CompetitionId, CompetitionSection.Final);
+            var qualifyToMatch = default(MatchHeaderInfo);
+            if (match.Round == (6-rounds))
+            {
+                qualifyToMatch = competitionMatchesRepository.GetMatchByRelativePosition(match.CompetitionId,
+                                                                                      CompetitionSection.Consolation,
+                                                                                      round,
+                                                                                      match.Position/2);
+            }
+            else
+            {
+                var map = new ConsolationMap();
+                var position = map.Position(playersCount, match.Position);
+                qualifyToMatch = competitionMatchesRepository.GetMatchByPosition(match.CompetitionId,
+                                                                          CompetitionSection.Consolation, position);
+            }
+            
+            var looser = (match.Winner == MatchWinner.Player1 ? match.Player2 : match.Player1);
+            
+            if (looser != null && qualifyToMatch != null)
+            {
+
+                var roundMatchesCount = competitionMatchesRepository.GetRoundMatchesCount(match.CompetitionId,
+                                                                                          CompetitionSection.Consolation,
+                                                                                          qualifyToMatch.Round);
+                var updatePlayerInfo = new UpdatePlayerPositionInfo()
+                                           {
+                                               MatchId = qualifyToMatch.Id,
+                                               PlayerId = looser.Id,
+                                               Position =match.Round == (6-rounds) ?  (qualifyToMatch.Player1== null? 0 : 1) : (qualifyToMatch.RoundRelativePosition < roundMatchesCount/2 ? 1 : 0)
+                                           };
+               
+                
+
+                competitionMatchesRepository.UpdatePlayersPosition(match.CompetitionId, new[] { updatePlayerInfo });
+            }
+
+
+        }
         private void QualifyToFinal(MatchHeaderInfo match)
         {
             var winner = (match.Winner == MatchWinner.Player1 ? match.Player1 : match.Player2);
             if (winner != null)
             {
                 var winnerId = winner.Id;
+                var matchCode = "Q" + (match.RoundRelativePosition + 1);
 
-                PositionPlayerInSection(match.CompetitionId, winnerId, CompetitionSection.Final);
+                PositionPlayerInSection(match.CompetitionId, winnerId, CompetitionSection.Final, matchCode);
             }
         }
 
-        public void PositionPlayerInSection(int competitionId, int playerId, CompetitionSection section)
+        public void PositionPlayerInSection(int competitionId, int playerId, CompetitionSection section, string matchCode = null)
         {
             var positioningEngine = GetPositioningEngine(CompetitionMethod.Knockout);
             var competitionRepository = ServiceProvider.Get<ICompetitionRepository>();
-
+            
             var competitionDetails = competitionRepository.GetCompetitionDetails(competitionId);
-
-
-            var updatePlayerInfo = positioningEngine.AddPlayerToSection(playerId, section, competitionDetails);
+            var updatePlayerInfo = new UpdatePlayerPositionInfo();
+            if (matchCode.NotNullOrEmpty())
+            {
+                foreach (var match in competitionDetails.Matches)
+                {
+                    if (match.Player1Code == matchCode)
+                    {
+                        updatePlayerInfo.PlayerId = playerId;
+                        updatePlayerInfo.MatchId = match.Id;
+                        updatePlayerInfo.Position = 0;
+                    }
+                    else if (match.Player2Code == matchCode)
+                    {
+                        updatePlayerInfo.PlayerId = playerId;
+                        updatePlayerInfo.MatchId = match.Id;
+                        updatePlayerInfo.Position = 1;
+                    }
+                }
+            }
+            else
+            {
+                updatePlayerInfo = positioningEngine.AddPlayerToSection(playerId, section, competitionDetails);
+            }
+            
             if (updatePlayerInfo.IsNotNull())
             {
                 var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
@@ -98,7 +250,7 @@ namespace Simple.SAMS.Competitions.Services
             var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
             var qualifyToMatch = competitionMatchesRepository.GetMatchByRelativePosition(competitionId, match.Section, match.Round + 1,
                                                                                          match.RoundRelativePosition / 2);
-            if (qualifyToMatch.IsNotNull())
+            if (qualifyToMatch.IsNotNull() && winner != null)
             {
                 competitionMatchesRepository.UpdatePlayersPosition(competitionId,
                                                                    new[]
@@ -122,7 +274,7 @@ namespace Simple.SAMS.Competitions.Services
 
         }
 
-        public void CreateCompetitionsMatches(CompetitionHeaderInfo[] competitions)
+        public void CreateCompetitionsMatches(CompetitionDetails[] competitions)
         {
             var matchProvisioningEngineFactory = ServiceProvider.Get<IMatchProvisioningEngineFactory>();
             var matchesCache = new Dictionary<int, MatchHeaderInfo[]>();
@@ -137,7 +289,7 @@ namespace Simple.SAMS.Competitions.Services
                 {
                     var competitionType = competitionTypeRepository.Get(competitionTypeId);
                     var matchProvisioningEngine = matchProvisioningEngineFactory.Create(competitionType);
-                    matches = matchProvisioningEngine.BuildMatches(competitionType);
+                    matches = matchProvisioningEngine.BuildMatches(competitionType, competition);
                     matchesCache[competitionTypeId] = matches;
                 }
 
@@ -185,8 +337,8 @@ namespace Simple.SAMS.Competitions.Services
             }
 
             var competitionPlayers = new List<PlayerInCompetition>();
-            var finalPlayersCount = competitionType.PlayersCount - competitionType.QualifyingToFinalPlayersCount;
-            for (var i = 0; i < players.Length; i++)
+           
+            for (var i = 0; i < players.Length;  i++)
             {
                 var player = players[i];
                 var rank = competitionType.RankPlayer(player.Player);
@@ -201,13 +353,17 @@ namespace Simple.SAMS.Competitions.Services
                                               };
                 competitionPlayers.Add(playerInCompetition);
             }
+            var engine = new KnockoutCalculationEngine();
+            var output = engine.Calculate(competitionType.PlayersCount, competitionType.QualifyingToFinalPlayersCount, players.Length);
+            var finalPlayersCount = output.ActualMainDrawPlayers;
 
-            var playersToTake = Math.Min(players.Length - finalPlayersCount, competitionType.QualifyingPlayersCount);
-            if (competitionType.QualifyingPlayersCount > 0 && playersToTake > competitionType.QualifyingToFinalPlayersCount)
+
+            var playersToTake = players.Length - finalPlayersCount;// Math.Min(players.Length - finalPlayersCount, competitionType.QualifyingPlayersCount);
+            if (playersToTake > 0)
             {
                 
                 var qualifyingPlayers =
-                    competitionPlayers.OrderByDescending(p => p.Rank).Take(playersToTake - qualifyingPlayersCount);
+                    competitionPlayers.OrderByDescending(p => p.Rank).Take(playersToTake);
                 qualifyingPlayers.ForEach(cp => cp.Section = CompetitionSection.Qualifying);
             }
 
@@ -219,7 +375,7 @@ namespace Simple.SAMS.Competitions.Services
             var fileName = DownloadFile(playersFileUrl);
             var players = LoadPlayersFromFile(fileName);
 
-            return players.Select(p => new CompetitionPlayer
+            var result= players.Select(p => new CompetitionPlayer
                                            {
                                                IdNumber = p.IdNumber,
                                                LocalFirstName = p.LocalFirstName,
@@ -238,8 +394,12 @@ namespace Simple.SAMS.Competitions.Services
                                                AverageScore = p.AverageScore,
                                                AccumulatedScore = p.AccumulatedScore,
                                                CompetitionReferenceId = p.CompetitionReferenceId
-                                           }).ToArray();
+                                           });
+            var results =
+                result.Where(p => p.LocalFirstName.NotNullOrEmpty() && p.IdNumber.NotNullOrEmpty());
+            return results.ToArray();
         }
+
 
         private string DownloadFile(string fileUrl)
         {
@@ -267,27 +427,39 @@ namespace Simple.SAMS.Competitions.Services
                 ExcelDocumentHelper.LoadFromSheet(fileName, dataTable, inferColumns: true);
                 foreach (DataRow dataRow in dataTable.Rows)
                 {
+                    var allEmpty = dataRow.ItemArray.All(o => o == null || Convert.IsDBNull(o));
+                    if (allEmpty)
+                    {
+                        break;
+                    }
                     var record = new T();
                     foreach (DataColumn dataColumn in dataTable.Columns)
                     {
+                        var propertyInfo = dataColumn.ExtendedProperties["Property"] as PropertyInfo;
+                        if (propertyInfo == null)
+                        {
+                            propertyInfo = typeof(T).GetProperty(dataColumn.ColumnName);
+                            dataColumn.ExtendedProperties["Property"] = propertyInfo;
+                        }
+                        if (propertyInfo == null)
+                        {
+                            throw new ArgumentException("Column '{0}' is invalid".ParseTemplate(dataColumn.ColumnName));
+                        } 
+                        
                         var value = dataRow[dataColumn.ColumnName];
                         if (value != null && !Convert.IsDBNull(value))
                         {
-
-                            var propertyInfo = dataColumn.ExtendedProperties["Property"] as PropertyInfo;
-                            if (propertyInfo == null)
-                            {
-                                propertyInfo = typeof(T).GetProperty(dataColumn.ColumnName);
-                                dataColumn.ExtendedProperties["Property"] = propertyInfo;
-                            }
-                            if (propertyInfo == null)
-                            {
-                                throw new ArgumentException("Column '{0}' is invalid".ParseTemplate(dataColumn.ColumnName));
-                            }
                             if (propertyInfo.PropertyType == typeof(DateTime?) ||
-                                propertyInfo.PropertyType == typeof(DateTime))
+                                propertyInfo.PropertyType == typeof(DateTime) )
                             {
-                                value = DateTime.FromOADate(double.Parse(value.ToString()));
+                                if (value.ToString().NotNullOrEmpty())
+                                {
+                                    value = DateTime.FromOADate(double.Parse(value.ToString()));
+                                }
+                                else
+                                {
+                                    value = null;
+                                }
                             }
                             else if (propertyInfo.PropertyType == typeof(bool?) ||
                                      propertyInfo.PropertyType == typeof(bool))
@@ -303,7 +475,10 @@ namespace Simple.SAMS.Competitions.Services
                             {
                                 value = Convert.ChangeType(value, propertyInfo.PropertyType);
                             }
-                            propertyInfo.SetValue(record, value);
+                            if (value != null)
+                            {
+                                propertyInfo.SetValue(record, value);
+                            }
                         }
                     }
                     records.Add(record);
@@ -484,9 +659,24 @@ namespace Simple.SAMS.Competitions.Services
             return competitionTypeRepository.AreCompetitionTypesExist(competitionTypes);
         }
 
-        public void QualifyByeMatches(int id, CompetitionSection section)
+        private const string BYE = "BYE";
+        public void QualifyByeMatches(CompetitionDetails details, CompetitionSection section)
         {
-            
+            var sectionMatches = details.Matches.Where(m => m.Section == section && (m.Player1Code == BYE || m.Player2Code == BYE));
+            foreach (var match in sectionMatches)
+            {
+                match.Result = MatchResult.Win;
+                if (match.Player1Code == BYE)
+                {
+                    match.Winner = MatchWinner.Player2;
+                }
+                else if (match.Player2Code == BYE)
+                {
+                    match.Winner = MatchWinner.Player1;
+                }
+                UpdateMatchResult(new MatchScoreUpdateInfo(){MatchId = match.Id, Result = match.Result, Winner = match.Winner });
+                Qualify(match);
+            }
         }
     }
 }

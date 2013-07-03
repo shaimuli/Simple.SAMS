@@ -17,10 +17,6 @@ namespace Simple.SAMS.Competitions.Services
                 var competitionsEngine = ServiceProvider.Get<ICompetitionsEngine>();
                 var competitionId = competitionsEngine.CreateCompetition(competitionCreateInfo);
 
-                var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
-                var competitionHeaderInfo = competitionsRepository.GetCompetition(competitionId);
-                competitionsEngine.CreateCompetitionsMatches(new[] { competitionHeaderInfo });
-
                 if (competitionCreateInfo.PlayersFileUrl.NotNullOrEmpty())
                 {
                     UpdateCompetitionPlayers(competitionId, competitionCreateInfo.PlayersFileUrl);
@@ -31,6 +27,20 @@ namespace Simple.SAMS.Competitions.Services
 
         }
 
+        public class PlayerByIdNumberComparer : IEqualityComparer<CompetitionPlayer>
+        {
+            public bool Equals(CompetitionPlayer x, CompetitionPlayer y)
+            {
+                return x.IdNumber == y.IdNumber;
+            }
+
+            public int GetHashCode(CompetitionPlayer obj)
+            {
+                return obj.IdNumber.GetHashCode();
+            }
+        }
+
+
         private AddCompetitionPlayerInfo[] GetCompetitionPlayersToAdd(string playersFile, ICompetitionsEngine competitionsEngine)
         {
             var players = competitionsEngine.GetCompetitionPlayers(playersFile);
@@ -40,7 +50,7 @@ namespace Simple.SAMS.Competitions.Services
             var playersToAdd = new List<AddCompetitionPlayerInfo>();
             for (var i = 0; i < players.Length; i++)
             {
-                players[i].Id = playerIds[i];
+                players[i].Id = playerIds[players[i].IdNumber];
                 var addInfo = new AddCompetitionPlayerInfo();
                 addInfo.Player = players[i];
                 addInfo.Source = players[i].Source;
@@ -65,8 +75,7 @@ namespace Simple.SAMS.Competitions.Services
             {
                 throw new ArgumentException("Competition '{0}' could not be found.".ParseTemplate(competitionId));
             }
-
-            competitionsEngine.AddPlayersToCompetition(competitionId, playersToAdd);
+            competitionsEngine.AddPlayersToCompetition(competitionId, playersToAdd.Distinct().ToArray());
 
 
         }
@@ -108,7 +117,7 @@ namespace Simple.SAMS.Competitions.Services
                 var competitionId = competitionsRepository.GetCompetitionIdByReferenceId(playersGroup.Key);
                 if (competitionId.HasValue)
                 {
-                    competitionsEngine.AddPlayersToCompetition(competitionId.Value, playersGroup.ToArray());
+                    competitionsEngine.AddPlayersToCompetition(competitionId.Value, playersGroup.Distinct().ToArray());
                 }
             }
         }
@@ -125,9 +134,9 @@ namespace Simple.SAMS.Competitions.Services
             var competitions = competitionsEngine.GetCompetitions(competitionsFileUrl);
             competitionsEngine.ImportCompetitions(competitions);
 
-            var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
-            var unprovisionedCompetitions = competitionsRepository.GetCompetitionsByStatus(CompetitionStatus.Created);
-            competitionsEngine.CreateCompetitionsMatches(unprovisionedCompetitions);
+            //var competitionsRepository = ServiceProvider.Get<ICompetitionRepository>();
+            //var unprovisionedCompetitions = competitionsRepository.GetCompetitionsByStatus(CompetitionStatus.Created);
+            //competitionsEngine.CreateCompetitionsMatches(unprovisionedCompetitions);
         }
 
 
@@ -189,7 +198,7 @@ namespace Simple.SAMS.Competitions.Services
         public void PositionCompetitionPlayers(int id, CompetitionSection section)
         {
             var repository = ServiceProvider.Get<ICompetitionRepository>();
-            var competition = repository.GetCompetition(id);
+            var competition = repository.GetCompetitionDetails(id);
             if (competition.IsNull())
             {
                 throw new ArgumentException("Competition '{0}' does not exist.".ParseTemplate(id));
@@ -201,9 +210,20 @@ namespace Simple.SAMS.Competitions.Services
             }
 
             var competitionsEngine = ServiceProvider.Get<ICompetitionsEngine>();
-            competitionsEngine.UpdatePlayersPosition(id, section);
+            var matchesCreated = false;
+            if (competition.Matches.Length == 0)
+            {
+                competitionsEngine.CreateCompetitionsMatches(new[] {competition});
+                matchesCreated = true;
+            }
 
-            competitionsEngine.QualifyByeMatches(id, section);
+            competitionsEngine.UpdatePlayersPosition(id, section);
+            if (matchesCreated)
+            {
+                competition = repository.GetCompetitionDetails(id);
+            }
+
+            competitionsEngine.QualifyByeMatches(competition, section);
 
         }
 
@@ -215,10 +235,10 @@ namespace Simple.SAMS.Competitions.Services
             {
                 throw new ArgumentException("Competition '{0}' does not exist.".ParseTemplate(id));
             }
-            if ((int)competition.Status != (int)CompetitionStatus.Positioned)
-            {
-                throw new ArgumentException("Invalid status transition from '{1}' to Started, Competition Id: {0}.".ParseTemplate(id, competition.Status));
-            }
+            //if ((int)competition.Status != (int)CompetitionStatus.Positioned)
+            //{
+            //    throw new ArgumentException("Invalid status transition from '{1}' to Started, Competition Id: {0}.".ParseTemplate(id, competition.Status));
+            //}
 
             repository.UpdateCompetitionStatus(id, CompetitionStatus.Started);
         }

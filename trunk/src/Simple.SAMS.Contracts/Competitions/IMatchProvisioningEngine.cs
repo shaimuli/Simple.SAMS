@@ -8,7 +8,7 @@ namespace Simple.SAMS.Contracts.Competitions
 {
     public interface IMatchProvisioningEngine
     {
-        
-        MatchHeaderInfo[] BuildMatches(CompetitionType competitionType);
+
+        MatchHeaderInfo[] BuildMatches(CompetitionType competitionType, CompetitionDetails competitionDetails);
     }
 }

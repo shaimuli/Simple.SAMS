@@ -10,7 +10,7 @@ namespace Simple.SAMS.Contracts.Competitions
         CompetitionDetails GetCompetitionDetails(int competitionId);
 
         [OperationContract]
-        void CreateCompetitionsMatches(CompetitionHeaderInfo[] competitions);
+        void CreateCompetitionsMatches(CompetitionDetails[] competitions);
 
         [OperationContract]
         int CreateCompetition(CreateCompetitionInfo competitionCreateInfo);
@@ -31,7 +31,7 @@ namespace Simple.SAMS.Contracts.Competitions
         void UpdatePlayersPosition(int competitionId, CompetitionSection section);
 
         [OperationContract]
-        void PositionPlayerInSection(int competitionId, int playerId, CompetitionSection section);
+        void PositionPlayerInSection(int competitionId, int playerId, CompetitionSection section, string matchCode=null);
 
         [OperationContract]
         void UpdateMatchResult(MatchScoreUpdateInfo scoreUpdateInfo);
@@ -55,6 +55,6 @@ namespace Simple.SAMS.Contracts.Competitions
         bool AreAllValidCompetitionTypes(int[] competitionTypes);
 
         [OperationContract]
-        void QualifyByeMatches(int id, CompetitionSection section);
+        void QualifyByeMatches(CompetitionDetails details, CompetitionSection section);
     }
 }

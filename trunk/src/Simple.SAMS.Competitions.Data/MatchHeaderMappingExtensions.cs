@@ -23,8 +23,15 @@ namespace Simple.SAMS.Competitions.Data
                 RoundRelativePosition = match.RoundRelativePosition,
                 Position = match.Position,
                 IsFinal = match.IsFinal,
-                IsSemiFinal = match.IsSemiFinal
+                IsSemiFinal = match.IsSemiFinal,
+                SlotPosition = match.SlotPosition,
+                Player1Code = match.Player1Code,
+                Player2Code = match.Player2Code,
             };
+            if (match.SlotType.HasValue)
+            {
+                result.SlotType = (SlotType) match.SlotType.Value;
+            }
             if (match.Winner.HasValue)
             {
                 result.Winner = (MatchWinner)match.Winner.Value;

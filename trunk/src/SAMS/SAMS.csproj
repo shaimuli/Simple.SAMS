@@ -470,6 +470,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Simple.SAMS.CompetitionEngine\Simple.SAMS.CompetitionEngine\Simple.SAMS.CompetitionEngine.csproj">
+      <Project>{85A56A53-CC12-482D-A825-8A4F8EB221D5}</Project>
+      <Name>Simple.SAMS.CompetitionEngine</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Simple.SAMS.Competitions.Data\Simple.SAMS.Competitions.Data.csproj">
       <Project>{3a98d3c6-f349-4e5a-a48d-ea27e53da55f}</Project>
       <Name>Simple.SAMS.Competitions.Data</Name>

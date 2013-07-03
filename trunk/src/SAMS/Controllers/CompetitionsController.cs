@@ -267,6 +267,7 @@ namespace SAMS.Controllers
                              }).ToArray();
             model.PlayingStarted = model.Matches.Any(m => m.Section == CompetitionSection.Final && (int)m.Status >= (int)MatchStatus.Playing);
             model.QualifyingPlayingStarted = model.Matches.Any(m => m.Section == CompetitionSection.Qualifying && (int)m.Status >= (int)MatchStatus.Playing);
+            model.ConsolationPlayingStarted = model.Matches.Any(m => m.Section == CompetitionSection.Consolation && (int)m.Status >= (int)MatchStatus.Playing);
             return model;
         }
 
@@ -354,8 +355,9 @@ namespace SAMS.Controllers
                 }
                 catch (Exception anyException)
                 {
+                    SystemMonitor.Error(anyException, "Error importing competition players");
                     ModelState.AddModelError("LoadingCompetitionsFile", anyException.ToString());
-                    return Import();
+                    return RedirectToAction("Import");
                 }
 
             }

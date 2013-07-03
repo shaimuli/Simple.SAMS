@@ -20,6 +20,17 @@ namespace Simple.SAMS.Contracts.Competitions
         }
 
         [DataMember(EmitDefaultValue = false)]
+        public SlotType? SlotType { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
+        public int? SlotPosition { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
+        public string Player1Code { get; set; }
+        [DataMember(EmitDefaultValue = false)]
+        public string Player2Code { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
         public int RoundRelativePosition { get; set; }
 
         [DataMember(EmitDefaultValue = false)]

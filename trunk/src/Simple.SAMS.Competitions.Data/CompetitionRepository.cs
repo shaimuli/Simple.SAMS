@@ -190,9 +190,13 @@ namespace Simple.SAMS.Competitions.Data
                         result.Site = competitionData.Site;
                         result.SitePhone = competitionData.SitePhone;
 
-                        var players =
-                            dataContext.CompetitionPlayers.Where(cp => cp.CompetitionId == competitionData.Id && cp.Player.RowStatus == 0).ToArray();
-                        result.Players = players.Select(dataEntity => MapDataCompetitionPlayer(dataEntity, competitionData.Id)).ToArray();
+                        var dataPlayers =
+                            dataContext.CompetitionPlayers.Where(cp => cp.CompetitionId == competitionData.Id && cp.Player.RowStatus == 0).ToArray().AsEnumerable();
+
+                        var players = dataPlayers.Select(dataEntity => MapDataCompetitionPlayer(dataEntity, competitionData.Id));
+                        players = SortByRank(players);
+                        result.Players = players.ToArray();
+                        
                         var matches = dataContext.Matches.Where(m => m.CompetitionId == competitionData.Id && m.RowStatus == 0);
 
                         if (filterMatches.IsNotNull())
@@ -207,6 +211,36 @@ namespace Simple.SAMS.Competitions.Data
 
             return result;
 
+        }
+
+        private IEnumerable<Contracts.Players.CompetitionPlayer> SortByRank(IEnumerable<Contracts.Players.CompetitionPlayer> playersToSort)
+        {
+            var players = playersToSort.ToList();
+            players.ForEach(
+        player =>
+        {
+            if (player.CompetitionRank <= 0)
+            {
+                player.CompetitionRank = players.Count + 1;
+            }
+        });
+            players.Sort((p1, p2) =>
+            {
+                if (p1.CompetitionRank > p2.CompetitionRank)
+                {
+                    return 1;
+                }
+                else if (p2.CompetitionRank > p1.CompetitionRank)
+                {
+                    return -1;
+                }
+                else
+                {
+                    return 0;
+                }
+            });
+
+            return players.AsReadOnly();
         }
 
         private static Contracts.Players.CompetitionPlayer MapDataCompetitionPlayer(CompetitionPlayer dataEntity, int competitionId)

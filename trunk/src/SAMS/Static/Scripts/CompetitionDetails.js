@@ -148,8 +148,15 @@
             $(".PrintPlayersList").click(function () {
                 var html = [];
                 html.push("<style text='text/css'>table{ width: 100%; border:solid 1px black; border-collapse: collapse; } table td{ border: solid 1px black; } table tr{ vertical-align: top; }</style>");
-                html.push($(".competitionPlayersContainer").html());
-                printPage(html.join(""));
+                html.push($(".competitionPlayersContainer .printarea").html());
+                var div = $("<div/>").html(html.join(""));
+                $('input', div).each(function () {
+                    console.log(this.value);
+                    $("<span />", { text: this.value, "class": "view" }).insertAfter(this);
+                    $(this).hide();
+                });
+                $(".nonprintable", div).hide();
+                printPage(div.html());
             });
 
             $(".PrintMatchesDraw").click(function () {

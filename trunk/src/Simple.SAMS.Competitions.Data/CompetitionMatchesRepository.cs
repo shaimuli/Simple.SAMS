@@ -14,6 +14,33 @@ namespace Simple.SAMS.Competitions.Data
 {
     public class CompetitionMatchesRepository : DataRepositoryBase<CompetitionsDataContext>, ICompetitionMatchesRepository
     {
+        public int GetRoundMatchesCount(int competitionId, CompetitionSection section, int round)
+        {
+            var result = 0;
+            UseDataContext(
+                dataContext =>
+                    {
+                        result =
+                            dataContext.Matches.Count(
+                                m =>
+                                m.CompetitionId == competitionId && m.SectionId == (int) section && m.Round == round);
+                    });
+            return result;
+        }
+
+        public int GetCompetitionSectionRounds(int competitionId, CompetitionSection section)
+        {
+            var rounds = 6;
+            UseDataContext(
+                dataContext =>
+                    {
+                        var minRound = dataContext.Matches.Where(m => m.CompetitionId == competitionId && m.SectionId == (int)section).Min(m => m.Round);
+                        rounds = 6 - minRound;
+                    });
+
+            return rounds;
+        }
+
         public int GetMatchCompetitionId(int matchId)
         {
             var competitionId = default(int);
@@ -66,6 +93,15 @@ namespace Simple.SAMS.Competitions.Data
 
         private void MapMatchToDataMatch(MatchHeaderInfo match, Match dataMatch)
         {
+            dataMatch.SlotPosition = match.SlotPosition;
+            if (match.SlotType.HasValue)
+            {
+                dataMatch.SlotType = (int)match.SlotType.Value;
+            }
+            else
+            {
+                dataMatch.SlotType = default(int?);
+            }
             dataMatch.SectionId = (int)match.Section;
             dataMatch.Position = match.Position;
             dataMatch.Round = match.Round;
@@ -74,6 +110,8 @@ namespace Simple.SAMS.Competitions.Data
             dataMatch.StartTimeType = (int)match.StartTimeType;
             dataMatch.IsFinal = match.IsFinal;
             dataMatch.IsSemiFinal = match.IsSemiFinal;
+            dataMatch.Player1Code = match.Player1Code;
+            dataMatch.Player2Code = match.Player2Code;
         }
 
 
@@ -327,6 +365,18 @@ namespace Simple.SAMS.Competitions.Data
                 dataContext =>
                 {
                     var match = dataContext.Matches.FirstOrDefault(m => m.CompetitionId == competitionId && m.SectionId == (int)section && m.Round == round && m.RoundRelativePosition == relativePosition);
+                    
+                    result = match.MapFromData();
+                });
+            return result;
+        }
+        public MatchHeaderInfo GetMatchByPosition(int competitionId, CompetitionSection section, int position)
+        {
+            var result = default(MatchHeaderInfo);
+            UseDataContext(
+                dataContext =>
+                {
+                    var match = dataContext.Matches.FirstOrDefault(m => m.CompetitionId == competitionId && m.SectionId == (int)section && m.Position == position);
                     
                     result = match.MapFromData();
                 });

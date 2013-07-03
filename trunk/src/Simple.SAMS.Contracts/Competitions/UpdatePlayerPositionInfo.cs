@@ -18,6 +18,12 @@ namespace Simple.SAMS.Contracts.Competitions
 
         [DataMember(EmitDefaultValue = false)]
         public int Position { get; set; }
-        
+
+        [DataMember(EmitDefaultValue = false)]
+        public SlotType? SlotType { get; set; }
+
+        [DataMember(EmitDefaultValue = false)]
+        public int? SlotPosition { get; set; }
+
     }
 }

@@ -84,9 +84,9 @@
                             @foreach (var match in round)
                             {
                                 
-                                <tr data-key="@match.Id" class="matchRow success matchStatus_@match.Status.ToString()" data-part="@(i++ < (round.Count() /2) ? 1 : 2)">
+                                <tr data-key="@match.Id" class="matchRow success matchStatus_@match.Status.ToString()" data-part="@(i++ < (round.Count() / 2) ? 1 : 2)">
                                     <td>
-                                        @match.Id
+                                        @(match.RoundRelativePosition + " - " + match.Id)
                                     </td>
                                     <td>
 
@@ -156,6 +156,7 @@
                                         }
                                     </td>
                                     <td>
+
                                         <div class="updateMatchScoreContainer">
                                             <select class="matchWinnerSelect" name="matchWinner">
                                                 <option value="@MatchWinner.None" selected="@(match.Winner.HasValue && match.Winner.Value == MatchWinner.None)">@Html.Resource("MatchWinner.None")</option>
@@ -175,6 +176,7 @@
                                                 <option value="@MatchResult.Retirement" selected="@(match.Result == MatchResult.Retirement)">@Html.Resource("MatchResult.Retirement")</option>
                                             </select>
                                         </div>
+
                                     </td>
                                     <!--
                                         <td class="status">

@@ -44,9 +44,13 @@
     <Compile Include="ConsolationPositionEngine.cs" />
     <Compile Include="FinalPositioningEngine.cs" />
     <Compile Include="FinalPositioningParameters.cs" />
+    <Compile Include="MainDrawPositionEngine.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="PlayersCountCalculator.cs" />
+    <Compile Include="PositioningItem.cs" />
     <Compile Include="PositioningType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QualifyingDrawPositionEngine.cs" />
     <Compile Include="QualifyingPositioningEngine.cs" />
     <Compile Include="QualifyingPositionParameters.cs" />
     <Compile Include="RandomPositionGenerator.cs" />
