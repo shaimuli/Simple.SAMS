@@ -29,7 +29,7 @@ namespace SAMS.Models
 
         public string FullName
         {
-            get { return LocalLastName.NotNullOrEmpty() ? LocalLastName + " " + LocalFirstName : LocalFirstName; }
+            get { return LocalLastName.NotNullOrEmpty() ? LocalFirstName + " " + LocalLastName : LocalFirstName; }
         }
     }
 }

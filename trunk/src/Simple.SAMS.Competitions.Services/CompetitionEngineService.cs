@@ -54,6 +54,28 @@ namespace Simple.SAMS.Competitions.Services
             var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
             var qualifyToMatch = default(MatchHeaderInfo);
             var targetPosition = default(int?);
+            var playersCount = 32;
+            var map = new ConsolationMap();
+            var nextPosition = map.GetNextPosition(playersCount, match.Position);
+            qualifyToMatch = competitionMatchesRepository.GetMatchByPosition(competitionId,
+                                                                             CompetitionSection.Consolation,
+                                                                             nextPosition.Item1);
+
+            if (qualifyToMatch.IsNotNull() && winner != null)
+            {
+                competitionMatchesRepository.UpdatePlayersPosition(competitionId,
+                                                                   new[]
+                                                                           {
+                                                                               new UpdatePlayerPositionInfo
+                                                                                   {
+                                                                                       MatchId = qualifyToMatch.Id,
+                                                                                       PlayerId = winner.Id,
+                                                                                       Position = nextPosition.Item2
+                                                                                   }
+                                                                           });
+            }            
+            return;
+
             if (match.Round == 0)
             {
                 qualifyToMatch = competitionMatchesRepository.GetMatchByRelativePosition(competitionId, match.Section,
@@ -65,7 +87,6 @@ namespace Simple.SAMS.Competitions.Services
                 qualifyToMatch = competitionMatchesRepository.GetMatchByRelativePosition(competitionId, match.Section,
                                                                                          match.Round + 1,
                                                                                          match.RoundRelativePosition /2);
-                targetPosition = qualifyToMatch.Player1 == null ? 0 : 1;
             }
             else if (match.Round == 2)
             {
@@ -93,12 +114,12 @@ namespace Simple.SAMS.Competitions.Services
 
             if (qualifyToMatch != null)
             {
-                var roundMatchesCount = competitionMatchesRepository.GetRoundMatchesCount(match.CompetitionId,
-                                                                                              CompetitionSection.Consolation,
-                                                                                              qualifyToMatch.Round);
-                var position = targetPosition.HasValue
-                                   ? targetPosition.Value
-                                   : qualifyToMatch.RoundRelativePosition < roundMatchesCount/2 ? 0 : 1;
+                var roundMatchesCount = competitionMatchesRepository.GetRoundMatchesCount(match.CompetitionId, CompetitionSection.Consolation, qualifyToMatch.Round);                
+                var position = (targetPosition.HasValue ? targetPosition.Value : (match.RoundRelativePosition < roundMatchesCount/2 ? 0:1));
+                if (qualifyToMatch.Player1 != null && position == 0)
+                {
+                    position = 1;
+                }
                 if (qualifyToMatch.IsNotNull() && winner != null)
                 {
                     competitionMatchesRepository.UpdatePlayersPosition(competitionId,
@@ -662,9 +683,12 @@ namespace Simple.SAMS.Competitions.Services
         private const string BYE = "BYE";
         public void QualifyByeMatches(CompetitionDetails details, CompetitionSection section)
         {
-            var sectionMatches = details.Matches.Where(m => m.Section == section && (m.Player1Code == BYE || m.Player2Code == BYE));
+            var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
+            var sectionMatches = details.Matches.Where(m => m.Section == section && (m.Player1Code == BYE || m.Player2Code == BYE)).Select(m=>competitionMatchesRepository.GetMatch(m.Id)).ToArray();
+            
             foreach (var match in sectionMatches)
             {
+                
                 match.Result = MatchResult.Win;
                 if (match.Player1Code == BYE)
                 {
@@ -674,6 +698,8 @@ namespace Simple.SAMS.Competitions.Services
                 {
                     match.Winner = MatchWinner.Player1;
                 }
+                
+
                 UpdateMatchResult(new MatchScoreUpdateInfo(){MatchId = match.Id, Result = match.Result, Winner = match.Winner });
                 Qualify(match);
             }

@@ -8,6 +8,7 @@ namespace Simple.SAMS.Competitions.Services
 {
     public class ConsolationMap
     {
+        private Dictionary<int, Tuple<int, int>> m_p32qmap;
         private Dictionary<int, int> m_p16map;
         private Dictionary<int, int> m_p32map;
         private Dictionary<int, int> m_p64map;
@@ -16,6 +17,47 @@ namespace Simple.SAMS.Competitions.Services
             CreateMap16();
             CreateMap32();
             CreateMap64();
+            CreateQMap32();
+        }
+
+        public Tuple<int, int> GetNextPosition(int playersCount, int position)
+        {
+            return m_p32qmap[position];
+        }
+
+        private void CreateQMap32()
+        {
+            m_p32qmap = new Dictionary<int, Tuple<int, int>>();
+            m_p32qmap[0] = new Tuple<int, int>(8,0);
+            m_p32qmap[1] = new Tuple<int, int>(9,0);
+            m_p32qmap[2] = new Tuple<int, int>(10,0);
+            m_p32qmap[3] = new Tuple<int, int>(11,0);
+            m_p32qmap[4] = new Tuple<int, int>(12,1);
+            m_p32qmap[5] = new Tuple<int, int>(13,1);
+            m_p32qmap[6] = new Tuple<int, int>(14,1);
+            m_p32qmap[7] = new Tuple<int, int>(15,1);
+            m_p32qmap[8] = new Tuple<int, int>(16,0);
+            m_p32qmap[9] = new Tuple<int, int>(16,1);
+            m_p32qmap[10] = new Tuple<int, int>(17,0);
+            m_p32qmap[11] = new Tuple<int, int>(17,1);
+            m_p32qmap[12] = new Tuple<int, int>(18,0);
+            m_p32qmap[13] = new Tuple<int, int>(18,1);
+            m_p32qmap[14] = new Tuple<int, int>(19,0);
+            m_p32qmap[15] = new Tuple<int, int>(19,1);
+
+            m_p32qmap[16] = new Tuple<int, int>(20,0);
+            m_p32qmap[17] = new Tuple<int, int>(21,0);
+            m_p32qmap[18] = new Tuple<int, int>(22,1);
+            m_p32qmap[19] = new Tuple<int, int>(23,1);
+            
+            m_p32qmap[20] = new Tuple<int, int>(24,0);
+            m_p32qmap[21] = new Tuple<int, int>(24,1);
+            m_p32qmap[22] = new Tuple<int, int>(25,0);
+            m_p32qmap[23] = new Tuple<int, int>(25,1);
+            
+            m_p32qmap[24] = new Tuple<int, int>(26,0);
+            m_p32qmap[25] = new Tuple<int, int>(26,1);
+
         }
 
         public int Position(int playersCount, int position)

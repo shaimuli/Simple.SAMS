@@ -64,7 +64,7 @@ namespace SAMS
                 if (player == 0)
                 {
 
-                    htmlWriter.Write(match.Date.ToString("dd/MM/yyyy"));
+                    htmlWriter.Write(match.Date);
                 }
                 else if (match.StartTime.HasValue)
                 {

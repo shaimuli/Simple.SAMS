@@ -12,11 +12,11 @@ namespace Simple.SAMS.Contracts.Competitions
     {
         public string Date
         {
-            get { return StartTime.HasValue ? StartTime.Value.ToShortDateString() : string.Empty; }
+            get { return StartTime.HasValue ? StartTime.Value.ToString("dd/MM/yyyy") : string.Empty; }
         }
         public string Time
         {
-            get { return StartTime.HasValue ? StartTime.Value.ToShortTimeString() : string.Empty; }
+            get { return StartTime.HasValue ? StartTime.Value.ToString("HH:mm") : string.Empty; }
         }
 
         [DataMember(EmitDefaultValue = false)]

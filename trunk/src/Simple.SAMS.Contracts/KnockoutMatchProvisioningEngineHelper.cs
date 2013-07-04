@@ -14,7 +14,7 @@ namespace Simple.SAMS.Contracts
             var output = engine.Calculate(playersCount, qualifyingPlayersCount, actualPlayersCount);
             var matches = new List<MatchInfo>(output.MainDrawMatchesCount + output.QualifyingDrawMatchesCount);
 
-            matches.AddRange(CreateMainDrawMatches(output.MainDrawMatchesCount, output.ActualMainDrawPlayers, output.TotalMainDrawPlayers, qualifyingPlayersCount));
+            matches.AddRange(CreateMainDrawMatches(output.MainDrawMatchesCount, output.ActualMainDrawPlayers, output.TotalMainDrawPlayers, output.ActualQualifyingPlayers));
             if (output.TotalQualifyingPlayers > 0)
             {
                 matches.AddRange(CreateQualifyingMatches(output.QualifyingDrawMatchesCount,
