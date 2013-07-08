@@ -41,15 +41,16 @@ namespace Simple.SAMS.Contracts
 
         private void PositionQualifyingDraw(MatchInfo[] matches, int playersCount, int actualPlayersCount, Queue<string> codes)
         {
-            Requires.IntArgumentPositive(playersCount, "playersCount");
+
             var skip = playersCount / 8;
             var first = new List<int>();
             var second = new List<int>();
             var third = new List<int>();
-
+            var against = new Stack<int>();
             for (var i = 0; i < playersCount; i += skip)
             {
                 PositionInMatch(matches, i, codes.Dequeue());
+                against.Push(i + 1);
                 if (skip > 1)
                 {
                     first.Add(i);
@@ -67,6 +68,7 @@ namespace Simple.SAMS.Contracts
             for (var i = skip - 1; i < playersCount; i += skip)
             {
                 oddPlaces.Add(i);
+                against.Push(i - 1);
             }
             first.AddRange(oddPlaces);
 
@@ -94,10 +96,30 @@ namespace Simple.SAMS.Contracts
                 var available = Enumerable.Range(0, playersCount).Except(first).Except(second).Except(third);
                 if (available.Any() && codes.Count > 0)
                 {
-                    randomizer = new RandomPositionGenerator(available.ToArray());
-                    while (randomizer.CanTake())
+                    var remainderQueue = new Queue<string>();
+                    var code = codes.Dequeue();
+                    while (against.Count> 0&& code != "BYE")
                     {
-                        PositionInMatch(matches, randomizer.Take(), codes.Dequeue());
+                            against.Pop();
+                            remainderQueue.Enqueue(code);
+                        
+                    }
+                    if (against.Count > 0)
+                    {
+                        available = available.Except(against);
+                    }
+                    if (available.Any() && remainderQueue.Count > 0)
+                    {
+                        randomizer = new RandomPositionGenerator(available.ToArray());
+                        while (randomizer.CanTake())
+                        {
+                            PositionInMatch(matches, randomizer.Take(), remainderQueue.Dequeue());
+                        }
+                    }
+
+                    while (against.Count > 0)
+                    {
+                        PositionInMatch(matches, against.Pop(), "BYE");
                     }
                 }
             }

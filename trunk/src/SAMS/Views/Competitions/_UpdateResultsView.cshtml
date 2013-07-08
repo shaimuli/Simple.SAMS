@@ -111,49 +111,49 @@
                                         </div>
                                     </td>
                                     <td>
-                                        @if (match.Player1 != null && match.Player2 != null)
-                                        {
+                                        @{ var noPlayers = (match.Player1 == null || match.Player2 == null); }
 
-                                            <div class="row-fluid">
-                                                <div class="span6">
-                                                    <div class="matchPlayerName">
-                                                        <b>1.</b> @(match.Player1 != null ? match.Player1.FullName : string.Empty)
-                                                    </div>
-                                                    <div class="matchPlayerName">
-                                                        <b>2.</b> @(match.Player2 != null ? match.Player2.FullName : string.Empty)
-                                                    </div>
-                                                    <div class="matchPlayerName">
-                                                        @Html.Resource("MatchBreakPoint")
-                                                    </div>
-                                                </div>
-                                                <div class="span1 updateMatchScoreContainer">
-                                                    <input type="text" class="setScore" maxlength="2" name="p1s1" data-numeric="true" value="@match.Score(1, 1)"/>
-                                                    <input type="text" class="setScore" maxlength="2" name="p2s1" data-numeric="true" value="@match.Score(2, 1)" />
-                                                    <input type="text" class="setScore" maxlength="2" name="bp1" data-numeric="true"  value="@match.Score(0, 1)"/>
-                                                </div>
-                                                <div class="span1 updateMatchScoreContainer">
-                                                    <input type="text" class="setScore" maxlength="2" name="p1s2" data-numeric="true" value="@match.Score(1, 2)"/>
-                                                    <input type="text" class="setScore" maxlength="2" name="p2s2" data-numeric="true" value="@match.Score(2, 2)"/>
-                                                    <input type="text" class="setScore" maxlength="2" name="bp2" data-numeric="true"  value="@match.Score(0, 2)"/>
-                                                </div>
-                                                <div class="span1 updateMatchScoreContainer">
-                                                    <input type="text" class="setScore" maxlength="2" name="p1s3" data-numeric="true"  value="@match.Score(1, 3)"/>
-                                                    <input type="text" class="setScore" maxlength="2" name="p2s3" data-numeric="true"  value="@match.Score(2, 3)"/>
-                                                    <input type="text" class="setScore" maxlength="2" name="bp3" data-numeric="true" value="@match.Score(0, 3)"/>
-                                                </div>
 
-                                                @*                                            <div class="span1 updateMatchScoreContainer" style="display:none">
+                                        <div class="row-fluid">
+                                            <div class="span6">
+                                                <div class="matchPlayerName">
+                                                    <b>1.</b> <span class="player1FullName">@(match.Player1 != null ? match.Player1.FullName : string.Empty)</span>
+                                                </div>
+                                                <div class="matchPlayerName">
+                                                    <b>2.</b> <span class="player2FullName">@(match.Player2 != null ? match.Player2.FullName : string.Empty)</span>
+                                                </div>
+                                                <div class="matchPlayerName">
+                                                    @Html.Resource("MatchBreakPoint")
+                                                </div>
+                                            </div>
+                                            <div class="span1 updateMatchScoreContainer" style='@(noPlayers ? "display: none" :"")'>
+                                                <input type="text" class="setScore" maxlength="2" name="p1s1" data-numeric="true" value="@match.Score(1, 1)"/>
+                                                <input type="text" class="setScore" maxlength="2" name="p2s1" data-numeric="true" value="@match.Score(2, 1)" />
+                                                <input type="text" class="setScore" maxlength="2" name="bp1" data-numeric="true"  value="@match.Score(0, 1)"/>
+                                            </div>
+                                            <div class="span1 updateMatchScoreContainer" style='@(noPlayers ? "display: none" :"")'>
+                                                <input type="text" class="setScore" maxlength="2" name="p1s2" data-numeric="true" value="@match.Score(1, 2)"/>
+                                                <input type="text" class="setScore" maxlength="2" name="p2s2" data-numeric="true" value="@match.Score(2, 2)"/>
+                                                <input type="text" class="setScore" maxlength="2" name="bp2" data-numeric="true"  value="@match.Score(0, 2)"/>
+                                            </div>
+                                            <div class="span1 updateMatchScoreContainer" style='@(noPlayers ? "display: none" :"")'>
+                                                <input type="text" class="setScore" maxlength="2" name="p1s3" data-numeric="true"  value="@match.Score(1, 3)"/>
+                                                <input type="text" class="setScore" maxlength="2" name="p2s3" data-numeric="true"  value="@match.Score(2, 3)"/>
+                                                <input type="text" class="setScore" maxlength="2" name="bp3" data-numeric="true" value="@match.Score(0, 3)"/>
+                                            </div>
+
+                                            @* <div class="span1 updateMatchScoreContainer"  style='@(noPlayers ? "display: none" :"")'>
                                                 <input type="text" class="setScore" maxlength="2" name="p1s4" data-numeric="true" value="@match.Score(1, 4)"/>
                                                 <input type="text" class="setScore" maxlength="2" name="p2s4" data-numeric="true" value="@match.Score(2, 4)"/>
                                                 <input type="text" class="setScore" maxlength="2" name="bp4" data-numeric="true" value="@match.Score(0, 4)"/>
                                             </div>
-                                            <div class="span1 updateMatchScoreContainer" style="display:none">
+                                            <div class="span1 updateMatchScoreContainer"  style='@(noPlayers ? "display: none" :"")'>
                                                 <input type="text" class="setScore" maxlength="2" name="p1s5" data-numeric="true" value="@match.Score(1, 5)"/>
                                                 <input type="text" class="setScore" maxlength="2" name="p2s5" data-numeric="true" value="@match.Score(2, 5)"/>
                                                 <input type="text" class="setScore" maxlength="2" name="bp5" data-numeric="true" value="@match.Score(0, 5)"/>
                                             </div>*@
-                                            </div>
-                                        }
+                                        </div>
+
                                     </td>
                                     <td>
 

@@ -74,6 +74,38 @@
     });
     
     S.CompetitionDetails = Class.extend({
+        updateMatchesResultsList: function (items) {
+            $.each(items, function (index, item) {
+                var tr = $("tr[data-key='" + item.Id + "']");
+                if (tr.length) {
+                    if (item.Player1) {
+                        $(".player1FullName", tr).text(item.Player1.FullName || "");
+                    }
+                    if (item.Player2) {
+                        $(".player2FullName", tr).text(item.Player2.FullName || "");
+                    }
+                    if (item.Player1 && item.Player2) {
+                        $(".updateMatchScoreContainer", tr).show();
+                    }
+
+                    var selectPlayer = $(".matchWinnerSelect", tr).html("");
+                    $("<option value='None' selected='selected'/>").appendTo(selectPlayer);
+                    if (item.Player1) {
+                        var p1 = $("<option value='Player1'/>").text(item.Player1.FullName).appendTo(selectPlayer);
+                        if (item.Winner == 1) {
+                            p1.attr("selected", "selected");
+                        }
+                    }
+                    if (item.Player2) {
+                        var p2 = $("<option value='Player2'/>").text(item.Player2.FullName).appendTo(selectPlayer);
+                        if (item.Winner == 2) {
+                            p2.attr("selected", "selected");
+                        }
+                    }
+                    $(".matchResultSelect option[value='" + item.Result + "']", tr).attr("selected", "selected");
+                }
+            });
+        },
         updateMatchesResults: function() {
             var competitionId = this.getCompetitionId();
             var url = this.config.getMatchesUrl + "/" + competitionId;
@@ -83,15 +115,27 @@
                 var section = target.data("section");
                 $.getJSON(
                     url, { section: section }, function (items) {
-                        target.tournament(items);
+                        if (section == 3) {
+                            var tournament = new Tournament();
+                            $("#consolation .t-container").html("");
+                            tournament.render("#consolation .t-container", items);
+
+                        } else {
+                            target.tournament(items);
+                        }
                         self.updateMatchesList(items);
+                        self.updateMatchesResultsList(items);
                     });
             });
             
         },
         initTournament: function () {
-            $(".t-host").tournament({ resources: this.config.resources, links:this.config.links });
-            $(".t-host").overscroll();
+            $(".t-host[data-section=1]").tournament({ resources: this.config.resources, links:this.config.links });
+            $(".t-host[data-section=2]").tournament({ resources: this.config.resources, links:this.config.links });
+            $(".t-host").each(function() {
+                $(this).overscroll();
+            });
+
             this.updateMatchesResults();
             /*
             var items = [];

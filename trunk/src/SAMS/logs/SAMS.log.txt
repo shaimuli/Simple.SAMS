@@ -1294,3 +1294,85 @@ System.Data.Linq.ChangeConflictException: Row not found or changed.
 2013-07-04 19:49:30.1764 SimpleSite|Info| SAMS Application initialization completed.
 2013-07-04 21:17:36.6788 SimpleSite|Info| SAMS Application started... 
 2013-07-04 21:17:37.9449 SimpleSite|Info| SAMS Application initialization completed.
+2013-07-05 08:57:11.7022 SimpleSite|Info| SAMS Application started... 
+2013-07-05 08:57:14.1653 SimpleSite|Info| SAMS Application initialization completed.
+2013-07-05 09:04:32.9464 SimpleSite|Info| SAMS Application started... 
+2013-07-05 09:04:33.2414 SimpleSite|Info| SAMS Application initialization completed.
+2013-07-05 09:08:21.5955 SimpleSite|Info| SAMS Application started... 
+2013-07-05 09:08:21.8715 SimpleSite|Info| SAMS Application initialization completed.
+2013-07-05 09:36:32.3422 SimpleSite|Info| SAMS Application started... 
+2013-07-05 09:36:33.7003 SimpleSite|Info| SAMS Application initialization completed.
+2013-07-05 10:43:05.3656 SimpleSite|Info| SAMS Application started... 
+2013-07-05 10:43:05.6646 SimpleSite|Info| SAMS Application initialization completed.
+2013-07-05 10:51:34.8497 SimpleSite|Info| SAMS Application started... 
+2013-07-05 10:51:35.1117 SimpleSite|Info| SAMS Application initialization completed.
+2013-07-05 10:55:25.0489 SimpleSite|Info| SAMS Application started... 
+2013-07-05 10:55:25.3129 SimpleSite|Info| SAMS Application initialization completed.
+2013-07-05 10:59:31.1890 SimpleSite|Info| SAMS Application started... 
+2013-07-05 10:59:31.4550 SimpleSite|Info| SAMS Application initialization completed.
+2013-07-05 11:11:50.3112 SimpleSite|Info| SAMS Application started... 
+2013-07-05 11:11:50.6393 SimpleSite|Info| SAMS Application initialization completed.
+2013-07-08 07:49:41.9890 SimpleSite|Info| SAMS Application started... 
+2013-07-08 07:49:43.6361 SimpleSite|Info| SAMS Application initialization completed.
+2013-07-08 07:51:15.0493 SimpleSite|Error| Error executing request.
+Details:
+System.InvalidOperationException: Stack empty.
+   at System.ThrowHelper.ThrowInvalidOperationException(ExceptionResource resource)
+   at System.Collections.Generic.Stack`1.Pop()
+   at Simple.SAMS.Contracts.KnockoutMatchProvisioningEngineHelper.PositionQualifyingDraw(MatchInfo[] matches, Int32 playersCount, Int32 actualPlayersCount, Queue`1 codes) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Contracts\KnockoutMatchProvisioningEngineHelper.cs:line 105
+   at Simple.SAMS.Contracts.KnockoutMatchProvisioningEngineHelper.CreateQualifyingMatches(Int32 qualifyingDrawMatchesCount, Int32 playersCount, Int32 actualPlayersCount) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Contracts\KnockoutMatchProvisioningEngineHelper.cs:line 38
+   at Simple.SAMS.Contracts.KnockoutMatchProvisioningEngineHelper.ProvisionMatches(Int32 playersCount, Int32 qualifyingPlayersCount, Int32 actualPlayersCount) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Contracts\KnockoutMatchProvisioningEngineHelper.cs:line 20
+   at Simple.SAMS.Contracts.KnockoutMatchProvisioningEngine.BuildMatches(CompetitionType competitionType, CompetitionDetails competitionDetails) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Contracts\KnockoutMatchProvisioningEngine.cs:line 16
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.CreateCompetitionsMatches(CompetitionDetails[] competitions) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 252
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.PositionCompetitionPlayers(Int32 id, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 216
+   at SAMS.Controllers.CompetitionsController.PositionCompetitionPlayers(Int32 competitionId, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 189
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-07-08 07:51:15.0683 SimpleSite|Error| Unhandled exception
+Details:
+System.InvalidOperationException: Stack empty.
+   at System.ThrowHelper.ThrowInvalidOperationException(ExceptionResource resource)
+   at System.Collections.Generic.Stack`1.Pop()
+   at Simple.SAMS.Contracts.KnockoutMatchProvisioningEngineHelper.PositionQualifyingDraw(MatchInfo[] matches, Int32 playersCount, Int32 actualPlayersCount, Queue`1 codes) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Contracts\KnockoutMatchProvisioningEngineHelper.cs:line 105
+   at Simple.SAMS.Contracts.KnockoutMatchProvisioningEngineHelper.CreateQualifyingMatches(Int32 qualifyingDrawMatchesCount, Int32 playersCount, Int32 actualPlayersCount) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Contracts\KnockoutMatchProvisioningEngineHelper.cs:line 38
+   at Simple.SAMS.Contracts.KnockoutMatchProvisioningEngineHelper.ProvisionMatches(Int32 playersCount, Int32 qualifyingPlayersCount, Int32 actualPlayersCount) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Contracts\KnockoutMatchProvisioningEngineHelper.cs:line 20
+   at Simple.SAMS.Contracts.KnockoutMatchProvisioningEngine.BuildMatches(CompetitionType competitionType, CompetitionDetails competitionDetails) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Contracts\KnockoutMatchProvisioningEngine.cs:line 16
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.CreateCompetitionsMatches(CompetitionDetails[] competitions) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 252
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.PositionCompetitionPlayers(Int32 id, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 216
+   at SAMS.Controllers.CompetitionsController.PositionCompetitionPlayers(Int32 competitionId, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 189
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-07-08 07:52:00.9919 SimpleSite|Info| SAMS Application started... 
+2013-07-08 07:52:02.3120 SimpleSite|Info| SAMS Application initialization completed.
+2013-07-08 08:00:06.0467 SimpleSite|Info| SAMS Application started... 
+2013-07-08 08:00:08.2498 SimpleSite|Info| SAMS Application initialization completed.
+2013-07-08 22:14:31.7009 SimpleSite|Info| SAMS Application started... 
+2013-07-08 22:14:32.9120 SimpleSite|Info| SAMS Application initialization completed.
+2013-07-08 22:23:11.4466 SimpleSite|Info| SAMS Application started... 
+2013-07-08 22:23:12.6287 SimpleSite|Info| SAMS Application initialization completed.

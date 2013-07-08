@@ -35,7 +35,7 @@ namespace Simple.SAMS.Competitions.Services
                 {
                     QualifyToConsolation(match);
                 }
-                if (match.Section == CompetitionSection.Consolation && !match.IsSemiFinal && !match.IsFinal)
+                if (match.Section == CompetitionSection.Consolation)
                 {
                     QualifyInConsolation(match);
                 }
@@ -53,7 +53,6 @@ namespace Simple.SAMS.Competitions.Services
             var winner = match.Winner == MatchWinner.Player1 ? match.Player1 : match.Player2;
             var competitionMatchesRepository = ServiceProvider.Get<ICompetitionMatchesRepository>();
             var qualifyToMatch = default(MatchHeaderInfo);
-            var targetPosition = default(int?);
             var playersCount = 32;
             var map = new ConsolationMap();
             var nextPosition = map.GetNextPosition(playersCount, match.Position);
@@ -74,67 +73,7 @@ namespace Simple.SAMS.Competitions.Services
                                                                                    }
                                                                            });
             }            
-            return;
-
-            if (match.Round == 0)
-            {
-                qualifyToMatch = competitionMatchesRepository.GetMatchByRelativePosition(competitionId, match.Section,
-                                                                                         match.Round + 1,
-                                                                                         match.RoundRelativePosition);
-            }
-            else if (match.Round == 1)
-            {
-                qualifyToMatch = competitionMatchesRepository.GetMatchByRelativePosition(competitionId, match.Section,
-                                                                                         match.Round + 1,
-                                                                                         match.RoundRelativePosition /2);
-            }
-            else if (match.Round == 2)
-            {
-                QualifySameSection(match);
-            }
-            else if (match.Round == 3)
-            {
-                if (match.Position > 32)
-                {
-                    qualifyToMatch = competitionMatchesRepository.GetMatchByRelativePosition(competitionId,
-                                                                                             match.Section,
-                                                                                             match.Round + 1,
-                                                                                             match.RoundRelativePosition);
-
-                }
-                else
-                {
-                    QualifySameSection(match);
-                }
-            }
-            else
-            {
-                QualifySameSection(match);
-            }
-
-            if (qualifyToMatch != null)
-            {
-                var roundMatchesCount = competitionMatchesRepository.GetRoundMatchesCount(match.CompetitionId, CompetitionSection.Consolation, qualifyToMatch.Round);                
-                var position = (targetPosition.HasValue ? targetPosition.Value : (match.RoundRelativePosition < roundMatchesCount/2 ? 0:1));
-                if (qualifyToMatch.Player1 != null && position == 0)
-                {
-                    position = 1;
-                }
-                if (qualifyToMatch.IsNotNull() && winner != null)
-                {
-                    competitionMatchesRepository.UpdatePlayersPosition(competitionId,
-                                                                       new[]
-                                                                           {
-                                                                               new UpdatePlayerPositionInfo
-                                                                                   {
-                                                                                       MatchId = qualifyToMatch.Id,
-                                                                                       PlayerId = winner.Id,
-                                                                                       Position = position
-                                                                                           
-                                                                                   }
-                                                                           });
-                }
-            }
+         
         }
 
         private void Qualify(MatchHeaderInfo match)
