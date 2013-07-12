@@ -29,6 +29,7 @@ namespace Simple.SAMS.Competitions.Data
         protected override void MapEntityToDataEntity(Contracts.Players.Player entity, Player dataEntity)
         {
             AutoMapper.Mapper.DynamicMap(entity, dataEntity);
+
         }
 
         protected override void InsertEntity(CompetitionsDataContext dataContext, Player dataEntity)

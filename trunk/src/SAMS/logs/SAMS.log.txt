@@ -1376,3 +1376,51 @@ System.InvalidOperationException: Stack empty.
 2013-07-08 22:14:32.9120 SimpleSite|Info| SAMS Application initialization completed.
 2013-07-08 22:23:11.4466 SimpleSite|Info| SAMS Application started... 
 2013-07-08 22:23:12.6287 SimpleSite|Info| SAMS Application initialization completed.
+2013-07-12 09:38:39.6604 SimpleSite|Info| SAMS Application started... 
+2013-07-12 09:38:41.1665 SimpleSite|Info| SAMS Application initialization completed.
+2013-07-12 10:43:47.9209 SimpleSite|Info| SAMS Application started... 
+2013-07-12 10:43:49.7460 SimpleSite|Info| SAMS Application initialization completed.
+2013-07-12 11:06:53.6632 SimpleSite|Error| Error executing request.
+Details:
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.GetCompetitionDetails(Int32 competitionId) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 562
+   at SAMS.Controllers.CompetitionsController.GetCompetitionDetailsModel(Int32 id) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 227
+   at SAMS.Controllers.CompetitionsController.Details(Int32 id) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 210
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-07-12 11:06:53.6732 SimpleSite|Error| Unhandled exception
+Details:
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.GetCompetitionDetails(Int32 competitionId) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 562
+   at SAMS.Controllers.CompetitionsController.GetCompetitionDetailsModel(Int32 id) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 227
+   at SAMS.Controllers.CompetitionsController.Details(Int32 id) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 210
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-07-12 11:07:19.5457 SimpleSite|Info| SAMS Application started... 
+2013-07-12 11:07:20.8677 SimpleSite|Info| SAMS Application initialization completed.

@@ -37,32 +37,6 @@
       <Association Name="Match_MatchScore" Member="Match" ThisKey="MatchId" OtherKey="Id" Type="Match" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Player" Member="Players">
-    <Type Name="Player">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="LocalFirstName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="IdNumber" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="NationalRank" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="RowStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Created" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="Updated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="LocalLastName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="EnglishFirstName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="EnglishLastName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="IsFemale" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="EuropeInternationalRank" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="YouthInternationalRank" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Country" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="BirthDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="IPIN" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="Phone" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
-      <Association Name="Player_CompetitionPlayer" Member="CompetitionPlayers" ThisKey="Id" OtherKey="PlayerId" Type="CompetitionPlayer" />
-      <Association Name="Player_Match" Member="Matches" ThisKey="Id" OtherKey="Player1" Type="Match" />
-      <Association Name="Player_Match1" Member="Matches1" ThisKey="Id" OtherKey="Player2" Type="Match" />
-      <Association Name="Player_Match2" Member="Matches2" ThisKey="Id" OtherKey="Player3" Type="Match" />
-      <Association Name="Player_Match3" Member="Matches3" ThisKey="Id" OtherKey="Player4" Type="Match" />
-    </Type>
-  </Table>
   <Table Name="dbo.Section" Member="Sections">
     <Type Name="Section">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -147,11 +121,39 @@
       <Column Name="Player2Code" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Association Name="Match_MatchScore" Member="MatchScores" ThisKey="Id" OtherKey="MatchId" Type="MatchScore" />
       <Association Name="Competition_Match" Member="Competition" ThisKey="CompetitionId" OtherKey="Id" Type="Competition" IsForeignKey="true" />
+      <Association Name="Section_Match" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
       <Association Name="Player_Match" Member="Player" ThisKey="Player1" OtherKey="Id" Type="Player" IsForeignKey="true" />
       <Association Name="Player_Match1" Member="Player5" ThisKey="Player2" OtherKey="Id" Type="Player" IsForeignKey="true" />
       <Association Name="Player_Match2" Member="Player6" ThisKey="Player3" OtherKey="Id" Type="Player" IsForeignKey="true" />
       <Association Name="Player_Match3" Member="Player7" ThisKey="Player4" OtherKey="Id" Type="Player" IsForeignKey="true" />
-      <Association Name="Section_Match" Member="Section" ThisKey="SectionId" OtherKey="Id" Type="Section" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Player" Member="Players">
+    <Type Name="Player">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LocalFirstName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IdNumber" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NationalRank" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RowStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Created" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Updated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LocalLastName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EnglishFirstName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EnglishLastName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IsFemale" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="EuropeInternationalRank" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="YouthInternationalRank" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BirthDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IPIN" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="AccumulatedScore" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AverageScore" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Player_CompetitionPlayer" Member="CompetitionPlayers" ThisKey="Id" OtherKey="PlayerId" Type="CompetitionPlayer" />
+      <Association Name="Player_Match" Member="Matches" ThisKey="Id" OtherKey="Player1" Type="Match" />
+      <Association Name="Player_Match1" Member="Matches1" ThisKey="Id" OtherKey="Player2" Type="Match" />
+      <Association Name="Player_Match2" Member="Matches2" ThisKey="Id" OtherKey="Player3" Type="Match" />
+      <Association Name="Player_Match3" Member="Matches3" ThisKey="Id" OtherKey="Player4" Type="Match" />
     </Type>
   </Table>
 </Database>
