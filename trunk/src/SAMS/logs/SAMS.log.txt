@@ -1424,3 +1424,406 @@ System.NullReferenceException: Object reference not set to an instance of an obj
    at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
 2013-07-12 11:07:19.5457 SimpleSite|Info| SAMS Application started... 
 2013-07-12 11:07:20.8677 SimpleSite|Info| SAMS Application initialization completed.
+2013-07-29 00:11:31.1071 SimpleSite|Info| SAMS Application started... 
+2013-07-29 00:11:32.6532 SimpleSite|Info| SAMS Application initialization completed.
+2013-07-29 00:13:06.9716 SimpleSite|Info| SAMS Application started... 
+2013-07-29 00:13:08.1457 SimpleSite|Info| SAMS Application initialization completed.
+2013-07-29 00:13:22.4315 SimpleSite|Info| SAMS Application started... 
+2013-07-29 00:13:22.8115 SimpleSite|Info| SAMS Application initialization completed.
+2013-07-31 12:55:21.1931 SimpleSite|Info| SAMS Application started... 
+2013-07-31 12:55:23.0052 SimpleSite|Info| SAMS Application initialization completed.
+2013-07-31 13:34:51.0866 SimpleSite|Info| SAMS Application started... 
+2013-07-31 13:34:52.4577 SimpleSite|Info| SAMS Application initialization completed.
+2013-07-31 13:37:05.6073 SimpleSite|Info| SAMS Application started... 
+2013-07-31 13:37:06.8684 SimpleSite|Info| SAMS Application initialization completed.
+2013-08-05 17:50:46.2140 SimpleSite|Info| SAMS Application started... 
+2013-08-05 17:50:48.1691 SimpleSite|Info| SAMS Application initialization completed.
+2013-08-05 17:56:59.2503 SimpleSite|Error| Error importing competition players
+Details:
+System.FormatException: Input string was not in a correct format.
+   at System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   at System.Double.Parse(String s)
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.LoadRecords[T](String fileName) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 417
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.LoadPlayersFromFile(String fileName) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 452
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.GetCompetitionPlayers(String playersFileUrl) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 336
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.GetCompetitionPlayersToAdd(String playersFile, ICompetitionsEngine competitionsEngine) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 46
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.LoadCompetitionsPlayers(String competitionsPlayersFileUrl) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 114
+   at SAMS.Controllers.CompetitionsController.ImportPlayers(HttpPostedFileBase competitionsPlayersFile) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 354
+2013-08-05 17:58:34.0828 SimpleSite|Error| Error importing competition players
+Details:
+System.FormatException: Input string was not in a correct format.
+   at System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   at System.Double.Parse(String s)
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.LoadRecords[T](String fileName) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 417
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.LoadPlayersFromFile(String fileName) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 452
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.GetCompetitionPlayers(String playersFileUrl) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 336
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.GetCompetitionPlayersToAdd(String playersFile, ICompetitionsEngine competitionsEngine) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 46
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.LoadCompetitionsPlayers(String competitionsPlayersFileUrl) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 114
+   at SAMS.Controllers.CompetitionsController.ImportPlayers(HttpPostedFileBase competitionsPlayersFile) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 354
+2013-08-05 17:59:50.9162 SimpleSite|Error| Error importing competition players
+Details:
+System.FormatException: Input string was not in a correct format.
+   at System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   at System.Double.Parse(String s)
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.LoadRecords[T](String fileName) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 417
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.LoadPlayersFromFile(String fileName) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 452
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.GetCompetitionPlayers(String playersFileUrl) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 336
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.GetCompetitionPlayersToAdd(String playersFile, ICompetitionsEngine competitionsEngine) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 46
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.LoadCompetitionsPlayers(String competitionsPlayersFileUrl) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 114
+   at SAMS.Controllers.CompetitionsController.ImportPlayers(HttpPostedFileBase competitionsPlayersFile) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 354
+2013-08-05 18:00:05.0180 SimpleSite|Info| SAMS Application started... 
+2013-08-05 18:00:06.3000 SimpleSite|Info| SAMS Application initialization completed.
+2013-08-05 18:02:30.8503 SimpleSite|Error| Error importing competition players
+Details:
+System.FormatException: Input string was not in a correct format.
+   at System.Number.ParseDouble(String value, NumberStyles options, NumberFormatInfo numfmt)
+   at System.Double.Parse(String s)
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.LoadRecords[T](String fileName) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 417
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.LoadPlayersFromFile(String fileName) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 452
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.GetCompetitionPlayers(String playersFileUrl) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 336
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.GetCompetitionPlayersToAdd(String playersFile, ICompetitionsEngine competitionsEngine) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 46
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.LoadCompetitionsPlayers(String competitionsPlayersFileUrl) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 114
+   at SAMS.Controllers.CompetitionsController.ImportPlayers(HttpPostedFileBase competitionsPlayersFile) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 354
+2013-08-05 18:17:34.8640 SimpleSite|Info| SAMS Application started... 
+2013-08-05 18:17:36.2021 SimpleSite|Info| SAMS Application initialization completed.
+2013-08-05 18:19:16.0358 SimpleSite|Error| Error importing competition players
+Details:
+System.ArgumentException: Object of type 'System.Double' cannot be converted to type 'System.Nullable`1[System.DateTime]'.
+   at System.RuntimeType.TryChangeType(Object value, Binder binder, CultureInfo culture, Boolean needsSpecialCast)
+   at System.RuntimeType.CheckValue(Object value, Binder binder, CultureInfo culture, BindingFlags invokeAttr)
+   at System.Reflection.MethodBase.CheckArguments(Object[] parameters, Binder binder, BindingFlags invokeAttr, CultureInfo culture, Signature sig)
+   at System.Reflection.RuntimeMethodInfo.InvokeArgumentsCheck(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimePropertyInfo.SetValue(Object obj, Object value, BindingFlags invokeAttr, Binder binder, Object[] index, CultureInfo culture)
+   at System.Reflection.RuntimePropertyInfo.SetValue(Object obj, Object value, Object[] index)
+   at System.Reflection.PropertyInfo.SetValue(Object obj, Object value)
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.LoadRecords[T](String fileName) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 423
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.LoadPlayersFromFile(String fileName) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 501
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.GetCompetitionPlayers(String playersFileUrl) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 336
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.GetCompetitionPlayersToAdd(String playersFile, ICompetitionsEngine competitionsEngine) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 46
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.LoadCompetitionsPlayers(String competitionsPlayersFileUrl) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 114
+   at SAMS.Controllers.CompetitionsController.ImportPlayers(HttpPostedFileBase competitionsPlayersFile) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 354
+2013-08-05 18:19:45.7555 SimpleSite|Info| SAMS Application started... 
+2013-08-05 18:19:47.0906 SimpleSite|Info| SAMS Application initialization completed.
+2013-08-05 23:18:01.3381 SimpleSite|Info| SAMS Application started... 
+2013-08-05 23:18:02.9632 SimpleSite|Info| SAMS Application initialization completed.
+2013-08-05 23:46:33.7440 SimpleSite|Error| Error executing request.
+Details:
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.QualifyByeMatches(CompetitionDetails details, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 675
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.PositionCompetitionPlayers(Int32 id, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 226
+   at SAMS.Controllers.CompetitionsController.PositionCompetitionPlayers(Int32 competitionId, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 189
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-08-05 23:46:33.7590 SimpleSite|Error| Unhandled exception
+Details:
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.QualifyByeMatches(CompetitionDetails details, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 675
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.PositionCompetitionPlayers(Int32 id, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 226
+   at SAMS.Controllers.CompetitionsController.PositionCompetitionPlayers(Int32 competitionId, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 189
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-08-05 23:46:51.7160 SimpleSite|Info| SAMS Application started... 
+2013-08-05 23:46:53.0201 SimpleSite|Info| SAMS Application initialization completed.
+2013-08-05 23:58:02.8374 SimpleSite|Info| SAMS Application started... 
+2013-08-05 23:58:03.3885 SimpleSite|Info| SAMS Application initialization completed.
+2013-08-06 21:20:58.1382 SimpleSite|Info| SAMS Application started... 
+2013-08-06 21:21:00.0703 SimpleSite|Info| SAMS Application initialization completed.
+2013-08-06 21:27:12.5576 SimpleSite|Error| Error executing request.
+Details:
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.QualifyByeMatches(CompetitionDetails details, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 675
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.PositionCompetitionPlayers(Int32 id, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 226
+   at SAMS.Controllers.CompetitionsController.PositionCompetitionPlayers(Int32 competitionId, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 189
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-08-06 21:27:12.5726 SimpleSite|Error| Unhandled exception
+Details:
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Simple.SAMS.Competitions.Services.CompetitionEngineService.QualifyByeMatches(CompetitionDetails details, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionEngineService.cs:line 675
+   at Simple.SAMS.Competitions.Services.CompetitionsManagerService.PositionCompetitionPlayers(Int32 id, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Competitions.Services\CompetitionsManagerService.cs:line 226
+   at SAMS.Controllers.CompetitionsController.PositionCompetitionPlayers(Int32 competitionId, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 189
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-08-06 21:35:18.4364 SimpleSite|Info| SAMS Application started... 
+2013-08-06 21:35:19.7274 SimpleSite|Info| SAMS Application initialization completed.
+2013-08-06 21:38:18.5017 SimpleSite|Info| SAMS Application started... 
+2013-08-06 21:38:19.1647 SimpleSite|Info| SAMS Application initialization completed.
+2013-08-11 17:45:18.6145 SimpleSite|Info| SAMS Application started... 
+2013-08-11 17:45:20.5616 SimpleSite|Info| SAMS Application initialization completed.
+2013-08-11 21:40:07.4444 SimpleSite|Info| SAMS Application started... 
+2013-08-11 21:40:08.7964 SimpleSite|Info| SAMS Application initialization completed.
+2013-08-21 23:23:53.9612 SimpleSite|Info| SAMS Application started... 
+2013-08-21 23:23:54.7052 SimpleSite|Info| SAMS Application initialization completed.
+2013-08-23 10:16:50.2888 SimpleSite|Info| SAMS Application started... 
+2013-08-23 10:16:52.0649 SimpleSite|Info| SAMS Application initialization completed.
+2013-08-23 10:18:03.6089 SimpleSite|Error| Error executing request.
+Details:
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Simple.SAMS.Utilities.CompetitionDrawGenerator.GetDefaultGenerateInfo() in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Utilities\CompetitionDrawGenerator.cs:line 81
+   at Simple.SAMS.Utilities.CompetitionDrawGenerator.GetGenerateInfo(CompetitionDetails details, HebrewWordInverter inverter) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Utilities\CompetitionDrawGenerator.cs:line 91
+   at Simple.SAMS.Utilities.CompetitionDrawGenerator.Generate(CompetitionDetails details, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Utilities\CompetitionDrawGenerator.cs:line 29
+   at SAMS.Controllers.CompetitionsController.Print(Int32 id, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 59
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-08-23 10:18:03.6309 SimpleSite|Error| Unhandled exception
+Details:
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Simple.SAMS.Utilities.CompetitionDrawGenerator.GetDefaultGenerateInfo() in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Utilities\CompetitionDrawGenerator.cs:line 81
+   at Simple.SAMS.Utilities.CompetitionDrawGenerator.GetGenerateInfo(CompetitionDetails details, HebrewWordInverter inverter) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Utilities\CompetitionDrawGenerator.cs:line 91
+   at Simple.SAMS.Utilities.CompetitionDrawGenerator.Generate(CompetitionDetails details, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Utilities\CompetitionDrawGenerator.cs:line 29
+   at SAMS.Controllers.CompetitionsController.Print(Int32 id, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 59
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-08-23 10:18:30.4425 SimpleSite|Info| SAMS Application started... 
+2013-08-23 10:18:31.7236 SimpleSite|Info| SAMS Application initialization completed.
+2013-08-23 10:18:58.3801 SimpleSite|Error| Error executing request.
+Details:
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'e:\temp\gen\ארצית קיץ 5 - בנים 12-166-fc70336a-5e46-4df8-8fff-58f68c6d3b9e.pcdf'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding)
+   at System.IO.File.WriteAllLines(String path, String[] contents)
+   at Simple.SAMS.Utilities.DrawGeneratorInfo.Write(String fileName) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Utilities\DrawGeneratorInfo.cs:line 46
+   at Simple.SAMS.Utilities.CompetitionDrawGenerator.Generate(CompetitionDetails details, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Utilities\CompetitionDrawGenerator.cs:line 30
+   at SAMS.Controllers.CompetitionsController.Print(Int32 id, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 59
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-08-23 10:18:58.3891 SimpleSite|Error| Unhandled exception
+Details:
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'e:\temp\gen\ארצית קיץ 5 - בנים 12-166-fc70336a-5e46-4df8-8fff-58f68c6d3b9e.pcdf'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding)
+   at System.IO.File.WriteAllLines(String path, String[] contents)
+   at Simple.SAMS.Utilities.DrawGeneratorInfo.Write(String fileName) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Utilities\DrawGeneratorInfo.cs:line 46
+   at Simple.SAMS.Utilities.CompetitionDrawGenerator.Generate(CompetitionDetails details, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Utilities\CompetitionDrawGenerator.cs:line 30
+   at SAMS.Controllers.CompetitionsController.Print(Int32 id, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 59
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-08-23 10:20:15.4105 SimpleSite|Error| Error executing request.
+Details:
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'e:\temp\gen\ארצית קיץ 5 - בנים 12-166-e69feba7-f549-471e-a3a1-e1e4b654e2cb.pcdf'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding)
+   at System.IO.File.WriteAllLines(String path, String[] contents)
+   at Simple.SAMS.Utilities.DrawGeneratorInfo.Write(String fileName) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Utilities\DrawGeneratorInfo.cs:line 46
+   at Simple.SAMS.Utilities.CompetitionDrawGenerator.Generate(CompetitionDetails details, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Utilities\CompetitionDrawGenerator.cs:line 30
+   at SAMS.Controllers.CompetitionsController.Print(Int32 id, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 59
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-08-23 10:20:15.4165 SimpleSite|Error| Unhandled exception
+Details:
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'e:\temp\gen\ארצית קיץ 5 - בנים 12-166-e69feba7-f549-471e-a3a1-e1e4b654e2cb.pcdf'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding)
+   at System.IO.File.WriteAllLines(String path, String[] contents)
+   at Simple.SAMS.Utilities.DrawGeneratorInfo.Write(String fileName) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Utilities\DrawGeneratorInfo.cs:line 46
+   at Simple.SAMS.Utilities.CompetitionDrawGenerator.Generate(CompetitionDetails details, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Utilities\CompetitionDrawGenerator.cs:line 30
+   at SAMS.Controllers.CompetitionsController.Print(Int32 id, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 59
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-08-23 10:23:02.5860 SimpleSite|Info| SAMS Application started... 
+2013-08-23 10:23:03.7851 SimpleSite|Info| SAMS Application initialization completed.
+2013-08-23 10:25:10.9924 SimpleSite|Info| SAMS Application started... 
+2013-08-23 10:25:12.1675 SimpleSite|Info| SAMS Application initialization completed.
+2013-08-23 10:26:30.4739 SimpleSite|Info| SAMS Application started... 
+2013-08-23 10:26:31.6570 SimpleSite|Info| SAMS Application initialization completed.
+2013-08-23 10:29:05.2278 SimpleSite|Info| SAMS Application started... 
+2013-08-23 10:29:06.4299 SimpleSite|Info| SAMS Application initialization completed.
+2013-08-23 10:37:01.4940 SimpleSite|Info| SAMS Application started... 
+2013-08-23 10:37:02.6551 SimpleSite|Info| SAMS Application initialization completed.
+2013-08-23 10:38:43.8189 SimpleSite|Info| SAMS Application started... 
+2013-08-23 10:38:44.9929 SimpleSite|Info| SAMS Application initialization completed.
+2013-08-23 10:39:56.1730 SimpleSite|Info| SAMS Application started... 
+2013-08-23 10:39:57.3511 SimpleSite|Info| SAMS Application initialization completed.
+2013-08-23 10:40:00.5413 SimpleSite|Error| Error executing request.
+Details:
+System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at Simple.SAMS.Utilities.CompetitionDrawGenerator.SaveSchedule(MatchHeaderInfo[] matches, CompetitionPlayer[] players, String schedulePath) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Utilities\CompetitionDrawGenerator.cs:line 78
+   at Simple.SAMS.Utilities.CompetitionDrawGenerator.Generate(CompetitionDetails details, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Utilities\CompetitionDrawGenerator.cs:line 44
+   at SAMS.Controllers.CompetitionsController.Print(Int32 id, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 59
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-08-23 10:40:00.5573 SimpleSite|Error| Unhandled exception
+Details:
+System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+   at System.Collections.Generic.Dictionary`2.get_Item(TKey key)
+   at Simple.SAMS.Utilities.CompetitionDrawGenerator.SaveSchedule(MatchHeaderInfo[] matches, CompetitionPlayer[] players, String schedulePath) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Utilities\CompetitionDrawGenerator.cs:line 78
+   at Simple.SAMS.Utilities.CompetitionDrawGenerator.Generate(CompetitionDetails details, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\Simple.SAMS.Utilities\CompetitionDrawGenerator.cs:line 44
+   at SAMS.Controllers.CompetitionsController.Print(Int32 id, CompetitionSection section) in c:\Data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 59
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-08-23 10:40:43.3717 SimpleSite|Info| SAMS Application started... 
+2013-08-23 10:40:44.7068 SimpleSite|Info| SAMS Application initialization completed.

@@ -19,6 +19,7 @@ using Simple.ComponentModel;
 using Simple.SAMS.Competitions.Services;
 using Simple.SAMS.Contracts.Competitions;
 using Simple.SAMS.Contracts.Players;
+using Simple.SAMS.Utilities;
 
 namespace SAMS.Controllers
 {
@@ -54,6 +55,8 @@ namespace SAMS.Controllers
             var competitionEngine = ServiceProvider.Get<ICompetitionsEngine>();
 
             var competition = competitionEngine.GetCompetitionDetails(id);
+            var gen = new CompetitionDrawGenerator(@"e:\temp\gen\");
+            var outputPath = gen.Generate(competition, section);
             var generator = new TournamentBracketGenerator();
             var result = generator.Generate(competition, section);
 

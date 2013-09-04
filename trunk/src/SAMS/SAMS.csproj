@@ -490,6 +490,10 @@
       <Project>{cb2ba29b-7909-4307-97cb-8c63cbcfa224}</Project>
       <Name>Simple.SAMS.Contracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Simple.SAMS.Utilities\Simple.SAMS.Utilities.csproj">
+      <Project>{58A9B75C-A893-4733-A02F-4F9E817BEA77}</Project>
+      <Name>Simple.SAMS.Utilities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Simple.Utilities\Simple.Utilities.csproj">
       <Project>{075bcedf-3485-4838-b252-33dab8f0f806}</Project>
       <Name>Simple.Utilities</Name>

@@ -92,6 +92,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Simple.SAMS.CompetitionEngine\Simple.SAMS.CompetitionEngine\Simple.SAMS.CompetitionEngine.csproj">
+      <Project>{85A56A53-CC12-482D-A825-8A4F8EB221D5}</Project>
+      <Name>Simple.SAMS.CompetitionEngine</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Simple.SAMS.Contracts\Simple.SAMS.Contracts.csproj">
       <Project>{cb2ba29b-7909-4307-97cb-8c63cbcfa224}</Project>
       <Name>Simple.SAMS.Contracts</Name>

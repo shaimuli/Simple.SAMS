@@ -39,7 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompetitionDrawGenerator.cs" />
     <Compile Include="CompetitionTypeExtensions.cs" />
+    <Compile Include="DrawGeneratorInfo.cs" />
+    <Compile Include="HebrewWordInverter.cs" />
+    <Compile Include="MatchScheduleInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -47,6 +51,9 @@
       <Project>{cb2ba29b-7909-4307-97cb-8c63cbcfa224}</Project>
       <Name>Simple.SAMS.Contracts</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Defaults.pcdf" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

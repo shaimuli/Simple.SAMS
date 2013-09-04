@@ -92,7 +92,7 @@
             var playersCount = target.data("players-count");
             var maxMatches = target.data("matches");
             var startRound = matchesPerRound.indexOf(maxMatches);
-            console.log("PCP", playersCount, maxMatches, startRound);
+            
             var maxRound = startRound + rounds;
             /*for (var i = startRound + rounds; i <= 5; i++) {
                 $("div.r" + (i - 1) + ".t-sep", target).hide();

@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CompetitionPlayerComparer.cs" />
     <Compile Include="Competitions\AddCompetitionPlayerInfo.cs" />
     <Compile Include="Competitions\CompetitionPlayerSource.cs" />
     <Compile Include="Competitions\CompetitionDetails.cs" />

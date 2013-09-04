@@ -407,44 +407,93 @@ namespace Simple.SAMS.Competitions.Services
                         } 
                         
                         var value = dataRow[dataColumn.ColumnName];
-                        if (value != null && !Convert.IsDBNull(value))
+                        if (value != null && !Convert.IsDBNull(value) && value != string.Empty)
                         {
-                            if (propertyInfo.PropertyType == typeof(DateTime?) ||
-                                propertyInfo.PropertyType == typeof(DateTime) )
+                            try
                             {
-                                if (value.ToString().NotNullOrEmpty())
-                                {
-                                    value = DateTime.FromOADate(double.Parse(value.ToString()));
-                                }
-                                else
-                                {
-                                    value = null;
-                                }
+                                value = ConvertValue(propertyInfo.PropertyType, value.ToString());
+
                             }
-                            else if (propertyInfo.PropertyType == typeof(bool?) ||
-                                     propertyInfo.PropertyType == typeof(bool))
+                            catch (Exception anyException)
                             {
-                                value = "true,TRUE,1".Contains(value.ToString());
-                            }
-                            else if (propertyInfo.PropertyType == typeof(int?) ||
-                                     propertyInfo.PropertyType == typeof(int))
-                            {
-                                value = int.Parse(value.ToString());
-                            }
-                            else
-                            {
-                                value = Convert.ChangeType(value, propertyInfo.PropertyType);
-                            }
+                                throw new ApplicationException("Column '{0}' contains invalid value, see inner exception".ParseTemplate(dataColumn.ColumnName),anyException);
+                            }                            
                             if (value != null)
                             {
                                 propertyInfo.SetValue(record, value);
                             }
+                            
                         }
                     }
                     records.Add(record);
                 }
             }
             return records.ToArray();        
+        }
+
+        private object ConvertValue(Type type, string value)
+        {
+            var result = default(object);
+            if (type == typeof (DateTime?) ||
+                type == typeof (DateTime))
+            {
+                double asDouble;
+                if (double.TryParse(value, out asDouble))
+                {
+                    result = DateTime.FromOADate(asDouble);
+                }
+                else
+                {
+                    DateTime asDate;
+                    var success = DateTime.TryParseExact(value, "yyyy-MM-dd", CultureInfo.InvariantCulture,DateTimeStyles.AssumeLocal,   out asDate) ||
+                                  DateTime.TryParseExact(value, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.AssumeLocal, out asDate);
+                    if (success)
+                    {
+                        result = asDate;
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Value is not valid date");
+                    }
+                }
+            }
+            else if (type == typeof (bool?) ||
+                     type == typeof (bool))
+            {
+                result = "true,TRUE,1".Contains(value);
+            }
+            else if (type == typeof (int?) ||
+                     type == typeof (int))
+            {
+                int asInt;
+                if (int.TryParse(value, out asInt))
+                {
+                    result = asInt;
+                }
+                else
+                {
+                    throw new ArgumentException("Value is not integer number");
+                }
+            }
+            else if (type == typeof (double?) ||
+                     type == typeof (double))
+            {
+                double asDouble;
+                if (double.TryParse(value, out asDouble))
+                {
+                    result = asDouble;
+                }
+                else
+                {
+                    throw new ArgumentException("Value is not decimal number");
+                }
+                
+            }
+            else
+            {
+                result = Convert.ChangeType(value, type);
+            }
+            return result;
         }
 
         private IEnumerable<PlayerRecord> LoadPlayersFromFile(string fileName)

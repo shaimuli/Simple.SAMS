@@ -4,6 +4,8 @@ using System.Data.Linq;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Simple.SAMS.CompetitionEngine;
+using Simple.SAMS.Contracts;
 using Simple.SAMS.Contracts.Competitions;
 using Simple.SAMS.Contracts.Players;
 using Simple.Utilities;
@@ -224,21 +226,7 @@ namespace Simple.SAMS.Competitions.Data
                 player.CompetitionRank = players.Count + 1;
             }
         });
-            players.Sort((p1, p2) =>
-            {
-                if (p1.CompetitionRank > p2.CompetitionRank)
-                {
-                    return 1;
-                }
-                else if (p2.CompetitionRank > p1.CompetitionRank)
-                {
-                    return -1;
-                }
-                else
-                {
-                    return 0;
-                }
-            });
+            players.Sort(new CompetitionPlayerComparer());
 
             return players.AsReadOnly();
         }
@@ -248,6 +236,8 @@ namespace Simple.SAMS.Competitions.Data
             var entity = new Contracts.Players.CompetitionPlayer();
             AutoMapper.Mapper.DynamicMap(dataEntity.Player, entity);
             entity.CompetitionRank = dataEntity.Rank.GetValueOrDefault();
+            entity.AccumulatedScore = dataEntity.Player.AccumulatedScore;
+            entity.AverageScore = dataEntity.Player.AverageScore;
             entity.Replaceable =
                 dataEntity.Player.Matches.Count(
                     m => m.CompetitionId == competitionId && m.Status >= (int)MatchStatus.Playing) == 0;
@@ -316,7 +306,8 @@ namespace Simple.SAMS.Competitions.Data
                                         Rank = playerInCompetition.Rank,
                                         Source = (int)playerInCompetition.Source,
                                         Section = (int)playerInCompetition.Section,
-                                        Status = (int)playerInCompetition.Status
+                                        Status = (int)playerInCompetition.Status,
+                                        
                                     });
                         }
 

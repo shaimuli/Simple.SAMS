@@ -11,6 +11,14 @@ namespace Simple.SAMS.Contracts.Players
     [DataContract(Namespace = Namespaces.Data)]
     public class CompetitionPlayer : Player
     {
+        public string FullName
+        {
+            get { return LocalLastName.NotNullOrEmpty() ? LocalFirstName + " " + LocalLastName : LocalFirstName; }
+        }
+        [DataMember(EmitDefaultValue = false)]
+        public int? AverageScore { get; set; }
+        [DataMember(EmitDefaultValue = false)]
+        public int? AccumulatedScore { get; set; }
         
         [DataMember(EmitDefaultValue = false)]
         public int? Position { get; set; }

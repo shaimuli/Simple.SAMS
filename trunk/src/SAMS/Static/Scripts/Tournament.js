@@ -49,6 +49,16 @@
         function renderDiv(cssClass, dataAttrs, attrs, callback) {
             return renderElement("div", cssClass, dataAttrs, attrs, callback)
         }
+
+        function getScore(playerNumber, setScores) {
+            var scores = [];
+            for (var setNumber = 0; setNumber < setScores.length; setNumber++) {
+                var setPoints = setScores[setNumber];
+                scores.push(setPoints["Player" + playerNumber + "Points"] || 0);
+            }
+            return scores.join(" ");
+        }
+
         function renderTeam(match, team, position) {
             return renderDiv("t-team", { id: (team ? team.Id : "") }, null, function (html) {
                 var cssClass = "t-icon" + (((match.Winner) === (position+1)) ? " winner" : "");
@@ -69,7 +79,10 @@
                         }));
                     }
                 }));
-                html.push(renderDiv("t-score"));
+                html.push(renderDiv("t-score",null,null, function(scoreHtml) {
+                    scoreHtml.push(getScore(position + 1, match.SetScores) || "");
+                }));
+
                 if (position == 0) {
                     html.push(renderDiv("t-icon t-stats"));
                 } else {
