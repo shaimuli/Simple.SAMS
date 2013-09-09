@@ -259,10 +259,10 @@ namespace SAMS.Controllers
                                  Position = m.Position,
                                  Winner = m.Winner,
                                  Result = m.Result.HasValue ? m.Result.Value : MatchResult.Win,
-                                 Player1 = m.Player1.IsNotNull() ? new MatchPlayerViewModel(m.Player1) { Rank = competition.Players.First(cp=>cp.Id == m.Player1.Id).CompetitionRank } : null,
-                                 Player2 = m.Player2.IsNotNull() ? new MatchPlayerViewModel(m.Player2) { Rank = competition.Players.First(cp => cp.Id == m.Player2.Id).CompetitionRank } : null,
-                                 Player3 = m.Player3.IsNotNull() ? new MatchPlayerViewModel(m.Player3) { Rank = competition.Players.First(cp => cp.Id == m.Player3.Id).CompetitionRank } : null,
-                                 Player4 = m.Player4.IsNotNull() ? new MatchPlayerViewModel(m.Player4) { Rank = competition.Players.First(cp => cp.Id == m.Player4.Id).CompetitionRank } : null,
+                                 Player1 = GetPlayer(m.Player1, competition),
+                                 Player2 = GetPlayer(m.Player2, competition),
+                                 Player3 = GetPlayer(m.Player3, competition),
+                                 Player4 = GetPlayer(m.Player4, competition),
                                  SetScores = m.SetScores,
                                  StartTimeHours = new[] {new SelectListItem(),}.Concat(GetStartTimeHours(m.StartTime)),
                                  StartTimeMinutes = new[] {new SelectListItem(),}.Concat(GetStartTimeMinutes(m.StartTime)),
@@ -272,6 +272,21 @@ namespace SAMS.Controllers
             model.QualifyingPlayingStarted = model.Matches.Any(m => m.Section == CompetitionSection.Qualifying && (int)m.Status >= (int)MatchStatus.Playing);
             model.ConsolationPlayingStarted = model.Matches.Any(m => m.Section == CompetitionSection.Consolation && (int)m.Status >= (int)MatchStatus.Playing);
             return model;
+        }
+
+        private MatchPlayerViewModel GetPlayer(MatchPlayer player, CompetitionDetails competition)
+        {
+            var result = default(MatchPlayerViewModel);
+            if (player.IsNotNull())
+            {
+                var cp = competition.Players.FirstOrDefault(p => p.Id == player.Id);
+                if (cp.IsNotNull())
+                {
+                    result = new MatchPlayerViewModel(player);
+                    result.Rank = cp.CompetitionRank;
+                }
+            }
+            return result;
         }
 
         private IEnumerable<SelectListItem> GetStartTimeMinutes(DateTime? startTime)
