@@ -94,7 +94,7 @@ namespace SAMS
             routeData.Values["controller"] = "Error";
             routeData.Values["action"] = action;
 
-            controller.ViewData.Model = new HandleErrorInfo(ex, currentController, currentAction);
+            controller.ViewData.Model = new HandleErrorInfo(ex ?? new Exception("Unknkown"), currentController, currentAction);
             ((IController)controller).Execute(new RequestContext(new HttpContextWrapper(httpContext), routeData));
         } 
 

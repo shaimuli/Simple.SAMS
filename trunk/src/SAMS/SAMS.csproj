@@ -217,6 +217,7 @@
     <Compile Include="Models\MatchResultUpdateModel.cs" />
     <Compile Include="Models\MenuItem.cs" />
     <Compile Include="Models\PageHeaderModel.cs" />
+    <Compile Include="Models\PrintModel.cs" />
     <Compile Include="Models\ResetPasswordViewModel.cs" />
     <Compile Include="Models\UpdatePlayerPointsModel.cs" />
     <Compile Include="PrintManager.cs" />
@@ -465,6 +466,7 @@
     <Content Include="Views\Competitions\MatchesFilters.cshtml" />
     <Content Include="Views\Competitions\_MoreInfo.cshtml" />
     <Content Include="TournamentTemplate.xls" />
+    <Content Include="Views\Competitions\Print.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\img\" />
