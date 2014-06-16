@@ -1,16 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Text;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.UI;
-using Microsoft.Reporting.WebForms;
 using SAMS.Models;
 using Simple;
 using Simple.Common.Storage;
@@ -55,12 +51,12 @@ namespace SAMS.Controllers
             var competitionEngine = ServiceProvider.Get<ICompetitionsEngine>();
 
             var competition = competitionEngine.GetCompetitionDetails(id);
-            var gen = new CompetitionDrawGenerator(@"e:\temp\gen\");
+            var gen = new CompetitionDrawGenerator(Path.GetTempPath());
             var outputPath = gen.Generate(competition, section);
-            var generator = new TournamentBracketGenerator();
-            var result = generator.Generate(competition, section);
+            //var generator = new TournamentBracketGenerator();
+            //var result = generator.Generate(competition, section);
 
-            return Content(result);
+            return View(new PrintModel { Path = outputPath });// Content(result);
 
         }
 

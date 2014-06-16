@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -21,11 +22,15 @@ namespace Simple.SAMS.Utilities
 
         private void GeneratePdf(string source, string target)
         {
-            var pcdd = @"C:\Precision\Draw Designer\systems\PCDD.exe";
-            var pi = new ProcessStartInfo(pcdd);
-            pi.Arguments = @"""" + source + @""" """ + target + @"""";
-            pi.CreateNoWindow = true;
-            Process.Start(pi).WaitForExit(60000);
+            var pcdd = ConfigurationManager.AppSettings["Generator.Path"];
+            if (string.IsNullOrEmpty(pcdd))
+            {
+                var pi = new ProcessStartInfo(pcdd);
+                pi.Arguments = @"""" + source + @""" """ + target + @"""";
+                pi.CreateNoWindow = true;
+                Process.Start(pi);
+                
+            }
         }
 
         public string Generate(CompetitionDetails details, CompetitionSection section)
@@ -69,7 +74,7 @@ namespace Simple.SAMS.Utilities
                 {
                     matchSchedule.Player1 = playersMap[match.Player1.Id];
                 }
-                else if (match.Player1Code == "BYE")
+                else if (match.Player1 == null || match.Player1Code == "BYE")
                 {
                     matchSchedule.Player1 = players.Length+1;
                 }
@@ -77,7 +82,7 @@ namespace Simple.SAMS.Utilities
                 {
                     matchSchedule.Player2 = playersMap[match.Player2.Id];
                 }
-                else if (match.Player2Code == "BYE")
+                else if (match.Player2 == null || match.Player2Code == "BYE")
                 {
                     matchSchedule.Player2 = players.Length+1;
                 }
@@ -87,26 +92,27 @@ namespace Simple.SAMS.Utilities
                     matchSchedule.Winner = (int) match.Winner;
                 }
 
-                matchSchedule.Player1Points = 6;
-                matchSchedule.Player2Points = 2;
-                matchSchedule.SetScores = new[]
-                                              {
-                                                  new SetScore()
-                                                      {
-                                                          Player1Points = 7,
-                                                          Player2Points = 5,
-                                                      }, 
-                                                  new SetScore()
-                                                      {
-                                                          Player1Points = 2,
-                                                          Player2Points = 6,
-                                                      }, 
-                                                  new SetScore()
-                                                      {
-                                                          Player1Points = 0,
-                                                          Player2Points = 6,
-                                                      }, 
-                                              };
+                matchSchedule.Player1Points = 0;
+                matchSchedule.Player2Points = 0;
+                matchSchedule.SetScores = match.SetScores;
+                //matchSchedule.SetScores = new[]
+                //                              {
+                //                                  new SetScore()
+                //                                      {
+                //                                          Player1Points = 7,
+                //                                          Player2Points = 5,
+                //                                      }, 
+                //                                  new SetScore()
+                //                                      {
+                //                                          Player1Points = 2,
+                //                                          Player2Points = 6,
+                //                                      }, 
+                //                                  new SetScore()
+                //                                      {
+                //                                          Player1Points = 0,
+                //                                          Player2Points = 6,
+                //                                      }, 
+                //                              };
                 items.Add(matchSchedule);
             }
 

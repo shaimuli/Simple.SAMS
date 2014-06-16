@@ -1889,3 +1889,421 @@ System.InvalidOperationException: Sequence contains no matching element
    at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
 2013-09-09 11:38:57.3805 SimpleSite|Info| SAMS Application started... 
 2013-09-09 11:38:57.7436 SimpleSite|Info| SAMS Application initialization completed.
+2013-09-09 14:37:50.5933 SimpleSite|Info| SAMS Application started... 
+2013-09-09 14:37:51.0136 SimpleSite|Info| SAMS Application initialization completed.
+2013-09-09 14:38:50.7025 SimpleSite|Error| Error executing request.
+Details:
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'e:\temp\gen\ארצית קיץ 5 - בנים 12-166-f1946f3f-7fbb-4633-b8fa-491315578d14-Qualifying.players.csv'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding)
+   at System.IO.File.WriteAllLines(String path, IEnumerable`1 contents)
+   at Simple.SAMS.Utilities.CompetitionDrawGenerator.SavePlayers(CompetitionPlayer[] players, String playersPath, HebrewWordInverter inverter) in c:\data\git\Simple.SAMS\trunk\src\Simple.SAMS.Utilities\CompetitionDrawGenerator.cs:line 118
+   at Simple.SAMS.Utilities.CompetitionDrawGenerator.Generate(CompetitionDetails details, CompetitionSection section) in c:\data\git\Simple.SAMS\trunk\src\Simple.SAMS.Utilities\CompetitionDrawGenerator.cs:line 43
+   at SAMS.Controllers.CompetitionsController.Print(Int32 id, CompetitionSection section) in c:\data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 59
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-09-09 14:38:50.7145 SimpleSite|Error| Unhandled exception
+Details:
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'e:\temp\gen\ארצית קיץ 5 - בנים 12-166-f1946f3f-7fbb-4633-b8fa-491315578d14-Qualifying.players.csv'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.StreamWriter.CreateFile(String path, Boolean append, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding, Int32 bufferSize, Boolean checkHost)
+   at System.IO.StreamWriter..ctor(String path, Boolean append, Encoding encoding)
+   at System.IO.File.WriteAllLines(String path, IEnumerable`1 contents)
+   at Simple.SAMS.Utilities.CompetitionDrawGenerator.SavePlayers(CompetitionPlayer[] players, String playersPath, HebrewWordInverter inverter) in c:\data\git\Simple.SAMS\trunk\src\Simple.SAMS.Utilities\CompetitionDrawGenerator.cs:line 118
+   at Simple.SAMS.Utilities.CompetitionDrawGenerator.Generate(CompetitionDetails details, CompetitionSection section) in c:\data\git\Simple.SAMS\trunk\src\Simple.SAMS.Utilities\CompetitionDrawGenerator.cs:line 43
+   at SAMS.Controllers.CompetitionsController.Print(Int32 id, CompetitionSection section) in c:\data\git\Simple.SAMS\trunk\src\SAMS\Controllers\CompetitionsController.cs:line 59
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass42.<BeginInvokeSynchronousActionMethod>b__41()
+   at System.Web.Mvc.Async.AsyncResultWrapper.<>c__DisplayClass8`1.<BeginSynchronous>b__7(IAsyncResult _)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<BeginInvokeActionMethodWithFilters>b__33()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass4f.<InvokeActionMethodFilterAsynchronously>b__49()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__36(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.End()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-09-09 14:39:15.9074 SimpleSite|Info| SAMS Application started... 
+2013-09-09 14:39:16.2664 SimpleSite|Info| SAMS Application initialization completed.
+2013-09-09 14:46:52.9121 SimpleSite|Info| SAMS Application started... 
+2013-09-09 14:46:53.2761 SimpleSite|Info| SAMS Application initialization completed.
+2013-09-09 14:58:27.6838 SimpleSite|Info| SAMS Application started... 
+2013-09-09 14:58:28.1459 SimpleSite|Info| SAMS Application initialization completed.
+2013-09-09 15:18:02.8529 SimpleSite|Info| SAMS Application started... 
+2013-09-09 15:18:03.2220 SimpleSite|Info| SAMS Application initialization completed.
+2013-09-09 15:27:26.2160 SimpleSite|Info| SAMS Application started... 
+2013-09-09 15:27:26.5580 SimpleSite|Info| SAMS Application initialization completed.
+2013-09-09 15:27:54.8581 SimpleSite|Error| Error executing request.
+Details:
+System.InvalidOperationException: The view 'C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-abe42312-0981-4af7-b8d6-69121e3144fb-Qualifying.pdf' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Competitions/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-abe42312-0981-4af7-b8d6-69121e3144fb-Qualifying.pdf.aspx
+~/Views/Competitions/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-abe42312-0981-4af7-b8d6-69121e3144fb-Qualifying.pdf.ascx
+~/Views/Shared/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-abe42312-0981-4af7-b8d6-69121e3144fb-Qualifying.pdf.aspx
+~/Views/Shared/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-abe42312-0981-4af7-b8d6-69121e3144fb-Qualifying.pdf.ascx
+~/Views/Competitions/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-abe42312-0981-4af7-b8d6-69121e3144fb-Qualifying.pdf.cshtml
+~/Views/Competitions/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-abe42312-0981-4af7-b8d6-69121e3144fb-Qualifying.pdf.vbhtml
+~/Views/Shared/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-abe42312-0981-4af7-b8d6-69121e3144fb-Qualifying.pdf.cshtml
+~/Views/Shared/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-abe42312-0981-4af7-b8d6-69121e3144fb-Qualifying.pdf.vbhtml
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-09-09 15:27:54.8581 SimpleSite|Error| Unhandled exception
+Details:
+System.InvalidOperationException: The view 'C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-abe42312-0981-4af7-b8d6-69121e3144fb-Qualifying.pdf' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Competitions/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-abe42312-0981-4af7-b8d6-69121e3144fb-Qualifying.pdf.aspx
+~/Views/Competitions/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-abe42312-0981-4af7-b8d6-69121e3144fb-Qualifying.pdf.ascx
+~/Views/Shared/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-abe42312-0981-4af7-b8d6-69121e3144fb-Qualifying.pdf.aspx
+~/Views/Shared/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-abe42312-0981-4af7-b8d6-69121e3144fb-Qualifying.pdf.ascx
+~/Views/Competitions/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-abe42312-0981-4af7-b8d6-69121e3144fb-Qualifying.pdf.cshtml
+~/Views/Competitions/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-abe42312-0981-4af7-b8d6-69121e3144fb-Qualifying.pdf.vbhtml
+~/Views/Shared/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-abe42312-0981-4af7-b8d6-69121e3144fb-Qualifying.pdf.cshtml
+~/Views/Shared/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-abe42312-0981-4af7-b8d6-69121e3144fb-Qualifying.pdf.vbhtml
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-09-09 16:35:11.7738 SimpleSite|Error| Error executing request.
+Details:
+System.InvalidOperationException: The view 'C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-ac912aa8-753f-4449-b229-3d6e58e960bb-Qualifying.pdf' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Competitions/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-ac912aa8-753f-4449-b229-3d6e58e960bb-Qualifying.pdf.aspx
+~/Views/Competitions/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-ac912aa8-753f-4449-b229-3d6e58e960bb-Qualifying.pdf.ascx
+~/Views/Shared/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-ac912aa8-753f-4449-b229-3d6e58e960bb-Qualifying.pdf.aspx
+~/Views/Shared/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-ac912aa8-753f-4449-b229-3d6e58e960bb-Qualifying.pdf.ascx
+~/Views/Competitions/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-ac912aa8-753f-4449-b229-3d6e58e960bb-Qualifying.pdf.cshtml
+~/Views/Competitions/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-ac912aa8-753f-4449-b229-3d6e58e960bb-Qualifying.pdf.vbhtml
+~/Views/Shared/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-ac912aa8-753f-4449-b229-3d6e58e960bb-Qualifying.pdf.cshtml
+~/Views/Shared/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-ac912aa8-753f-4449-b229-3d6e58e960bb-Qualifying.pdf.vbhtml
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-09-09 16:35:11.7929 SimpleSite|Error| Unhandled exception
+Details:
+System.InvalidOperationException: The view 'C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-ac912aa8-753f-4449-b229-3d6e58e960bb-Qualifying.pdf' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Competitions/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-ac912aa8-753f-4449-b229-3d6e58e960bb-Qualifying.pdf.aspx
+~/Views/Competitions/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-ac912aa8-753f-4449-b229-3d6e58e960bb-Qualifying.pdf.ascx
+~/Views/Shared/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-ac912aa8-753f-4449-b229-3d6e58e960bb-Qualifying.pdf.aspx
+~/Views/Shared/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-ac912aa8-753f-4449-b229-3d6e58e960bb-Qualifying.pdf.ascx
+~/Views/Competitions/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-ac912aa8-753f-4449-b229-3d6e58e960bb-Qualifying.pdf.cshtml
+~/Views/Competitions/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-ac912aa8-753f-4449-b229-3d6e58e960bb-Qualifying.pdf.vbhtml
+~/Views/Shared/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-ac912aa8-753f-4449-b229-3d6e58e960bb-Qualifying.pdf.cshtml
+~/Views/Shared/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-ac912aa8-753f-4449-b229-3d6e58e960bb-Qualifying.pdf.vbhtml
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-09-09 16:36:20.9464 SimpleSite|Info| SAMS Application started... 
+2013-09-09 16:36:21.2954 SimpleSite|Info| SAMS Application initialization completed.
+2013-09-09 16:36:21.8675 SimpleSite|Error| Error executing request.
+Details:
+System.InvalidOperationException: The view 'Print' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Competitions/Print.aspx
+~/Views/Competitions/Print.ascx
+~/Views/Shared/Print.aspx
+~/Views/Shared/Print.ascx
+~/Views/Competitions/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-94e2ef34-d5e7-4b6f-b997-374c4f097a29-Qualifying.pdf.master
+~/Views/Shared/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-94e2ef34-d5e7-4b6f-b997-374c4f097a29-Qualifying.pdf.master
+~/Views/Competitions/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-94e2ef34-d5e7-4b6f-b997-374c4f097a29-Qualifying.pdf.cshtml
+~/Views/Competitions/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-94e2ef34-d5e7-4b6f-b997-374c4f097a29-Qualifying.pdf.vbhtml
+~/Views/Shared/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-94e2ef34-d5e7-4b6f-b997-374c4f097a29-Qualifying.pdf.cshtml
+~/Views/Shared/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-94e2ef34-d5e7-4b6f-b997-374c4f097a29-Qualifying.pdf.vbhtml
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-09-09 16:36:21.8675 SimpleSite|Error| Unhandled exception
+Details:
+System.InvalidOperationException: The view 'Print' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Competitions/Print.aspx
+~/Views/Competitions/Print.ascx
+~/Views/Shared/Print.aspx
+~/Views/Shared/Print.ascx
+~/Views/Competitions/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-94e2ef34-d5e7-4b6f-b997-374c4f097a29-Qualifying.pdf.master
+~/Views/Shared/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-94e2ef34-d5e7-4b6f-b997-374c4f097a29-Qualifying.pdf.master
+~/Views/Competitions/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-94e2ef34-d5e7-4b6f-b997-374c4f097a29-Qualifying.pdf.cshtml
+~/Views/Competitions/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-94e2ef34-d5e7-4b6f-b997-374c4f097a29-Qualifying.pdf.vbhtml
+~/Views/Shared/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-94e2ef34-d5e7-4b6f-b997-374c4f097a29-Qualifying.pdf.cshtml
+~/Views/Shared/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 12-166-94e2ef34-d5e7-4b6f-b997-374c4f097a29-Qualifying.pdf.vbhtml
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-09-09 16:37:35.3483 SimpleSite|Error| Error executing request.
+Details:
+System.InvalidOperationException: The view 'Print' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Competitions/Print.aspx
+~/Views/Competitions/Print.ascx
+~/Views/Shared/Print.aspx
+~/Views/Shared/Print.ascx
+~/Views/Competitions/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 18-169-c9878136-6163-45e0-a4c8-091c745c08b3-Final.pdf.master
+~/Views/Shared/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 18-169-c9878136-6163-45e0-a4c8-091c745c08b3-Final.pdf.master
+~/Views/Competitions/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 18-169-c9878136-6163-45e0-a4c8-091c745c08b3-Final.pdf.cshtml
+~/Views/Competitions/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 18-169-c9878136-6163-45e0-a4c8-091c745c08b3-Final.pdf.vbhtml
+~/Views/Shared/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 18-169-c9878136-6163-45e0-a4c8-091c745c08b3-Final.pdf.cshtml
+~/Views/Shared/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 18-169-c9878136-6163-45e0-a4c8-091c745c08b3-Final.pdf.vbhtml
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-09-09 16:37:35.3483 SimpleSite|Error| Unhandled exception
+Details:
+System.InvalidOperationException: The view 'Print' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Competitions/Print.aspx
+~/Views/Competitions/Print.ascx
+~/Views/Shared/Print.aspx
+~/Views/Shared/Print.ascx
+~/Views/Competitions/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 18-169-c9878136-6163-45e0-a4c8-091c745c08b3-Final.pdf.master
+~/Views/Shared/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 18-169-c9878136-6163-45e0-a4c8-091c745c08b3-Final.pdf.master
+~/Views/Competitions/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 18-169-c9878136-6163-45e0-a4c8-091c745c08b3-Final.pdf.cshtml
+~/Views/Competitions/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 18-169-c9878136-6163-45e0-a4c8-091c745c08b3-Final.pdf.vbhtml
+~/Views/Shared/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 18-169-c9878136-6163-45e0-a4c8-091c745c08b3-Final.pdf.cshtml
+~/Views/Shared/C:\Users\Yair\AppData\Local\Temp\ארצית קיץ 5 - בנים 18-169-c9878136-6163-45e0-a4c8-091c745c08b3-Final.pdf.vbhtml
+   at System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-09-09 16:38:27.8520 SimpleSite|Info| SAMS Application started... 
+2013-09-09 16:38:28.2150 SimpleSite|Info| SAMS Application initialization completed.
+2013-09-09 16:38:40.9818 SimpleSite|Error| Error executing request.
+Details:
+Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: 'object' does not contain a definition for 'Path'
+   at CallSite.Target(Closure , CallSite , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   at ASP._Page_Views_Competitions_Print_cshtml.Execute() in c:\data\git\Simple.SAMS\trunk\src\SAMS\Views\Competitions\Print.cshtml:line 8
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-09-09 16:38:40.9868 SimpleSite|Error| Unhandled exception
+Details:
+Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: 'object' does not contain a definition for 'Path'
+   at CallSite.Target(Closure , CallSite , Object )
+   at System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   at ASP._Page_Views_Competitions_Print_cshtml.Execute() in c:\data\git\Simple.SAMS\trunk\src\SAMS\Views\Competitions\Print.cshtml:line 8
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   at System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.StartPage.RunPage()
+   at System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   at System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   at System.Web.Mvc.RazorView.RenderView(ViewContext viewContext, TextWriter writer, Object instance)
+   at System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   at System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<InvokeActionResultWithFilters>b__17()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   at System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1a.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<>c__DisplayClass2a.<BeginInvokeAction>b__20()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__22(IAsyncResult asyncResult)
+2013-09-09 16:39:25.8562 SimpleSite|Info| SAMS Application started... 
+2013-09-09 16:39:26.3492 SimpleSite|Info| SAMS Application initialization completed.
+2014-04-22 14:23:09.8763 SimpleSite|Info| SAMS Application started... 
+2014-04-22 14:23:10.3003 SimpleSite|Info| SAMS Application initialization completed.
+2014-06-16 10:21:52.5192 SimpleSite|Info| SAMS Application started... 
+2014-06-16 10:21:52.6902 SimpleSite|Info| SAMS Application initialization completed.
+2014-06-16 10:24:45.4038 SimpleSite|Info| SAMS Application started... 
+2014-06-16 10:24:46.0166 SimpleSite|Info| SAMS Application initialization completed.
+2014-06-16 10:25:36.3135 SimpleSite|Info| SAMS Application started... 
+2014-06-16 10:25:36.6956 SimpleSite|Info| SAMS Application initialization completed.
+2014-06-16 10:41:17.6453 SimpleSite|Info| SAMS Application started... 
+2014-06-16 10:41:18.0443 SimpleSite|Info| SAMS Application initialization completed.
+2014-06-16 10:41:32.5324 SimpleSite|Info| SAMS Application started... 
+2014-06-16 10:41:32.9515 SimpleSite|Info| SAMS Application initialization completed.
+2014-06-16 10:43:46.4209 SimpleSite|Error| Error executing request.
+Details:
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.InvalidOperationException: The ASP.NET Simple Membership database could not be initialized. For more information, please see http://go.microsoft.com/fwlink/?LinkId=256588 ---> System.Configuration.Provider.ProviderException: Default Membership Provider must be specified.
+   at System.Web.Security.Membership.InitializeDefaultProvider(Boolean initializeDefaultProvider, MembershipSection settings)
+   at System.Web.Security.Membership.Initialize()
+   at System.Web.Security.Membership.get_Provider()
+   at WebMatrix.WebData.WebSecurity.InitializeProviders(DatabaseConnectionInfo connect, String userTableName, String userIdColumn, String userNameColumn, Boolean autoCreateTables)
+   at WebMatrix.WebData.WebSecurity.InitializeDatabaseConnection(String connectionStringName, String userTableName, String userIdColumn, String userNameColumn, Boolean autoCreateTables)
+   at SAMS.Filters.InitializeSimpleMembershipAttribute.SimpleMembershipInitializer..ctor() in c:\data\git\Simple.SAMS\trunk\src\SAMS\Filters\InitializeSimpleMembershipAttribute.cs:line 41
+   --- End of inner exception stack trace ---
+   at SAMS.Filters.InitializeSimpleMembershipAttribute.SimpleMembershipInitializer..ctor() in c:\data\git\Simple.SAMS\trunk\src\SAMS\Filters\InitializeSimpleMembershipAttribute.cs:line 45
+   --- End of inner exception stack trace ---
+   at System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
+   at System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at System.Threading.LazyHelpers`1.ActivatorFactorySelector()
+   at System.Threading.LazyInitializer.EnsureInitializedCore[T](T& target, Boolean& initialized, Object& syncLock, Func`1 valueFactory)
+   at System.Threading.LazyInitializer.EnsureInitialized[T](T& target, Boolean& initialized, Object& syncLock)
+   at SAMS.Filters.InitializeSimpleMembershipAttribute.OnActionExecuting(ActionExecutingContext filterContext) in c:\data\git\Simple.SAMS\trunk\src\SAMS\Filters\InitializeSimpleMembershipAttribute.cs:line 21
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.InvokeActionMethodFilterAsynchronously(IActionFilter filter, ActionExecutingContext preContext, Func`1 nextInChain)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<>c__DisplayClass3b.<BeginInvokeActionMethodWithFilters>b__35()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.InvokeActionMethodFilterAsynchronously(IActionFilter filter, ActionExecutingContext preContext, Func`1 nextInChain)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<>c__DisplayClass3b.<BeginInvokeActionMethodWithFilters>b__35()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__31(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__1e(AsyncCallback asyncCallback, Object asyncState)
+2014-06-16 11:08:37.7279 SimpleSite|Error| Error executing request.
+Details:
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.InvalidOperationException: The ASP.NET Simple Membership database could not be initialized. For more information, please see http://go.microsoft.com/fwlink/?LinkId=256588 ---> System.Configuration.Provider.ProviderException: Default Membership Provider must be specified.
+   at System.Web.Security.Membership.Initialize()
+   at System.Web.Security.Membership.get_Provider()
+   at WebMatrix.WebData.WebSecurity.InitializeProviders(DatabaseConnectionInfo connect, String userTableName, String userIdColumn, String userNameColumn, Boolean autoCreateTables)
+   at WebMatrix.WebData.WebSecurity.InitializeDatabaseConnection(String connectionStringName, String userTableName, String userIdColumn, String userNameColumn, Boolean autoCreateTables)
+   at SAMS.Filters.InitializeSimpleMembershipAttribute.SimpleMembershipInitializer..ctor() in c:\data\git\Simple.SAMS\trunk\src\SAMS\Filters\InitializeSimpleMembershipAttribute.cs:line 41
+   --- End of inner exception stack trace ---
+   at SAMS.Filters.InitializeSimpleMembershipAttribute.SimpleMembershipInitializer..ctor() in c:\data\git\Simple.SAMS\trunk\src\SAMS\Filters\InitializeSimpleMembershipAttribute.cs:line 45
+   --- End of inner exception stack trace ---
+   at System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
+   at System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at System.Threading.LazyHelpers`1.ActivatorFactorySelector()
+   at System.Threading.LazyInitializer.EnsureInitializedCore[T](T& target, Boolean& initialized, Object& syncLock, Func`1 valueFactory)
+   at System.Threading.LazyInitializer.EnsureInitialized[T](T& target, Boolean& initialized, Object& syncLock)
+   at SAMS.Filters.InitializeSimpleMembershipAttribute.OnActionExecuting(ActionExecutingContext filterContext) in c:\data\git\Simple.SAMS\trunk\src\SAMS\Filters\InitializeSimpleMembershipAttribute.cs:line 21
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.InvokeActionMethodFilterAsynchronously(IActionFilter filter, ActionExecutingContext preContext, Func`1 nextInChain)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<>c__DisplayClass3b.<BeginInvokeActionMethodWithFilters>b__35()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.InvokeActionMethodFilterAsynchronously(IActionFilter filter, ActionExecutingContext preContext, Func`1 nextInChain)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<>c__DisplayClass3b.<BeginInvokeActionMethodWithFilters>b__35()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__31(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__1e(AsyncCallback asyncCallback, Object asyncState)
+2014-06-16 11:10:04.5536 SimpleSite|Error| Error executing request.
+Details:
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.InvalidOperationException: The ASP.NET Simple Membership database could not be initialized. For more information, please see http://go.microsoft.com/fwlink/?LinkId=256588 ---> System.ArgumentException: EntityConnection can only be constructed with a closed DbConnection.
+   at System.Data.EntityClient.EntityConnection..ctor(MetadataWorkspace workspace, DbConnection connection)
+   at System.Data.Entity.Infrastructure.DbCompiledModel.CreateObjectContext[TContext](DbConnection existingConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.CreateObjectContextForDdlOps()
+   at System.Data.Entity.Database.Exists()
+   at SAMS.Filters.InitializeSimpleMembershipAttribute.SimpleMembershipInitializer..ctor() in c:\data\git\Simple.SAMS\trunk\src\SAMS\Filters\InitializeSimpleMembershipAttribute.cs:line 34
+   --- End of inner exception stack trace ---
+   at SAMS.Filters.InitializeSimpleMembershipAttribute.SimpleMembershipInitializer..ctor() in c:\data\git\Simple.SAMS\trunk\src\SAMS\Filters\InitializeSimpleMembershipAttribute.cs:line 45
+   --- End of inner exception stack trace ---
+   at System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
+   at System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at System.Threading.LazyHelpers`1.ActivatorFactorySelector()
+   at System.Threading.LazyInitializer.EnsureInitializedCore[T](T& target, Boolean& initialized, Object& syncLock, Func`1 valueFactory)
+   at System.Threading.LazyInitializer.EnsureInitialized[T](T& target, Boolean& initialized, Object& syncLock)
+   at SAMS.Filters.InitializeSimpleMembershipAttribute.OnActionExecuting(ActionExecutingContext filterContext) in c:\data\git\Simple.SAMS\trunk\src\SAMS\Filters\InitializeSimpleMembershipAttribute.cs:line 21
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.InvokeActionMethodFilterAsynchronously(IActionFilter filter, ActionExecutingContext preContext, Func`1 nextInChain)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<>c__DisplayClass3b.<BeginInvokeActionMethodWithFilters>b__35()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.InvokeActionMethodFilterAsynchronously(IActionFilter filter, ActionExecutingContext preContext, Func`1 nextInChain)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<>c__DisplayClass3b.<BeginInvokeActionMethodWithFilters>b__35()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__31(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__1e(AsyncCallback asyncCallback, Object asyncState)
+2014-06-16 11:10:14.0387 SimpleSite|Error| Error executing request.
+Details:
+System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.InvalidOperationException: The ASP.NET Simple Membership database could not be initialized. For more information, please see http://go.microsoft.com/fwlink/?LinkId=256588 ---> System.Configuration.Provider.ProviderException: Default Membership Provider must be specified.
+   at System.Web.Security.Membership.Initialize()
+   at System.Web.Security.Membership.get_Provider()
+   at WebMatrix.WebData.WebSecurity.InitializeProviders(DatabaseConnectionInfo connect, String userTableName, String userIdColumn, String userNameColumn, Boolean autoCreateTables)
+   at WebMatrix.WebData.WebSecurity.InitializeDatabaseConnection(String connectionStringName, String userTableName, String userIdColumn, String userNameColumn, Boolean autoCreateTables)
+   at SAMS.Filters.InitializeSimpleMembershipAttribute.SimpleMembershipInitializer..ctor() in c:\data\git\Simple.SAMS\trunk\src\SAMS\Filters\InitializeSimpleMembershipAttribute.cs:line 41
+   --- End of inner exception stack trace ---
+   at SAMS.Filters.InitializeSimpleMembershipAttribute.SimpleMembershipInitializer..ctor() in c:\data\git\Simple.SAMS\trunk\src\SAMS\Filters\InitializeSimpleMembershipAttribute.cs:line 45
+   --- End of inner exception stack trace ---
+   at System.RuntimeTypeHandle.CreateInstance(RuntimeType type, Boolean publicOnly, Boolean noCheck, Boolean& canBeCached, RuntimeMethodHandleInternal& ctor, Boolean& bNeedSecurityCheck)
+   at System.RuntimeType.CreateInstanceSlow(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   at System.RuntimeType.CreateInstanceDefaultCtor(Boolean publicOnly, Boolean skipCheckThis, Boolean fillCache, StackCrawlMark& stackMark)
+   at System.Activator.CreateInstance(Type type, Boolean nonPublic)
+   at System.Activator.CreateInstance(Type type)
+   at System.Threading.LazyHelpers`1.ActivatorFactorySelector()
+   at System.Threading.LazyInitializer.EnsureInitializedCore[T](T& target, Boolean& initialized, Object& syncLock, Func`1 valueFactory)
+   at System.Threading.LazyInitializer.EnsureInitialized[T](T& target, Boolean& initialized, Object& syncLock)
+   at SAMS.Filters.InitializeSimpleMembershipAttribute.OnActionExecuting(ActionExecutingContext filterContext) in c:\data\git\Simple.SAMS\trunk\src\SAMS\Filters\InitializeSimpleMembershipAttribute.cs:line 21
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.InvokeActionMethodFilterAsynchronously(IActionFilter filter, ActionExecutingContext preContext, Func`1 nextInChain)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<>c__DisplayClass3b.<BeginInvokeActionMethodWithFilters>b__35()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.InvokeActionMethodFilterAsynchronously(IActionFilter filter, ActionExecutingContext preContext, Func`1 nextInChain)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<>c__DisplayClass39.<>c__DisplayClass3b.<BeginInvokeActionMethodWithFilters>b__35()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass37.<BeginInvokeActionMethodWithFilters>b__31(AsyncCallback asyncCallback, Object asyncState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.Begin(AsyncCallback callback, Object state, Int32 timeout)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.BeginInvokeActionMethodWithFilters(ControllerContext controllerContext, IList`1 filters, ActionDescriptor actionDescriptor, IDictionary`2 parameters, AsyncCallback callback, Object state)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass25.<BeginInvokeAction>b__1e(AsyncCallback asyncCallback, Object asyncState)
+2014-06-16 11:10:35.6871 SimpleSite|Info| SAMS Application started... 
+2014-06-16 11:10:36.0751 SimpleSite|Info| SAMS Application initialization completed.
+2014-06-16 11:10:45.0030 SimpleSite|Info| SAMS Application started... 
+2014-06-16 11:10:45.1500 SimpleSite|Info| SAMS Application initialization completed.
