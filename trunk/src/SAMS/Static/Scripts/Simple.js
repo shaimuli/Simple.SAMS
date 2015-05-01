@@ -1,4 +1,12 @@
-﻿/* Simple JavaScript Inheritance
+﻿Simple = {};
+Simple.Sams = {
+    StartTimeType: {
+        NotDetermined: 0
+
+    }
+};
+
+/* Simple JavaScript Inheritance
 * By John Resig http://ejohn.org/
 * http://ejohn.org/blog/simple-javascript-inheritance/
 * MIT Licensed.

@@ -94,6 +94,7 @@
             var startRound = matchesPerRound.indexOf(maxMatches);
             
             var maxRound = startRound + rounds;
+            console.log("ROUNDS,", rounds, maxMatches, startRound, maxRound);
             /*for (var i = startRound + rounds; i <= 5; i++) {
                 $("div.r" + (i - 1) + ".t-sep", target).hide();
                 $("div.r" + i, target).hide();
@@ -107,6 +108,7 @@
                 if ($.isArray(options)) {
                     
                     var matches = options;
+                    console.log("MATCHEs", matches);
                     function getScore(playerNumber, setScores) {
                         var scores = [];
                         for (var setNumber = 0; setNumber < setScores.length; setNumber++) {

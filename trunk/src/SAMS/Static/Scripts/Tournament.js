@@ -62,7 +62,6 @@
         function renderTeam(match, team, position) {
             return renderDiv("t-team", { id: (team ? team.Id : "") }, null, function (html) {
                 var cssClass = "t-icon" + (((match.Winner) === (position+1)) ? " winner" : "");
-                console.log(match.Winner, position, cssClass);
                 html.push(renderDiv(cssClass));
                 html.push(renderDiv("t-players", null, null, function (playersHtml) {
                     
